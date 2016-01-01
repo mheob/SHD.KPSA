@@ -1,0 +1,9 @@
+﻿<Window x:Class="DataTools.Infrastructure.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="clr-namespace:Prism.Regions;assembly=Prism.Wpf"
+        Title="MainWindow">
+    
+    <ItemsControl x:Name="MainRegion" prism:RegionManager.RegionName="MainRegion"/>
+    
+</Window>
