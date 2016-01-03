@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using DataTools.Models;
@@ -125,7 +126,7 @@ namespace DataTools.ViewModels
         private void UpdateStatusBar()
         {
             StatusBarSummary = Collection.Count > 0
-                ? string.Format(Resources.ListBoxFilesStatusBarText, SelectedFiles.Count, Collection.Count)
+                ? string.Format(Resources.DataGridFilesStatusBarText, SelectedFiles.Count, Collection.Count)
                 : string.Empty;
 
             if (!_isInitialize) return;
@@ -169,7 +170,12 @@ namespace DataTools.ViewModels
 
             foreach (var file in Directory.GetFiles(SelectedPath, "*.3ds"))
             {
-                _collection.Add(new SelectableFiles() {FileName = Path.GetFileNameWithoutExtension(file), IsSelected = false});
+                _collection.Add(new SelectableFiles()
+                {
+                    FileName = Path.GetFileNameWithoutExtension(file),
+                    LastModified = File.GetLastWriteTimeUtc(file).ToLocalTime(),
+                    IsSelected = false
+                });
             }
         }
 
@@ -221,11 +227,26 @@ namespace DataTools.ViewModels
             //SelectedPath = Settings.Default.StartUpFilePath;
             SelectedPath = @"D:\Desktop\";
 
-            Collection.Add(new SelectableFiles() {FileName = "Testfile 1", IsSelected = false});
-            Collection.Add(new SelectableFiles() {FileName = "Testfile 2", IsSelected = true});
-            Collection.Add(new SelectableFiles() {FileName = "Testfile 3", IsSelected = false});
+            Collection.Add(new SelectableFiles()
+            {
+                FileName = "Testfile 1",
+                LastModified = new DateTime(2016, 1, 3, 12, 40, 0),
+                IsSelected = false
+            });
+            Collection.Add(new SelectableFiles()
+            {
+                FileName = "Testfile 2",
+                LastModified = new DateTime(2016, 1, 2, 8, 5, 40),
+                IsSelected = true
+            });
+            Collection.Add(new SelectableFiles()
+            {
+                FileName = "Testfile 3",
+                LastModified = new DateTime(2015, 12, 30, 18, 15, 56),
+                IsSelected = false
+            });
 
-            StatusBarSummary = Resources.ListBoxFilesStatusBarText;
+            StatusBarSummary = Resources.DataGridFilesStatusBarText;
         }
     }
 }

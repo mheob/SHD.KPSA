@@ -138,13 +138,13 @@
   <data name="TitleTools3Ds" xml:space="preserve">
     <value>Remove Colors in 3DS-Files</value>
   </data>
-  <data name="ListBoxFilesStatusBarText" xml:space="preserve">
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} selected from {1} files</value>
   </data>
-  <data name="ListBoxFilesButtonSelectAll" xml:space="preserve">
+  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
     <value>Select _all</value>
   </data>
-  <data name="ListBoxFilesButtonSelectNone" xml:space="preserve">
+  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
     <value>Selecet _none</value>
   </data>
   <data name="ProgressLabelState" xml:space="preserve">

@@ -11,7 +11,7 @@
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:Tools3DsDesignViewModel, IsDesignTimeCreatable=True}"
-             d:DesignHeight="300" d:DesignWidth="600">
+             d:DesignHeight="300" d:DesignWidth="650">
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
@@ -63,7 +63,7 @@
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
@@ -77,46 +77,56 @@
                 </Grid.RowDefinitions>
                 
                 <StackPanel Grid.Row="0"
-                            Style="{StaticResource ListBoxButtonGroup}">
-                    <Button x:Name="ListBoxButtonSelectAll"
-                            Content="{x:Static rx:Resources.ListBoxFilesButtonSelectAll}"
-                            Style="{StaticResource ListBoxButton}"
+                            Style="{StaticResource DataGridButtonGroup}">
+                    <Button x:Name="DataGridButtonSelectAll"
+                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
+                            Style="{StaticResource DataGridButton}"
                             Command="{Binding SelectAllCommand}"
-                            CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button x:Name="ListBoxButtonSelectNone"
-                            Content="{x:Static rx:Resources.ListBoxFilesButtonSelectNone}"
-                            Style="{StaticResource ListBoxButton}"
+                    <Button x:Name="DataGridButtonSelectNone"
+                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
+                            Style="{StaticResource DataGridButton}"
                             Command="{Binding SelectNoneCommand}"
-                            CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                        Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <ListBox x:Name="ListBoxFiles"
-                         Grid.Row="1"
-                         Padding="4"
-                         SelectionMode="Extended"
-                         ItemsSource="{Binding Collection}"
-                         listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFiles}">
+                <DataGrid x:Name="DataGridFiles"
+                          ItemsSource="{Binding Path=Collection}"
+                          listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFiles}"
+                          Grid.Row="1"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserSortColumns="True">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <mvvm:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
                                                       CommandParameter="{Binding ElementName=TextBlockStatusBar, Path=Text}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListBoxItem}">
-                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <CheckBox Content="{Binding FileName}"
-                                      IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                IsReadOnly="True"
+                                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
+                                                                  Path=IsSelected, Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="Dateiname"
+                                            Width="*"
+                                            IsReadOnly="True"
+                                            Binding="{Binding FileName}"/>
+                        <DataGridTextColumn Header="letzte Änderung"
+                                            Width="*"
+                                            IsReadOnly="True"
+                                            Binding="{Binding LastModified, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
 
                 <Separator Grid.Row="2"
                            Style="{StaticResource VerticalSeparator}"/>
@@ -124,7 +134,7 @@
                 <TextBlock Grid.Row="3"
                            x:Name="TextBlockStatusBar"
                            Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
-                           Style="{StaticResource ListBoxFilesStatusBar}"/>
+                           Style="{StaticResource DataGridFilesStatusBar}"/>
             </Grid>
 
             <GridSplitter Grid.Column="1"
@@ -139,7 +149,7 @@
                     Content="{x:Static rx:Resources.ButtonStart}"
                     Style="{StaticResource FooterButtonLeft}"
                     Command="{Binding StartGenerationCommand}"
-                    CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Button x:Name="ButtonClose"
                     Content="{x:Static rx:Resources.ButtonClose}"

@@ -5,7 +5,7 @@
         <ResourceDictionary Source="Modules/Header.xaml"/>
         <ResourceDictionary Source="Modules/Footer.xaml"/>
         <ResourceDictionary Source="Modules/Spacer.xaml"/>
-        <ResourceDictionary Source="Modules/ListBoxFiles.xaml"/>
+        <ResourceDictionary Source="Modules/DataGridFiles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
 </ResourceDictionary>

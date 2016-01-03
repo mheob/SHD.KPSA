@@ -88,38 +88,38 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Please use a Bitmap! ähnelt.
-        /// </summary>
-        public static string ExcepetionProvideBitmap {
-            get {
-                return ResourceManager.GetString("ExcepetionProvideBitmap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Select _all ähnelt.
         /// </summary>
-        public static string ListBoxFilesButtonSelectAll {
+        public static string DataGridFilesButtonSelectAll {
             get {
-                return ResourceManager.GetString("ListBoxFilesButtonSelectAll", resourceCulture);
+                return ResourceManager.GetString("DataGridFilesButtonSelectAll", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Selecet _none ähnelt.
         /// </summary>
-        public static string ListBoxFilesButtonSelectNone {
+        public static string DataGridFilesButtonSelectNone {
             get {
-                return ResourceManager.GetString("ListBoxFilesButtonSelectNone", resourceCulture);
+                return ResourceManager.GetString("DataGridFilesButtonSelectNone", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} selected from {1} files ähnelt.
         /// </summary>
-        public static string ListBoxFilesStatusBarText {
+        public static string DataGridFilesStatusBarText {
             get {
-                return ResourceManager.GetString("ListBoxFilesStatusBarText", resourceCulture);
+                return ResourceManager.GetString("DataGridFilesStatusBarText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Please use a Bitmap! ähnelt.
+        /// </summary>
+        public static string ExcepetionProvideBitmap {
+            get {
+                return ResourceManager.GetString("ExcepetionProvideBitmap", resourceCulture);
             }
         }
         

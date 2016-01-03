@@ -4,21 +4,21 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Skins/Modules/GenericControls.xaml"/>
 
-        <!-- LISTBOX FOR FILES -->
+        <!-- DATAGRID FOR FILES -->
         <ResourceDictionary>
-            <!-- LISTBOX BUTTONS -->
-            <Style x:Key="ListBoxButtonGroup" TargetType="{x:Type StackPanel}">
+            <!-- DATAGRID BUTTONS -->
+            <Style x:Key="DataGridButtonGroup" TargetType="{x:Type StackPanel}">
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
 
-            <Style x:Key="ListBoxButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
+            <Style x:Key="DataGridButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
                 <Setter Property="Padding" Value="8,4"/>
                 <Setter Property="Margin" Value="4"/>
             </Style>
 
-            <!-- LISTBOX STATUSBAR -->
-            <Style x:Key="ListBoxFilesStatusBar" TargetType="{x:Type TextBlock}">
+            <!-- DATAGRID STATUSBAR -->
+            <Style x:Key="DataGridFilesStatusBar" TargetType="{x:Type TextBlock}">
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Bottom"/>
                 <Setter Property="FontStyle" Value="Italic"/>
