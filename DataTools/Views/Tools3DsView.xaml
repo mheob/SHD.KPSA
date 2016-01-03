@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="DataTools.Views.Tools3DsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:rx="clr-namespace:DataTools.Properties"
+             xmlns:listSelection="clr-namespace:DataTools.Utils.ListSelection"
+             xmlns:vm="clr-namespace:DataTools.ViewModels"
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:Tools3DsDesignViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="600">
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButtonReverse" Grid.Column="0"
+                    Style="{StaticResource ButtonBackNav}"
+                    Command="{Binding NavigateBackCommand}"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="0"
+                       Text="{x:Static rx:Resources.TitleTools3Ds}"
+                       Style="{StaticResource WindowHeading}"/>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Margin="0,0,0,4"
+              HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="TextBoxPath"
+                     Text="{Binding Path=SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,0,4,4"
+                     Padding="4">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding TextBoxPathLostFocusCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Button Grid.Column="1"
+                    Content="{x:Static rx:Resources.ButtonSelectPath}"
+                    Style="{StaticResource ButtonStyle}"
+                    Margin="4,0,0,4"
+                    Command="{Binding GetDirectoryCommand}"
+                    CommandParameter="{Binding ElementName=TextBoxPath, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <StackPanel Grid.Row="0"
+                            Style="{StaticResource ListBoxButtonGroup}">
+                    <Button x:Name="ListBoxButtonSelectAll"
+                            Content="{x:Static rx:Resources.ListBoxFilesButtonSelectAll}"
+                            Style="{StaticResource ListBoxButton}"
+                            Command="{Binding SelectAllCommand}"
+                            CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button x:Name="ListBoxButtonSelectNone"
+                            Content="{x:Static rx:Resources.ListBoxFilesButtonSelectNone}"
+                            Style="{StaticResource ListBoxButton}"
+                            Command="{Binding SelectNoneCommand}"
+                            CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <ListBox x:Name="ListBoxFiles"
+                         Grid.Row="1"
+                         Padding="4"
+                         SelectionMode="Extended"
+                         ItemsSource="{Binding Collection}"
+                         listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFiles}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <mvvm:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
+                                                      CommandParameter="{Binding ElementName=TextBlockStatusBar, Path=Text}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding FileName}"
+                                      IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <Separator Grid.Row="2"
+                           Style="{StaticResource VerticalSeparator}"/>
+
+                <TextBlock Grid.Row="3"
+                           x:Name="TextBlockStatusBar"
+                           Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
+                           Style="{StaticResource ListBoxFilesStatusBar}"/>
+            </Grid>
+
+            <GridSplitter Grid.Column="1"
+                          Style="{StaticResource HorizontalGridSplitter}"/>
+
+            <!--<ContentControl regions:RegionManager.RegionName="{x:Static utils:Constants.RegionContent}"/>-->
+        </Grid>
+
+        <StackPanel Grid.Row="3"
+                    Style="{StaticResource FooterButtonGroup}">
+            <Button x:Name="ButtonStart"
+                    Content="{x:Static rx:Resources.ButtonStart}"
+                    Style="{StaticResource FooterButtonLeft}"
+                    Command="{Binding StartGenerationCommand}"
+                    CommandParameter="{Binding ElementName=ListBoxFiles, Path=ItemsSource,
+                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button x:Name="ButtonClose"
+                    Content="{x:Static rx:Resources.ButtonClose}"
+                    Style="{StaticResource FooterButtonRight}"
+                    Command="{Binding ShutDownApplicationCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
