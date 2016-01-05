@@ -106,8 +106,6 @@ namespace DataTools.ViewModels
 
         private async void StartGeneration()
         {
-            // ToDo: Strings in die "Resources" verschieben.
-
             var window = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();
             var controller = await window.ShowProgressAsync(Resources.ProgressDialogTitle,
                 Resources.ProgressDialogPreviewContent);
