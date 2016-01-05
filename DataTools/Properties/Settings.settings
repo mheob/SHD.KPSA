@@ -8,5 +8,8 @@
     <Setting Name="TempFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">{0}SHD-HelperTools\</Value>
     </Setting>
+    <Setting Name="StartUpFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\mheob\Desktop\DataTools_Tests\3ds\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

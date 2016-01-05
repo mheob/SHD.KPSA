@@ -124,6 +124,69 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The operation was canceled before completion! ähnelt.
+        /// </summary>
+        public static string MessageDialogCancelContent {
+            get {
+                return ResourceManager.GetString("MessageDialogCancelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel! ähnelt.
+        /// </summary>
+        public static string MessageDialogCancelTitle {
+            get {
+                return ResourceManager.GetString("MessageDialogCancelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The operation was completed successfully.{0}{0}Now want the files to be displayed? ähnelt.
+        /// </summary>
+        public static string MessageDialogCompleteContent {
+            get {
+                return ResourceManager.GetString("MessageDialogCompleteContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Done! ähnelt.
+        /// </summary>
+        public static string MessageDialogCompleteTitle {
+            get {
+                return ResourceManager.GetString("MessageDialogCompleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The processing is being prepared ... ähnelt.
+        /// </summary>
+        public static string ProgressDialogPreviewContent {
+            get {
+                return ResourceManager.GetString("ProgressDialogPreviewContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are {0} of {1} files processed. ähnelt.
+        /// </summary>
+        public static string ProgressDialogRunningContent {
+            get {
+                return ResourceManager.GetString("ProgressDialogRunningContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die A short moment ... ähnelt.
+        /// </summary>
+        public static string ProgressDialogTitle {
+            get {
+                return ResourceManager.GetString("ProgressDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} / {1} files processed ähnelt.
         /// </summary>
         public static string ProgressLabelState {

@@ -150,4 +150,25 @@
   <data name="ProgressLabelState" xml:space="preserve">
     <value>{0} / {1} files processed</value>
   </data>
+  <data name="MessageDialogCancelContent" xml:space="preserve">
+    <value>The operation was canceled before completion!</value>
+  </data>
+  <data name="MessageDialogCancelTitle" xml:space="preserve">
+    <value>Cancel!</value>
+  </data>
+  <data name="MessageDialogCompleteContent" xml:space="preserve">
+    <value>The operation was completed successfully.{0}{0}Now want the files to be displayed?</value>
+  </data>
+  <data name="MessageDialogCompleteTitle" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="ProgressDialogPreviewContent" xml:space="preserve">
+    <value>The processing is being prepared ...</value>
+  </data>
+  <data name="ProgressDialogRunningContent" xml:space="preserve">
+    <value>There are {0} of {1} files processed.</value>
+  </data>
+  <data name="ProgressDialogTitle" xml:space="preserve">
+    <value>A short moment ...</value>
+  </data>
 </root>
