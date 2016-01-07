@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿using DataTools.Utils;
+using DataTools.Views;
 using MahApps.Metro;
+using Microsoft.Practices.ServiceLocation;
+using Prism.Regions;
+using System.Windows;
 
 namespace DataTools
 {
@@ -8,7 +12,8 @@ namespace DataTools
     /// </summary>
     public partial class MainWindow
     {
-        public static string Theme { get; private set; } = ThemeManager.DetectAppStyle(Application.Current).Item1.Name;
+        public static string Theme { get; private set; } =
+            ThemeManager.DetectAppStyle(Application.Current).Item1.Name;
 
         public MainWindow()
         {
@@ -19,7 +24,15 @@ namespace DataTools
         {
             Theme = Theme != "Dark" ? "Dark" : "Light";
 
-            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("DarkBlue"), ThemeManager.GetAppTheme(Theme));
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent("DarkBlue"),
+                ThemeManager.GetAppTheme(Theme));
+        }
+
+        private void ButtonChangelog_OnClick(object sender, RoutedEventArgs e)
+        {
+            var regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
+
+            regionManager.RequestNavigate(Constants.RegionContent, typeof (Changelog).Name);
         }
     }
 }

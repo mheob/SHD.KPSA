@@ -33,9 +33,20 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
+            <Button x:Name="ButtonChangelog"
+                    ToolTip="{x:Static rx:Resources.ShowChangelogButtonToolTip }"
+                    Click="ButtonChangelog_OnClick">
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
         </ctrl:WindowCommands>
     </ctrl:MetroWindow.RightWindowCommands>
 
-    <ContentControl regions:RegionManager.RegionName="{x:Static utils:Constants.RegionContent}"/>
+    <ContentControl x:Name="ContentControl" regions:RegionManager.RegionName="{x:Static utils:Constants.RegionContent}"/>
 
 </ctrl:MetroWindow>

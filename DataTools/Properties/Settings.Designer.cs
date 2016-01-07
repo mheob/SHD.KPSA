@@ -55,5 +55,14 @@ namespace DataTools.Properties {
                 this["StartUpFilePath"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\Docs\\CHANGELOG.md")]
+        public string PathToChangelog {
+            get {
+                return ((string)(this["PathToChangelog"]));
+            }
+        }
     }
 }

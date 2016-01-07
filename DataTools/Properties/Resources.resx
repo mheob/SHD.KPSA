@@ -171,4 +171,13 @@
   <data name="ProgressDialogTitle" xml:space="preserve">
     <value>A short moment ...</value>
   </data>
+  <data name="ShowChangelogButtonToolTip" xml:space="preserve">
+    <value>Show Changelog</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="LastChangeText" xml:space="preserve">
+    <value>Last Change: {0}</value>
+  </data>
 </root>

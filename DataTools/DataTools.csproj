@@ -112,8 +112,12 @@
     <Compile Include="Utils\ListSelection\IListItemConverter.cs" />
     <Compile Include="Utils\ListSelection\MultiSelectorBehaviours.cs" />
     <Compile Include="Utils\ListSelection\TwoListSynchronizer.cs" />
+    <Compile Include="ViewModels\ChangelogViewModel.cs" />
     <Compile Include="ViewModels\Tools3DsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="Views\Changelog.xaml.cs">
+      <DependentUpon>Changelog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
@@ -172,6 +176,10 @@
     <Page Include="Skins\Modules\Spacer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Changelog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NavigationView.xaml">
       <SubType>Designer</SubType>
@@ -239,6 +247,12 @@
     <Content Include="3rd-Party\fix3ds.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Docs\CHANGELOG.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Docs\ToDo.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -124,6 +124,15 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Last Change: {0} ähnelt.
+        /// </summary>
+        public static string LastChangeText {
+            get {
+                return ResourceManager.GetString("LastChangeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The operation was canceled before completion! ähnelt.
         /// </summary>
         public static string MessageDialogCancelContent {
@@ -196,6 +205,15 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Show Changelog ähnelt.
+        /// </summary>
+        public static string ShowChangelogButtonToolTip {
+            get {
+                return ResourceManager.GetString("ShowChangelogButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Change Design ähnelt.
         /// </summary>
         public static string ThemeChangeToolTip {
@@ -210,6 +228,15 @@ namespace DataTools.Properties {
         public static string TileTools3DsTitle {
             get {
                 return ResourceManager.GetString("TileTools3DsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Changelog ähnelt.
+        /// </summary>
+        public static string TitleChangelog {
+            get {
+                return ResourceManager.GetString("TitleChangelog", resourceCulture);
             }
         }
         

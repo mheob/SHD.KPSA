@@ -20,8 +20,12 @@ namespace DataTools
             Application.Current.MainWindow = window;
 
             var regionManager = Container.Resolve<IRegionManager>();
-            regionManager.RegisterViewWithRegion(Constants.RegionContent, typeof (NavigationView));
-            regionManager.RegisterViewWithRegion(Constants.RegionContent, typeof (Tools3DsView));
+
+            Container.RegisterType<object, NavigationView>(typeof (NavigationView).Name);
+            Container.RegisterType<object, Changelog>(typeof (Changelog).Name);
+            Container.RegisterType<object, Tools3DsView>(typeof (Tools3DsView).Name);
+
+            regionManager.RequestNavigate(Constants.RegionContent, typeof (NavigationView).Name);
 
             window.Show();
         }

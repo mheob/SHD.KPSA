@@ -7,7 +7,6 @@ using System.Windows;
 using DataTools.Models;
 using DataTools.Properties;
 using DataTools.Utils;
-using DataTools.Views;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
@@ -17,11 +16,11 @@ using Utils;
 
 namespace DataTools.ViewModels
 {
-    public class Tools3DsViewModel : BindableBase, ITools3DsViewModel
+    public class Tools3DsViewModel : BindableBase, INavigationAware, ITools3DsViewModel
     {
         private const string Extension = "*.3ds";
 
-        private readonly IRegionManager _regionManager;
+        private IRegionNavigationJournal _navigationJournal;
         private string _selectedPath;
         private string _statusBarSummary;
         private readonly bool _isInitialize;
@@ -72,9 +71,8 @@ namespace DataTools.ViewModels
         public DelegateCommand SelectAllCommand { get; set; }
         public DelegateCommand SelectNoneCommand { get; set; }
 
-        public Tools3DsViewModel(IRegionManager regionManager)
+        public Tools3DsViewModel()
         {
-            _regionManager = regionManager;
             _selectedPath = Settings.Default.StartUpFilePath;
             //_selectedPath = Constants.DesktopPath;
 
@@ -96,7 +94,21 @@ namespace DataTools.ViewModels
 
         private void NavigateBack()
         {
-            _regionManager.RequestNavigate(Constants.RegionContent, typeof (NavigationView).Name);
+            _navigationJournal.GoBack();
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            _navigationJournal = navigationContext.NavigationService.Journal;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
         }
 
         private static void ShutDownApplication()
@@ -111,7 +123,6 @@ namespace DataTools.ViewModels
                 Resources.ProgressDialogPreviewContent);
 
             controller.SetIndeterminate();
-
             controller.SetCancelable(true);
 
             int sumFiles = SelectedFiles.Count;
