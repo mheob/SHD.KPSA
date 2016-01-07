@@ -40,7 +40,7 @@
                            Height="20"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page}"/>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_text}"/>
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
