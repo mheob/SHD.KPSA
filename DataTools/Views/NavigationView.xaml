@@ -10,12 +10,13 @@
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:NavigationDesignViewModel, IsDesignTimeCreatable=True}"
-             d:DesignHeight="200" d:DesignWidth="300">
+             d:DesignHeight="200" d:DesignWidth="500">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <!--
             <Style x:Key="LargeTileStyle" TargetType="controls:Tile">
+                <Setter Property="Margin" Value="16"/>
                 <Setter Property="Width" Value="300"/>
                 <Setter Property="Height" Value="120"/>
                 <Setter Property="TitleFontSize" Value="16"/>
@@ -30,10 +31,10 @@
             -->
 
             <Style x:Key="SmallTileStyle" TargetType="ctrl:Tile">
-                <Setter Property="Width" Value="148"/>
-                <Setter Property="Height" Value="120"/>
-                <Setter Property="TitleFontSize" Value="12"/>
-                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Margin" Value="16"/>
+                <Setter Property="Width" Value="160"/>
+                <Setter Property="Height" Value="140"/>
+                <Setter Property="TitleFontSize" Value="14"/>
             </Style>
 
             <Style x:Key="SmallTileStyleGrid" TargetType="Grid">
@@ -41,13 +42,25 @@
                 <Setter Property="Width" Value="80"/>
                 <Setter Property="Height" Value="60"/>
                 <Setter Property="Background" Value="{StaticResource AccentSelectedColorBrush }"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <WrapPanel HorizontalAlignment="Center"
+               VerticalAlignment="Center">
+        <ctrl:Tile x:Name="MatFileGenerator"
+                   Title="{x:Static rx:Resources.TileTitleMatFileGenerator }"
+                   Style="{StaticResource SmallTileStyle}"
+                   Command="{Binding NavigateToMatFileGeneratorCommand}">
+            <Grid Style="{StaticResource SmallTileStyleGrid}">
+                <Grid.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}"/>
+                </Grid.OpacityMask>
+            </Grid>
+        </ctrl:Tile>
+
         <ctrl:Tile x:Name="TileTools3Ds"
-                   TiltFactor="1"
                    Title="{x:Static rx:Resources.TileTools3DsTitle }"
                    Style="{StaticResource SmallTileStyle}"
                    Command="{Binding NavigateToTools3DsCommand}">
@@ -57,5 +70,5 @@
                 </Grid.OpacityMask>
             </Grid>
         </ctrl:Tile>
-    </Grid>
+    </WrapPanel>
 </UserControl>

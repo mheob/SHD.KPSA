@@ -1,6 +1,4 @@
-﻿using DataTools.ViewModels;
-
-namespace DataTools.Views
+﻿namespace DataTools.Views
 {
     /// <summary>
     /// Interaktionslogik für Tools3DsView.xaml
@@ -10,11 +8,6 @@ namespace DataTools.Views
         public Tools3DsView()
         {
             InitializeComponent();
-        }
-
-        public Tools3DsView(Tools3DsViewModel viewModel) : this()
-        {
-            DataContext = viewModel;
         }
     }
 }

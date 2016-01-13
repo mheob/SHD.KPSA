@@ -113,13 +113,21 @@
     <Compile Include="Utils\ListSelection\MultiSelectorBehaviours.cs" />
     <Compile Include="Utils\ListSelection\TwoListSynchronizer.cs" />
     <Compile Include="ViewModels\ChangelogViewModel.cs" />
+    <Compile Include="ViewModels\MatFileGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\Sections\HeaderViewModel.cs" />
     <Compile Include="ViewModels\Tools3DsViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="Views\Changelog.xaml.cs">
       <DependentUpon>Changelog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MatFileGeneratorView.xaml.cs">
+      <DependentUpon>MatFileGeneratorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sections\HeaderView.xaml.cs">
+      <DependentUpon>HeaderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tools3DsView.xaml.cs">
       <DependentUpon>Tools3DsView.xaml</DependentUpon>
@@ -181,7 +189,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MatFileGeneratorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Sections\HeaderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +270,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

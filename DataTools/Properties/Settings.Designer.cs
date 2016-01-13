@@ -46,7 +46,7 @@ namespace DataTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\mheob\\Desktop\\DataTools_Tests\\3ds\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\mheob\\Desktop\\DataTools_Tests\\")]
         public string StartUpFilePath {
             get {
                 return ((string)(this["StartUpFilePath"]));

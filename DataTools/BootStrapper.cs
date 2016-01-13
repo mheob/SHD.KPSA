@@ -24,6 +24,7 @@ namespace DataTools
             Container.RegisterType<object, NavigationView>(typeof (NavigationView).Name);
             Container.RegisterType<object, Changelog>(typeof (Changelog).Name);
             Container.RegisterType<object, Tools3DsView>(typeof (Tools3DsView).Name);
+            Container.RegisterType<object, MatFileGeneratorView>(typeof (MatFileGeneratorView).Name);
 
             regionManager.RequestNavigate(Constants.RegionContent, typeof (NavigationView).Name);
 

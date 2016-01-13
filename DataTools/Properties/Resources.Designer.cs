@@ -223,7 +223,16 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove Colors in 3DS ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mat-Files-Generator ähnelt.
+        /// </summary>
+        public static string TileTitleMatFileGenerator {
+            get {
+                return ResourceManager.GetString("TileTitleMatFileGenerator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clean 3DS-Files ähnelt.
         /// </summary>
         public static string TileTools3DsTitle {
             get {
@@ -241,7 +250,16 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove Colors in 3DS-Files ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Generate &quot;Mat-Files&quot; ähnelt.
+        /// </summary>
+        public static string TitleMatFileGenerator {
+            get {
+                return ResourceManager.GetString("TitleMatFileGenerator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remove Colors in 3DS ähnelt.
         /// </summary>
         public static string TitleTools3Ds {
             get {

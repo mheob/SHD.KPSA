@@ -130,13 +130,13 @@
     <value>Bitte ein Bitmap nutzen!</value>
   </data>
   <data name="TileTools3DsTitle" xml:space="preserve">
-    <value>Farben in 3DS entfernen</value>
+    <value>3DS-Dateien säubern</value>
   </data>
   <data name="ThemeChangeToolTip" xml:space="preserve">
     <value>Design ändern</value>
   </data>
   <data name="TitleTools3Ds" xml:space="preserve">
-    <value>Farben in 3DS-Dateien entfernen</value>
+    <value>Farben in 3DS entfernen</value>
   </data>
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} von {1} Dateien gewählt</value>
@@ -179,5 +179,11 @@
   </data>
   <data name="LastChangeText" xml:space="preserve">
     <value>Letzte Änderung: {0}</value>
+  </data>
+  <data name="TitleMatFileGenerator" xml:space="preserve">
+    <value>"Mat-Files" erstellen</value>
+  </data>
+  <data name="TileTitleMatFileGenerator" xml:space="preserve">
+    <value>Mat-Files-Generator</value>
   </data>
 </root>

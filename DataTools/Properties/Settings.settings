@@ -9,7 +9,7 @@
       <Value Profile="(Default)">{0}SHD-HelperTools\</Value>
     </Setting>
     <Setting Name="StartUpFilePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\mheob\Desktop\DataTools_Tests\3ds\</Value>
+      <Value Profile="(Default)">C:\Users\mheob\Desktop\DataTools_Tests\</Value>
     </Setting>
     <Setting Name="PathToChangelog" Type="System.String" Scope="Application">
       <Value Profile="(Default)">\Docs\CHANGELOG.md</Value>
