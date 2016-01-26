@@ -9,7 +9,8 @@
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:HeaderDataViewModel, IsDesignTimeCreatable=True}"
-             d:DesignWidth="375">
+             d:DesignWidth="375"
+             x:Name="HeaderControl">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

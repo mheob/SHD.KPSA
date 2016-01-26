@@ -106,6 +106,24 @@ namespace DataTools.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modified ähnelt.
+        /// </summary>
+        public static string DataGridFilesHeaderChanged {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
+        /// </summary>
+        public static string DataGridFilesHeaderName {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} selected from {1} files ähnelt.
         /// </summary>
         public static string DataGridFilesStatusBarText {
@@ -129,6 +147,231 @@ namespace DataTools.Properties {
         public static string LastChangeText {
             get {
                 return ResourceManager.GetString("LastChangeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die inner Frame: ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxBorderInner {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxBorderInner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die outer Frame: ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxBorderOuter {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxBorderOuter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Color as HEX: ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxColorHex {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxColorHex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Color as RGB: ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxColorRgb {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxColorRgb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Choose a color: ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxColorSelection {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create thumb ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxThumb {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxThumb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        public static string MatFileGenGroupSettings {
+            get {
+                return ResourceManager.GetString("MatFileGenGroupSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Thumbnails ähnelt.
+        /// </summary>
+        public static string MatFileGenGroupThumbnails {
+            get {
+                return ResourceManager.GetString("MatFileGenGroupThumbnails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die #000000 ähnelt.
+        /// </summary>
+        public static string MatFileGenHexColorDefault {
+            get {
+                return ResourceManager.GetString("MatFileGenHexColorDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Colorname: ähnelt.
+        /// </summary>
+        public static string MatFileGenLabelColorName {
+            get {
+                return ResourceManager.GetString("MatFileGenLabelColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Folder: ähnelt.
+        /// </summary>
+        public static string MatFileGenLabelThumb {
+            get {
+                return ResourceManager.GetString("MatFileGenLabelThumb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die _2. Solid ähnelt.
+        /// </summary>
+        public static string MatFileGenTabItemSolid {
+            get {
+                return ResourceManager.GetString("MatFileGenTabItemSolid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die _1. Texture ähnelt.
+        /// </summary>
+        public static string MatFileGenTabItemTexture {
+            get {
+                return ResourceManager.GetString("MatFileGenTabItemTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 1 ähnelt.
+        /// </summary>
+        public static string MatFileGenTextBoxInnerSizeDefault {
+            get {
+                return ResourceManager.GetString("MatFileGenTextBoxInnerSizeDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die 2 ähnelt.
+        /// </summary>
+        public static string MatFileGenTextBoxOuterSizeDefault {
+            get {
+                return ResourceManager.GetString("MatFileGenTextBoxOuterSizeDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die thumbs ähnelt.
+        /// </summary>
+        public static string MatFileGenThumbFolderDefault {
+            get {
+                return ResourceManager.GetString("MatFileGenThumbFolderDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The settings for the inner frame of the preview image. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipBorderInner {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipBorderInner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The settings for the outer frame of the preview image. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipBorderOuter {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipBorderOuter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die in pixels ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipBorderSize {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipBorderSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die For a simple paint the color value can be entered as hex value here. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipColorHex {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipColorHex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fill in the color value in the form &quot;#112233&quot;! ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipColorHexInput {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipColorHexInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die the colorname (without fileextension) ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipColorName {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipColorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die For a simple coat of RGB color value can be (from 0 to 255) entered here. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipColorRgb {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipColorRgb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die For a simple paint the color value can be selected here. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipColorSelection {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Created additionally a thumbnail in the dimensions 50 x 25 pixels. This is stored in the specified folder. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipThumb {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipThumb", resourceCulture);
             }
         }
         

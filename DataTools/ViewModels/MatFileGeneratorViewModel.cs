@@ -3,11 +3,11 @@ using DataTools.Properties;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using SHD.KPSA.Utils;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
-using Utils;
 
 namespace DataTools.ViewModels
 {
@@ -16,6 +16,7 @@ namespace DataTools.ViewModels
         private const string Extension = "*.jpg";
 
         private IRegionNavigationJournal _navigationJournal;
+        private string _title;
         private string _selectedPath;
         private string _statusBarSummary;
         private readonly bool _isInitialize;
@@ -26,6 +27,13 @@ namespace DataTools.ViewModels
 
         private ObservableCollection<SelectableFiles> _selectedFiles =
             new ObservableCollection<SelectableFiles>();
+
+
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
         public string SelectedPath
         {
@@ -116,7 +124,6 @@ namespace DataTools.ViewModels
             // ToDo: Methode "StartGeneration" erstellen
         }
 
-
         private bool CanStartGeneration()
         {
             return Collection.Count > 0;
@@ -205,6 +212,7 @@ namespace DataTools.ViewModels
 
     public interface IMatFileGeneratorViewModel
     {
+        string Title { get; set; }
         string SelectedPath { get; set; }
         string StatusBarSummary { get; set; }
         bool IsSelected { get; set; }
@@ -223,6 +231,7 @@ namespace DataTools.ViewModels
 
     public class MatFileGeneratorDesignViewModel : IMatFileGeneratorViewModel
     {
+        public string Title { get; set; }
         public string SelectedPath { get; set; }
         public string StatusBarSummary { get; set; }
         public bool IsSelected { get; set; }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using DataTools.Models;
+﻿using DataTools.Models;
 using DataTools.Properties;
 using DataTools.Utils;
 using MahApps.Metro.Controls;
@@ -12,7 +6,13 @@ using MahApps.Metro.Controls.Dialogs;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using Utils;
+using SHD.KPSA.Utils;
+using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace DataTools.ViewModels
 {

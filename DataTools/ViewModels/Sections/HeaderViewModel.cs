@@ -1,18 +1,27 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Regions;
+using System.Windows;
 
 namespace DataTools.ViewModels.Sections
 {
-    public class HeaderViewModel : BindableBase, INavigationAware, IHeaderViewModel
+    public class HeaderViewModel : DependencyObject, INavigationAware, IHeaderViewModel
     {
         private IRegionNavigationJournal _navigationJournal;
-        private string _title;
+        //private string _title;
+
+        //public string Title
+        //{
+        //    get { return _title; }
+        //    set { SetProperty(ref _title, value); }
+        //}
+
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
+            typeof (string), typeof (HeaderViewModel), new FrameworkPropertyMetadata(string.Empty));
 
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return GetValue(TitleProperty).ToString(); }
+            set { SetValue(TitleProperty, value); }
         }
 
         public DelegateCommand NavigateBackCommand { get; set; }
@@ -44,13 +53,26 @@ namespace DataTools.ViewModels.Sections
 
     public interface IHeaderViewModel
     {
-        string Title { get; set; }
+        //string Title { get; set; }
         DelegateCommand NavigateBackCommand { get; set; }
     }
 
-    public class HeaderDataViewModel : IHeaderViewModel
+    public class HeaderDataViewModel : DependencyObject, IHeaderViewModel
     {
-        public string Title { get; set; } = "I am the Header";
         public DelegateCommand NavigateBackCommand { get; set; }
+
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title",
+            typeof (string), typeof (HeaderViewModel), new FrameworkPropertyMetadata(string.Empty));
+
+        public string Title
+        {
+            get { return GetValue(TitleProperty).ToString(); }
+            set { SetValue(TitleProperty, value); }
+        }
+
+        public HeaderDataViewModel()
+        {
+            Title = "I am the Header";
+        }
     }
 }

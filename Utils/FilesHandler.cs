@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Utils
+namespace SHD.KPSA.Utils
 {
     public static class FilesHandler
     {

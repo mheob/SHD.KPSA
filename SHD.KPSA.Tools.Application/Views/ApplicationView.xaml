@@ -1,0 +1,85 @@
+﻿<mahapps:MetroWindow x:Class="SHD.KPSA.Tools.Application.Views.ApplicationView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+                     xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
+                     xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
+                     xmlns:vm="clr-namespace:SHD.KPSA.Tools.Application.ViewModels"
+                     xmlns:views="clr-namespace:SHD.KPSA.Tools.Application.Views"
+                     xmlns:rx="clr-namespace:SHD.KPSA.Tools.Application.Properties"
+                     Title="SHD KPSA-Daten Helper Tools"
+                     Height="250" Width="525"
+                     Icon="/Resources/logo_shd.ico"
+                     GlowBrush="{StaticResource AccentColorBrush}" SaveWindowPosition="True"
+                     mc:Ignorable="d"
+                     d:DataContext="{d:DesignInstance vm:ApplicationViewModel}">
+
+    <mahapps:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type vm:Tools3DsViewModel}">
+            <views:NavigationView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmChanglog:ChangelogViewModel}">
+            <vChanglog:ChangelogView/>
+        </DataTemplate>
+    </mahapps:MetroWindow.Resources>
+
+    <mahapps:MetroWindow.Style>
+        <Style TargetType="mahapps:MetroWindow">
+            <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+        </Style>
+    </mahapps:MetroWindow.Style>
+
+    <mahapps:MetroWindow.RightWindowCommands>
+        <mahapps:WindowCommands>
+            <Button ToolTip="{x:Static rx:Resources.ThemeChangeToolTip}"
+                    Command="{Binding ChangeThemeCommand}"
+                    CommandParameter="{Binding Theme}">
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_draw_brush_reflection}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+            <Button ToolTip="{x:Static rx:Resources.ShowChangelogButtonToolTip}"
+                    Command="{Binding ChangePageCommand}"
+                    CommandParameter="{Binding NavigateToChangelogViewModel}">
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_text}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </mahapps:WindowCommands>
+    </mahapps:MetroWindow.RightWindowCommands>
+    
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Style="{StaticResource ButtonBackNav}"
+                    Visibility="{Binding IsVisibleBackNav}"
+                    Command="{Binding ChangePageCommand}"
+                    CommandParameter="{Binding PreviousPageViewModel}"/>
+
+            <TextBlock Grid.Column="1"
+                       Text="{Binding CurrentPageViewModel.Title, FallbackValue=... Header ...}"
+                       Style="{StaticResource WindowHeading}"/>
+        </Grid>
+
+        <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentPageViewModel}"/>
+        <!--<TextBlock>Content Folgt ...</TextBlock>-->
+    </DockPanel>
+
+</mahapps:MetroWindow>

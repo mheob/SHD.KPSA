@@ -4,42 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ctrl="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:rx="clr-namespace:DataTools.Properties"
              xmlns:vm="clr-namespace:DataTools.ViewModels"
+             xmlns:vms="clr-namespace:DataTools.ViewModels.Sections"
+             xmlns:vs="clr-namespace:DataTools.Views.Sections"
+             xmlns:vsmfg="clr-namespace:DataTools.Views.Sections.MatFileGenerator"
              xmlns:listSelection="clr-namespace:DataTools.Utils.ListSelection"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:MatFileGeneratorDesignViewModel, IsDesignTimeCreatable=True}"
-             d:DesignHeight="400" d:DesignWidth="600">
+             d:DesignHeight="500" d:DesignWidth="800">
     <UserControl.Resources>
-        <!-- Text Color -->
-        <!--
-        <Style x:Key="TextBoxColor" TargetType="{x:Type TextBox}">
-            <Setter Property="Width" Value="204"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-
-        -->
-        <!-- RGB -->
-        <!--
-        <Style x:Key="TextBoxColorRgb" TargetType="{x:Type TextBox}">
-            <Setter Property="Text" Value="0"/>
-            <Setter Property="Width" Value="60"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-            <Setter Property="ToolTip" Value="Nur Werte von 0 bis 255 zulässig!"/>
-        </Style>
-
-        -->
         <!-- ComboBox Scale -->
         <!--
         <Style x:Key="ComboBoxXyz" TargetType="{x:Type ComboBox}">
@@ -48,15 +26,6 @@
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-
-        -->
-        <!-- Checkbox Label -->
-        <!--
-        <Style x:Key="CheckBoxLabel" TargetType="{x:Type CheckBox}">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
         -->
@@ -82,25 +51,10 @@
         </Style>
 
         -->
-        <!-- ColorPicker -->
-        <!--
-        <Style x:Key="ColorPicker" TargetType="{x:Type xctk:ColorPicker}">
-            <Setter Property="Width" Value="120"/>
-            <Setter Property="Margin" Value="0,0,88,0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="ColorMode" Value="ColorCanvas"/>
-            <Setter Property="IsEnabled" Value="False"/>
+
+        <Style x:Key="TabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="ctrl:ControlsHelper.HeaderFontSize" Value="16"></Setter>
         </Style>
-        <Style x:Key="TextBoxColorPicker" TargetType="{x:Type TextBox}">
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>-->
     </UserControl.Resources>
 
     <Grid Margin="12">
@@ -116,20 +70,23 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonReverse" Grid.Column="0"
+
+            <!--<Button x:Name="ButtonReverse" Grid.Column="0"
                     Style="{StaticResource ButtonBackNav}"
                     Command="{Binding NavigateBackCommand}"/>
 
             <TextBlock Grid.Column="1" Grid.Row="0"
                        Text="{x:Static rx:Resources.TitleMatFileGenerator}"
-                       Style="{StaticResource WindowHeading}"/>
+                       Style="{StaticResource WindowHeading}"/>-->
+            
+            <vs:HeaderView/>
         </Grid>
 
         <Grid Grid.Row="1"
               Margin="0,0,0,4"
               HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
@@ -139,10 +96,11 @@
                      Padding="4">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="LostFocus">
-                        <i:InvokeCommandAction Command="{Binding TextBoxPathLostFocusCommand}" />
+                        <i:InvokeCommandAction Command="{Binding TextBoxPathLostFocusCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
+
             <Button Grid.Column="1"
                     Content="{x:Static rx:Resources.ButtonSelectPath}"
                     Style="{StaticResource ButtonStyle}"
@@ -153,82 +111,129 @@
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <TabControl Grid.Column="0">
+                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemTexture}"
+                         Style="{StaticResource TabItem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0"
-                            Style="{StaticResource DataGridButtonGroup}">
-                    <Button x:Name="DataGridButtonSelectAll"
-                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
-                            Style="{StaticResource DataGridButton}"
-                            Command="{Binding SelectAllCommand}"
-                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button x:Name="DataGridButtonSelectNone"
-                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
-                            Style="{StaticResource DataGridButton}"
-                            Command="{Binding SelectNoneCommand}"
-                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
+                        <StackPanel Grid.Row="0"
+                                    Style="{StaticResource DataGridButtonGroup}">
+                            <Button x:Name="DataGridButtonSelectAll"
+                                    Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
+                                    Style="{StaticResource DataGridButton}"
+                                    Command="{Binding SelectAllCommand}"
+                                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
+                                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DataGrid x:Name="DataGridFiles"
-                          ItemsSource="{Binding Path=Collection}"
-                          listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFiles}"
-                          Grid.Row="1"
-                          AutoGenerateColumns="False"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
-                          CanUserSortColumns="True">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <mvvm:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
-                                                      CommandParameter="{Binding ElementName=TextBlockStatusBar, Path=Text}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
-                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                IsReadOnly="True"
-                                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
-                                                                  Path=IsSelected, Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="Dateiname"
-                                            Width="*"
-                                            IsReadOnly="True"
-                                            Binding="{Binding FileName}"/>
-                        <DataGridTextColumn Header="letzte Änderung"
-                                            Width="*"
-                                            IsReadOnly="True"
-                                            Binding="{Binding LastModified, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                            <Button x:Name="DataGridButtonSelectNone"
+                                    Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
+                                    Style="{StaticResource DataGridButton}"
+                                    Command="{Binding SelectNoneCommand}"
+                                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
+                                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
 
-                <Separator Grid.Row="2"
-                           Style="{StaticResource VerticalSeparator}"/>
+                        <DataGrid x:Name="DataGridFiles"
+                                  ItemsSource="{Binding Path=Collection}"
+                                  listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFiles}"
+                                  Grid.Row="1"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  CanUserSortColumns="True" Grid.ColumnSpan="2">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <mvvm:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
+                                                              CommandParameter="{Binding ElementName=TextBlockStatusBar,
+                                                                                         Path=Text}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
 
-                <TextBlock Grid.Row="3"
-                           x:Name="TextBlockStatusBar"
-                           Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
-                           Style="{StaticResource DataGridFilesStatusBar}"/>
-            </Grid>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                    <Setter Property="IsSelected"
+                                            Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                        IsReadOnly="True"
+                                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
+                                                                          Path=IsSelected, Mode=TwoWay}"/>
+                                <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderName}"
+                                                    Width="*"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding FileName}"/>
+                                <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderChanged}"
+                                                    IsReadOnly="True"
+                                                    Binding="{Binding LastModified, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Separator Grid.Row="2"
+                                   Style="{StaticResource VerticalSeparator}" Grid.ColumnSpan="2"/>
+
+                        <TextBlock Grid.Row="3"
+                                   x:Name="TextBlockStatusBar"
+                                   Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
+                                   Style="{StaticResource DataGridFilesStatusBar}" Grid.ColumnSpan="2" Margin="52,0"/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemSolid}"
+                         Style="{StaticResource TabItem}">
+                    <GroupBox Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
+                        <vsmfg:SettingsSolidView/>
+                    </GroupBox>
+                </TabItem>
+            </TabControl>
 
             <GridSplitter Grid.Column="1"
                           Style="{StaticResource HorizontalGridSplitter}"/>
+
+            <!-- ToDo: displaying a preview -->
+            <TextBlock Grid.Column="2"
+                       Text="... hier folgt eine Preview ..."
+                       Foreground="Orange"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <GridSplitter Grid.Column="3"
+                          Style="{StaticResource HorizontalGridSplitter}"/>
+
+            <ScrollViewer Grid.Column="4"
+                          VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0"
+                              Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1"
+                              Header="{x:Static rx:Resources.MatFileGenGroupThumbnails}">
+                        <vsmfg:SettingsThumbnailView/>
+                    </GroupBox>
+                </Grid>
+            </ScrollViewer>
 
             <!--<ContentControl regions:RegionManager.RegionName="{x:Static utils:Constants.RegionContent}"/>-->
         </Grid>
@@ -241,6 +246,7 @@
                     Command="{Binding StartGenerationCommand}"
                     CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
             <Button x:Name="ButtonClose"
                     Content="{x:Static rx:Resources.ButtonClose}"
                     Style="{StaticResource FooterButtonRight}"

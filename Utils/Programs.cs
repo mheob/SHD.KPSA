@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace Utils
+namespace SHD.KPSA.Utils
 {
     /// <summary>
     /// Verarbeitungsklasse zum Starten bestimmter Programme

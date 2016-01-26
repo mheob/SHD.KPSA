@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Ookii.Dialogs.Wpf;
+using SHD.KPSA.Utils.Properties;
+using System;
 using System.Windows;
-using Ookii.Dialogs.Wpf;
-using Utils.Properties;
 
-namespace Utils
+namespace SHD.KPSA.Utils
 {
     /// <summary>
     /// This class provides different dialogs.

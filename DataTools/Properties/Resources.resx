@@ -186,4 +186,85 @@
   <data name="TileTitleMatFileGenerator" xml:space="preserve">
     <value>Mat-Files-Generator</value>
   </data>
+  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="DataGridFilesHeaderName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="MatFileGenCheckBoxBorderInner" xml:space="preserve">
+    <value>inner Frame:</value>
+  </data>
+  <data name="MatFileGenCheckBoxBorderOuter" xml:space="preserve">
+    <value>outer Frame:</value>
+  </data>
+  <data name="MatFileGenCheckBoxColorHex" xml:space="preserve">
+    <value>Color as HEX:</value>
+  </data>
+  <data name="MatFileGenCheckBoxColorRgb" xml:space="preserve">
+    <value>Color as RGB:</value>
+  </data>
+  <data name="MatFileGenCheckBoxColorSelection" xml:space="preserve">
+    <value>Choose a color:</value>
+  </data>
+  <data name="MatFileGenCheckBoxThumb" xml:space="preserve">
+    <value>Create thumb</value>
+  </data>
+  <data name="MatFileGenGroupSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MatFileGenGroupThumbnails" xml:space="preserve">
+    <value>Thumbnails</value>
+  </data>
+  <data name="MatFileGenHexColorDefault" xml:space="preserve">
+    <value>#000000</value>
+  </data>
+  <data name="MatFileGenLabelColorName" xml:space="preserve">
+    <value>Colorname:</value>
+  </data>
+  <data name="MatFileGenLabelThumb" xml:space="preserve">
+    <value>Folder:</value>
+  </data>
+  <data name="MatFileGenTabItemSolid" xml:space="preserve">
+    <value>_2. Solid</value>
+  </data>
+  <data name="MatFileGenTabItemTexture" xml:space="preserve">
+    <value>_1. Texture</value>
+  </data>
+  <data name="MatFileGenTextBoxInnerSizeDefault" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MatFileGenTextBoxOuterSizeDefault" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="MatFileGenThumbFolderDefault" xml:space="preserve">
+    <value>thumbs</value>
+  </data>
+  <data name="MatFileGenToolTipBorderInner" xml:space="preserve">
+    <value>The settings for the inner frame of the preview image.</value>
+  </data>
+  <data name="MatFileGenToolTipBorderOuter" xml:space="preserve">
+    <value>The settings for the outer frame of the preview image.</value>
+  </data>
+  <data name="MatFileGenToolTipBorderSize" xml:space="preserve">
+    <value>in pixels</value>
+  </data>
+  <data name="MatFileGenToolTipColorHex" xml:space="preserve">
+    <value>For a simple paint the color value can be entered as hex value here.</value>
+  </data>
+  <data name="MatFileGenToolTipColorHexInput" xml:space="preserve">
+    <value>Fill in the color value in the form "#112233"!</value>
+  </data>
+  <data name="MatFileGenToolTipColorName" xml:space="preserve">
+    <value>the colorname (without fileextension)</value>
+  </data>
+  <data name="MatFileGenToolTipColorRgb" xml:space="preserve">
+    <value>For a simple coat of RGB color value can be (from 0 to 255) entered here.</value>
+  </data>
+  <data name="MatFileGenToolTipColorSelection" xml:space="preserve">
+    <value>For a simple paint the color value can be selected here.</value>
+  </data>
+  <data name="MatFileGenToolTipThumb" xml:space="preserve">
+    <value>Created additionally a thumbnail in the dimensions 50 x 25 pixels. This is stored in the specified folder.</value>
+  </data>
 </root>
