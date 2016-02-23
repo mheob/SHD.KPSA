@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Reflection;
-using System.Windows.Controls;
-using System.Windows.Media;
-using SHD.KPSA.Tools.Changelog.Properties;
-using SHD.KPSA.Tools.Utils;
-using SHD.KPSA.Utils;
-
-namespace SHD.KPSA.Tools.Changelog.Models
+﻿namespace SHD.KPSA.Tools.Changelog.Models
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Reflection;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using KPSA.Utils;
+    using Properties;
+    using Utils;
+
     public class ChangelogModel
     {
         #region Properties

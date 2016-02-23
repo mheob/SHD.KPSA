@@ -4,11 +4,11 @@
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
-                     xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
-                     xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
                      xmlns:vm="clr-namespace:SHD.KPSA.Tools.Application.ViewModels"
                      xmlns:views="clr-namespace:SHD.KPSA.Tools.Application.Views"
                      xmlns:rx="clr-namespace:SHD.KPSA.Tools.Application.Properties"
+                     xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
+                     xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
                      Title="SHD KPSA-Daten Helper Tools"
                      Height="250" Width="525"
                      Icon="/Resources/logo_shd.ico"
@@ -67,12 +67,30 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0"
-                    Style="{StaticResource ButtonBackNav}"
+            <!--<Button Grid.Column="0"
+                    Style="{StaticResource ButtonMenu}"
                     Visibility="{Binding IsVisibleBackNav}"
                     Command="{Binding ChangePageCommand}"
-                    CommandParameter="{Binding PreviousPageViewModel}"/>
-
+                    CommandParameter="{Binding PreviousPageViewModel}"/>-->
+            
+            <mahapps:DropDownButton Grid.Column="0"
+                                    ArrowVisibility="Hidden"
+                                    BorderThickness="0"
+                                    Height="60"
+                                    Icon="{DynamicResource appbar_lines_horizontal_4}"
+                                    Orientation="Vertical"
+                                    DisplayMemberPath="PageTitle"
+                                    ItemsSource="{Binding PageCollection}">
+                <mahapps:DropDownButton.ItemContainerStyle>
+                    <Style TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
+                        <Setter Property="Command" Value="{Binding DataContext.ChangePageCommand,
+                                                                   RelativeSource={RelativeSource AncestorType=mahapps:DropDownButton}}"/>
+                        <Setter Property="CommandParameter" Value="{Binding Path=DataContext,
+                                                                            RelativeSource={RelativeSource Self}}"/>
+                    </Style>
+                </mahapps:DropDownButton.ItemContainerStyle>
+            </mahapps:DropDownButton>
+            
             <TextBlock Grid.Column="1"
                        Text="{Binding CurrentPageViewModel.Title, FallbackValue=... Header ...}"
                        Style="{StaticResource WindowHeading}"/>

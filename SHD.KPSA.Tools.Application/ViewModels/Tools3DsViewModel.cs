@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using SHD.KPSA.Tools.Application.Models;
-using SHD.KPSA.Tools.Application.Properties;
-using SHD.KPSA.Tools.Utils;
-using SHD.KPSA.Utils;
-
-namespace SHD.KPSA.Tools.Application.ViewModels
+﻿namespace SHD.KPSA.Tools.Application.ViewModels
 {
+    using KPSA.Utils;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+    using Models;
+    using Properties;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Input;
+    using Utils;
+
     public class Tools3DsViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
@@ -212,7 +213,7 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         #region Methods
         private async void StartGeneration()
         {
-            var window = System.Windows.Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();
+            var window = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();
 
             var controller =
                 await window.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);

@@ -1,11 +1,11 @@
-﻿using SHD.KPSA.Tools.Utils.Annotations;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
-namespace SHD.KPSA.Tools.Utils
+﻿namespace SHD.KPSA.Tools.Utils
 {
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Runtime.CompilerServices;
+    using Annotations;
+
     public class ObservableObject : INotifyPropertyChanged
     {
         #region Debugging Aides

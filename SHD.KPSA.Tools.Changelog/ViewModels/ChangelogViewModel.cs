@@ -1,11 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using SHD.KPSA.Tools.Changelog.Models;
-using SHD.KPSA.Tools.Changelog.Properties;
-using SHD.KPSA.Tools.Utils;
-
-namespace SHD.KPSA.Tools.Changelog.ViewModels
+﻿namespace SHD.KPSA.Tools.Changelog.ViewModels
 {
+    using System.Collections.ObjectModel;
+    using System.Windows.Controls;
+    using Models;
+    using Properties;
+    using Utils;
+
     public class ChangelogViewModel : ObservableObject, IPageViewModel
     {
         #region Fields

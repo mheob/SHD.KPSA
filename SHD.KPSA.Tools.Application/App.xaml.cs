@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows;
-using MahApps.Metro;
-using SHD.KPSA.Tools.Application.Properties;
-using SHD.KPSA.Tools.Application.ViewModels;
-using SHD.KPSA.Tools.Application.Views;
-
-namespace SHD.KPSA.Tools.Application
+﻿namespace SHD.KPSA.Tools.Application
 {
+    using System;
+    using System.Windows;
+    using MahApps.Metro;
+    using Properties;
+    using ViewModels;
+    using Views;
+
     /// <summary>
     /// Interaction logic for "App.xaml"
     /// </summary>

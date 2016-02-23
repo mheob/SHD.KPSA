@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows.Input;
-
-namespace SHD.KPSA.Tools.Utils
+﻿namespace SHD.KPSA.Tools.Utils
 {
+    using System;
+    using System.Diagnostics;
+    using System.Windows.Input;
+
     /// <summary>
     /// A command whose sole purpose is to relay its functionality to other objects by invoking delegates.
     /// The default return value for the CanExecutemethod is 'true'.

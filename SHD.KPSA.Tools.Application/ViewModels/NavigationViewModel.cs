@@ -1,8 +1,8 @@
-﻿using SHD.KPSA.Tools.Application.Properties;
-using SHD.KPSA.Tools.Utils;
-
-namespace SHD.KPSA.Tools.Application.ViewModels
+﻿namespace SHD.KPSA.Tools.Application.ViewModels
 {
+    using Properties;
+    using Utils;
+
     public class NavigationViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
@@ -11,7 +11,6 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         #region Constructor
         public NavigationViewModel()
         {
-            
         }
         #endregion Constructor
 

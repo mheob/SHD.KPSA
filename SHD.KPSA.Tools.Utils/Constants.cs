@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using SHD.KPSA.Tools.Utils.Properties;
-
-namespace SHD.KPSA.Tools.Utils
+﻿namespace SHD.KPSA.Tools.Utils
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using Properties;
+
     public static class Constants
     {
         public static string AppPath { get; } = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);

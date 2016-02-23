@@ -1,16 +1,16 @@
-﻿using MahApps.Metro;
-using SHD.KPSA.Tools.Changelog.Models;
-using SHD.KPSA.Tools.Changelog.ViewModels;
-using SHD.KPSA.Tools.Utils;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-
-// ReSharper disable ObjectCreationAsStatement
-
-namespace SHD.KPSA.Tools.Application.ViewModels
+﻿namespace SHD.KPSA.Tools.Application.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Input;
+    using Changelog.Models;
+    using Changelog.ViewModels;
+    using MahApps.Metro;
+    using Models;
+    using Properties;
+    using Utils;
+
     /// <summary>
     /// The ViewModel for the ApplicationWindow.
     /// </summary>
@@ -19,12 +19,12 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         #region Fields
         private string _theme;
 
-        private Visibility _isVisibleBackNav;
-
+        private List<Pages> _pageCollection;
         private List<IPageViewModel> _pageViewModels;
         private IPageViewModel _currentPageViewModel;
-        private IPageViewModel _previousPageViewModel;
+        private IPageViewModel _navigateToPageViewModel;
         private IPageViewModel _navigateToChangelogViewModel;
+
 
         private ICommand _changeThemeCommand;
         private ICommand _changePageCommand;
@@ -36,15 +36,13 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         /// </summary>
         public ApplicationViewModel()
         {
-            PageViewModels.Add(new ChangelogViewModel(new ChangelogModel()));
-            PageViewModels.Add(new Tools3DsViewModel());
+            GetPages();
+            GetPageViewModels();
 
-            Theme = Theme != null ? ThemeManager.DetectAppStyle(System.Windows.Application.Current).Item1.Name : ThemeDark;
+            Theme = Theme != null ? ThemeManager.DetectAppStyle(Application.Current).Item1.Name : ThemeDark;
 
             NavigateToChangelogViewModel = PageViewModels[0];
             CurrentPageViewModel = PageViewModels[1];
-
-            IsVisibleBackNav = Visibility.Hidden;
         }
         #endregion Constructor
 
@@ -79,23 +77,14 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         public string ThemeLight { get; } = "Light";
 
         /// <summary>
-        /// Gets and sets the visibility of the NavigateBackCommand
+        /// Gets the list of all implemented PageViewModels.
         /// </summary>
-        public Visibility IsVisibleBackNav
-        {
-            get { return _isVisibleBackNav; }
-            set
-            {
-                if (_isVisibleBackNav == value) return;
-                _isVisibleBackNav = value;
-                OnPropertyChanged();
-            }
-        }
+        public List<IPageViewModel> PageViewModels => _pageViewModels ?? (_pageViewModels = new List<IPageViewModel>());
 
         /// <summary>
         /// Gets the list of all implemented PageViewModels.
         /// </summary>
-        public List<IPageViewModel> PageViewModels => _pageViewModels ?? (_pageViewModels = new List<IPageViewModel>());
+        public List<Pages> PageCollection => _pageCollection ?? (_pageCollection = new List<Pages>());
 
         /// <summary>
         /// Gets and sets the CurrentPageViewModel.
@@ -112,15 +101,15 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         }
 
         /// <summary>
-        /// Gets and sets the PreviousPageViewModel.
+        /// Gets and sets the NavigateToPageViewModel.
         /// </summary>
-        public IPageViewModel PreviousPageViewModel
+        public IPageViewModel NavigateToPageViewModel
         {
-            get { return _previousPageViewModel; }
+            get { return _navigateToPageViewModel; }
             set
             {
-                if (_previousPageViewModel == value) return;
-                _previousPageViewModel = value;
+                if (_navigateToPageViewModel == value) return;
+                _navigateToPageViewModel = value;
                 OnPropertyChanged();
             }
         }
@@ -177,34 +166,44 @@ namespace SHD.KPSA.Tools.Application.ViewModels
         #endregion Commands
 
         #region Methods
+        private void GetPages()
+        {
+            PageCollection.Add(new Pages
+            {
+                //PageViewModel = new Tools3DsViewModel(),
+                PageViewModel = new ChangelogViewModel(new ChangelogModel()),
+                PageTitle = Resources.TitleTools3Ds
+            });
+
+            //PageCollection.Add(new Pages
+            //{
+            //    PageViewModel = new MatFileGenerator(),
+            //    PageTitle = "MatFiles generieren"
+            //});
+        }
+
+        private void GetPageViewModels()
+        {
+            PageViewModels.Add(new ChangelogViewModel(new ChangelogModel()));
+            PageViewModels.Add(new Tools3DsViewModel());
+        }
+
         private void ChangeTheme(string theme)
         {
             Theme = theme != ThemeDark ? ThemeDark : ThemeLight;
 
-            ThemeManager.ChangeAppStyle(System.Windows.Application.Current, ThemeManager.GetAccent(AccentDarkBlue),
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(AccentDarkBlue),
                 ThemeManager.GetAppTheme(Theme));
         }
 
         private void ChangeViewModel(IPageViewModel viewModel)
         {
-            var tmpViewModel = CurrentPageViewModel;
-
             if (!PageViewModels.Contains(viewModel))
             {
                 PageViewModels.Add(viewModel);
             }
 
             CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
-
-            if (CurrentPageViewModel != tmpViewModel)
-            {
-                PreviousPageViewModel = tmpViewModel;
-            }
-
-            if (PreviousPageViewModel != null)
-            {
-                IsVisibleBackNav = Visibility.Visible;
-            }
         }
         #endregion
     }

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-
-namespace SHD.KPSA.Utils
+﻿namespace SHD.KPSA.Utils
 {
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+
     /// <summary>
     /// Verarbeitungsklasse zum Starten bestimmter Programme
     /// </summary>

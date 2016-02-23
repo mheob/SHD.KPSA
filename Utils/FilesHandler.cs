@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace SHD.KPSA.Utils
+﻿namespace SHD.KPSA.Utils
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
     public static class FilesHandler
     {
         /// <summary>

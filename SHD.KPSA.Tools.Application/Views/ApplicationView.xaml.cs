@@ -1,7 +1,7 @@
-﻿using SHD.KPSA.Tools.Application.ViewModels;
-
-namespace SHD.KPSA.Tools.Application.Views
+﻿namespace SHD.KPSA.Tools.Application.Views
 {
+    using ViewModels;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

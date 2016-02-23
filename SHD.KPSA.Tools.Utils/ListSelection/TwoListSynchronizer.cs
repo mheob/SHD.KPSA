@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Windows;
-
-namespace SHD.KPSA.Tools.Utils.ListSelection
+﻿namespace SHD.KPSA.Tools.Utils.ListSelection
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Specialized;
+    using System.Linq;
+    using System.Windows;
+
     /// <summary>
     /// Keeps two lists synchronized.
     /// </summary>

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-
-namespace SHD.KPSA.Tools.Utils.ListSelection
+﻿namespace SHD.KPSA.Tools.Utils.ListSelection
 {
+    using System;
+    using System.Collections;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
+
     /// <summary>
     /// A sync behavior for a multiselector.
     /// </summary>
