@@ -142,15 +142,6 @@ namespace SHD.KPSA.Tools.Application.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Last Change: {0} ähnelt.
-        /// </summary>
-        public static string LastChangeText {
-            get {
-                return ResourceManager.GetString("LastChangeText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die inner Frame: ähnelt.
         /// </summary>
         public static string MatFileGenCheckBoxBorderInner {
@@ -457,6 +448,15 @@ namespace SHD.KPSA.Tools.Application.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die go to the tool choice ähnelt.
+        /// </summary>
+        public static string ShowHomeButtonToolTip {
+            get {
+                return ResourceManager.GetString("ShowHomeButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Change Design ähnelt.
         /// </summary>
         public static string ThemeChangeToolTip {
@@ -466,29 +466,29 @@ namespace SHD.KPSA.Tools.Application.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Mat-Files-Generator ähnelt.
-        /// </summary>
-        public static string TileTitleMatFileGenerator {
-            get {
-                return ResourceManager.GetString("TileTitleMatFileGenerator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Clean 3DS-Files ähnelt.
         /// </summary>
-        public static string TileTools3DsTitle {
+        public static string TileClean3DsTitle {
             get {
-                return ResourceManager.GetString("TileTools3DsTitle", resourceCulture);
+                return ResourceManager.GetString("TileClean3DsTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Changelog ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Mat-Files-Generator ähnelt.
         /// </summary>
-        public static string TitleChangelog {
+        public static string TileMatFileGeneratorTitle {
             get {
-                return ResourceManager.GetString("TitleChangelog", resourceCulture);
+                return ResourceManager.GetString("TileMatFileGeneratorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Toolcollection ähnelt.
+        /// </summary>
+        public static string TitleHome {
+            get {
+                return ResourceManager.GetString("TitleHome", resourceCulture);
             }
         }
         
@@ -498,15 +498,6 @@ namespace SHD.KPSA.Tools.Application.Properties {
         public static string TitleMatFileGenerator {
             get {
                 return ResourceManager.GetString("TitleMatFileGenerator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Navigation ähnelt.
-        /// </summary>
-        public static string TitleNavigation {
-            get {
-                return ResourceManager.GetString("TitleNavigation", resourceCulture);
             }
         }
         

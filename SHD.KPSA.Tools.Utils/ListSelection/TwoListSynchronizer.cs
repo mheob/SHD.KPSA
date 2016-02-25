@@ -12,9 +12,9 @@
     public class TwoListSynchronizer : IWeakEventListener
     {
         private static readonly IListItemConverter DefaultConverter = new DoNothingListItemConverter();
-        private readonly IList _masterList;
-        private readonly IListItemConverter _masterTargetConverter;
-        private readonly IList _targetList;
+        private readonly IList masterList;
+        private readonly IListItemConverter masterTargetConverter;
+        private readonly IList targetList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TwoListSynchronizer" /> class.
@@ -24,9 +24,9 @@
         /// <param name="masterTargetConverter">The master-target converter.</param>
         public TwoListSynchronizer(IList masterList, IList targetList, IListItemConverter masterTargetConverter)
         {
-            _masterList = masterList;
-            _targetList = targetList;
-            _masterTargetConverter = masterTargetConverter;
+            this.masterList = masterList;
+            this.targetList = targetList;
+            this.masterTargetConverter = masterTargetConverter;
         }
 
         /// <summary>
@@ -38,26 +38,26 @@
         {
         }
 
-        private delegate void ChangeListAction(IList list, NotifyCollectionChangedEventArgs e,
-            Converter<object, object> converter);
+        private delegate void ChangeListAction(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter
+            );
 
         /// <summary>
         /// Starts synchronizing the lists.
         /// </summary>
         public void StartSynchronizing()
         {
-            ListenForChangeEvents(_masterList);
-            ListenForChangeEvents(_targetList);
+            ListenForChangeEvents(masterList);
+            ListenForChangeEvents(targetList);
 
             // Update the Target list from the Master list
-            SetListValuesFromSource(_masterList, _targetList, ConvertFromMasterToTarget);
+            SetListValuesFromSource(masterList, targetList, ConvertFromMasterToTarget);
 
             // In some cases the target list might have its own view on which items should included:
             // so update the master list from the target list
             // (This is the case with a ListBox SelectedItems collection: only items from the ItemsSource can be included in SelectedItems)
             if (!TargetAndMasterCollectionsAreEqual())
             {
-                SetListValuesFromSource(_targetList, _masterList, ConvertFromTargetToMaster);
+                SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
             }
         }
 
@@ -66,8 +66,8 @@
         /// </summary>
         public void StopSynchronizing()
         {
-            StopListeningForChangeEvents(_masterList);
-            StopListeningForChangeEvents(_targetList);
+            StopListeningForChangeEvents(masterList);
+            StopListeningForChangeEvents(targetList);
         }
 
         /// <summary>
@@ -141,12 +141,12 @@
 
         private object ConvertFromMasterToTarget(object masterListItem)
         {
-            return _masterTargetConverter == null ? masterListItem : _masterTargetConverter.Convert(masterListItem);
+            return masterTargetConverter == null ? masterListItem : masterTargetConverter.Convert(masterListItem);
         }
 
         private object ConvertFromTargetToMaster(object targetListItem)
         {
-            return _masterTargetConverter == null ? targetListItem : _masterTargetConverter.ConvertBack(targetListItem);
+            return masterTargetConverter == null ? targetListItem : masterTargetConverter.ConvertBack(targetListItem);
         }
 
         private void HandleCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -175,8 +175,7 @@
             }
         }
 
-        private static void MoveItems(IList list, NotifyCollectionChangedEventArgs e,
-            Converter<object, object> converter)
+        private static void MoveItems(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter)
         {
             RemoveItems(list, e, converter);
             AddItems(list, e, converter);
@@ -185,13 +184,13 @@
         private void PerformActionOnAllLists(ChangeListAction action, IEnumerable sourceList,
             NotifyCollectionChangedEventArgs collectionChangedArgs)
         {
-            if (Equals(sourceList, _masterList))
+            if (Equals(sourceList, masterList))
             {
-                PerformActionOnList(_targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
+                PerformActionOnList(targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
             }
             else
             {
-                PerformActionOnList(_masterList, action, collectionChangedArgs, ConvertFromTargetToMaster);
+                PerformActionOnList(masterList, action, collectionChangedArgs, ConvertFromTargetToMaster);
             }
         }
 
@@ -203,8 +202,7 @@
             ListenForChangeEvents(list);
         }
 
-        private static void RemoveItems(IList list, NotifyCollectionChangedEventArgs e,
-            Converter<object, object> converter)
+        private static void RemoveItems(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter)
         {
             int itemCount = e.OldItems.Count;
 
@@ -216,32 +214,29 @@
             }
         }
 
-        private static void ReplaceItems(IList list, NotifyCollectionChangedEventArgs e,
-            Converter<object, object> converter)
+        private static void ReplaceItems(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter)
         {
             RemoveItems(list, e, converter);
             AddItems(list, e, converter);
         }
 
-        private void SetListValuesFromSource(IEnumerable sourceList, IList targetList,
-            Converter<object, object> converter)
+        private void SetListValuesFromSource(IEnumerable sourceList, IList targetsList, Converter<object, object> converter)
         {
-            StopListeningForChangeEvents(targetList);
+            StopListeningForChangeEvents(targetsList);
 
-            targetList.Clear();
+            targetsList.Clear();
 
             foreach (object o in sourceList)
             {
-                targetList.Add(converter(o));
+                targetsList.Add(converter(o));
             }
 
-            ListenForChangeEvents(targetList);
+            ListenForChangeEvents(targetsList);
         }
 
         private bool TargetAndMasterCollectionsAreEqual()
         {
-            return _masterList.Cast<object>()
-                .SequenceEqual(_targetList.Cast<object>().Select(ConvertFromTargetToMaster));
+            return masterList.Cast<object>().SequenceEqual(targetList.Cast<object>().Select(ConvertFromTargetToMaster));
         }
 
         /// <summary>
@@ -250,13 +245,13 @@
         /// <param name="sourceList">The source list.</param>
         private void UpdateListsFromSource(IEnumerable sourceList)
         {
-            if (Equals(sourceList, _masterList))
+            if (Equals(sourceList, masterList))
             {
-                SetListValuesFromSource(_masterList, _targetList, ConvertFromMasterToTarget);
+                SetListValuesFromSource(masterList, targetList, ConvertFromMasterToTarget);
             }
             else
             {
-                SetListValuesFromSource(_targetList, _masterList, ConvertFromTargetToMaster);
+                SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
             }
         }
 

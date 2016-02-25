@@ -9,7 +9,7 @@
     public class ChangelogViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
-        private readonly ChangelogModel _changelog;
+        private readonly ChangelogModel changelog;
         #endregion Fields
 
         #region Properties
@@ -21,12 +21,12 @@
         /// <summary>
         /// Gets the date of the build.
         /// </summary>
-        public string BuildNote => _changelog.BuildNote;
+        public string BuildNote => changelog.BuildNote;
 
         /// <summary>
         /// Creates a new ObservableCollection of Labels.
         /// </summary>
-        public ObservableCollection<Label> ChangelogLines => _changelog.ChangelogLines;
+        public ObservableCollection<Label> ChangelogLines => changelog.ChangelogLines;
         #endregion Properties
 
         #region Constructor
@@ -36,7 +36,7 @@
         /// <param name="changelog">The ViewModel of the current page.</param>
         public ChangelogViewModel(ChangelogModel changelog)
         {
-            _changelog = changelog;
+            this.changelog = changelog;
         }
         #endregion Constructor
     }

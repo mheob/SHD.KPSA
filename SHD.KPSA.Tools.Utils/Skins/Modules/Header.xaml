@@ -57,7 +57,7 @@
                         <Rectangle Name="EllipseButtonBackNav"
                                  Width="30" Height="25" Fill="{DynamicResource GrayBrush6}">
                             <Rectangle.OpacityMask>
-                                <VisualBrush Visual="{StaticResource appbar_lines_horizontal_4}" Stretch="Fill" />
+                                <VisualBrush Visual="{StaticResource appbar_arrow_left}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
                             <Rectangle.Triggers>
                                 <EventTrigger RoutedEvent="MouseEnter">

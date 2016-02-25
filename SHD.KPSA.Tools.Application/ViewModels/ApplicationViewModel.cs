@@ -1,33 +1,29 @@
 ﻿namespace SHD.KPSA.Tools.Application.ViewModels
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Input;
     using Changelog.Models;
     using Changelog.ViewModels;
     using MahApps.Metro;
-    using Models;
     using Properties;
     using Utils;
 
     /// <summary>
     /// The ViewModel for the ApplicationWindow.
     /// </summary>
-    public class ApplicationViewModel : ObservableObject
+    public class ApplicationViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
-        private string _theme;
+        private string theme;
 
-        private List<Pages> _pageCollection;
-        private List<IPageViewModel> _pageViewModels;
-        private IPageViewModel _currentPageViewModel;
-        private IPageViewModel _navigateToPageViewModel;
-        private IPageViewModel _navigateToChangelogViewModel;
+        private bool isNavigationView;
+        private bool canBackNav;
 
+        private IPageViewModel currentPageViewModel;
+        private IPageViewModel navigateFromPageViewModel;
 
-        private ICommand _changeThemeCommand;
-        private ICommand _changePageCommand;
+        private ICommand changePageCommand;
+        private ICommand changeThemeCommand;
         #endregion Fields
 
         #region Constructor
@@ -36,94 +32,114 @@
         /// </summary>
         public ApplicationViewModel()
         {
-            GetPages();
-            GetPageViewModels();
-
             Theme = Theme != null ? ThemeManager.DetectAppStyle(Application.Current).Item1.Name : ThemeDark;
 
-            NavigateToChangelogViewModel = PageViewModels[0];
-            CurrentPageViewModel = PageViewModels[1];
+            HomePageViewModel = this;
+            ChangelogPageViewModel = new ChangelogViewModel(new ChangelogModel());
+
+            CurrentPageViewModel = HomePageViewModel;
+            IsNavigationView = true;
+            CanBackNav = false;
         }
         #endregion Constructor
 
         #region Properties
         /// <summary>
+        /// Gets the Title of the ChangelogView.
+        /// </summary>
+        public string Title => Resources.TitleHome;
+
+        /// <summary>
+        /// Gets the accent color in dark blue.
+        /// </summary>
+        public string AccentDarkBlue => "DarkBlue";
+
+        /// <summary>
+        /// Gets the dark theme of the application.
+        /// </summary>
+        public string ThemeDark => "Dark";
+
+        /// <summary>
+        /// Gets the light theme of the application.
+        /// </summary>
+        public string ThemeLight => "Light";
+
+        /// <summary>
+        /// Gets the ViewModel of the NavigationPage.
+        /// </summary>
+        public IPageViewModel HomePageViewModel { get; }
+
+        /// <summary>
+        /// Gets the ViewModel of the ChangelogPage.
+        /// </summary>
+        public IPageViewModel ChangelogPageViewModel { get; }
+
+        /// <summary>
         /// Gets and sets the Theme.
         /// </summary>
         public string Theme
         {
-            get { return _theme; }
+            get { return theme; }
             set
             {
-                if (_theme == value) return;
-                _theme = value;
+                if (theme == value) return;
+                theme = value;
                 OnPropertyChanged();
             }
         }
 
         /// <summary>
-        /// Gets the accent color in dark blue.
+        /// Gets and sets the CanBackNav-property.
         /// </summary>
-        public string AccentDarkBlue { get; } = "DarkBlue";
+        public bool CanBackNav
+        {
+            get { return canBackNav; }
+            set
+            {
+                if (canBackNav == value) return;
+                canBackNav = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
-        /// Gets the dark theme of the application.
+        /// Gets and sets the IsNavigation-property.
         /// </summary>
-        public string ThemeDark { get; } = "Dark";
-
-        /// <summary>
-        /// Gets the light theme of the application.
-        /// </summary>
-        public string ThemeLight { get; } = "Light";
-
-        /// <summary>
-        /// Gets the list of all implemented PageViewModels.
-        /// </summary>
-        public List<IPageViewModel> PageViewModels => _pageViewModels ?? (_pageViewModels = new List<IPageViewModel>());
-
-        /// <summary>
-        /// Gets the list of all implemented PageViewModels.
-        /// </summary>
-        public List<Pages> PageCollection => _pageCollection ?? (_pageCollection = new List<Pages>());
+        public bool IsNavigationView
+        {
+            get { return isNavigationView; }
+            set
+            {
+                if (isNavigationView == value) return;
+                isNavigationView = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Gets and sets the CurrentPageViewModel.
         /// </summary>
         public IPageViewModel CurrentPageViewModel
         {
-            get { return _currentPageViewModel; }
+            get { return currentPageViewModel; }
             set
             {
-                if (_currentPageViewModel == value) return;
-                _currentPageViewModel = value;
+                if (currentPageViewModel == value) return;
+                currentPageViewModel = value;
                 OnPropertyChanged();
             }
         }
 
         /// <summary>
-        /// Gets and sets the NavigateToPageViewModel.
+        /// Gets and sets the navigateFromPageViewModel.
         /// </summary>
-        public IPageViewModel NavigateToPageViewModel
+        public IPageViewModel NavigateFromPageViewModel
         {
-            get { return _navigateToPageViewModel; }
+            get { return navigateFromPageViewModel; }
             set
             {
-                if (_navigateToPageViewModel == value) return;
-                _navigateToPageViewModel = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the NavigateToChangelogViewModel.
-        /// </summary>
-        public IPageViewModel NavigateToChangelogViewModel
-        {
-            get { return _navigateToChangelogViewModel; }
-            set
-            {
-                if (_navigateToChangelogViewModel == value) return;
-                _navigateToChangelogViewModel = value;
+                if (navigateFromPageViewModel == value) return;
+                navigateFromPageViewModel = value;
                 OnPropertyChanged();
             }
         }
@@ -137,13 +153,13 @@
         {
             get
             {
-                if (_changeThemeCommand != null) return _changeThemeCommand;
+                if (changeThemeCommand != null) return changeThemeCommand;
 
-                _changeThemeCommand = new RelayCommand(
+                changeThemeCommand = new RelayCommand(
                     param => ChangeTheme((string) param),
                     param => param != null);
 
-                return _changeThemeCommand;
+                return changeThemeCommand;
             }
         }
 
@@ -154,43 +170,21 @@
         {
             get
             {
-                if (_changePageCommand != null) return _changePageCommand;
+                if (changePageCommand != null) return changePageCommand;
 
-                _changePageCommand = new RelayCommand(
+                changePageCommand = new RelayCommand(
                     param => ChangeViewModel((IPageViewModel) param),
                     param => param is IPageViewModel);
 
-                return _changePageCommand;
+                return changePageCommand;
             }
         }
         #endregion Commands
 
         #region Methods
-        private void GetPages()
+        private void ChangeTheme(string newTheme)
         {
-            PageCollection.Add(new Pages
-            {
-                //PageViewModel = new Tools3DsViewModel(),
-                PageViewModel = new ChangelogViewModel(new ChangelogModel()),
-                PageTitle = Resources.TitleTools3Ds
-            });
-
-            //PageCollection.Add(new Pages
-            //{
-            //    PageViewModel = new MatFileGenerator(),
-            //    PageTitle = "MatFiles generieren"
-            //});
-        }
-
-        private void GetPageViewModels()
-        {
-            PageViewModels.Add(new ChangelogViewModel(new ChangelogModel()));
-            PageViewModels.Add(new Tools3DsViewModel());
-        }
-
-        private void ChangeTheme(string theme)
-        {
-            Theme = theme != ThemeDark ? ThemeDark : ThemeLight;
+            Theme = newTheme != ThemeDark ? ThemeDark : ThemeLight;
 
             ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(AccentDarkBlue),
                 ThemeManager.GetAppTheme(Theme));
@@ -198,13 +192,15 @@
 
         private void ChangeViewModel(IPageViewModel viewModel)
         {
-            if (!PageViewModels.Contains(viewModel))
-            {
-                PageViewModels.Add(viewModel);
-            }
+            if (CurrentPageViewModel.Equals(viewModel)) return;
 
-            CurrentPageViewModel = PageViewModels.FirstOrDefault(vm => vm == viewModel);
+            NavigateFromPageViewModel = CurrentPageViewModel;
+
+            IsNavigationView = viewModel.Equals(this);
+            CanBackNav = true;
+
+            CurrentPageViewModel = viewModel;
         }
-        #endregion
+        #endregion Methods
     }
 }

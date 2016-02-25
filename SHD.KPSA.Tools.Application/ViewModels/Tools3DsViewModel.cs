@@ -1,10 +1,5 @@
 ﻿namespace SHD.KPSA.Tools.Application.ViewModels
 {
-    using KPSA.Utils;
-    using MahApps.Metro.Controls;
-    using MahApps.Metro.Controls.Dialogs;
-    using Models;
-    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.IO;
@@ -12,28 +7,33 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
+    using KPSA.Utils;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+    using Models;
+    using Properties;
     using Utils;
 
     public class Tools3DsViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
-        private const string Extension = "*.3ds";
+        private const string EXTENSION = "*.3ds";
 
-        private readonly bool _isInitialize;
+        private readonly bool isInitialize;
 
-        private bool _isSelected;
-        private string _selectedPath;
-        private string _statusBarSummary;
+        private bool isSelected;
+        private string selectedPath;
+        private string statusBarSummary;
 
-        private ObservableCollection<Tools3DsFiles> _fileCollection = new ObservableCollection<Tools3DsFiles>();
-        private ObservableCollection<Tools3DsFiles> _selectedFilesCollection = new ObservableCollection<Tools3DsFiles>();
+        private ObservableCollection<Tools3DsFiles> fileCollection = new ObservableCollection<Tools3DsFiles>();
+        private ObservableCollection<Tools3DsFiles> selectedFilesCollection = new ObservableCollection<Tools3DsFiles>();
 
-        private ICommand _checkTextBoxPathCommand;
-        private ICommand _getDirectoryCommand;
-        private ICommand _startGenerationCommand;
-        private ICommand _updateStatusBarCommand;
-        private ICommand _selectAllCommand;
-        private ICommand _selectNoneCommand;
+        private ICommand checkTextBoxPathCommand;
+        private ICommand getDirectoryCommand;
+        private ICommand startGenerationCommand;
+        private ICommand updateStatusBarCommand;
+        private ICommand selectAllCommand;
+        private ICommand selectNoneCommand;
         #endregion Fields
 
         #region Constructor
@@ -45,7 +45,7 @@
             GetFiles();
             UpdateStatusBar();
 
-            _isInitialize = true;
+            isInitialize = true;
         }
         #endregion Constructor
 
@@ -60,11 +60,11 @@
         /// </summary>
         public bool IsSelected
         {
-            get { return _isSelected; }
+            get { return isSelected; }
             set
             {
-                if (value == _isSelected) return;
-                _isSelected = value;
+                if (value == isSelected) return;
+                isSelected = value;
                 OnPropertyChanged();
             }
         }
@@ -74,11 +74,11 @@
         /// </summary>
         public string SelectedPath
         {
-            get { return _selectedPath; }
+            get { return selectedPath; }
             set
             {
-                if (value == _selectedPath) return;
-                _selectedPath = value;
+                if (value == selectedPath) return;
+                selectedPath = value;
                 OnPropertyChanged();
             }
         }
@@ -88,11 +88,11 @@
         /// </summary>
         public string StatusBarSummary
         {
-            get { return _statusBarSummary; }
+            get { return statusBarSummary; }
             set
             {
-                if (value == _statusBarSummary) return;
-                _statusBarSummary = value;
+                if (value == statusBarSummary) return;
+                statusBarSummary = value;
                 OnPropertyChanged();
             }
         }
@@ -102,11 +102,11 @@
         /// </summary>
         public ObservableCollection<Tools3DsFiles> FileCollection
         {
-            get { return _fileCollection; }
+            get { return fileCollection; }
             set
             {
-                if (Equals(value, _fileCollection)) return;
-                _fileCollection = value;
+                if (Equals(value, fileCollection)) return;
+                fileCollection = value;
                 OnPropertyChanged();
             }
         }
@@ -116,11 +116,11 @@
         /// </summary>
         public ObservableCollection<Tools3DsFiles> SelectedFilesCollection
         {
-            get { return _selectedFilesCollection; }
+            get { return selectedFilesCollection; }
             set
             {
-                if (Equals(value, _selectedFilesCollection)) return;
-                _selectedFilesCollection = value;
+                if (Equals(value, selectedFilesCollection)) return;
+                selectedFilesCollection = value;
                 OnPropertyChanged();
             }
         }
@@ -134,9 +134,9 @@
         {
             get
             {
-                if (_checkTextBoxPathCommand != null) return _checkTextBoxPathCommand;
-                _checkTextBoxPathCommand = new RelayCommand(param => CheckTextBoxPath());
-                return _checkTextBoxPathCommand;
+                if (checkTextBoxPathCommand != null) return checkTextBoxPathCommand;
+                checkTextBoxPathCommand = new RelayCommand(param => CheckTextBoxPath());
+                return checkTextBoxPathCommand;
             }
         }
 
@@ -147,13 +147,13 @@
         {
             get
             {
-                if (_getDirectoryCommand != null) return _getDirectoryCommand;
+                if (getDirectoryCommand != null) return getDirectoryCommand;
 
-                _getDirectoryCommand = new RelayCommand(
+                getDirectoryCommand = new RelayCommand(
                     param => GetDirectory((string) param),
                     param => param != null);
 
-                return _getDirectoryCommand;
+                return getDirectoryCommand;
             }
         }
 
@@ -161,13 +161,13 @@
         {
             get
             {
-                if (_startGenerationCommand != null) return _startGenerationCommand;
+                if (startGenerationCommand != null) return startGenerationCommand;
 
-                _startGenerationCommand = new RelayCommand(
+                startGenerationCommand = new RelayCommand(
                     param => StartGeneration(),
                     param => FileCollection.Count > 0);
 
-                return _startGenerationCommand;
+                return startGenerationCommand;
             }
         }
 
@@ -175,9 +175,9 @@
         {
             get
             {
-                if (_updateStatusBarCommand != null) return _updateStatusBarCommand;
-                _updateStatusBarCommand = new RelayCommand(param => UpdateStatusBar());
-                return _updateStatusBarCommand;
+                if (updateStatusBarCommand != null) return updateStatusBarCommand;
+                updateStatusBarCommand = new RelayCommand(param => UpdateStatusBar());
+                return updateStatusBarCommand;
             }
         }
 
@@ -185,13 +185,13 @@
         {
             get
             {
-                if (_selectAllCommand != null) return _selectAllCommand;
+                if (selectAllCommand != null) return selectAllCommand;
 
-                _selectAllCommand = new RelayCommand(
+                selectAllCommand = new RelayCommand(
                     param => SelectAll(),
                     param => FileCollection.Count > SelectedFilesCollection.Count && FileCollection.Count > 0);
 
-                return _selectAllCommand;
+                return selectAllCommand;
             }
         }
 
@@ -199,13 +199,13 @@
         {
             get
             {
-                if (_selectNoneCommand != null) return _selectNoneCommand;
+                if (selectNoneCommand != null) return selectNoneCommand;
 
-                _selectNoneCommand = new RelayCommand(
+                selectNoneCommand = new RelayCommand(
                     param => SelectNone(),
                     param => SelectedFilesCollection.Count > 0);
 
-                return _selectNoneCommand;
+                return selectNoneCommand;
             }
         }
         #endregion Commands
@@ -294,7 +294,7 @@
                     FileCollection.Count)
                 : string.Empty;
 
-            if (!_isInitialize) return;
+            if (!isInitialize) return;
 
             UpdateListBox();
         }
@@ -323,7 +323,7 @@
         {
             FileCollection.Clear();
 
-            foreach (var file in Directory.GetFiles(SelectedPath, Extension))
+            foreach (var file in Directory.GetFiles(SelectedPath, EXTENSION))
             {
                 FileCollection.Add(new Tools3DsFiles()
                 {

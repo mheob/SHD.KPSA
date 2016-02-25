@@ -82,8 +82,8 @@
         /// </summary>
         private class SynchronizationManager
         {
-            private readonly Selector _multiSelector;
-            private TwoListSynchronizer _synchronizer;
+            private readonly Selector multiSelector;
+            private TwoListSynchronizer synchronizer;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="SynchronizationManager" /> class.
@@ -91,7 +91,7 @@
             /// <param name="selector">The selector.</param>
             internal SynchronizationManager(Selector selector)
             {
-                _multiSelector = selector;
+                multiSelector = selector;
             }
 
             /// <summary>
@@ -99,12 +99,12 @@
             /// </summary>
             public void StartSynchronizingList()
             {
-                IList list = GetSynchronizedSelectedItems(_multiSelector);
+                IList list = GetSynchronizedSelectedItems(multiSelector);
 
                 if (list == null) return;
 
-                _synchronizer = new TwoListSynchronizer(GetSelectedItemsCollection(_multiSelector), list);
-                _synchronizer.StartSynchronizing();
+                synchronizer = new TwoListSynchronizer(GetSelectedItemsCollection(multiSelector), list);
+                synchronizer.StartSynchronizing();
             }
 
             /// <summary>
@@ -112,7 +112,7 @@
             /// </summary>
             public void StopSynchronizing()
             {
-                _synchronizer.StopSynchronizing();
+                synchronizer.StopSynchronizing();
             }
 
             private static IList GetSelectedItemsCollection(Selector selector)

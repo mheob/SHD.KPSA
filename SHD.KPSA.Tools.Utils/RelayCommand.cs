@@ -11,8 +11,8 @@
     public class RelayCommand : ICommand
     {
         #region Fields
-        private readonly Action<object> _execute;
-        private readonly Predicate<object> _canExecute;
+        private readonly Action<object> execute;
+        private readonly Predicate<object> canExecute;
         #endregion Fields
 
         #region Constructors
@@ -34,8 +34,8 @@
             if (execute == null)
                 throw new ArgumentNullException(nameof(execute));
 
-            _execute = execute;
-            _canExecute = canExecute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
         #endregion Constructors
 
@@ -43,7 +43,7 @@
         [DebuggerStepThrough]
         public bool CanExecute(object parameters)
         {
-            return _canExecute?.Invoke(parameters) ?? true;
+            return canExecute?.Invoke(parameters) ?? true;
         }
 
         public event EventHandler CanExecuteChanged
@@ -54,7 +54,7 @@
 
         public void Execute(object parameters)
         {
-            _execute(parameters);
+            execute(parameters);
         }
         #endregion ICommand Members
     }

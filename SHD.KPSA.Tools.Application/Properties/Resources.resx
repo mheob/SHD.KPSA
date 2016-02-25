@@ -129,7 +129,7 @@
   <data name="ExcepetionProvideBitmap" xml:space="preserve">
     <value>Please use a Bitmap!</value>
   </data>
-  <data name="TileTools3DsTitle" xml:space="preserve">
+  <data name="TileClean3DsTitle" xml:space="preserve">
     <value>Clean 3DS-Files</value>
   </data>
   <data name="ThemeChangeToolTip" xml:space="preserve">
@@ -174,17 +174,8 @@
   <data name="ShowChangelogButtonToolTip" xml:space="preserve">
     <value>Show Changelog</value>
   </data>
-  <data name="TitleChangelog" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
-  <data name="LastChangeText" xml:space="preserve">
-    <value>Last Change: {0}</value>
-  </data>
   <data name="TitleMatFileGenerator" xml:space="preserve">
     <value>Generate "Mat-Files"</value>
-  </data>
-  <data name="TileTitleMatFileGenerator" xml:space="preserve">
-    <value>Mat-Files-Generator</value>
   </data>
   <data name="DataGridFilesHeaderChanged" xml:space="preserve">
     <value>Modified</value>
@@ -267,7 +258,13 @@
   <data name="MatFileGenToolTipThumb" xml:space="preserve">
     <value>Created additionally a thumbnail in the dimensions 50 x 25 pixels. This is stored in the specified folder.</value>
   </data>
-  <data name="TitleNavigation" xml:space="preserve">
-    <value>Navigation</value>
+  <data name="TitleHome" xml:space="preserve">
+    <value>Toolcollection</value>
+  </data>
+  <data name="ShowHomeButtonToolTip" xml:space="preserve">
+    <value>go to the tool choice</value>
+  </data>
+  <data name="TileMatFileGeneratorTitle" xml:space="preserve">
+    <value>Mat-Files-Generator</value>
   </data>
 </root>

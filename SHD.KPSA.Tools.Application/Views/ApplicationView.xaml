@@ -5,25 +5,25 @@
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:vm="clr-namespace:SHD.KPSA.Tools.Application.ViewModels"
-                     xmlns:views="clr-namespace:SHD.KPSA.Tools.Application.Views"
                      xmlns:rx="clr-namespace:SHD.KPSA.Tools.Application.Properties"
+                     xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
                      xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
                      xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
                      Title="SHD KPSA-Daten Helper Tools"
-                     Height="250" Width="525"
+                     Height="300" Width="525"
                      Icon="/Resources/logo_shd.ico"
                      GlowBrush="{StaticResource AccentColorBrush}" SaveWindowPosition="True"
                      mc:Ignorable="d"
                      d:DataContext="{d:DesignInstance vm:ApplicationViewModel}">
 
     <mahapps:MetroWindow.Resources>
-        <DataTemplate DataType="{x:Type vm:Tools3DsViewModel}">
-            <views:NavigationView/>
-        </DataTemplate>
-
         <DataTemplate DataType="{x:Type vmChanglog:ChangelogViewModel}">
             <vChanglog:ChangelogView/>
         </DataTemplate>
+
+        <converter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True"/>
+        <converter:BoolToVisibleConverter x:Key="NavigationView" Collapse="True"/>
+        <converter:BoolToVisibleConverter x:Key="PageView" Collapse="True" Reverse="True"/>
     </mahapps:MetroWindow.Resources>
 
     <mahapps:MetroWindow.Style>
@@ -31,6 +31,23 @@
             <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
         </Style>
     </mahapps:MetroWindow.Style>
+    
+    <mahapps:MetroWindow.LeftWindowCommands>
+        <mahapps:WindowCommands>
+            <Button ToolTip="{x:Static rx:Resources.ShowHomeButtonToolTip}"
+                    Visibility="{Binding IsNavigationView, Converter={StaticResource PageView}}"
+                    Command="{Binding ChangePageCommand}"
+                    CommandParameter="{Binding HomePageViewModel}">
+                <Rectangle Width="20"
+                           Height="20"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home_variant}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </mahapps:WindowCommands>
+    </mahapps:MetroWindow.LeftWindowCommands>
 
     <mahapps:MetroWindow.RightWindowCommands>
         <mahapps:WindowCommands>
@@ -48,7 +65,7 @@
 
             <Button ToolTip="{x:Static rx:Resources.ShowChangelogButtonToolTip}"
                     Command="{Binding ChangePageCommand}"
-                    CommandParameter="{Binding NavigateToChangelogViewModel}">
+                    CommandParameter="{Binding ChangelogPageViewModel}">
                 <Rectangle Width="20"
                            Height="20"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
@@ -67,37 +84,49 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Button Grid.Column="0"
+            <Button Grid.Column="0"
                     Style="{StaticResource ButtonMenu}"
-                    Visibility="{Binding IsVisibleBackNav}"
+                    Visibility="{Binding CanBackNav, Converter={StaticResource BackNavigation}}"
                     Command="{Binding ChangePageCommand}"
-                    CommandParameter="{Binding PreviousPageViewModel}"/>-->
+                    CommandParameter="{Binding NavigateFromPageViewModel}"/>
             
-            <mahapps:DropDownButton Grid.Column="0"
-                                    ArrowVisibility="Hidden"
-                                    BorderThickness="0"
-                                    Height="60"
-                                    Icon="{DynamicResource appbar_lines_horizontal_4}"
-                                    Orientation="Vertical"
-                                    DisplayMemberPath="PageTitle"
-                                    ItemsSource="{Binding PageCollection}">
-                <mahapps:DropDownButton.ItemContainerStyle>
-                    <Style TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
-                        <Setter Property="Command" Value="{Binding DataContext.ChangePageCommand,
-                                                                   RelativeSource={RelativeSource AncestorType=mahapps:DropDownButton}}"/>
-                        <Setter Property="CommandParameter" Value="{Binding Path=DataContext,
-                                                                            RelativeSource={RelativeSource Self}}"/>
-                    </Style>
-                </mahapps:DropDownButton.ItemContainerStyle>
-            </mahapps:DropDownButton>
-            
+           
             <TextBlock Grid.Column="1"
                        Text="{Binding CurrentPageViewModel.Title, FallbackValue=... Header ...}"
                        Style="{StaticResource WindowHeading}"/>
         </Grid>
 
-        <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentPageViewModel}"/>
-        <!--<TextBlock>Content Folgt ...</TextBlock>-->
+        <ContentControl DockPanel.Dock="Top"
+                        Content="{Binding CurrentPageViewModel}"
+                        Visibility="{Binding IsNavigationView, Converter={StaticResource PageView}}"/>
+
+        <WrapPanel HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Visibility="{Binding IsNavigationView, Converter={StaticResource NavigationView}}">
+            <mahapps:Tile x:Name="MatFileGenerator"
+                      Title="{x:Static rx:Resources.TileMatFileGeneratorTitle }"
+                      Style="{StaticResource SmallTileStyle}"
+                      Command="{Binding ChangePageCommand}"
+                      CommandParameter="{Binding ChangelogPageViewModel}">
+                <Grid Style="{StaticResource SmallTileStyleGrid}">
+                    <Grid.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}"/>
+                    </Grid.OpacityMask>
+                </Grid>
+            </mahapps:Tile>
+
+            <mahapps:Tile x:Name="TileTools3Ds"
+                          Title="{x:Static rx:Resources.TileClean3DsTitle }"
+                          Style="{StaticResource SmallTileStyle}"
+                          Command="{Binding ChangePageCommand}"
+                          CommandParameter="{Binding ChangelogPageViewModel}">
+                <Grid Style="{StaticResource SmallTileStyleGrid}">
+                    <Grid.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_3d_3ds}"/>
+                    </Grid.OpacityMask>
+                </Grid>
+            </mahapps:Tile>
+        </WrapPanel>
     </DockPanel>
 
 </mahapps:MetroWindow>
