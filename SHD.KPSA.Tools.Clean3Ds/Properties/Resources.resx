@@ -117,22 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TileClean3DsTitle" xml:space="preserve">
-    <value>3DS-Dateien säubern</value>
+  <data name="ButtonSelectPath" xml:space="preserve">
+    <value>Select _Path</value>
   </data>
-  <data name="ThemeChangeToolTip" xml:space="preserve">
-    <value>Design ändern</value>
+  <data name="ButtonStart" xml:space="preserve">
+    <value>_Start</value>
   </data>
-  <data name="ShowChangelogButtonToolTip" xml:space="preserve">
-    <value>Changelog anzeigen</value>
+  <data name="TitleClean3Ds" xml:space="preserve">
+    <value>Remove Colors in 3DS</value>
   </data>
-  <data name="ShowHomeButtonToolTip" xml:space="preserve">
-    <value>zur Toolauswahl gehen</value>
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
+    <value>{0} selected from {1} files</value>
   </data>
-  <data name="TileMatFileGeneratorTitle" xml:space="preserve">
-    <value>Mat-Files-Generator</value>
+  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
+    <value>Select _all</value>
   </data>
-  <data name="TitleHome" xml:space="preserve">
-    <value>Toolsammlung</value>
+  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
+    <value>Selecet _none</value>
+  </data>
+  <data name="MessageDialogCancelContent" xml:space="preserve">
+    <value>The operation was canceled before completion!</value>
+  </data>
+  <data name="MessageDialogCancelTitle" xml:space="preserve">
+    <value>Cancel!</value>
+  </data>
+  <data name="MessageDialogCompleteContent" xml:space="preserve">
+    <value>The operation was completed successfully.{0}{0}Now want the files to be displayed?</value>
+  </data>
+  <data name="MessageDialogCompleteTitle" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="ProgressDialogPreviewContent" xml:space="preserve">
+    <value>The processing is being prepared ...</value>
+  </data>
+  <data name="ProgressDialogRunningContent" xml:space="preserve">
+    <value>There are {0} of {1} files processed.</value>
+  </data>
+  <data name="ProgressDialogTitle" xml:space="preserve">
+    <value>A short moment ...</value>
+  </data>
+  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
+    <value>Modified</value>
+  </data>
+  <data name="DataGridFilesHeaderName" xml:space="preserve">
+    <value>File</value>
   </data>
 </root>

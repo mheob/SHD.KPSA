@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="SHD.KPSA.Tools.MatFileGenerator.Views.Sections.SettingsSolidView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
+             xmlns:vms="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels.Sections"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vms:SettingsSolidViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="150" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <!-- TextBlock Label -->
+        <Style x:Key="TextBlockLabel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Checkbox Label -->
+        <Style x:Key="CheckBoxLabel" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Text Color -->
+        <Style x:Key="TextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- RGB -->
+        <Style x:Key="TextBoxColorRgb" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Text" Value="0"/>
+            <Setter Property="ToolTip" Value="Nur Werte von 0 bis 255 zulässig!"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!-- ColorPicker -->
+        <Style x:Key="ColorPicker" TargetType="{x:Type xctk:ColorPicker}">
+            <Setter Property="ColorMode" Value="ColorCanvas"/>
+            <Setter Property="IsEnabled" Value="False"/>
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="SelectedColor" Value="Black"/>
+            <Setter Property="ShowAdvancedButton" Value="False"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="28"/>
+            <RowDefinition MinHeight="28"/>
+            <RowDefinition MinHeight="28"/>
+            <RowDefinition MinHeight="28"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0"
+                   Text="{x:Static rx:Resources.MatFileGenLabelColorName}"
+                   ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorName}"
+                   Style="{StaticResource TextBlockLabel}"/>
+
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBoxColorName"
+                 ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorName}"
+                 Style="{StaticResource TextBox}"
+                 IsEnabled="True"/>
+
+        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxColorPicker"
+                  Content="{x:Static rx:Resources.MatFileGenCheckBoxColorSelection}"
+                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorSelection}"
+                  Style="{StaticResource CheckBoxLabel}"/>
+
+        <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPicker"
+                          Style="{StaticResource ColorPicker}"/>
+
+        <CheckBox Grid.Column="0" Grid.Row="2" x:Name="CheckBoxColorHex"
+                  Content="{x:Static rx:Resources.MatFileGenCheckBoxColorHex}"
+                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorHex}"
+                  Style="{StaticResource CheckBoxLabel}"
+                  IsEnabled="False"/>
+
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBoxColorHex"
+                 Text="{x:Static rx:Resources.MatFileGenHexColorDefault}"
+                 ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorHexInput}"
+                 Style="{StaticResource TextBox}"/>
+
+        <CheckBox Grid.Column="0" Grid.Row="3" x:Name="CheckBoxColorRgb"
+                  Content="{x:Static rx:Resources.MatFileGenCheckBoxColorRgb}"
+                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorRgb}"
+                  Style="{StaticResource CheckBoxLabel}"
+                  IsEnabled="False"/>
+
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="TextBoxColorR" Grid.Column="0"
+                     Style="{StaticResource TextBoxColorRgb}"
+                     Margin="0,0,4,0"/>
+            <TextBox x:Name="TextBoxColorG" Grid.Column="1"
+                     Style="{StaticResource TextBoxColorRgb}"
+                     Margin="2,0"/>
+            <TextBox x:Name="TextBoxColorB" Grid.Column="2"
+                     Style="{StaticResource TextBoxColorRgb}"
+                     Margin="4,0,0,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

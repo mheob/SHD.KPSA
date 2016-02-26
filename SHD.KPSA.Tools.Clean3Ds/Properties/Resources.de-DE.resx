@@ -117,22 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TileClean3DsTitle" xml:space="preserve">
-    <value>3DS-Dateien säubern</value>
+  <data name="ButtonSelectPath" xml:space="preserve">
+    <value>_Pfad wählen</value>
+    <comment>c</comment>
   </data>
-  <data name="ThemeChangeToolTip" xml:space="preserve">
-    <value>Design ändern</value>
+  <data name="ButtonStart" xml:space="preserve">
+    <value>_Starten</value>
+    <comment>c</comment>
   </data>
-  <data name="ShowChangelogButtonToolTip" xml:space="preserve">
-    <value>Changelog anzeigen</value>
+  <data name="TitleClean3Ds" xml:space="preserve">
+    <value>Farben in 3DS entfernen</value>
+    <comment>c</comment>
   </data>
-  <data name="ShowHomeButtonToolTip" xml:space="preserve">
-    <value>zur Toolauswahl gehen</value>
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
+    <value>{0} von {1} Dateien gewählt</value>
+    <comment>c</comment>
   </data>
-  <data name="TileMatFileGeneratorTitle" xml:space="preserve">
-    <value>Mat-Files-Generator</value>
+  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
+    <value>alles _auswählen</value>
+    <comment>c</comment>
   </data>
-  <data name="TitleHome" xml:space="preserve">
-    <value>Toolsammlung</value>
+  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
+    <value>alles abwähle_n</value>
+    <comment>c</comment>
+  </data>
+  <data name="MessageDialogCancelContent" xml:space="preserve">
+    <value>Der Vorgang wurde vor der Fertigstellung abgebrochen!</value>
+    <comment>c</comment>
+  </data>
+  <data name="MessageDialogCancelTitle" xml:space="preserve">
+    <value>Abbruch!</value>
+    <comment>c</comment>
+  </data>
+  <data name="MessageDialogCompleteContent" xml:space="preserve">
+    <value>Der Vorgang wurde erfolgreich abgeschlossen.{0}{0}Sollen Die Dateien angezeigt werden?</value>
+    <comment>c</comment>
+  </data>
+  <data name="MessageDialogCompleteTitle" xml:space="preserve">
+    <value>Fertig!</value>
+    <comment>c</comment>
+  </data>
+  <data name="ProgressDialogPreviewContent" xml:space="preserve">
+    <value>Die Verarbeitung wird vorbereitet ...</value>
+    <comment>c</comment>
+  </data>
+  <data name="ProgressDialogRunningContent" xml:space="preserve">
+    <value>Es sind bereits {0} von {1} Dateien verarbeitet.</value>
+    <comment>c</comment>
+  </data>
+  <data name="ProgressDialogTitle" xml:space="preserve">
+    <value>Einen kurzen Moment ...</value>
+    <comment>c</comment>
+  </data>
+  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
+    <value>Geändert</value>
+    <comment>c</comment>
+  </data>
+  <data name="DataGridFilesHeaderName" xml:space="preserve">
+    <value>Datei</value>
+    <comment>c</comment>
   </data>
 </root>

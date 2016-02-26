@@ -1,11 +1,11 @@
-﻿namespace SHD.KPSA.Tools.Application.Views
+﻿namespace SHD.KPSA.Tools.Clean3Ds.Views
 {
     /// <summary>
     /// Interaktionslogik für Tools3DsView.xaml
     /// </summary>
-    public partial class Tools3DsView
+    public partial class Clean3DsView
     {
-        public Tools3DsView()
+        public Clean3DsView()
         {
             InitializeComponent();
         }

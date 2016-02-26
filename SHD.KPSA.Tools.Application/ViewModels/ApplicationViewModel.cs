@@ -4,7 +4,9 @@
     using System.Windows.Input;
     using Changelog.Models;
     using Changelog.ViewModels;
+    using Clean3Ds.ViewModels;
     using MahApps.Metro;
+    using MatFileGenerator.ViewModels;
     using Properties;
     using Utils;
 
@@ -36,6 +38,8 @@
 
             HomePageViewModel = this;
             ChangelogPageViewModel = new ChangelogViewModel(new ChangelogModel());
+            MatFileGenPageViewModel = new MatFileGenViewModel();
+            Clean3DsPageViewModel = new Clean3DsViewModel();
 
             CurrentPageViewModel = HomePageViewModel;
             IsNavigationView = true;
@@ -73,6 +77,16 @@
         /// Gets the ViewModel of the ChangelogPage.
         /// </summary>
         public IPageViewModel ChangelogPageViewModel { get; }
+
+        /// <summary>
+        /// Gets the ViewModel of the MatFileGenPage.
+        /// </summary>
+        public IPageViewModel MatFileGenPageViewModel { get; }
+
+        /// <summary>
+        /// Gets the ViewModel of the Clean3DsPage.
+        /// </summary>
+        public IPageViewModel Clean3DsPageViewModel { get; }
 
         /// <summary>
         /// Gets and sets the Theme.

@@ -1,11 +1,11 @@
-﻿namespace SHD.KPSA.Tools.Application.Models
+﻿namespace SHD.KPSA.Tools.Clean3Ds.Models
 {
     using System;
 
     /// <summary>
     /// The model class to fill a list with Tools3DsFiles.
     /// </summary>
-    public class Tools3DsFiles
+    public class Clean3DsFiles
     {
         public string FullFilePath { get; set; }
         public string FileName { get; set; }

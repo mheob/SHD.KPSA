@@ -1,5 +1,10 @@
-﻿namespace SHD.KPSA.Tools.Application.ViewModels
+﻿namespace SHD.KPSA.Tools.Clean3Ds.ViewModels
 {
+    using KPSA.Utils;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+    using Models;
+    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.IO;
@@ -7,26 +12,22 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
-    using KPSA.Utils;
-    using MahApps.Metro.Controls;
-    using MahApps.Metro.Controls.Dialogs;
-    using Models;
-    using Properties;
     using Utils;
 
-    public class Tools3DsViewModel : ObservableObject, IPageViewModel
+    /// <summary>
+    /// The ViewModel for the Clean3DsViewModel.
+    /// </summary>
+    public class Clean3DsViewModel : ObservableObject, IPageViewModel
     {
         #region Fields
         private const string EXTENSION = "*.3ds";
-
-        private readonly bool isInitialize;
 
         private bool isSelected;
         private string selectedPath;
         private string statusBarSummary;
 
-        private ObservableCollection<Tools3DsFiles> fileCollection = new ObservableCollection<Tools3DsFiles>();
-        private ObservableCollection<Tools3DsFiles> selectedFilesCollection = new ObservableCollection<Tools3DsFiles>();
+        private ObservableCollection<Clean3DsFiles> fileCollection = new ObservableCollection<Clean3DsFiles>();
+        private ObservableCollection<Clean3DsFiles> selectedFilesCollection = new ObservableCollection<Clean3DsFiles>();
 
         private ICommand checkTextBoxPathCommand;
         private ICommand getDirectoryCommand;
@@ -37,15 +38,16 @@
         #endregion Fields
 
         #region Constructor
-        public Tools3DsViewModel()
+        /// <summary>
+        /// Initialize a new instance of the Clean3DsViewModel class.
+        /// </summary>
+        public Clean3DsViewModel()
         {
             SelectedPath = Settings.Default.StartUpFilePath;
 
             CheckTextBoxPath();
             GetFiles();
             UpdateStatusBar();
-
-            isInitialize = true;
         }
         #endregion Constructor
 
@@ -53,7 +55,7 @@
         /// <summary>
         /// Gets the Title of the ChangelogView.
         /// </summary>
-        public string Title => Resources.TitleTools3Ds;
+        public string Title => Resources.TitleClean3Ds;
 
         /// <summary>
         /// Gets and sets the selection state of the listbox items.
@@ -100,7 +102,7 @@
         /// <summary>
         /// Gets and sets a collection of the files in the selected path.
         /// </summary>
-        public ObservableCollection<Tools3DsFiles> FileCollection
+        public ObservableCollection<Clean3DsFiles> FileCollection
         {
             get { return fileCollection; }
             set
@@ -114,7 +116,7 @@
         /// <summary>
         /// Gets and sets a collection of all selected files.
         /// </summary>
-        public ObservableCollection<Tools3DsFiles> SelectedFilesCollection
+        public ObservableCollection<Clean3DsFiles> SelectedFilesCollection
         {
             get { return selectedFilesCollection; }
             set
@@ -157,6 +159,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the command to start the working thread.
+        /// </summary>
         public ICommand StartGenerationCommand
         {
             get
@@ -165,12 +170,15 @@
 
                 startGenerationCommand = new RelayCommand(
                     param => StartGeneration(),
-                    param => FileCollection.Count > 0);
+                    param => SelectedFilesCollection.Count > 0);
 
                 return startGenerationCommand;
             }
         }
 
+        /// <summary>
+        /// Gets the command to update the status bar.
+        /// </summary>
         public ICommand UpdateStatusBarCommand
         {
             get
@@ -181,6 +189,9 @@
             }
         }
 
+        /// <summary>
+        /// Gets the command to select all files at once.
+        /// </summary>
         public ICommand SelectAllCommand
         {
             get
@@ -189,12 +200,15 @@
 
                 selectAllCommand = new RelayCommand(
                     param => SelectAll(),
-                    param => FileCollection.Count > SelectedFilesCollection.Count && FileCollection.Count > 0);
+                    param => FileCollection.Count > SelectedFilesCollection.Count);
 
                 return selectAllCommand;
             }
         }
 
+        /// <summary>
+        /// Gets the command to deselect all files at once.
+        /// </summary>
         public ICommand SelectNoneCommand
         {
             get
@@ -290,13 +304,8 @@
         private void UpdateStatusBar()
         {
             StatusBarSummary = FileCollection.Count > 0
-                ? string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count,
-                    FileCollection.Count)
+                ? string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count)
                 : string.Empty;
-
-            if (!isInitialize) return;
-
-            UpdateListBox();
         }
 
         private void SelectAll()
@@ -308,15 +317,11 @@
                 selectedFile.IsSelected = true;
                 SelectedFilesCollection.Add(selectedFile);
             }
-
-            //SelectAllCommand.RaiseCanExecuteChanged();
         }
 
         private void SelectNone()
         {
             SelectedFilesCollection.Clear();
-
-            //SelectAllCommand.RaiseCanExecuteChanged();
         }
 
         private void GetFiles()
@@ -325,7 +330,7 @@
 
             foreach (var file in Directory.GetFiles(SelectedPath, EXTENSION))
             {
-                FileCollection.Add(new Tools3DsFiles()
+                FileCollection.Add(new Clean3DsFiles()
                 {
                     FullFilePath = Path.GetFullPath(file),
                     FileName = Path.GetFileNameWithoutExtension(file),
@@ -333,13 +338,6 @@
                     IsSelected = false
                 });
             }
-        }
-
-        private void UpdateListBox()
-        {
-            //StartGenerationCommand.RaiseCanExecuteChanged();
-            //SelectAllCommand.RaiseCanExecuteChanged();
-            //SelectNoneCommand.RaiseCanExecuteChanged();
         }
         #endregion Methods
     }

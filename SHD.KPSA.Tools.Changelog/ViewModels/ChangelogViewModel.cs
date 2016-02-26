@@ -6,6 +6,9 @@
     using Properties;
     using Utils;
 
+    /// <summary>
+    /// The ViewModel for the ChangelogViewModel.
+    /// </summary>
     public class ChangelogViewModel : ObservableObject, IPageViewModel
     {
         #region Fields

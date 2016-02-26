@@ -1,7 +1,7 @@
 ﻿#Dinge, die noch in der Planung sind:
 
 * Inkludierung der Mat-File-Generierung
-* Inkludierung des Changeloges
+* Konfigurationsdateien (auch den Changeloges) als JSON (oder XML)
 * 
 * 
 * 

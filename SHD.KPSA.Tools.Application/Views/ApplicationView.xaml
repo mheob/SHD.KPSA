@@ -8,7 +8,11 @@
                      xmlns:rx="clr-namespace:SHD.KPSA.Tools.Application.Properties"
                      xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
                      xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
+                     xmlns:vmMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels;assembly=SHD.KPSA.Tools.MatFileGenerator"
+                     xmlns:vmClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.ViewModels;assembly=SHD.KPSA.Tools.Clean3Ds"
                      xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
+                     xmlns:vMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views;assembly=SHD.KPSA.Tools.MatFileGenerator"
+                     xmlns:vClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.Views;assembly=SHD.KPSA.Tools.Clean3Ds"
                      Title="SHD KPSA-Daten Helper Tools"
                      Height="300" Width="525"
                      Icon="/Resources/logo_shd.ico"
@@ -19,6 +23,14 @@
     <mahapps:MetroWindow.Resources>
         <DataTemplate DataType="{x:Type vmChanglog:ChangelogViewModel}">
             <vChanglog:ChangelogView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmMatFileGen:MatFileGenViewModel}">
+            <vMatFileGen:MatFileGenView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vmClean3Ds:Clean3DsViewModel}">
+            <vClean3Ds:Clean3DsView/>
         </DataTemplate>
 
         <converter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True"/>
@@ -77,8 +89,13 @@
         </mahapps:WindowCommands>
     </mahapps:MetroWindow.RightWindowCommands>
     
-    <DockPanel>
-        <Grid DockPanel.Dock="Top">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -90,24 +107,23 @@
                     Command="{Binding ChangePageCommand}"
                     CommandParameter="{Binding NavigateFromPageViewModel}"/>
             
-           
             <TextBlock Grid.Column="1"
                        Text="{Binding CurrentPageViewModel.Title, FallbackValue=... Header ...}"
                        Style="{StaticResource WindowHeading}"/>
         </Grid>
 
-        <ContentControl DockPanel.Dock="Top"
+        <ContentControl Grid.Row="1"
                         Content="{Binding CurrentPageViewModel}"
                         Visibility="{Binding IsNavigationView, Converter={StaticResource PageView}}"/>
 
-        <WrapPanel HorizontalAlignment="Center"
+        <WrapPanel Grid.Row="1"
+                   HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Visibility="{Binding IsNavigationView, Converter={StaticResource NavigationView}}">
-            <mahapps:Tile x:Name="MatFileGenerator"
-                      Title="{x:Static rx:Resources.TileMatFileGeneratorTitle }"
-                      Style="{StaticResource SmallTileStyle}"
-                      Command="{Binding ChangePageCommand}"
-                      CommandParameter="{Binding ChangelogPageViewModel}">
+            <mahapps:Tile Title="{x:Static rx:Resources.TileMatFileGeneratorTitle }"
+                          Style="{StaticResource SmallTileStyle}"
+                          Command="{Binding ChangePageCommand}"
+                          CommandParameter="{Binding MatFileGenPageViewModel}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}"/>
@@ -115,11 +131,10 @@
                 </Grid>
             </mahapps:Tile>
 
-            <mahapps:Tile x:Name="TileTools3Ds"
-                          Title="{x:Static rx:Resources.TileClean3DsTitle }"
+            <mahapps:Tile Title="{x:Static rx:Resources.TileClean3DsTitle }"
                           Style="{StaticResource SmallTileStyle}"
                           Command="{Binding ChangePageCommand}"
-                          CommandParameter="{Binding ChangelogPageViewModel}">
+                          CommandParameter="{Binding Clean3DsPageViewModel}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
                         <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_3d_3ds}"/>
@@ -127,6 +142,6 @@
                 </Grid>
             </mahapps:Tile>
         </WrapPanel>
-    </DockPanel>
+    </Grid>
 
 </mahapps:MetroWindow>

@@ -63,13 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Tools3DsFiles.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
-    <Compile Include="ViewModels\Tools3DsViewModel.cs" />
-    <Compile Include="Views\Tools3DsView.xaml.cs">
-      <DependentUpon>Tools3DsView.xaml</DependentUpon>
-    </Compile>
     <Page Include="Views\ApplicationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,10 +78,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\logo_shd.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Tools3DsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -168,7 +159,9 @@
       <Name>SHD.KPSA.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
