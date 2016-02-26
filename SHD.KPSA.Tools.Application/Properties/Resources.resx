@@ -119,6 +119,7 @@
   </resheader>
   <data name="ShowChangelogButtonToolTip" xml:space="preserve">
     <value>Show Changelog</value>
+    <comment>D1mPz80ehm@u.de</comment>
   </data>
   <data name="ShowHomeButtonToolTip" xml:space="preserve">
     <value>go to the tool choice</value>

@@ -17,6 +17,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHD.KPSA.Tools.Changelog", "SHD.KPSA.Tools.Changelog\SHD.KPSA.Tools.Changelog.csproj", "{E1E2F795-14BB-4EC1-AA08-D244C95E9BD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHD.KPSA.Tools.Utils", "SHD.KPSA.Tools.Utils\SHD.KPSA.Tools.Utils.csproj", "{20DEBF07-847A-48D9-9B53-B44DCA2A9431}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD1FEB89-E5D8-42DF-91EF-95A1C1113A05} = {DD1FEB89-E5D8-42DF-91EF-95A1C1113A05}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

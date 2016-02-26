@@ -6,11 +6,11 @@ using System.Windows;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 
-[assembly: AssemblyTitle("Tools")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SHD.KPSA.Tools")]
+[assembly: AssemblyDescription("Toolsammlung von kleinen Helpern der Abteilung Ambiente-Daten")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tools")]
+[assembly: AssemblyCompany("SHD Kreative Planungssysteme")]
+[assembly: AssemblyProduct("SHD.KPSA.Tools")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -52,5 +52,5 @@ using System.Windows;
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.3.1.0")]
+[assembly: AssemblyFileVersion("0.3.1.0")]
