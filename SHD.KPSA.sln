@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHD.KPSA.Utils", "Utils\SHD.KPSA.Utils.csproj", "{DD1FEB89-E5D8-42DF-91EF-95A1C1113A05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHD.KPSA.Utils", "SHD.KPSA.Utils\SHD.KPSA.Utils.csproj", "{DD1FEB89-E5D8-42DF-91EF-95A1C1113A05}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHD.KPSA.Tools.Application", "SHD.KPSA.Tools.Application\SHD.KPSA.Tools.Application.csproj", "{D2170743-CE1B-4072-822D-ACE736C5976C}"
 	ProjectSection(ProjectDependencies) = postProject

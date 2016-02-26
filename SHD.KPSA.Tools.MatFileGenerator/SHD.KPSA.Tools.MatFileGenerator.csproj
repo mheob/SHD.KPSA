@@ -99,7 +99,7 @@
       <Project>{20DEBF07-847A-48D9-9B53-B44DCA2A9431}</Project>
       <Name>SHD.KPSA.Tools.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utils\SHD.KPSA.Utils.csproj">
+    <ProjectReference Include="..\SHD.KPSA.Utils\SHD.KPSA.Utils.csproj">
       <Project>{DD1FEB89-E5D8-42DF-91EF-95A1C1113A05}</Project>
       <Name>SHD.KPSA.Utils</Name>
     </ProjectReference>
