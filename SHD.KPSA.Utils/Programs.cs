@@ -5,14 +5,14 @@
     using System.IO;
 
     /// <summary>
-    /// Verarbeitungsklasse zum Starten bestimmter Programme
+    /// Processing class to start certain extern programs.
     /// </summary>
     public static class Programs
     {
         /// <summary>
-        /// Öffnet den Windows-Explorer mit dem angegebenen Ordner-Pfad
+        /// Opens Windows Explorer with the specified folder path.
         /// </summary>
-        /// <param name="path">der Ordner-Pfad</param>
+        /// <param name="path">The folder path to use.</param>
         public static void OpenExplorer(string path)
         {
             if (Directory.Exists(path))
@@ -22,31 +22,11 @@
         }
 
         /// <summary>
-        /// Öffnet eine 3rd-Party-Application im Standardverzeichnis ./3rd-Party.
+        /// Opens a 3rd party application (with params) in the specified subdirectory.
         /// </summary>
-        /// <param name="progName">Die zu startende Datei.</param>
-        /// <param name="path">Das Standard Unterverzeichnis.</param>
-        public static void OpenThirdParty(string progName, string path)
-        {
-            try
-            {
-                if (Directory.Exists(path))
-                {
-                    Process.Start(path + progName);
-                }
-            }
-            catch (Exception ex)
-            {
-                Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
-            }
-        }
-
-        /// <summary>
-        /// Öffnet eine 3rd-Party-Application (mit Parameterübergabe) im Standardverzeichnis ./3rd-Party.
-        /// </summary>
-        /// <param name="progName">Die zu startende Datei.</param>
-        /// <param name="args">Etwaige Parameter.</param>
-        /// <param name="path">Das Standard Unterverzeichnis.</param>
+        /// <param name="progName">The file to start.</param>
+        /// <param name="args">The desired parameters to be used.</param>
+        /// <param name="path">The default subdirectory.</param>
         public static void OpenThirdParty(string progName, string args, string path)
         {
             try
@@ -66,45 +46,6 @@
 
 
                 proc.Start();
-            }
-            catch (Exception ex)
-            {
-                Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
-            }
-        }
-
-        /// <summary>
-        /// Öffnet eine 3rd-Party-Application (mit Parameterübergabe) in angegebenen Unterverzeichnis.
-        /// </summary>
-        /// <param name="progName">Die zu startende Datei.</param>
-        /// <param name="args">Etwaige Parameter.</param>
-        /// <param name="isNotDefault"></param>
-        /// <param name="path">Der komplette Pfad zur Datei.</param>
-        public static void OpenThirdParty(string progName, string args, bool isNotDefault, string path)
-        {
-            try
-            {
-                if (!Directory.Exists(path)) return;
-
-                if (args == "")
-                {
-                    Process.Start(path + "\\" + progName);
-                }
-                else
-                {
-                    var proc = new Process
-                    {
-                        StartInfo =
-                        {
-                            FileName = path + "\\" + progName,
-                            Arguments = args,
-                            UseShellExecute = false,
-                            CreateNoWindow = true
-                        }
-                    };
-
-                    proc.Start();
-                }
             }
             catch (Exception ex)
             {

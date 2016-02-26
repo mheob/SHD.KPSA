@@ -4,13 +4,16 @@
     using System.Collections.Generic;
     using System.IO;
 
+    /// <summary>
+    /// File handling class, that processes the files to text layer.
+    /// </summary>
     public static class FilesHandler
     {
         /// <summary>
-        /// Liest ein Textdokument Zeile für Zeile.
+        /// Reads a text document line by line.
         /// </summary>
-        /// <param name="file">Der Dateipfad.</param>
-        /// <returns>Gibt eine Array-Liste des Textdokumentes Zeilenweise zurück.</returns>
+        /// <param name="file">The path where the file is located.</param>
+        /// <returns>A "List of strings", which is crapped of text document line by line.</returns>
         public static List<string> Read(string file)
         {
             var fileText = new List<string>();
@@ -36,10 +39,10 @@
         }
 
         /// <summary>
-        /// Schreibt ein Textdokument Zeile für Zeile.
+        /// Writes a text document line by line.
         /// </summary>
-        /// <param name="file">Der Dateipfad, de neu zu schreibenden Datei.</param>
-        /// <param name="toWrite">Array-Liste des Textdokumentes Zeilenweise.</param>
+        /// <param name="file">The file path where the file to write is located.</param>
+        /// <param name="toWrite">A "List of strings", to write a text document line by line.</param>
         public static void Write(string file, List<string> toWrite)
         {
             try
