@@ -38,6 +38,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +48,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converter\BaseConverter.cs" />
     <Compile Include="Converter\BoolToVisibleConverter.cs" />
+    <Compile Include="Converter\CaseConverter.cs" />
     <Compile Include="Dialogs.cs" />
     <Compile Include="FilesHandler.cs" />
     <Compile Include="Programs.cs" />
