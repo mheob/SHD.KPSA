@@ -1,15 +1,15 @@
 ﻿namespace SHD.KPSA.Tools.MatFileGenerator.ViewModels
 {
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Windows.Input;
     using KPSA.Utils;
     using Models;
     using Properties;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Windows.Input;
     using Utils;
 
     /// <summary>
-    /// The ViewModel for the MatFileGeneratorViewModel.
+    /// The ViewModel for the MatFileGenViewModel.
     /// </summary>
     public class MatFileGenViewModel : ObservableObject, IPageViewModel
     {

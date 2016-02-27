@@ -5,6 +5,9 @@
     /// </summary>
     public partial class ChangelogView
     {
+        /// <summary>
+        /// Initialize a new instance of the ChangelogView class.
+        /// </summary>
         public ChangelogView()
         {
             InitializeComponent();

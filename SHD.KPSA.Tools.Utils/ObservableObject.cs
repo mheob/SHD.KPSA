@@ -6,6 +6,9 @@
     using System.Runtime.CompilerServices;
     using Annotations;
 
+    /// <summary>
+    /// A base class for all ViewModel to allow a easier handling.
+    /// </summary>
     public class ObservableObject : INotifyPropertyChanged
     {
         #region Debugging Aides

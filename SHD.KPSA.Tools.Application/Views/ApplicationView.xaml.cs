@@ -3,10 +3,13 @@
     using ViewModels;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ApplicationView.xaml
     /// </summary>
     public partial class ApplicationView
     {
+        /// <summary>
+        /// Initialize a new instance of the ApplicationView class.
+        /// </summary>
         public ApplicationView()
         {
             InitializeComponent();

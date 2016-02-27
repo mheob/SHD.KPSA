@@ -11,6 +11,9 @@
     /// </summary>
     public static class MultiSelectorBehaviours
     {
+        /// <summary>
+        /// ...
+        /// </summary>
         public static readonly DependencyProperty SynchronizedSelectedItems = DependencyProperty.RegisterAttached(
             "SynchronizedSelectedItems", typeof (IList), typeof (MultiSelectorBehaviours),
             new PropertyMetadata(null, OnSynchronizedSelectedItemsChanged));
@@ -122,14 +125,13 @@
                 {
                     return multiSelector.SelectedItems;
                 }
-                else if (selector is ListBox)
+
+                var box = selector as ListBox;
+                if (box != null)
                 {
-                    return ((ListBox) selector).SelectedItems;
+                    return box.SelectedItems;
                 }
-                else
-                {
-                    throw new InvalidOperationException("Target object has no SelectedItems property to bind.");
-                }
+                throw new InvalidOperationException("Target object has no SelectedItems property to bind.");
             }
         }
     }

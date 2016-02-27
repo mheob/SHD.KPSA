@@ -10,6 +10,9 @@
     using Properties;
     using Utils;
 
+    /// <summary>
+    /// Process the content for the changelog module,
+    /// </summary>
     public class ChangelogModel
     {
         #region Properties
@@ -25,10 +28,9 @@
         {
             get
             {
-                var version = Assembly.GetExecutingAssembly().GetName().Version;
-                var date = new DateTime(2000, 1, 1).AddDays(version.Build).AddSeconds(version.Revision * 2);
+                DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
 
-                return string.Format(Resources.LastChangeText, date);
+                return string.Format(Resources.LastChangeText, buildDate);
             }
         }
 
