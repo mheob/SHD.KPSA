@@ -12,6 +12,10 @@
     /// </summary>
     public partial class App
     {
+        /// <summary>
+        /// Raises the System.Windows.Application.Startup event.
+        /// </summary>
+        /// <param name="e">A System.Windows.StartupEventArgs that includes the event data.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

@@ -6,11 +6,11 @@ using System.Windows;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 
-[assembly: AssemblyTitle("SHD.KPSA.Tools")]
+[assembly: AssemblyTitle("SHD.KPSA.HelperTools")]
 [assembly: AssemblyDescription("Toolsammlung von kleinen Helpern der Abteilung Ambiente-Daten")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SHD Kreative Planungssysteme")]
-[assembly: AssemblyProduct("SHD.KPSA.Tools")]
+[assembly: AssemblyCompany("SHD Kreative Planungssysteme GmbH")]
+[assembly: AssemblyProduct("SHD.KPSA.HelperTools")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -33,11 +33,11 @@ using System.Windows;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //Speicherort der designspezifischen Ressourcenwörterbücher
-    //(wird verwendet, wenn eine Ressource auf der Seite
-    // oder in den Anwendungsressourcen-Wörterbüchern nicht gefunden werden kann.)
+                                     //(wird verwendet, wenn eine Ressource auf der Seite
+                                     // oder in den Anwendungsressourcen-Wörterbüchern nicht gefunden werden kann.)
     ResourceDictionaryLocation.SourceAssembly //Speicherort des generischen Ressourcenwörterbuchs
-    //(wird verwendet, wenn eine Ressource auf der Seite, in der Anwendung oder einem 
-    // designspezifischen Ressourcenwörterbuch nicht gefunden werden kann.)
+                                              //(wird verwendet, wenn eine Ressource auf der Seite, in der Anwendung oder einem 
+                                              // designspezifischen Ressourcenwörterbuch nicht gefunden werden kann.)
     )]
 
 
@@ -52,5 +52,5 @@ using System.Windows;
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("0.3.1.0")]
-[assembly: AssemblyFileVersion("0.3.1.0")]
+[assembly: AssemblyVersion("0.3.1.*")]
+//[assembly: AssemblyFileVersion("1.0.0.0")]
