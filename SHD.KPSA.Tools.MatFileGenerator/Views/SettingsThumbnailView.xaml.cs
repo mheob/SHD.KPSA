@@ -1,4 +1,4 @@
-﻿namespace SHD.KPSA.Tools.MatFileGenerator.Views.Sections
+﻿namespace SHD.KPSA.Tools.MatFileGenerator.Views
 {
     /// <summary>
     /// Interaction logic for "SettingsThumbnailView.xaml"

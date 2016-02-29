@@ -1,17 +1,16 @@
-﻿<UserControl x:Class="SHD.KPSA.Tools.MatFileGenerator.Views.Sections.SettingsSolidView"
+﻿<UserControl x:Class="SHD.KPSA.Tools.MatFileGenerator.Views.SettingsSolidView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
-             xmlns:vms="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels.Sections"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vms:SettingsSolidViewModel, IsDesignTimeCreatable=True}"
              d:DesignHeight="150" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
+        <ResourceDictionary
+            Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
     </UserControl.Resources>
 
     <Grid VerticalAlignment="Top">
@@ -72,10 +71,12 @@
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="0,4,4,4"
                      IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
+
             <TextBox x:Name="TextBoxColorG" Grid.Column="1"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="2,4"
                      IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
+
             <TextBox x:Name="TextBoxColorB" Grid.Column="2"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="4,4,0,4"

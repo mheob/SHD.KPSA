@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
-             xmlns:vs="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views.Sections"
+             xmlns:v="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views"
              xmlns:viewModels="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
-             xmlns:listSelection="clr-namespace:SHD.KPSA.Tools.Utils.ListSelection;assembly=SHD.KPSA.Tools.Utils"
+             xmlns:sv="clr-namespace:SHD.KPSA.Tools.Utils.SharedViews;assembly=SHD.KPSA.Tools.Utils"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModels:MatFileGenViewModel}">
@@ -60,34 +59,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              Margin="0,0,0,4"
-              HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-
-            <TextBox x:Name="TextBoxPath"
-                     Text="{Binding Path=SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="0,0,4,4"
-                     Padding="4">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="LostFocus">
-                        <i:InvokeCommandAction Command="{Binding CheckTextBoxPathCommand}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-
-            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-            <Button Grid.Column="1"
-                    Content="{x:Static rx:Resources.ButtonSelectPath}"
-                    Style="{StaticResource ButtonStyle}"
-                    Margin="4,0,0,4"
-                    Command="{Binding GetDirectoryCommand}"
-                    CommandParameter="{Binding ElementName=TextBoxPath, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-        </Grid>
+        <sv:PathSelection Grid.Row="0" />
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -99,147 +71,42 @@
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
-                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemTexture}"
-                         Style="{StaticResource TabItem}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                        <StackPanel Grid.Row="0"
-                                    Style="{StaticResource DataGridButtonGroup}">
-                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-                            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                            <Button x:Name="DataGridButtonSelectAll"
-                                    Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
-                                    Style="{StaticResource DataGridButton}"
-                                    Command="{Binding SelectAllCommand}"
-                                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-
-                            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                            <Button x:Name="DataGridButtonSelectNone"
-                                    Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
-                                    Style="{StaticResource DataGridButton}"
-                                    Command="{Binding SelectNoneCommand}"
-                                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-                        </StackPanel>
-
-                        <DataGrid x:Name="DataGridFiles"
-                                  ItemsSource="{Binding Path=FileCollection}"
-                                  listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFilesCollection}"
-                                  Grid.Row="1"
-                                  AutoGenerateColumns="False"
-                                  CanUserAddRows="False"
-                                  CanUserDeleteRows="False"
-                                  CanUserSortColumns="True" Grid.ColumnSpan="2">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
-                                                           CommandParameter="{Binding ElementName=TextBlockStatusBar,
-                                                                                      Path=Text}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-
-                            <DataGrid.RowStyle>
-                                <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
-                                    <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-                                    <Setter Property="IsSelected"
-                                            Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                </Style>
-                            </DataGrid.RowStyle>
-
-                            <DataGrid.Columns>
-                                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                        IsReadOnly="True"
-                                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
-                                                                          Path=IsSelected, Mode=TwoWay}" />
-                                <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderName}"
-                                                    Width="*"
-                                                    IsReadOnly="True"
-                                                    Binding="{Binding FileName}" />
-                                <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderChanged}"
-                                                    IsReadOnly="True"
-                                                    Binding="{Binding LastModified, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-
-                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                        <Separator Grid.Row="2"
-                                   Style="{StaticResource VerticalSeparator}" Grid.ColumnSpan="2" />
-                        <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-
-                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-                        <TextBlock Grid.Row="3"
-                                   x:Name="TextBlockStatusBar"
-                                   Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
-                                   Style="{StaticResource DataGridFilesStatusBar}" Grid.ColumnSpan="2" Margin="52,0" />
-                        <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-                    </Grid>
+                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemTexture}" Style="{StaticResource TabItem}">
+                    <sv:DataGridFiles />
                 </TabItem>
 
-                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemSolid}"
-                         Style="{StaticResource TabItem}">
+                <TabItem Header="{x:Static rx:Resources.MatFileGenTabItemSolid}" Style="{StaticResource TabItem}">
                     <GroupBox Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
-                        <vs:SettingsSolidView />
+                        <v:SettingsSolidView />
                     </GroupBox>
                 </TabItem>
             </TabControl>
 
             <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-            <GridSplitter Grid.Column="1"
-                          Style="{StaticResource HorizontalGridSplitter}" />
-
+            <GridSplitter Grid.Column="1" Style="{StaticResource HorizontalGridSplitter}" />
             <!-- ToDo: displaying a preview -->
-            <TextBlock Grid.Column="2"
-                       Style="{StaticResource PreviewToDo}" />
-
-            <GridSplitter Grid.Column="3"
-                          Style="{StaticResource HorizontalGridSplitter}" />
+            <TextBlock Grid.Column="2" Style="{StaticResource PreviewToDo}" />
+            <GridSplitter Grid.Column="3" Style="{StaticResource HorizontalGridSplitter}" />
             <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
-            <ScrollViewer Grid.Column="4"
-                          VerticalScrollBarVisibility="Auto">
+            <ScrollViewer Grid.Column="4" VerticalScrollBarVisibility="Auto">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <GroupBox Grid.Row="0"
-                              Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
+                    <GroupBox Grid.Row="0" Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
+                        <!-- ToDo: Settings for the "*.mat" file -->
                     </GroupBox>
 
-                    <GroupBox Grid.Row="1"
-                              Header="{x:Static rx:Resources.MatFileGenGroupThumbnails}">
-                        <vs:SettingsThumbnailView />
+                    <GroupBox Grid.Row="1" Header="{x:Static rx:Resources.MatFileGenGroupThumbnails}">
+                        <v:SettingsThumbnailView />
                     </GroupBox>
                 </Grid>
             </ScrollViewer>
-
         </Grid>
 
-        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-        <StackPanel Grid.Row="2"
-                    Style="{StaticResource FooterButtonGroup}">
-            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
-            <Button x:Name="ButtonStart"
-                    Content="{x:Static rx:Resources.ButtonStart}"
-                    Style="{StaticResource FooterButtonRight}"
-                    Command="{Binding StartGenerationCommand}"
-                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
-        </StackPanel>
+        <sv:FooterStart Grid.Row="2" />
     </Grid>
 </UserControl>

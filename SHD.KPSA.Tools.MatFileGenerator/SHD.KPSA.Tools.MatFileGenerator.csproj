@@ -96,15 +96,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MatFileGenViewModel.cs" />
-    <Compile Include="ViewModels\Sections\SettingsSolidViewModel.cs" />
-    <Compile Include="ViewModels\Sections\SettingsThumbnailViewModel.cs" />
     <Compile Include="Views\MatFileGenView.xaml.cs">
       <DependentUpon>MatFileGenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sections\SettingsSolidView.xaml.cs">
+    <Compile Include="Views\SettingsSolidView.xaml.cs">
       <DependentUpon>SettingsSolidView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sections\SettingsThumbnailView.xaml.cs">
+    <Compile Include="Views\SettingsThumbnailView.xaml.cs">
       <DependentUpon>SettingsThumbnailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -150,11 +148,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Sections\SettingsSolidView.xaml">
+    <Page Include="Views\SettingsSolidView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Sections\SettingsThumbnailView.xaml">
+    <Page Include="Views\SettingsThumbnailView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
