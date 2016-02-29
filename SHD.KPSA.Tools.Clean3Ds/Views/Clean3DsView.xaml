@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:listSelection="clr-namespace:SHD.KPSA.Tools.Utils.ListSelection;assembly=SHD.KPSA.Tools.Utils"
-             xmlns:rx="clr-namespace:SHD.KPSA.Tools.Clean3Ds.Properties"
+             xmlns:sv="clr-namespace:SHD.KPSA.Tools.Utils.SharedViews;assembly=SHD.KPSA.Tools.Utils"
              xmlns:viewModels="clr-namespace:SHD.KPSA.Tools.Clean3Ds.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="650"
@@ -13,127 +11,31 @@
 
     <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              Margin="0,0,0,4"
-              HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBox x:Name="TextBoxPath"
-                     Text="{Binding Path=SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="0,0,4,4"
-                     Padding="4">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="LostFocus">
-                        <i:InvokeCommandAction Command="{Binding CheckTextBoxPathCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-            <Button Grid.Column="1"
-                    Content="{x:Static rx:Resources.ButtonSelectPath}"
-                    Style="{StaticResource ButtonStyle}"
-                    Margin="4,0,0,4"
-                    Command="{Binding GetDirectoryCommand}"
-                    CommandParameter="{Binding ElementName=TextBoxPath, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        </Grid>
+        <sv:PathSelection Grid.Row="0" />
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                
-                <StackPanel Grid.Row="0"
-                            Style="{StaticResource DataGridButtonGroup}">
-                    <Button x:Name="DataGridButtonSelectAll"
-                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
-                            Style="{StaticResource DataGridButton}"
-                            Command="{Binding SelectAllCommand}"
-                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button x:Name="DataGridButtonSelectNone"
-                            Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
-                            Style="{StaticResource DataGridButton}"
-                            Command="{Binding SelectNoneCommand}"
-                            CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                                       Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
+            <sv:DataGridFiles Grid.Column="0" />
 
-                <DataGrid x:Name="DataGridFiles"
-                          ItemsSource="{Binding Path=FileCollection}"
-                          listSelection:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFilesCollection}"
-                          Grid.Row="1"
-                          AutoGenerateColumns="False"
-                          CanUserAddRows="False"
-                          CanUserDeleteRows="False"
-                          CanUserSortColumns="True">
-                    
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding UpdateStatusBarCommand}"
-                                                   CommandParameter="{Binding ElementName=TextBlockStatusBar, Path=Text}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    
-                    <DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
-                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                IsReadOnly="True"
-                                                Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
-                                                                  Path=IsSelected, Mode=TwoWay}"/>
-                        <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderName}"
-                                            Width="*"
-                                            IsReadOnly="True"
-                                            Binding="{Binding FileName}"/>
-                        <DataGridTextColumn Header="{x:Static rx:Resources.DataGridFilesHeaderChanged}"
-                                            Width="*"
-                                            IsReadOnly="True"
-                                            Binding="{Binding LastModified, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
+            <GridSplitter Grid.Column="1" Style="{StaticResource HorizontalGridSplitter}" />
 
-                <Separator Grid.Row="2"
-                           Style="{StaticResource VerticalSeparator}"/>
-
-                <TextBlock Grid.Row="3"
-                           x:Name="TextBlockStatusBar"
-                           Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
-                           Style="{StaticResource DataGridFilesStatusBar}"/>
-            </Grid>
-
-            <GridSplitter Grid.Column="1"
-                          Style="{StaticResource HorizontalGridSplitter}"/>
+            <!-- ToDo: displaying a preview -->
+            <TextBlock Grid.Column="2"
+                       Style="{StaticResource PreviewToDo}" />
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
         </Grid>
 
-        <StackPanel Grid.Row="2"
-                    Style="{StaticResource FooterButtonGroup}">
-            <Button x:Name="ButtonStart"
-                    Content="{x:Static rx:Resources.ButtonStart}"
-                    Style="{StaticResource FooterButtonRight}"
-                    Command="{Binding StartGenerationCommand}"
-                    CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
-                                               Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        </StackPanel>
+        <sv:FooterStart Grid.Row="2" />
     </Grid>
 </UserControl>

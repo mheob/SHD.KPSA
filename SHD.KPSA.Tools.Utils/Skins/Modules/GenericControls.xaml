@@ -60,6 +60,15 @@
                 <Setter Property="UsingAlphaChannel" Value="False" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
+            
+            <!-- AREAS WHICH WILL BE DONE LATER -->
+            <Style x:Key="PreviewToDo" TargetType="{x:Type TextBlock}">
+                <Setter Property="Text" Value="... hier folgt evtl. irgendwann eine Vorschau ..." />
+                <Setter Property="Foreground" Value="Orange" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

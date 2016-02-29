@@ -103,6 +103,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="SharedViews\DataGridFiles.xaml.cs">
+      <DependentUpon>DataGridFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SharedViews\FooterStart.xaml.cs">
+      <DependentUpon>FooterStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SharedViews\PathSelection.xaml.cs">
+      <DependentUpon>PathSelection.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -131,6 +140,18 @@
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SharedViews\DataGridFiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SharedViews\FooterStart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SharedViews\PathSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Skins\Accents\BaseDark.xaml">
       <Generator>MSBuild:Compile</Generator>

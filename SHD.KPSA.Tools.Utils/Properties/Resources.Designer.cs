@@ -61,6 +61,60 @@ namespace SHD.KPSA.Tools.Utils.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select _Path ähnelt.
+        /// </summary>
+        public static string ButtonSelectPath {
+            get {
+                return ResourceManager.GetString("ButtonSelectPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die _Start ähnelt.
+        /// </summary>
+        public static string ButtonStart {
+            get {
+                return ResourceManager.GetString("ButtonStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Select _all ähnelt.
+        /// </summary>
+        public static string DataGridFilesButtonSelectAll {
+            get {
+                return ResourceManager.GetString("DataGridFilesButtonSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Selecet _none ähnelt.
+        /// </summary>
+        public static string DataGridFilesButtonSelectNone {
+            get {
+                return ResourceManager.GetString("DataGridFilesButtonSelectNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Modified ähnelt.
+        /// </summary>
+        public static string DataGridFilesHeaderChanged {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
+        /// </summary>
+        public static string DataGridFilesHeaderName {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} / {1} files processed ähnelt.
         /// </summary>
         public static string ProgressLabelState {

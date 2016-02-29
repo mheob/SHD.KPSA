@@ -198,16 +198,11 @@
             <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <GridSplitter Grid.Column="1"
                           Style="{StaticResource HorizontalGridSplitter}" />
-            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
             <!-- ToDo: displaying a preview -->
             <TextBlock Grid.Column="2"
-                       Text="... hier folgt eine Preview ..."
-                       Foreground="Orange"
-                       FontWeight="Bold"
-                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                       Style="{StaticResource PreviewToDo}" />
 
-            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <GridSplitter Grid.Column="3"
                           Style="{StaticResource HorizontalGridSplitter}" />
             <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
