@@ -1,7 +1,7 @@
 ﻿namespace SHD.KPSA.Tools.Clean3Ds.Views
 {
     /// <summary>
-    /// Interaction logic for DataGridFiles.xaml
+    /// Interaction logic for Clean3DsView.xaml
     /// </summary>
     public partial class Clean3DsView
     {
