@@ -14,7 +14,7 @@
                      xmlns:vMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views;assembly=SHD.KPSA.Tools.MatFileGenerator"
                      xmlns:vClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.Views;assembly=SHD.KPSA.Tools.Clean3Ds"
                      Title="SHD KPSA-Daten Helper Tools"
-                     Height="300" Width="525"
+                     Height="650" Width="900"
                      Icon="/Resources/logo_shd.ico"
                      GlowBrush="{StaticResource AccentColorBrush}" SaveWindowPosition="True"
                      mc:Ignorable="d"
@@ -22,28 +22,28 @@
 
     <mahapps:MetroWindow.Resources>
         <DataTemplate DataType="{x:Type vmChanglog:ChangelogViewModel}">
-            <vChanglog:ChangelogView/>
+            <vChanglog:ChangelogView />
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vmMatFileGen:MatFileGenViewModel}">
-            <vMatFileGen:MatFileGenView/>
+            <vMatFileGen:MatFileGenView />
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vmClean3Ds:Clean3DsViewModel}">
-            <vClean3Ds:Clean3DsView/>
+            <vClean3Ds:Clean3DsView />
         </DataTemplate>
 
-        <converter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True"/>
-        <converter:BoolToVisibleConverter x:Key="NavigationView" Collapse="True"/>
-        <converter:BoolToVisibleConverter x:Key="PageView" Collapse="True" Reverse="True"/>
+        <converter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True" />
+        <converter:BoolToVisibleConverter x:Key="NavigationView" Collapse="True" />
+        <converter:BoolToVisibleConverter x:Key="PageView" Collapse="True" Reverse="True" />
     </mahapps:MetroWindow.Resources>
 
     <mahapps:MetroWindow.Style>
         <Style TargetType="mahapps:MetroWindow">
-            <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource WindowBackgroundBrush}" />
         </Style>
     </mahapps:MetroWindow.Style>
-    
+
     <mahapps:MetroWindow.LeftWindowCommands>
         <mahapps:WindowCommands>
             <Button ToolTip="{x:Static rx:Resources.ShowHomeButtonToolTip}"
@@ -54,7 +54,7 @@
                            Height="20"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home_variant}"/>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_home_variant}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
@@ -70,7 +70,7 @@
                            Height="20"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_draw_brush_reflection}"/>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_draw_brush_reflection}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
@@ -82,39 +82,39 @@
                            Height="20"
                            Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                     <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_text}"/>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_text}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
         </mahapps:WindowCommands>
     </mahapps:MetroWindow.RightWindowCommands>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0"
                     Style="{StaticResource ButtonMenu}"
                     Visibility="{Binding CanBackNav, Converter={StaticResource BackNavigation}}"
                     Command="{Binding ChangePageCommand}"
-                    CommandParameter="{Binding NavigateFromPageViewModel}"/>
-            
+                    CommandParameter="{Binding NavigateFromPageViewModel}" />
+
             <TextBlock Grid.Column="1"
                        Text="{Binding CurrentPageViewModel.Title, FallbackValue=... Header ...}"
-                       Style="{StaticResource WindowHeading}"/>
+                       Style="{StaticResource WindowHeading}" />
         </Grid>
 
         <ContentControl Grid.Row="1"
                         Content="{Binding CurrentPageViewModel}"
-                        Visibility="{Binding IsNavigationView, Converter={StaticResource PageView}}"/>
+                        Visibility="{Binding IsNavigationView, Converter={StaticResource PageView}}" />
 
         <WrapPanel Grid.Row="1"
                    HorizontalAlignment="Center"
@@ -126,7 +126,7 @@
                           CommandParameter="{Binding MatFileGenPageViewModel}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}"/>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}" />
                     </Grid.OpacityMask>
                 </Grid>
             </mahapps:Tile>
@@ -137,7 +137,7 @@
                           CommandParameter="{Binding Clean3DsPageViewModel}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_3d_3ds}"/>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_3d_3ds}" />
                     </Grid.OpacityMask>
                 </Grid>
             </mahapps:Tile>

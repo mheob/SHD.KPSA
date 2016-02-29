@@ -28,7 +28,8 @@
     <SolidColorBrush x:Key="ButtonMouseOverBorderBrush" Color="{StaticResource BlackColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="ButtonMouseOverInnerBorderBrush" Color="{StaticResource BlackColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="ComboBoxMouseOverBorderBrush" Color="{StaticResource BlackColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="ComboBoxMouseOverInnerBorderBrush" Color="{StaticResource BlackColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="ComboBoxMouseOverInnerBorderBrush" Color="{StaticResource BlackColor}"
+                     options:Freeze="True" />
 
     <SolidColorBrush x:Key="ControlBackgroundBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
@@ -36,8 +37,10 @@
     <SolidColorBrush x:Key="DisabledWhiteBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WhiteColor}" options:Freeze="True" />
 
-    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="{StaticResource WhiteColor}" options:Freeze="True" />
-    <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="{StaticResource BlackColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="{StaticResource WhiteColor}"
+                     options:Freeze="True" />
+    <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="{StaticResource BlackColor}"
+                     options:Freeze="True" />
 
     <SolidColorBrush x:Key="GrayBrush1" Color="{StaticResource Gray1}" options:Freeze="True" />
     <SolidColorBrush x:Key="GrayBrush2" Color="{StaticResource Gray2}" options:Freeze="True" />
@@ -79,7 +82,8 @@
     <SolidColorBrush x:Key="DisabledMenuItemForeground" Color="{StaticResource Gray7}" options:Freeze="True" />
     <SolidColorBrush x:Key="DisabledMenuItemGlyphPanel" Color="#848589" options:Freeze="True" />
 
-    <SolidColorBrush x:Key="{x:Static SystemColors.MenuTextBrushKey}" Color="{StaticResource BlackColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="{x:Static SystemColors.MenuTextBrushKey}" Color="{StaticResource BlackColor}"
+                     options:Freeze="True" />
 
     <Color x:Key="MenuShadowColor">#FFFFFFFF</Color>
 

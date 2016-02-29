@@ -47,12 +47,6 @@
         -->
 
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary
-                    Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.datagrid.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SHD.KPSA.Tools.Utils;component/Skins/Generic.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
             <Style x:Key="TabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
                 <Setter Property="mahapps:ControlsHelper.HeaderFontSize" Value="16" />
             </Style>
@@ -85,21 +79,23 @@
                 </i:Interaction.Triggers>
             </TextBox>
 
+            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <Button Grid.Column="1"
                     Content="{x:Static rx:Resources.ButtonSelectPath}"
                     Style="{StaticResource ButtonStyle}"
                     Margin="4,0,0,4"
                     Command="{Binding GetDirectoryCommand}"
                     CommandParameter="{Binding ElementName=TextBoxPath, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
         </Grid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
@@ -113,21 +109,27 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
+                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                         <StackPanel Grid.Row="0"
                                     Style="{StaticResource DataGridButtonGroup}">
+                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
+                            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                             <Button x:Name="DataGridButtonSelectAll"
                                     Content="{x:Static rx:Resources.DataGridFilesButtonSelectAll}"
                                     Style="{StaticResource DataGridButton}"
                                     Command="{Binding SelectAllCommand}"
                                     CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
+                            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                             <Button x:Name="DataGridButtonSelectNone"
                                     Content="{x:Static rx:Resources.DataGridFilesButtonSelectNone}"
                                     Style="{StaticResource DataGridButton}"
                                     Command="{Binding SelectNoneCommand}"
                                     CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
                         </StackPanel>
 
                         <DataGrid x:Name="DataGridFiles"
@@ -147,7 +149,9 @@
                             </i:Interaction.Triggers>
 
                             <DataGrid.RowStyle>
+                                <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                                 <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                                    <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
                                     <Setter Property="IsSelected"
                                             Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 </Style>
@@ -169,13 +173,17 @@
                             </DataGrid.Columns>
                         </DataGrid>
 
+                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                         <Separator Grid.Row="2"
                                    Style="{StaticResource VerticalSeparator}" Grid.ColumnSpan="2" />
+                        <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
+                        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
                         <TextBlock Grid.Row="3"
                                    x:Name="TextBlockStatusBar"
                                    Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
                                    Style="{StaticResource DataGridFilesStatusBar}" Grid.ColumnSpan="2" Margin="52,0" />
+                        <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
                     </Grid>
                 </TabItem>
 
@@ -187,8 +195,10 @@
                 </TabItem>
             </TabControl>
 
+            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <GridSplitter Grid.Column="1"
                           Style="{StaticResource HorizontalGridSplitter}" />
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
             <!-- ToDo: displaying a preview -->
             <TextBlock Grid.Column="2"
@@ -197,8 +207,10 @@
                        FontWeight="Bold"
                        VerticalAlignment="Center" HorizontalAlignment="Center" />
 
+            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <GridSplitter Grid.Column="3"
                           Style="{StaticResource HorizontalGridSplitter}" />
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
 
             <ScrollViewer Grid.Column="4"
                           VerticalScrollBarVisibility="Auto">
@@ -221,14 +233,18 @@
 
         </Grid>
 
+        <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
         <StackPanel Grid.Row="2"
                     Style="{StaticResource FooterButtonGroup}">
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
+            <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
             <Button x:Name="ButtonStart"
                     Content="{x:Static rx:Resources.ButtonStart}"
                     Style="{StaticResource FooterButtonRight}"
                     Command="{Binding StartGenerationCommand}"
                     CommandParameter="{Binding ElementName=DataGridFiles, Path=ItemsSource,
                                                Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
         </StackPanel>
     </Grid>
 </UserControl>

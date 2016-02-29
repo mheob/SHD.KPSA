@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/SHD.KPSA.Tools.Utils;component/Resources/Icons.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SHD.KPSA.Tools.Utils;component/Resources/Icons.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <!-- BACKNAVIGATION -->
     <Style x:Key="ButtonBackNav" TargetType="{x:Type Button}">
         <Setter Property="Template">
@@ -12,7 +12,9 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Ellipse Name="EllipseButtonBackNav"
-                                 Width="30" Height="25" Fill="{DynamicResource GrayBrush6}">
+                                 Width="30"
+                                 Height="25"
+                                 Fill="{DynamicResource GrayBrush6}">
                             <Ellipse.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_arrow_left}" Stretch="Fill" />
                             </Ellipse.OpacityMask>
@@ -20,7 +22,7 @@
                                 <EventTrigger RoutedEvent="MouseEnter">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation 
+                                            <ColorAnimation
                                                 Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
                                                 To="DimGray" Duration="0:0:0.1" />
                                         </Storyboard>
@@ -38,14 +40,15 @@
                                 </EventTrigger>
                             </Ellipse.Triggers>
                         </Ellipse>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Margin" Value="16"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="16" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
 
     <!-- MAINMENU -->
@@ -55,7 +58,9 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
                         <Rectangle Name="EllipseButtonBackNav"
-                                 Width="30" Height="25" Fill="{DynamicResource GrayBrush6}">
+                                   Width="30"
+                                   Height="25"
+                                   Fill="{DynamicResource GrayBrush6}">
                             <Rectangle.OpacityMask>
                                 <VisualBrush Visual="{StaticResource appbar_arrow_left}" Stretch="Fill" />
                             </Rectangle.OpacityMask>
@@ -63,7 +68,7 @@
                                 <EventTrigger RoutedEvent="MouseEnter">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation 
+                                            <ColorAnimation
                                                 Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
                                                 To="DimGray" Duration="0:0:0.1" />
                                         </Storyboard>
@@ -81,24 +86,25 @@
                                 </EventTrigger>
                             </Rectangle.Triggers>
                         </Rectangle>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="Margin" Value="16"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="16" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
 
     <!-- HEADING -->
     <Style x:Key="WindowHeading" TargetType="{x:Type TextBlock}">
-        <Setter Property="Margin" Value="0,16"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
-        <Setter Property="FontSize" Value="22"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+        <Setter Property="Margin" Value="0,16" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
     </Style>
-    
+
 </ResourceDictionary>

@@ -14,14 +14,14 @@
                       HorizontalScrollBarVisibility="Auto"
                       VerticalScrollBarVisibility="Auto">
             <DockPanel x:Name="StackPanelMainContent"
-                        Margin="16,8">
+                       Margin="16,8">
                 <Label x:Name="LabelContent" DockPanel.Dock="Top"
                        Content="{Binding BuildNote, FallbackValue=Changelog__Items}"
                        HorizontalContentAlignment="Right"
                        FontFamily="Consolas"
-                       FontStyle="Italic"/>
-                
-                <ItemsControl ItemsSource="{Binding ChangelogLines}"/>
+                       FontStyle="Italic" />
+
+                <ItemsControl ItemsSource="{Binding ChangelogLines}" />
             </DockPanel>
         </ScrollViewer>
     </Grid>

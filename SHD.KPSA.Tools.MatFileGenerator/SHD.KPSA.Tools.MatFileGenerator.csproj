@@ -142,6 +142,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Skins\MatFileGen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MatFileGenView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
