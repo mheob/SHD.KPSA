@@ -15,26 +15,17 @@
             <Setter Property="Margin" Value="0,4"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsChecked" Value="True"/>
         </Style>
 
         <!-- Text Color -->
-        <Style x:Key="TextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="IsEnabled" Value="False"/>
+        <Style x:Key="TextBoxColor" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Margin" Value="0,4"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
-        <!-- ColorPicker -->
-        <Style x:Key="ColorPicker" TargetType="{x:Type xctk:ColorPicker}">
-            <Setter Property="ColorMode" Value="ColorCanvas"/>
-            <Setter Property="IsEnabled" Value="False"/>
-            <Setter Property="Margin" Value="0,4"/>
-            <Setter Property="SelectedColor" Value="Black"/>
-            <Setter Property="ShowAdvancedButton" Value="False"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
+        <!-- Text ColorPicker -->
         <Style x:Key="TextBoxColorPicker" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Margin" Value="4,4,0,4"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -59,7 +50,7 @@
         <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxThumb"
                   Content="{x:Static rx:Resources.MatFileGenCheckBoxThumb}"
                   ToolTip="{x:Static rx:Resources.MatFileGenToolTipThumb}"
-                  Style="{StaticResource  CheckBoxLabel}"/>
+                  Style="{StaticResource CheckBoxLabel}"/>
 
         <Label Grid.Column="1" Grid.Row="0" x:Name="LabelThumb"
                Content="{x:Static rx:Resources.MatFileGenLabelThumb}"
@@ -69,8 +60,9 @@
 
         <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxThumbFolder"
                  Text="{x:Static rx:Resources.MatFileGenThumbFolderDefault}"
-                 Style="{StaticResource TextBox}"
-                 HorizontalContentAlignment="Center"/>
+                 Style="{StaticResource TextBoxColor}"
+                 HorizontalContentAlignment="Center"
+                 IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked}"/>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -86,29 +78,32 @@
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxBorderOuter"
                       Content="{x:Static rx:Resources.MatFileGenCheckBoxBorderOuter}"
                       ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderOuter}"
-                      Style="{StaticResource  CheckBoxLabel}"/>
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked, Mode=OneWay}"/>
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
-                              Style="{StaticResource ColorPicker}"/>
+                              IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}"/>
 
             <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxBorderOuterSize"
                      Text="{x:Static rx:Resources.MatFileGenTextBoxOuterSizeDefault}"
                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderSize}"
-                     Style="{StaticResource TextBoxColorPicker}"/>
+                     Style="{StaticResource TextBoxColorPicker}"
+                     IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}"/>
 
             <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxBorderInner"
                       Content="{x:Static rx:Resources.MatFileGenCheckBoxBorderInner}"
                       ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderInner}"
-                      Style="{StaticResource  CheckBoxLabel}"/>
+                      Style="{StaticResource CheckBoxLabel}"/>
 
-            <xctk:ColorPicker  Grid.Column="1" Grid.Row="1" x:Name="ColorPickerBorderInner"
-                               Style="{StaticResource ColorPicker}"
-                               SelectedColor="White"/>
+            <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPickerBorderInner"
+                              SelectedColor="White"
+                              IsEnabled="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked}"/>
 
             <TextBox Grid.Column="2" Grid.Row="1" x:Name="TextBoxBorderInnerSize"
                      Text="{x:Static rx:Resources.MatFileGenTextBoxInnerSizeDefault}"
                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderSize}"
-                     Style="{StaticResource TextBoxColorPicker}"/>
+                     Style="{StaticResource TextBoxColorPicker}"
+                     IsEnabled="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked}"/>
         </Grid>
     </Grid>
 </UserControl>
