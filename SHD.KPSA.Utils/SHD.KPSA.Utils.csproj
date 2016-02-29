@@ -71,6 +71,8 @@
     <Compile Include="Converter\BaseConverter.cs" />
     <Compile Include="Converter\BoolToVisibleConverter.cs" />
     <Compile Include="Converter\CaseConverter.cs" />
+    <Compile Include="Converter\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converter\InverseBoolConverter.cs" />
     <Compile Include="Dialogs.cs" />
     <Compile Include="FilesHandler.cs" />
     <Compile Include="Programs.cs" />
