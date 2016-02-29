@@ -99,6 +99,9 @@
     <Compile Include="Views\MatFileGenView.xaml.cs">
       <DependentUpon>MatFileGenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SettingsAttributesView.xaml.cs">
+      <DependentUpon>SettingsAttributesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsSolidView.xaml.cs">
       <DependentUpon>SettingsSolidView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
     <Page Include="Views\MatFileGenView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingsAttributesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsSolidView.xaml">
       <Generator>MSBuild:Compile</Generator>

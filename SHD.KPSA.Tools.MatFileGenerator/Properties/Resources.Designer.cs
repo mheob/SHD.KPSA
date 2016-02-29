@@ -61,60 +61,6 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select _Path ähnelt.
-        /// </summary>
-        public static string ButtonSelectPath {
-            get {
-                return ResourceManager.GetString("ButtonSelectPath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die _Start ähnelt.
-        /// </summary>
-        public static string ButtonStart {
-            get {
-                return ResourceManager.GetString("ButtonStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Select _all ähnelt.
-        /// </summary>
-        public static string DataGridFilesButtonSelectAll {
-            get {
-                return ResourceManager.GetString("DataGridFilesButtonSelectAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Selecet _none ähnelt.
-        /// </summary>
-        public static string DataGridFilesButtonSelectNone {
-            get {
-                return ResourceManager.GetString("DataGridFilesButtonSelectNone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Modified ähnelt.
-        /// </summary>
-        public static string DataGridFilesHeaderChanged {
-            get {
-                return ResourceManager.GetString("DataGridFilesHeaderChanged", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die File ähnelt.
-        /// </summary>
-        public static string DataGridFilesHeaderName {
-            get {
-                return ResourceManager.GetString("DataGridFilesHeaderName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die {0} selected from {1} files ähnelt.
         /// </summary>
         public static string DataGridFilesStatusBarText {
@@ -165,6 +111,24 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         public static string MatFileGenCheckBoxColorSelection {
             get {
                 return ResourceManager.GetString("MatFileGenCheckBoxColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Rotate (x/y/z): ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxRotate {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxRotate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scale (x/y/z) ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxScale {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxScale", resourceCulture);
             }
         }
         
@@ -336,6 +300,24 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         public static string MatFileGenToolTipColorSelection {
             get {
                 return ResourceManager.GetString("MatFileGenToolTipColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Rotates the JPG. Interesting here is the Z axis. The values in the X- and Y-axes remain to 0. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipRotate {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipRotate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die In that case the scaling will change. This is required only when working with textures. The individual values indicate how many times the JPG is represented per meter (values for X, Y and Z). ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipScale {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipScale", resourceCulture);
             }
         }
         

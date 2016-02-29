@@ -12,44 +12,9 @@
              d:DesignHeight="500" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModels:MatFileGenViewModel}">
     <UserControl.Resources>
-        <!-- ComboBox Scale -->
-        <!--
-        <Style x:Key="ComboBoxXyz" TargetType="{x:Type ComboBox}">
-            <Setter Property="Width" Value="60"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
+        <Style x:Key="TabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="mahapps:ControlsHelper.HeaderFontSize" Value="16" />
         </Style>
-
-        -->
-        <!-- Slider and Textbox -->
-        <!--
-        <Style x:Key="Slider" TargetType="{x:Type Slider}">
-            <Setter Property="Width" Value="176"/>
-            <Setter Property="Margin" Value="0,0,52,0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-            <Setter Property="IsSnapToTickEnabled" Value="True"/>
-        </Style>
-        <Style x:Key="TextBoxSlider" TargetType="{x:Type TextBox}">
-            <Setter Property="Width" Value="48"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-        -->
-
-        <ResourceDictionary>
-            <Style x:Key="TabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
-                <Setter Property="mahapps:ControlsHelper.HeaderFontSize" Value="16" />
-            </Style>
-        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid Margin="12">
@@ -97,7 +62,7 @@
                     </Grid.RowDefinitions>
 
                     <GroupBox Grid.Row="0" Header="{x:Static rx:Resources.MatFileGenGroupSettings}">
-                        <!-- ToDo: Settings for the "*.mat" file -->
+                        <v:SettingsAttributesView />
                     </GroupBox>
 
                     <GroupBox Grid.Row="1" Header="{x:Static rx:Resources.MatFileGenGroupThumbnails}">

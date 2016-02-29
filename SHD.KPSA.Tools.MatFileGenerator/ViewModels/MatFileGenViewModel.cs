@@ -1,11 +1,11 @@
 ﻿namespace SHD.KPSA.Tools.MatFileGenerator.ViewModels
 {
-    using KPSA.Utils;
-    using Models;
-    using Properties;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Windows.Input;
+    using KPSA.Utils;
+    using Models;
+    using Properties;
     using Utils;
 
     /// <summary>
@@ -20,8 +20,22 @@
         private string selectedPath;
         private string statusBarSummary;
 
+        private string selectedScaleX;
+        private string selectedScaleY;
+        private string selectedScaleZ;
+        private string selectedRotateX;
+        private string selectedRotateY;
+        private string selectedRotateZ;
+
         private ObservableCollection<MatFileGenFiles> fileCollection = new ObservableCollection<MatFileGenFiles>();
         private ObservableCollection<MatFileGenFiles> selectedFilesCollection = new ObservableCollection<MatFileGenFiles>();
+
+        private ObservableCollection<string> comboBoxScaleCollectionX = new ObservableCollection<string>();
+        private ObservableCollection<string> comboBoxScaleCollectionY = new ObservableCollection<string>();
+        private ObservableCollection<string> comboBoxScaleCollectionZ = new ObservableCollection<string>();
+        private ObservableCollection<string> comboBoxRotateCollectionX = new ObservableCollection<string>();
+        private ObservableCollection<string> comboBoxRotateCollectionY = new ObservableCollection<string>();
+        private ObservableCollection<string> comboBoxRotateCollectionZ = new ObservableCollection<string>();
 
         private ICommand checkTextBoxPathCommand;
         private ICommand getDirectoryCommand;
@@ -39,6 +53,7 @@
         {
             selectedPath = Settings.Default.StartUpFilePath;
 
+            InitComboBoxes();
             CheckTextBoxPath();
             GetFiles();
             UpdateStatusBar();
@@ -94,6 +109,90 @@
         }
 
         /// <summary>
+        /// Gets and sets the selected item from the ComboBoxScaleX
+        /// </summary>
+        public string SelectedScaleX
+        {
+            get { return selectedScaleX; }
+            set
+            {
+                if (value == selectedScaleX) return;
+                selectedScaleX = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected item from the ComboBoxScaleY
+        /// </summary>
+        public string SelectedScaleY
+        {
+            get { return selectedScaleY; }
+            set
+            {
+                if (value == selectedScaleY) return;
+                selectedScaleY = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected item from the ComboBoxScaleZ
+        /// </summary>
+        public string SelectedScaleZ
+        {
+            get { return selectedScaleZ; }
+            set
+            {
+                if (value == selectedScaleZ) return;
+                selectedScaleZ = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected item from the ComboBoxRotateX
+        /// </summary>
+        public string SelectedRotateX
+        {
+            get { return selectedRotateX; }
+            set
+            {
+                if (value == selectedRotateX) return;
+                selectedRotateX = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected item from the ComboBoxRotateY
+        /// </summary>
+        public string SelectedRotateY
+        {
+            get { return selectedRotateY; }
+            set
+            {
+                if (value == selectedRotateY) return;
+                selectedRotateY = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected item from the ComboBoxRotateZ
+        /// </summary>
+        public string SelectedRotateZ
+        {
+            get { return selectedRotateZ; }
+            set
+            {
+                if (value == selectedRotateZ) return;
+                selectedRotateZ = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
         /// Gets and sets a collection of the files in the selected path.
         /// </summary>
         public ObservableCollection<MatFileGenFiles> FileCollection
@@ -117,6 +216,90 @@
             {
                 if (Equals(value, selectedFilesCollection)) return;
                 selectedFilesCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo box in X.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionX
+        {
+            get { return comboBoxScaleCollectionX; }
+            set
+            {
+                if (Equals(value, comboBoxScaleCollectionX)) return;
+                comboBoxScaleCollectionX = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo box in Y.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionY
+        {
+            get { return comboBoxScaleCollectionY; }
+            set
+            {
+                if (Equals(value, comboBoxScaleCollectionY)) return;
+                comboBoxScaleCollectionY = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo boxes in Z.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionZ
+        {
+            get { return comboBoxScaleCollectionZ; }
+            set
+            {
+                if (Equals(value, comboBoxScaleCollectionZ)) return;
+                comboBoxScaleCollectionZ = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in X.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionX
+        {
+            get { return comboBoxRotateCollectionX; }
+            set
+            {
+                if (Equals(value, comboBoxRotateCollectionX)) return;
+                comboBoxRotateCollectionX = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in Y.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionY
+        {
+            get { return comboBoxRotateCollectionY; }
+            set
+            {
+                if (Equals(value, comboBoxRotateCollectionY)) return;
+                comboBoxRotateCollectionY = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in Z.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionZ
+        {
+            get { return comboBoxRotateCollectionZ; }
+            set
+            {
+                if (Equals(value, comboBoxRotateCollectionZ)) return;
+                comboBoxRotateCollectionZ = value;
                 OnPropertyChanged();
             }
         }
@@ -277,6 +460,34 @@
                     IsSelected = false
                 });
             }
+        }
+
+        private void InitComboBoxes()
+        {
+            const string initScale = "1.0";
+            const string initRotate = "0";
+
+            foreach (var comboBoxItem in Constants.GetComboBoxItems(Constants.ComboBoxVariant.Scale))
+            {
+                ComboBoxScaleCollectionX.Add(comboBoxItem);
+                ComboBoxScaleCollectionY.Add(comboBoxItem);
+                ComboBoxScaleCollectionZ.Add(comboBoxItem);
+            }
+
+            foreach (var comboBoxItem in Constants.GetComboBoxItems(Constants.ComboBoxVariant.Rotate))
+            {
+                ComboBoxScaleCollectionX.Add(comboBoxItem);
+                ComboBoxScaleCollectionY.Add(comboBoxItem);
+                ComboBoxScaleCollectionZ.Add(comboBoxItem);
+            }
+
+            SelectedScaleX = initScale;
+            SelectedScaleY = initScale;
+            SelectedScaleZ = initScale;
+
+            SelectedRotateX = initRotate;
+            SelectedRotateY = initRotate;
+            SelectedRotateZ = initRotate;
         }
         #endregion Methods
     }

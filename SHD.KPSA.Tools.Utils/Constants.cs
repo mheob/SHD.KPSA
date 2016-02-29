@@ -11,6 +11,22 @@
     public static class Constants
     {
         /// <summary>
+        /// Is the possible ComboBox versions to choose from.
+        /// </summary>
+        public enum ComboBoxVariant
+        {
+            /// <summary>
+            /// The variant "Scale".
+            /// </summary>
+            Scale,
+
+            /// <summary>
+            /// The variant "Rotate".
+            /// </summary>
+            Rotate
+        };
+
+        /// <summary>
         /// Gets the location of the application.
         /// </summary>
         public static string AppPath { get; } = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
@@ -35,5 +51,29 @@
         /// Gets the location of the default temp directory in the system.
         /// </summary>
         public static string TempFolder { get; } = string.Format(Settings.Default.TempFolder, Path.GetTempPath());
+
+        /// <summary>
+        /// Fills a combo box with the predefined values.
+        /// </summary>
+        /// <param name="cbbVar">the ComboBox variant that is to be filled.</param>
+        /// <returns>An array of all items.</returns>
+        public static string[] GetComboBoxItems(ComboBoxVariant cbbVar)
+        {
+            switch (cbbVar)
+            {
+                case ComboBoxVariant.Scale:
+                    string[] scale =
+                    {
+                        "0.1", "0.25", "0.33", "0.5", "0.67", "0.75", "1.0", "1.25", "1.5", "1.75", "2.0", "2.5"
+                    };
+                    return scale;
+                case ComboBoxVariant.Rotate:
+                    string[] rotate = {"0", "90"};
+                    return rotate;
+                default:
+                    string[] sArr = {"0"};
+                    return sArr;
+            }
+        }
     }
 }

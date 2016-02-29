@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="SHD.KPSA.Tools.MatFileGenerator.Views.SettingsAttributesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
+             xmlns:vm="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="150" d:DesignWidth="200"
+             d:DataContext="{d:DesignInstance vm:MatFileGenViewModel}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Style="{StaticResource GridHeightDefault}" />
+            <RowDefinition Style="{StaticResource GridHeightDefault}" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxScale"
+                  Content="{x:Static rx:Resources.MatFileGenCheckBoxScale}"
+                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipScale}"
+                  Style="{StaticResource CheckBoxLabel}" />
+
+        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="ComboBoxScaleX"
+                  ItemsSource="{Binding ComboBoxScaleCollectionX}"
+                  SelectedItem="{Binding SelectedScaleX}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="0,4,2,4"
+                  IsEditable="True" />
+        <!--      PreviewTextInput="ComboBoxScale_PreviewTextInput"-->
+        <!--      PreviewKeyDown="ComboBoxScale_PreviewKeyDown"-->
+        <!--      LostFocus="ComboBoxScale_LostFocus"/>-->
+
+        <ComboBox Grid.Column="2" Grid.Row="0" x:Name="ComboBoxScaleY"
+                  ItemsSource="{Binding ComboBoxScaleCollectionY}"
+                  SelectedItem="{Binding SelectedScaleY}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="2,4"
+                  IsEditable="True" />
+
+        <ComboBox Grid.Column="3" Grid.Row="0" x:Name="ComboBoxScaleZ"
+                  ItemsSource="{Binding ComboBoxScaleCollectionZ}"
+                  SelectedItem="{Binding SelectedScaleZ}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="2,4,0,4"
+                  IsEditable="True" />
+
+        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxRotate"
+                  Content="{x:Static rx:Resources.MatFileGenCheckBoxRotate}"
+                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipRotate}"
+                  Style="{StaticResource  CheckBoxLabel}" />
+        <!--      Checked="CheckBoxRotate_Checked"-->
+        <!--      Unchecked="CheckBoxRotate_Unchecked"/>-->
+
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ComboBoxRotateX"
+                  ItemsSource="{Binding ComboBoxRotateCollectionX}"
+                  SelectedItem="{Binding SelectedRotateX}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="0,4,2,4" />
+
+        <ComboBox Grid.Column="2" Grid.Row="1" x:Name="ComboBoxRotateY"
+                  ItemsSource="{Binding ComboBoxRotateCollectionY}"
+                  SelectedItem="{Binding SelectedRotateY}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="2,4" />
+
+        <ComboBox Grid.Column="3" Grid.Row="1" x:Name="ComboBoxRotateZ"
+                  ItemsSource="{Binding ComboBoxRotateCollectionZ}"
+                  SelectedItem="{Binding SelectedRotateZ}"
+                  Style="{StaticResource ComboBoxXyz}"
+                  Margin="2,4,0,4" />
+    </Grid>
+</UserControl>

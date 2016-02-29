@@ -117,26 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonSelectPath" xml:space="preserve">
-    <value>_Pfad wählen</value>
-    <comment>cm</comment>
-  </data>
-  <data name="ButtonStart" xml:space="preserve">
-    <value>_Starten</value>
-    <comment>cm</comment>
-  </data>
-  <data name="DataGridFilesStatusBarText" xml:space="preserve">
-    <value>{0} von {1} Dateien gewählt</value>
-    <comment>cm</comment>
-  </data>
-  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
-    <value>alles _auswählen</value>
-    <comment>cm</comment>
-  </data>
-  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
-    <value>alles abwähle_n</value>
-    <comment>cm</comment>
-  </data>
   <data name="MessageDialogCancelContent" xml:space="preserve">
     <value>Der Vorgang wurde vor der Fertigstellung abgebrochen!</value>
     <comment>c</comment>
@@ -167,114 +147,95 @@
   </data>
   <data name="TitleMatFileGenerator" xml:space="preserve">
     <value>"Mat-Files" erstellen</value>
-    <comment>m</comment>
-  </data>
-  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
-    <value>Geändert</value>
-    <comment>cm</comment>
-  </data>
-  <data name="DataGridFilesHeaderName" xml:space="preserve">
-    <value>Datei</value>
-    <comment>cm</comment>
   </data>
   <data name="MatFileGenCheckBoxBorderInner" xml:space="preserve">
     <value>innerer Rahmen:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenCheckBoxBorderOuter" xml:space="preserve">
     <value>äußerer Rahmen:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenCheckBoxColorHex" xml:space="preserve">
     <value>Farbe als HEX:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenCheckBoxColorRgb" xml:space="preserve">
     <value>Farbe als RGB:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenCheckBoxColorSelection" xml:space="preserve">
     <value>Farbe auswählen:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenCheckBoxThumb" xml:space="preserve">
     <value>Thumb erstellen</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenGroupSettings" xml:space="preserve">
     <value>Einstellungen</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenGroupThumbnails" xml:space="preserve">
     <value>Thumbnails</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenHexColorDefault" xml:space="preserve">
     <value>#000000</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenLabelColorName" xml:space="preserve">
     <value>Farbname:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenLabelThumb" xml:space="preserve">
     <value>Ordner:</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenTabItemSolid" xml:space="preserve">
     <value>_2. Solid</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenTabItemTexture" xml:space="preserve">
     <value>_1. Textur</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenTextBoxInnerSizeDefault" xml:space="preserve">
     <value>1</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenTextBoxOuterSizeDefault" xml:space="preserve">
     <value>2</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenThumbFolderDefault" xml:space="preserve">
     <value>thumbs</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipBorderInner" xml:space="preserve">
     <value>Die Einstellungen für den inneren Rahmen des Vorschaubildes.</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipBorderOuter" xml:space="preserve">
     <value>Die Einstellungen für den äußeren Rahmen des Vorschaubildes.</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipBorderSize" xml:space="preserve">
     <value>Angabe in Pixel</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipColorHex" xml:space="preserve">
     <value>Für einen einfachen Lack kann hier der Farbwert als Hex-Wert eingegeben werden.</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipColorHexInput" xml:space="preserve">
     <value>Den Farbwert in Form "#112233" eintragen!</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipColorName" xml:space="preserve">
     <value>der Farbname (ohne Dateiendung)</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipColorRgb" xml:space="preserve">
     <value>Für einen einfachen Lack kann hier der RGB-Farbwert (von 0 bis 255) eingegeben werden.</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipColorSelection" xml:space="preserve">
     <value>Für einen einfachen Lack kann hier der Farbwert ausgewählt werden.</value>
-    <comment>m</comment>
   </data>
   <data name="MatFileGenToolTipThumb" xml:space="preserve">
     <value>Erstellt zusätzlich ein Thumbnail in den Abmessungen 50x25 Pixel. Gespeichert wird dies im angegebenen Ordner.</value>
-    <comment>m</comment>
+  </data>
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
+    <value>{0} von {1} Dateien gewählt</value>
+  </data>
+  <data name="MatFileGenCheckBoxRotate" xml:space="preserve">
+    <value>Rotate (x/y/z):</value>
+  </data>
+  <data name="MatFileGenCheckBoxScale" xml:space="preserve">
+    <value>Scale (x/y/z)</value>
+  </data>
+  <data name="MatFileGenToolTipRotate" xml:space="preserve">
+    <value>Rotiert das JPG. Interessant ist hier nur die Z-Achse. Die Werte bei den X- und Y-Achsen bleiben auf 0.</value>
+  </data>
+  <data name="MatFileGenToolTipScale" xml:space="preserve">
+    <value>Hierüber wird die Skalierung verändert. Benötigt wird dies natürlich nur, wenn mit Texturen gearbeitet wird. Die einzelnen Werte besagen, wie oft das JPG pro Meter dargestellt wird (Werte sind für X, Y und Z).</value>
   </data>
 </root>
