@@ -6,7 +6,7 @@
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
              xmlns:vm="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="200"
+             d:DesignHeight="150" d:DesignWidth="280"
              d:DataContext="{d:DesignInstance vm:MatFileGenViewModel}">
 
     <UserControl.Resources>
@@ -18,71 +18,147 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid VerticalAlignment="Top">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Style="{StaticResource GridHeightDefault}" />
-            <RowDefinition Style="{StaticResource GridHeightDefault}" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+            </Grid.RowDefinitions>
 
-        <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxScale"
-                  Content="{x:Static rx:Resources.MatFileGenCheckBoxScale}"
-                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipScale}"
-                  Style="{StaticResource CheckBoxLabel}" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="52" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
 
-        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="ComboBoxScaleX"
-                  ItemsSource="{Binding ComboBoxScaleCollectionX}"
-                  SelectedItem="{Binding SelectedScaleX}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="0,4,2,4"
-                  IsEditable="True" />
-        <!--      PreviewTextInput="ComboBoxScale_PreviewTextInput"-->
-        <!--      PreviewKeyDown="ComboBoxScale_PreviewKeyDown"-->
-        <!--      LostFocus="ComboBoxScale_LostFocus"/>-->
+            <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxScale"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxScale}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipScale}"
+                      Style="{StaticResource CheckBoxLabel}" />
 
-        <ComboBox Grid.Column="2" Grid.Row="0" x:Name="ComboBoxScaleY"
-                  ItemsSource="{Binding ComboBoxScaleCollectionY}"
-                  SelectedItem="{Binding SelectedScaleY}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="2,4"
-                  IsEditable="True" />
+            <ComboBox Grid.Column="1" Grid.Row="0" x:Name="ComboBoxScaleX"
+                      ItemsSource="{Binding ComboBoxScaleCollectionX}"
+                      SelectedItem="{Binding SelectedScaleX}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="0,4,2,4"
+                      IsEditable="True"
+                      IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
+            <!--      PreviewTextInput="ComboBoxScale_PreviewTextInput"-->
+            <!--      PreviewKeyDown="ComboBoxScale_PreviewKeyDown"-->
+            <!--      LostFocus="ComboBoxScale_LostFocus"/>-->
 
-        <ComboBox Grid.Column="3" Grid.Row="0" x:Name="ComboBoxScaleZ"
-                  ItemsSource="{Binding ComboBoxScaleCollectionZ}"
-                  SelectedItem="{Binding SelectedScaleZ}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="2,4,0,4"
-                  IsEditable="True" />
+            <ComboBox Grid.Column="2" Grid.Row="0" x:Name="ComboBoxScaleY"
+                      ItemsSource="{Binding ComboBoxScaleCollectionY}"
+                      SelectedItem="{Binding SelectedScaleY}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="2,4"
+                      IsEditable="True"
+                      IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
 
-        <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxRotate"
-                  Content="{x:Static rx:Resources.MatFileGenCheckBoxRotate}"
-                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipRotate}"
-                  Style="{StaticResource  CheckBoxLabel}" />
-        <!--      Checked="CheckBoxRotate_Checked"-->
-        <!--      Unchecked="CheckBoxRotate_Unchecked"/>-->
+            <ComboBox Grid.Column="3" Grid.Row="0" x:Name="ComboBoxScaleZ"
+                      ItemsSource="{Binding ComboBoxScaleCollectionZ}"
+                      SelectedItem="{Binding SelectedScaleZ}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="2,4,0,4"
+                      IsEditable="True"
+                      IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
 
-        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ComboBoxRotateX"
-                  ItemsSource="{Binding ComboBoxRotateCollectionX}"
-                  SelectedItem="{Binding SelectedRotateX}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="0,4,2,4" />
+            <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxRotate"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxRotate}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipRotate}"
+                      Style="{StaticResource  CheckBoxLabel}" />
+            <!--      Checked="CheckBoxRotate_Checked"-->
+            <!--      Unchecked="CheckBoxRotate_Unchecked"/>-->
 
-        <ComboBox Grid.Column="2" Grid.Row="1" x:Name="ComboBoxRotateY"
-                  ItemsSource="{Binding ComboBoxRotateCollectionY}"
-                  SelectedItem="{Binding SelectedRotateY}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="2,4" />
+            <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ComboBoxRotateX"
+                      ItemsSource="{Binding ComboBoxRotateCollectionX}"
+                      SelectedItem="{Binding SelectedRotateX}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="0,4,2,4"
+                      IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
 
-        <ComboBox Grid.Column="3" Grid.Row="1" x:Name="ComboBoxRotateZ"
-                  ItemsSource="{Binding ComboBoxRotateCollectionZ}"
-                  SelectedItem="{Binding SelectedRotateZ}"
-                  Style="{StaticResource ComboBoxXyz}"
-                  Margin="2,4,0,4" />
+            <ComboBox Grid.Column="2" Grid.Row="1" x:Name="ComboBoxRotateY"
+                      ItemsSource="{Binding ComboBoxRotateCollectionY}"
+                      SelectedItem="{Binding SelectedRotateY}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="2,4"
+                      IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
+
+            <ComboBox Grid.Column="3" Grid.Row="1" x:Name="ComboBoxRotateZ"
+                      ItemsSource="{Binding ComboBoxRotateCollectionZ}"
+                      SelectedItem="{Binding SelectedRotateZ}"
+                      Style="{StaticResource ComboBoxXyz}"
+                      Margin="2,4,0,4"
+                      IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
+        </Grid>
+
+        <Grid Grid.Row="1" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Grid.Column="0" x:Name="CheckBoxAuto"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxAuto}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipAuto}"
+                      HorizontalAlignment="Left" />
+            <!--      Checked="CheckBoxAuto_Checked"-->
+            <!--      Unchecked="CheckBoxAuto_Unchecked"-->
+
+            <CheckBox Grid.Column="1" x:Name="CheckBoxRauto"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxRauto}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipRauto}"
+                      HorizontalAlignment="Center" />
+
+            <CheckBox Grid.Column="2" x:Name="CheckBoxTypeGlass"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxGlass}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipGlass}"
+                      HorizontalAlignment="Right" />
+        </Grid>
+
+        <Grid Grid.Row="2" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+                <RowDefinition Style="{StaticResource GridHeightDefault}" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3.5*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxMirror"
+                      Content="{x:Static rx:Resources.MatFileGenCheckBoxMirror}"
+                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipMirror}"
+                      Style="{StaticResource  CheckBoxLabel}" />
+            <!--      Checked="CheckBoxMirror_Checked"-->
+            <!--      Unchecked="CheckBoxMirror_Unchecked"-->
+
+            <Slider Grid.Column="1" Grid.Row="0" x:Name="SliderMirror"
+                    Style="{StaticResource Slider}"
+                    Value="0.0" Maximum="1" SmallChange="0.05" LargeChange="0.2" TickFrequency="0.05"
+                    IsEnabled="{Binding ElementName=CheckBoxMirror, Path=IsChecked}" />
+            <!--    ValueChanged="SliderMirror_ValueChanged"/>-->
+
+            <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxMirrorValue"
+                     Text="{Binding ElementName=SliderMirror, Path=Value}"
+                     Style="{StaticResource TextBoxSlider}"
+                     IsEnabled="{Binding ElementName=CheckBoxMirror, Path=IsChecked}" />
+        </Grid>
     </Grid>
 </UserControl>

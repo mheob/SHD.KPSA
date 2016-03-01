@@ -226,11 +226,35 @@
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} von {1} Dateien gewählt</value>
   </data>
+  <data name="MatFileGenCheckBoxAuto" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="MatFileGenCheckBoxGlass" xml:space="preserve">
+    <value>Type Glass</value>
+  </data>
+  <data name="MatFileGenCheckBoxMirror" xml:space="preserve">
+    <value>mirror</value>
+  </data>
+  <data name="MatFileGenCheckBoxRauto" xml:space="preserve">
+    <value>rauto</value>
+  </data>
   <data name="MatFileGenCheckBoxRotate" xml:space="preserve">
     <value>Rotate (x/y/z):</value>
   </data>
   <data name="MatFileGenCheckBoxScale" xml:space="preserve">
     <value>Scale (x/y/z)</value>
+  </data>
+  <data name="MatFileGenToolTipAuto" xml:space="preserve">
+    <value>Automatisches Texturaufbringung auf eine allgemeine viereckige Fläche.</value>
+  </data>
+  <data name="MatFileGenToolTipGlass" xml:space="preserve">
+    <value>Beschreibt, ob es sich um ein Material aus Glas handelt. Die Werte 0 und 1 sind möglich.</value>
+  </data>
+  <data name="MatFileGenToolTipMirror" xml:space="preserve">
+    <value>Steuert die Spiegeloberfläche. Werte 0 bis 1 sind möglich. 1 bedeutet volle Spiegelung; 0.5 könnte man z. B. für Hochglanz-Lackfront verwenden.</value>
+  </data>
+  <data name="MatFileGenToolTipRauto" xml:space="preserve">
+    <value>Skalierung der Textur auf die Größe der gesamten Fläche.</value>
   </data>
   <data name="MatFileGenToolTipRotate" xml:space="preserve">
     <value>Rotiert das JPG. Interessant ist hier nur die Z-Achse. Die Werte bei den X- und Y-Achsen bleiben auf 0.</value>

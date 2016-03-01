@@ -70,6 +70,15 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die auto ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxAuto {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die inner Frame: ähnelt.
         /// </summary>
         public static string MatFileGenCheckBoxBorderInner {
@@ -111,6 +120,33 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         public static string MatFileGenCheckBoxColorSelection {
             get {
                 return ResourceManager.GetString("MatFileGenCheckBoxColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Type Glass ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxGlass {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxGlass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die mirror ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxMirror {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxMirror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die rauto ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxRauto {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxRauto", resourceCulture);
             }
         }
         
@@ -232,6 +268,15 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Automatic texture application to a general quadrangular area. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipAuto {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The settings for the inner frame of the preview image. ähnelt.
         /// </summary>
         public static string MatFileGenToolTipBorderInner {
@@ -300,6 +345,33 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         public static string MatFileGenToolTipColorSelection {
             get {
                 return ResourceManager.GetString("MatFileGenToolTipColorSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Describes whether it is a material made of glass. The values 0 and 1 are possible. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipGlass {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipGlass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Controls the mirror surface. Values from 0 to 1 are possible. 1 means full mirroring; 0.5 could be used for. Example, for high-gloss front. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipMirror {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipMirror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scaling of the texture on the size of the entire surface. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipRauto {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipRauto", resourceCulture);
             }
         }
         

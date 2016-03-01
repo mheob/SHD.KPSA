@@ -56,31 +56,27 @@
     <!-- ComboBox Scale -->
     <Style x:Key="ComboBoxXyz" TargetType="{x:Type ComboBox}">
         <Setter Property="Margin" Value="4" />
-        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="IsEnabled" Value="False" />
     </Style>
 
-
     <!-- Slider and Textbox -->
-    <!--
-        <Style x:Key="Slider" TargetType="{x:Type Slider}">
-            <Setter Property="Width" Value="176"/>
-            <Setter Property="Margin" Value="0,0,52,0"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-            <Setter Property="IsSnapToTickEnabled" Value="True"/>
-        </Style>
-        <Style x:Key="TextBoxSlider" TargetType="{x:Type TextBox}">
-            <Setter Property="Width" Value="48"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-        -->
+    <!-- ReSharper disable once Xaml.StaticResourceNotResolved -->
+    <Style x:Key="Slider" TargetType="{x:Type Slider}" BasedOn="{StaticResource MetroSlider}">
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="IsEnabled" Value="False" />
+        <Setter Property="IsSnapToTickEnabled" Value="True" />
+    </Style>
+
+    <Style x:Key="TextBoxSlider" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Margin" Value="4,4,0,4" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="IsEnabled" Value="False" />
+    </Style>
 </ResourceDictionary>

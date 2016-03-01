@@ -219,11 +219,35 @@
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} selected from {1} files</value>
   </data>
+  <data name="MatFileGenCheckBoxAuto" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="MatFileGenCheckBoxGlass" xml:space="preserve">
+    <value>Type Glass</value>
+  </data>
+  <data name="MatFileGenCheckBoxMirror" xml:space="preserve">
+    <value>mirror</value>
+  </data>
+  <data name="MatFileGenCheckBoxRauto" xml:space="preserve">
+    <value>rauto</value>
+  </data>
   <data name="MatFileGenCheckBoxRotate" xml:space="preserve">
     <value>Rotate (x/y/z):</value>
   </data>
   <data name="MatFileGenCheckBoxScale" xml:space="preserve">
     <value>Scale (x/y/z)</value>
+  </data>
+  <data name="MatFileGenToolTipAuto" xml:space="preserve">
+    <value>Automatic texture application to a general quadrangular area.</value>
+  </data>
+  <data name="MatFileGenToolTipGlass" xml:space="preserve">
+    <value>Describes whether it is a material made of glass. The values 0 and 1 are possible.</value>
+  </data>
+  <data name="MatFileGenToolTipMirror" xml:space="preserve">
+    <value>Controls the mirror surface. Values from 0 to 1 are possible. 1 means full mirroring; 0.5 could be used for. Example, for high-gloss front.</value>
+  </data>
+  <data name="MatFileGenToolTipRauto" xml:space="preserve">
+    <value>Scaling of the texture on the size of the entire surface.</value>
   </data>
   <data name="MatFileGenToolTipRotate" xml:space="preserve">
     <value>Rotates the JPG. Interesting here is the Z axis. The values in the X- and Y-axes remain to 0.</value>

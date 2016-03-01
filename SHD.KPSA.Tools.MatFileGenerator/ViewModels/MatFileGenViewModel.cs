@@ -30,13 +30,6 @@
         private ObservableCollection<MatFileGenFiles> fileCollection = new ObservableCollection<MatFileGenFiles>();
         private ObservableCollection<MatFileGenFiles> selectedFilesCollection = new ObservableCollection<MatFileGenFiles>();
 
-        private ObservableCollection<string> comboBoxScaleCollectionX = new ObservableCollection<string>();
-        private ObservableCollection<string> comboBoxScaleCollectionY = new ObservableCollection<string>();
-        private ObservableCollection<string> comboBoxScaleCollectionZ = new ObservableCollection<string>();
-        private ObservableCollection<string> comboBoxRotateCollectionX = new ObservableCollection<string>();
-        private ObservableCollection<string> comboBoxRotateCollectionY = new ObservableCollection<string>();
-        private ObservableCollection<string> comboBoxRotateCollectionZ = new ObservableCollection<string>();
-
         private ICommand checkTextBoxPathCommand;
         private ICommand getDirectoryCommand;
         private ICommand startGenerationCommand;
@@ -65,6 +58,36 @@
         /// Gets the Title of the ChangelogView.
         /// </summary>
         public string Title => Resources.TitleMatFileGenerator;
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo box in X.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionX { get; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo box in Y.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionY { get; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Gets and sets the items for the scale combo boxes in Z.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxScaleCollectionZ { get; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in X.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionX { get; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in Y.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionY { get; } = new ObservableCollection<string>();
+
+        /// <summary>
+        /// Gets and sets the items for the rotate combo boxes in Z.
+        /// </summary>
+        public ObservableCollection<string> ComboBoxRotateCollectionZ { get; } = new ObservableCollection<string>();
 
         /// <summary>
         /// Gets and sets the selection state of the listbox items.
@@ -216,90 +239,6 @@
             {
                 if (Equals(value, selectedFilesCollection)) return;
                 selectedFilesCollection = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the scale combo box in X.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxScaleCollectionX
-        {
-            get { return comboBoxScaleCollectionX; }
-            set
-            {
-                if (Equals(value, comboBoxScaleCollectionX)) return;
-                comboBoxScaleCollectionX = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the scale combo box in Y.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxScaleCollectionY
-        {
-            get { return comboBoxScaleCollectionY; }
-            set
-            {
-                if (Equals(value, comboBoxScaleCollectionY)) return;
-                comboBoxScaleCollectionY = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the scale combo boxes in Z.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxScaleCollectionZ
-        {
-            get { return comboBoxScaleCollectionZ; }
-            set
-            {
-                if (Equals(value, comboBoxScaleCollectionZ)) return;
-                comboBoxScaleCollectionZ = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the rotate combo boxes in X.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxRotateCollectionX
-        {
-            get { return comboBoxRotateCollectionX; }
-            set
-            {
-                if (Equals(value, comboBoxRotateCollectionX)) return;
-                comboBoxRotateCollectionX = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the rotate combo boxes in Y.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxRotateCollectionY
-        {
-            get { return comboBoxRotateCollectionY; }
-            set
-            {
-                if (Equals(value, comboBoxRotateCollectionY)) return;
-                comboBoxRotateCollectionY = value;
-                OnPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the items for the rotate combo boxes in Z.
-        /// </summary>
-        public ObservableCollection<string> ComboBoxRotateCollectionZ
-        {
-            get { return comboBoxRotateCollectionZ; }
-            set
-            {
-                if (Equals(value, comboBoxRotateCollectionZ)) return;
-                comboBoxRotateCollectionZ = value;
                 OnPropertyChanged();
             }
         }
@@ -476,9 +415,9 @@
 
             foreach (var comboBoxItem in Constants.GetComboBoxItems(Constants.ComboBoxVariant.Rotate))
             {
-                ComboBoxScaleCollectionX.Add(comboBoxItem);
-                ComboBoxScaleCollectionY.Add(comboBoxItem);
-                ComboBoxScaleCollectionZ.Add(comboBoxItem);
+                ComboBoxRotateCollectionX.Add(comboBoxItem);
+                ComboBoxRotateCollectionY.Add(comboBoxItem);
+                ComboBoxRotateCollectionZ.Add(comboBoxItem);
             }
 
             SelectedScaleX = initScale;
