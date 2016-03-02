@@ -323,7 +323,7 @@
         }
 
         /// <summary>
-        /// Gets the command to deselect all files at once.
+        /// Gets the command to unselect all files at once.
         /// </summary>
         public ICommand SelectNoneCommand
         {

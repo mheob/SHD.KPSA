@@ -70,6 +70,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ComboBoxBehavior.cs" />
+    <Compile Include="Commands\TextBoxBehavior.cs" />
     <Compile Include="Converter\BaseConverter.cs" />
     <Compile Include="Converter\BoolToVisibleConverter.cs" />
     <Compile Include="Converter\CaseConverter.cs" />

@@ -151,6 +151,15 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ref ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxRef {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxRef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rotate (x/y/z): ähnelt.
         /// </summary>
         public static string MatFileGenCheckBoxRotate {
@@ -169,11 +178,29 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die shi ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxShi {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxShi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Create thumb ähnelt.
         /// </summary>
         public static string MatFileGenCheckBoxThumb {
             get {
                 return ResourceManager.GetString("MatFileGenCheckBoxThumb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die tra ähnelt.
+        /// </summary>
+        public static string MatFileGenCheckBoxTra {
+            get {
+                return ResourceManager.GetString("MatFileGenCheckBoxTra", resourceCulture);
             }
         }
         
@@ -376,6 +403,15 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The key &quot;ref&quot; specifies the refraction through a positive floating point number. The initial refractive has the value 1.0, and corresponds to the index of refraction in a vacuum. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipRef {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipRef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Rotates the JPG. Interesting here is the Z axis. The values in the X- and Y-axes remain to 0. ähnelt.
         /// </summary>
         public static string MatFileGenToolTipRotate {
@@ -394,11 +430,29 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The key &quot;shi&quot; specifies the specular exponent by a positive floating point number. The higher is the exponent, the smaller the spreading of the specular highlights. The initial exponent has the value 30.0. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipShi {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipShi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Created additionally a thumbnail in the dimensions 50 x 25 pixels. This is stored in the specified folder. ähnelt.
         /// </summary>
         public static string MatFileGenToolTipThumb {
             get {
                 return ResourceManager.GetString("MatFileGenToolTipThumb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The key &quot;tra&quot; specifies the transparency of a non-negative floating point number, the &amp; lt; = 1. The value 0.0 represents a complete impermeability; the value of 1.0 means total transparency. The initial value is 0.0. ähnelt.
+        /// </summary>
+        public static string MatFileGenToolTipTra {
+            get {
+                return ResourceManager.GetString("MatFileGenToolTipTra", resourceCulture);
             }
         }
         

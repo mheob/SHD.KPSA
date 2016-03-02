@@ -262,4 +262,22 @@
   <data name="MatFileGenToolTipScale" xml:space="preserve">
     <value>Hierüber wird die Skalierung verändert. Benötigt wird dies natürlich nur, wenn mit Texturen gearbeitet wird. Die einzelnen Werte besagen, wie oft das JPG pro Meter dargestellt wird (Werte sind für X, Y und Z).</value>
   </data>
+  <data name="MatFileGenCheckBoxRef" xml:space="preserve">
+    <value>ref</value>
+  </data>
+  <data name="MatFileGenCheckBoxShi" xml:space="preserve">
+    <value>shi</value>
+  </data>
+  <data name="MatFileGenCheckBoxTra" xml:space="preserve">
+    <value>tra</value>
+  </data>
+  <data name="MatFileGenToolTipRef" xml:space="preserve">
+    <value>Der Schlüssel "ref" spezifiziert die Brechung durch eine positive Gleitkommazahl. Die initiale Brechung hat den Wert 1.0 und entspricht dem Brechungswert im Vakuum.</value>
+  </data>
+  <data name="MatFileGenToolTipShi" xml:space="preserve">
+    <value>Der Schlüssel &amp;quot;shi&amp;quot; spezifiziert den spekularen Exponent durch eine positive Gleitkommazahl. Je höher der Exponent ist, desto geringer ist die Ausbreitung der spekularen Highlights. Der initiale Exponent hat den Wert 30.0.</value>
+  </data>
+  <data name="MatFileGenToolTipTra" xml:space="preserve">
+    <value>Der Schlüssel "tra" spezifiziert die Transparenz durch eine nicht negative Gleitkommazahl, die &amp;lt;= 1 ist. Der Wert 0.0 steht für völlige Undurchlässigkeit; der Wert 1.0 bedeutet totale Transparenz. Der Initialwert beträgt 0.0.</value>
+  </data>
 </root>

@@ -255,4 +255,22 @@
   <data name="MatFileGenToolTipScale" xml:space="preserve">
     <value>In that case the scaling will change. This is required only when working with textures. The individual values indicate how many times the JPG is represented per meter (values for X, Y and Z).</value>
   </data>
+  <data name="MatFileGenCheckBoxRef" xml:space="preserve">
+    <value>ref</value>
+  </data>
+  <data name="MatFileGenCheckBoxShi" xml:space="preserve">
+    <value>shi</value>
+  </data>
+  <data name="MatFileGenCheckBoxTra" xml:space="preserve">
+    <value>tra</value>
+  </data>
+  <data name="MatFileGenToolTipRef" xml:space="preserve">
+    <value>The key "ref" specifies the refraction through a positive floating point number. The initial refractive has the value 1.0, and corresponds to the index of refraction in a vacuum.</value>
+  </data>
+  <data name="MatFileGenToolTipShi" xml:space="preserve">
+    <value>The key "shi" specifies the specular exponent by a positive floating point number. The higher is the exponent, the smaller the spreading of the specular highlights. The initial exponent has the value 30.0.</value>
+  </data>
+  <data name="MatFileGenToolTipTra" xml:space="preserve">
+    <value>The key "tra" specifies the transparency of a non-negative floating point number, the &amp; lt; = 1. The value 0.0 represents a complete impermeability; the value of 1.0 means total transparency. The initial value is 0.0.</value>
+  </data>
 </root>
