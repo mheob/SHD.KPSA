@@ -1,9 +1,9 @@
 ﻿namespace SHD.KPSA.Tools.Changelog.ViewModels
 {
-    using System.Collections.ObjectModel;
-    using System.Windows.Controls;
     using Models;
     using Properties;
+    using System.Collections.ObjectModel;
+    using System.Windows.Controls;
     using Utils;
 
     /// <summary>

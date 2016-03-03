@@ -1,10 +1,5 @@
 ﻿namespace SHD.KPSA.Tools.Clean3Ds.ViewModels
 {
-    using KPSA.Utils;
-    using MahApps.Metro.Controls;
-    using MahApps.Metro.Controls.Dialogs;
-    using Models;
-    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.IO;
@@ -12,6 +7,11 @@
     using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Input;
+    using KPSA.Utils;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+    using Models;
+    using Properties;
     using Utils;
 
     /// <summary>
@@ -229,8 +229,7 @@
         {
             var window = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();
 
-            var controller =
-                await window.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);
+            var controller = await window.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);
 
             controller.SetIndeterminate();
             controller.SetCancelable(true);
@@ -277,9 +276,10 @@
                 return;
             }
 
-            if (await window.ShowMessageAsync(Resources.MessageDialogCompleteTitle,
-                string.Format(Resources.MessageDialogCompleteContent, "\n"),
-                MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
+            if (
+                await
+                    window.ShowMessageAsync(Resources.MessageDialogCompleteTitle, string.Format(Resources.MessageDialogCompleteContent, "\n"),
+                        MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
             {
                 Programs.OpenExplorer(SelectedPath);
             }

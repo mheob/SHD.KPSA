@@ -27,8 +27,7 @@
             ThemeManager.AddAppTheme(context.ThemeDark, new Uri(Settings.Default.ThemeDarkPath));
             ThemeManager.AddAppTheme(context.ThemeLight, new Uri(Settings.Default.ThemeLightPath));
 
-            ThemeManager.ChangeAppStyle(Current, ThemeManager.GetAccent(context.AccentDarkBlue),
-                ThemeManager.GetAppTheme(context.ThemeDark));
+            ThemeManager.ChangeAppStyle(Current, ThemeManager.GetAccent(context.AccentDarkBlue), ThemeManager.GetAppTheme(context.ThemeDark));
 
             app.DataContext = context;
             app.Show();

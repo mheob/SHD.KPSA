@@ -14,7 +14,7 @@
                      xmlns:vMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views;assembly=SHD.KPSA.Tools.MatFileGenerator"
                      xmlns:vClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.Views;assembly=SHD.KPSA.Tools.Clean3Ds"
                      Title="SHD KPSA-Daten Helper Tools"
-                     Height="650" Width="900"
+                     Height="650" Width="1000"
                      Icon="/Resources/logo_shd.ico"
                      GlowBrush="{StaticResource AccentColorBrush}" SaveWindowPosition="True"
                      mc:Ignorable="d"

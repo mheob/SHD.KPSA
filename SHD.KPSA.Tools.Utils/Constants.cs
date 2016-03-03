@@ -39,8 +39,8 @@
         /// <summary>
         /// Gets the default path to the used 3er-Party applications.
         /// </summary>
-        public static string DefaultThirdPartyFolder { get; } =
-            Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + Settings.Default.ThirdPartyFolder;
+        public static string DefaultThirdPartyFolder { get; } = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) +
+                                                                Settings.Default.ThirdPartyFolder;
 
         /// <summary>
         /// Gets the state within a progress label.

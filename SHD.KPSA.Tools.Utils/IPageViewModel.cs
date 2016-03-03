@@ -1,7 +1,6 @@
 ﻿namespace SHD.KPSA.Tools.Utils
 {
     /// <summary>
-    /// 
     /// </summary>
     public interface IPageViewModel
     {

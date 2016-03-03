@@ -200,8 +200,7 @@
         {
             Theme = newTheme != ThemeDark ? ThemeDark : ThemeLight;
 
-            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(AccentDarkBlue),
-                ThemeManager.GetAppTheme(Theme));
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(AccentDarkBlue), ThemeManager.GetAppTheme(Theme));
         }
 
         private void ChangeViewModel(IPageViewModel viewModel)

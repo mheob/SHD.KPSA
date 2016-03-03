@@ -13,8 +13,8 @@
         /// <summary>
         /// A <see cref="DependencyProperty" /> with the <see cref="OnLostFocus" /> event.
         /// </summary>
-        public static DependencyProperty OnLostFocusProperty = DependencyProperty.RegisterAttached("OnLostFocus",
-            typeof (ICommand), typeof (TextBoxBehavior), new UIPropertyMetadata(OnLostFocus));
+        public static DependencyProperty OnLostFocusProperty = DependencyProperty.RegisterAttached("OnLostFocus", typeof (ICommand),
+            typeof (TextBoxBehavior), new UIPropertyMetadata(OnLostFocus));
 
         /// <summary>
         /// Sets the <see cref="ICommand" /> to the <see cref="OnLostFocusProperty" />.

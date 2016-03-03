@@ -1,13 +1,13 @@
 ﻿namespace SHD.KPSA.Tools.Changelog.Models
 {
+    using KPSA.Utils;
+    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Reflection;
     using System.Windows.Controls;
     using System.Windows.Media;
-    using KPSA.Utils;
-    using Properties;
     using Utils;
 
     /// <summary>

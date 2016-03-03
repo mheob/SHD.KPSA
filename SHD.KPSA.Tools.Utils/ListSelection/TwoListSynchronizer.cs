@@ -38,8 +38,7 @@
         {
         }
 
-        private delegate void ChangeListAction(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter
-            );
+        private delegate void ChangeListAction(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter);
 
         /// <summary>
         /// Starts synchronizing the lists.

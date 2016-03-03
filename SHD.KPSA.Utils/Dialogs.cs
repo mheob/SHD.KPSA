@@ -1,9 +1,9 @@
 ﻿namespace SHD.KPSA.Utils
 {
-    using Ookii.Dialogs.Wpf;
-    using Properties;
     using System;
     using System.Windows;
+    using Ookii.Dialogs.Wpf;
+    using Properties;
 
     /// <summary>
     /// This class provides different dialogs.
@@ -58,8 +58,7 @@
         /// </summary>
         public static void NothingToDo()
         {
-            MessageBox.Show(Resources.NothingToDoDialogText, Resources.NothingToDoDialogTitle, MessageBoxButton.OK,
-                MessageBoxImage.Information);
+            MessageBox.Show(Resources.NothingToDoDialogText, Resources.NothingToDoDialogTitle, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -111,8 +110,8 @@
         {
             var nl = Environment.NewLine;
 
-            return MessageBox.Show(string.Format(Resources.ProgressFinishedDialogText, sumFiles, nl, nl),
-                Resources.ProgressFinishedDialogTitle, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return MessageBox.Show(string.Format(Resources.ProgressFinishedDialogText, sumFiles, nl, nl), Resources.ProgressFinishedDialogTitle,
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
     }
 }

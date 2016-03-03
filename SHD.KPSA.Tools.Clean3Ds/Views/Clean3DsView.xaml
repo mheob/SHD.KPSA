@@ -31,8 +31,7 @@
             <GridSplitter Grid.Column="1" Style="{StaticResource HorizontalGridSplitter}" />
 
             <!-- ToDo: displaying a preview -->
-            <TextBlock Grid.Column="2"
-                       Style="{StaticResource PreviewToDo}" />
+            <TextBlock Grid.Column="2" Style="{StaticResource PreviewToDo}" />
             <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
         </Grid>
 

@@ -31,8 +31,7 @@
         /// <param name="canExecute">The execution status logic.</param>
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            if (execute == null)
-                throw new ArgumentNullException(nameof(execute));
+            if (execute == null) throw new ArgumentNullException(nameof(execute));
 
             this.execute = execute;
             this.canExecute = canExecute;

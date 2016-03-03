@@ -14,8 +14,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary
-                    Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

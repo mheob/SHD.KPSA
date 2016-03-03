@@ -24,7 +24,8 @@
                                         <Storyboard>
                                             <ColorAnimation
                                                 Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
-                                                To="DimGray" Duration="0:0:0.1" />
+                                                To="DimGray"
+                                                Duration="0:0:0.1" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -70,7 +71,8 @@
                                         <Storyboard>
                                             <ColorAnimation
                                                 Storyboard.TargetProperty="(Ellipse.Fill).(SolidColorBrush.Color)"
-                                                To="DimGray" Duration="0:0:0.1" />
+                                                To="DimGray"
+                                                Duration="0:0:0.1" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>

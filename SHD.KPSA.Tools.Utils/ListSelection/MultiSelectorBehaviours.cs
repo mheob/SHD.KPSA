@@ -14,13 +14,11 @@
         /// <summary>
         /// ...
         /// </summary>
-        public static readonly DependencyProperty SynchronizedSelectedItems = DependencyProperty.RegisterAttached(
-            "SynchronizedSelectedItems", typeof (IList), typeof (MultiSelectorBehaviours),
-            new PropertyMetadata(null, OnSynchronizedSelectedItemsChanged));
+        public static readonly DependencyProperty SynchronizedSelectedItems = DependencyProperty.RegisterAttached("SynchronizedSelectedItems",
+            typeof (IList), typeof (MultiSelectorBehaviours), new PropertyMetadata(null, OnSynchronizedSelectedItemsChanged));
 
-        private static readonly DependencyProperty SynchronizationManagerProperty = DependencyProperty.RegisterAttached(
-            "SynchronizationManager", typeof (SynchronizationManager), typeof (MultiSelectorBehaviours),
-            new PropertyMetadata(null));
+        private static readonly DependencyProperty SynchronizationManagerProperty = DependencyProperty.RegisterAttached("SynchronizationManager",
+            typeof (SynchronizationManager), typeof (MultiSelectorBehaviours), new PropertyMetadata(null));
 
         /// <summary>
         /// Gets the synchronized selected items.
@@ -52,8 +50,7 @@
             dependencyObject.SetValue(SynchronizationManagerProperty, value);
         }
 
-        private static void OnSynchronizedSelectedItemsChanged(DependencyObject dependencyObject,
-            DependencyPropertyChangedEventArgs e)
+        private static void OnSynchronizedSelectedItemsChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null)
             {
