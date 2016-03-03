@@ -55,13 +55,14 @@
                 <Setter Property="Foreground" Value="Black" />
                 <Setter Property="IsEnabled" Value="False" />
                 <Setter Property="Margin" Value="0,4" />
-                <Setter Property="SelectedColor" Value="Black" />
                 <Setter Property="ShowAdvancedButton" Value="False" />
                 <Setter Property="UsingAlphaChannel" Value="False" />
                 <Setter Property="VerticalAlignment" Value="Center" />
             </Style>
-            
-            <!-- AREAS WHICH WILL BE DONE LATER -->
+        </ResourceDictionary>
+
+        <!-- AREAS WHICH WILL BE DONE LATER -->
+        <ResourceDictionary>
             <Style x:Key="PreviewToDo" TargetType="{x:Type TextBlock}">
                 <Setter Property="Text" Value="... hier folgt evtl. irgendwann eine Vorschau ..." />
                 <Setter Property="Foreground" Value="Orange" />

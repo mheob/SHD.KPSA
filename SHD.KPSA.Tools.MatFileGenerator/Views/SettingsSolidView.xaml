@@ -4,13 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
+             xmlns:vm="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="300">
+             d:DesignHeight="150" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance vm:MatFileGenViewModel}">
 
     <UserControl.Resources>
-        <ResourceDictionary
-            Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/SHD.KPSA.Tools.MatFileGenerator;component/Skins/MatFileGen.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Grid VerticalAlignment="Top">
@@ -42,6 +49,7 @@
                   Style="{StaticResource CheckBoxLabel}" />
 
         <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPicker"
+                          SelectedColor="{Binding SelectedColor}"
                           IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
 
         <TextBlock Grid.Column="0" Grid.Row="2"
@@ -49,8 +57,9 @@
                    ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorHex}"
                    Style="{StaticResource TextBlockLabel}" />
 
+        <!-- ToDo: Converter to remove alpha -->
         <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBoxColorHex"
-                 Text="{x:Static rx:Resources.MatFileGenHexColorDefault}"
+                 Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter}, Mode=TwoWay}"
                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorHexInput}"
                  Style="{StaticResource TextBox}"
                  IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
@@ -68,19 +77,22 @@
             </Grid.ColumnDefinitions>
 
             <TextBox x:Name="TextBoxColorR" Grid.Column="0"
+                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
-                     Margin="0,4,4,4"
-                     IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
+                     Margin="0,4,4,4" />
+            <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorG" Grid.Column="1"
+                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Green}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
-                     Margin="2,4"
-                     IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
+                     Margin="2,4" />
+            <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorB" Grid.Column="2"
+                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Blue}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
-                     Margin="4,4,0,4"
-                     IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
+                     Margin="4,4,0,4" />
+            <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
         </Grid>
     </Grid>
 </UserControl>

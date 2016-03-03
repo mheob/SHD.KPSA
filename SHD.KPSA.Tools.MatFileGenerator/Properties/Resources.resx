@@ -165,9 +165,6 @@
   <data name="MatFileGenGroupThumbnails" xml:space="preserve">
     <value>Thumbnails</value>
   </data>
-  <data name="MatFileGenHexColorDefault" xml:space="preserve">
-    <value>#000000</value>
-  </data>
   <data name="MatFileGenLabelColorName" xml:space="preserve">
     <value>Colorname:</value>
   </data>

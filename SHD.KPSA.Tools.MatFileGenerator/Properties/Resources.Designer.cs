@@ -223,15 +223,6 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die #000000 ähnelt.
-        /// </summary>
-        public static string MatFileGenHexColorDefault {
-            get {
-                return ResourceManager.GetString("MatFileGenHexColorDefault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Colorname: ähnelt.
         /// </summary>
         public static string MatFileGenLabelColorName {

@@ -72,10 +72,12 @@
   <ItemGroup>
     <Compile Include="Commands\ComboBoxBehavior.cs" />
     <Compile Include="Commands\TextBoxBehavior.cs" />
+    <Compile Include="AdditionalColorConverter.cs" />
     <Compile Include="Converter\BaseConverter.cs" />
     <Compile Include="Converter\BoolToVisibleConverter.cs" />
     <Compile Include="Converter\CaseConverter.cs" />
     <Compile Include="Converter\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converter\ColorToStringConverter.cs" />
     <Compile Include="Converter\InverseBoolConverter.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
     <Compile Include="Dialogs.cs" />

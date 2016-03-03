@@ -69,6 +69,7 @@
                       IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}" />
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
+                              SelectedColor="Black"
                               IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxBorderOuterSize"

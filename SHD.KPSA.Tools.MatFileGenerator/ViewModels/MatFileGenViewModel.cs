@@ -3,6 +3,7 @@
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Windows.Input;
+    using System.Windows.Media;
     using KPSA.Utils;
     using Models;
     using Properties;
@@ -27,6 +28,8 @@
         private string selectedRotateY;
         private string selectedRotateZ;
 
+        private Color selectedColor;
+
         private ObservableCollection<MatFileGenFiles> fileCollection = new ObservableCollection<MatFileGenFiles>();
         private ObservableCollection<MatFileGenFiles> selectedFilesCollection = new ObservableCollection<MatFileGenFiles>();
 
@@ -45,6 +48,7 @@
         public MatFileGenViewModel()
         {
             selectedPath = Settings.Default.StartUpFilePath;
+            selectedColor = Color.FromRgb(17, 34, 51);
 
             InitComboBoxes();
             CheckTextBoxPath();
@@ -132,7 +136,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxScaleX
+        /// Gets and sets the selected item from the ComboBoxScaleX.
         /// </summary>
         public string SelectedScaleX
         {
@@ -146,7 +150,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxScaleY
+        /// Gets and sets the selected item from the ComboBoxScaleY.
         /// </summary>
         public string SelectedScaleY
         {
@@ -160,7 +164,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxScaleZ
+        /// Gets and sets the selected item from the ComboBoxScaleZ.
         /// </summary>
         public string SelectedScaleZ
         {
@@ -174,7 +178,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxRotateX
+        /// Gets and sets the selected item from the ComboBoxRotateX.
         /// </summary>
         public string SelectedRotateX
         {
@@ -188,7 +192,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxRotateY
+        /// Gets and sets the selected item from the ComboBoxRotateY.
         /// </summary>
         public string SelectedRotateY
         {
@@ -202,7 +206,7 @@
         }
 
         /// <summary>
-        /// Gets and sets the selected item from the ComboBoxRotateZ
+        /// Gets and sets the selected item from the ComboBoxRotateZ.
         /// </summary>
         public string SelectedRotateZ
         {
@@ -211,6 +215,20 @@
             {
                 if (value == selectedRotateZ) return;
                 selectedRotateZ = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the selected color for the solid generation.
+        /// </summary>
+        public Color SelectedColor
+        {
+            get { return selectedColor; }
+            set
+            {
+                if (value.Equals(selectedColor)) return;
+                selectedColor = value;
                 OnPropertyChanged();
             }
         }
