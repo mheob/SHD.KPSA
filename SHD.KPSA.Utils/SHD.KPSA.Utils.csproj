@@ -72,7 +72,8 @@
   <ItemGroup>
     <Compile Include="Commands\ComboBoxBehavior.cs" />
     <Compile Include="Commands\TextBoxBehavior.cs" />
-    <Compile Include="AdditionalColorConverter.cs" />
+    <Compile Include="Converter\AdditionalColorConverter.cs" />
+    <Compile Include="Converter\AdditionalCharConverter.cs" />
     <Compile Include="WpfConverter\BaseConverter.cs" />
     <Compile Include="WpfConverter\BoolToVisibleConverter.cs" />
     <Compile Include="WpfConverter\CaseConverter.cs" />
