@@ -48,7 +48,7 @@
         /// </summary>
         public MatFileGenViewModel()
         {
-            SelectedPath = Settings.Default.StartUpFilePath;
+            SelectedPath = Constants.DesktopPath;
             SelectedColor = Color.FromRgb(17, 34, 51);
 
             InitComboBoxes();

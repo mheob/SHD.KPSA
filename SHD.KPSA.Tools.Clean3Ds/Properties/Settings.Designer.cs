@@ -22,17 +22,5 @@ namespace SHD.KPSA.Tools.Clean3Ds.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\mheob\\Desktop\\DataTools_Tests\\")]
-        public string StartUpFilePath {
-            get {
-                return ((string)(this["StartUpFilePath"]));
-            }
-            set {
-                this["StartUpFilePath"] = value;
-            }
-        }
     }
 }

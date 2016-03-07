@@ -44,7 +44,7 @@
         /// </summary>
         public Clean3DsViewModel()
         {
-            SelectedPath = Settings.Default.StartUpFilePath;
+            SelectedPath = Constants.DesktopPath;
 
             CheckTextBoxPath(SelectedPath);
             GetFiles();
