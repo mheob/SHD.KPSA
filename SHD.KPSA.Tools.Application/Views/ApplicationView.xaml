@@ -6,13 +6,13 @@
                      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:vm="clr-namespace:SHD.KPSA.Tools.Application.ViewModels"
                      xmlns:rx="clr-namespace:SHD.KPSA.Tools.Application.Properties"
-                     xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
                      xmlns:vmChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.ViewModels;assembly=SHD.KPSA.Tools.Changelog"
                      xmlns:vmMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels;assembly=SHD.KPSA.Tools.MatFileGenerator"
                      xmlns:vmClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.ViewModels;assembly=SHD.KPSA.Tools.Clean3Ds"
                      xmlns:vChanglog="clr-namespace:SHD.KPSA.Tools.Changelog.Views;assembly=SHD.KPSA.Tools.Changelog"
                      xmlns:vMatFileGen="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Views;assembly=SHD.KPSA.Tools.MatFileGenerator"
                      xmlns:vClean3Ds="clr-namespace:SHD.KPSA.Tools.Clean3Ds.Views;assembly=SHD.KPSA.Tools.Clean3Ds"
+                     xmlns:wpfConverter="clr-namespace:SHD.KPSA.Utils.WpfConverter;assembly=SHD.KPSA.Utils"
                      Title="SHD KPSA-Daten Helper Tools"
                      Height="650" Width="1000"
                      Icon="/Resources/logo_shd.ico"
@@ -33,9 +33,9 @@
             <vClean3Ds:Clean3DsView />
         </DataTemplate>
 
-        <converter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True" />
-        <converter:BoolToVisibleConverter x:Key="NavigationView" Collapse="True" />
-        <converter:BoolToVisibleConverter x:Key="PageView" Collapse="True" Reverse="True" />
+        <wpfConverter:BoolToVisibleConverter x:Key="BackNavigation" Collapse="True" />
+        <wpfConverter:BoolToVisibleConverter x:Key="NavigationView" Collapse="True" />
+        <wpfConverter:BoolToVisibleConverter x:Key="PageView" Collapse="True" Reverse="True" />
     </mahapps:MetroWindow.Resources>
 
     <mahapps:MetroWindow.Style>

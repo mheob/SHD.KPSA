@@ -1,4 +1,4 @@
-﻿namespace SHD.KPSA.Utils.Converter
+﻿namespace SHD.KPSA.Utils.WpfConverter
 {
     using System;
     using System.Windows.Markup;

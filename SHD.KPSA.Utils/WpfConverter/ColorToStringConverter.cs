@@ -1,9 +1,10 @@
-﻿namespace SHD.KPSA.Utils.Converter
+﻿namespace SHD.KPSA.Utils.WpfConverter
 {
     using System;
     using System.Globalization;
     using System.Windows.Data;
     using System.Windows.Media;
+    using Converter;
 
     /// <summary>
     /// An implementation of <see cref="IValueConverter" /> that converts <see cref="ColorToStringConverter" />

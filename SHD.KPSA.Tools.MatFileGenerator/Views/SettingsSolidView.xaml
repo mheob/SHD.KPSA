@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
              xmlns:vm="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
+             xmlns:wpfConverter="clr-namespace:SHD.KPSA.Utils.WpfConverter;assembly=SHD.KPSA.Utils"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance vm:MatFileGenViewModel}">
@@ -58,7 +58,7 @@
 
         <!-- ToDo: Converter to remove alpha -->
         <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBoxColorHex"
-                 Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter}, Mode=TwoWay}"
+                 Text="{Binding Path=SelectedColor, Converter={wpfConverter:ColorToStringConverter}, Mode=TwoWay}"
                  ToolTip="{x:Static rx:Resources.MatFileGenToolTipColorHexInput}"
                  Style="{StaticResource TextBox}"
                  IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />
@@ -76,19 +76,19 @@
             </Grid.ColumnDefinitions>
 
             <TextBox x:Name="TextBoxColorR" Grid.Column="0"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
+                     Text="{Binding Path=SelectedColor, Converter={wpfConverter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="0,4,4,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorG" Grid.Column="1"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Green}, Mode=TwoWay}"
+                     Text="{Binding Path=SelectedColor, Converter={wpfConverter:ColorToStringConverter ShowColorFormat=Green}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="2,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorB" Grid.Column="2"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Blue}, Mode=TwoWay}"
+                     Text="{Binding Path=SelectedColor, Converter={wpfConverter:ColorToStringConverter ShowColorFormat=Blue}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="4,4,0,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
