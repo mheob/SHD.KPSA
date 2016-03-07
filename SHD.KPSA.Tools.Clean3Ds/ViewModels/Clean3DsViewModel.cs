@@ -23,6 +23,7 @@
         private const string EXTENSION = "*.3ds";
 
         private bool isSelected;
+        private bool isStatusBarVisible;
         private string selectedPath;
         private string statusBarSummary;
 
@@ -45,7 +46,7 @@
         {
             SelectedPath = Settings.Default.StartUpFilePath;
 
-            CheckTextBoxPath();
+            CheckTextBoxPath(SelectedPath);
             GetFiles();
             UpdateStatusBar();
         }
@@ -67,6 +68,20 @@
             {
                 if (value == isSelected) return;
                 isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the visibility of the status bar.
+        /// </summary>
+        public bool IsStatusBarVisible
+        {
+            get { return isStatusBarVisible; }
+            set
+            {
+                if (value == isStatusBarVisible) return;
+                isStatusBarVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -137,7 +152,10 @@
             get
             {
                 if (checkTextBoxPathCommand != null) return checkTextBoxPathCommand;
-                checkTextBoxPathCommand = new RelayCommand(param => CheckTextBoxPath());
+                checkTextBoxPathCommand = new RelayCommand(
+                    param => CheckTextBoxPath((string) param),
+                    param => param != null);
+
                 return checkTextBoxPathCommand;
             }
         }
@@ -285,27 +303,28 @@
             }
         }
 
-        private void CheckTextBoxPath()
+        private void CheckTextBoxPath(string path)
         {
-            if (SelectedPath.EndsWith(@"\")) return;
+            SelectedPath = path.EndsWith(@"\") ? path : path + @"\";
 
-            SelectedPath = SelectedPath + @"\";
+            GetFiles();
+            UpdateStatusBar();
         }
 
         private void GetDirectory(string path)
         {
             SelectedPath = Dialogs.OpenFolderDialog(path) ?? path;
 
-            CheckTextBoxPath();
-            GetFiles();
-            UpdateStatusBar();
+            CheckTextBoxPath(SelectedPath);
         }
 
         private void UpdateStatusBar()
         {
-            StatusBarSummary = FileCollection.Count > 0
-                ? string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count)
-                : string.Empty;
+            // ToDo: Umbau auf visibility
+
+            StatusBarSummary = string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count);
+
+            IsStatusBarVisible = FileCollection.Count > 0;
         }
 
         private void SelectAll()

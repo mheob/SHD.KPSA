@@ -21,7 +21,8 @@
                  Padding="4">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="LostFocus">
-                    <i:InvokeCommandAction Command="{Binding CheckTextBoxPathCommand}" />
+                    <i:InvokeCommandAction Command="{Binding CheckTextBoxPathCommand}"
+                                           CommandParameter="{Binding ElementName=TextBoxPath, Path=Text}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>

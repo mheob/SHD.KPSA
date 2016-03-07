@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converter="clr-namespace:SHD.KPSA.Utils.Converter;assembly=SHD.KPSA.Utils"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.Utils.Properties"
              xmlns:listSelection="clr-namespace:SHD.KPSA.Tools.Utils.ListSelection"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -77,12 +78,14 @@
 
         <!-- ReSharper disable Xaml.StaticResourceNotResolved -->
         <Separator Grid.Row="2"
-                   Style="{StaticResource VerticalSeparator}" />
+                   Style="{StaticResource VerticalSeparator}"
+                   Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter}}" />
 
         <TextBlock Grid.Row="3"
                    x:Name="TextBlockStatusBar"
                    Text="{Binding Path=StatusBarSummary, Mode=TwoWay}"
-                   Style="{StaticResource DataGridFilesStatusBar}" />
+                   Style="{StaticResource DataGridFilesStatusBar}"
+                   Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter}}" />
         <!-- ReSharper restore Xaml.StaticResourceNotResolved -->
     </Grid>
 </UserControl>

@@ -18,6 +18,7 @@
         private const string EXTENSION = "*.jpg";
 
         private bool isSelected;
+        private bool isStatusBarVisible;
         private string selectedPath;
         private string statusBarSummary;
 
@@ -47,11 +48,11 @@
         /// </summary>
         public MatFileGenViewModel()
         {
-            selectedPath = Settings.Default.StartUpFilePath;
-            selectedColor = Color.FromRgb(17, 34, 51);
+            SelectedPath = Settings.Default.StartUpFilePath;
+            SelectedColor = Color.FromRgb(17, 34, 51);
 
             InitComboBoxes();
-            CheckTextBoxPath();
+            CheckTextBoxPath(SelectedPath);
             GetFiles();
             UpdateStatusBar();
         }
@@ -103,6 +104,20 @@
             {
                 if (value == isSelected) return;
                 isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the visibility of the status bar.
+        /// </summary>
+        public bool IsStatusBarVisible
+        {
+            get { return isStatusBarVisible; }
+            set
+            {
+                if (value == isStatusBarVisible) return;
+                isStatusBarVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -271,7 +286,10 @@
             get
             {
                 if (checkTextBoxPathCommand != null) return checkTextBoxPathCommand;
-                checkTextBoxPathCommand = new RelayCommand(param => CheckTextBoxPath());
+                checkTextBoxPathCommand = new RelayCommand(
+                    param => CheckTextBoxPath((string) param),
+                    param => param != null);
+
                 return checkTextBoxPathCommand;
             }
         }
@@ -364,27 +382,26 @@
             // ToDo: Methode "StartGeneration" erstellen
         }
 
-        private void CheckTextBoxPath()
+        private void CheckTextBoxPath(string path)
         {
-            if (SelectedPath.EndsWith(@"\")) return;
+            SelectedPath = path.EndsWith(@"\") ? path : path + @"\";
 
-            SelectedPath = SelectedPath + @"\";
+            GetFiles();
+            UpdateStatusBar();
         }
 
         private void GetDirectory(string path)
         {
             SelectedPath = Dialogs.OpenFolderDialog(path) ?? path;
 
-            CheckTextBoxPath();
-            GetFiles();
-            UpdateStatusBar();
+            CheckTextBoxPath(SelectedPath);
         }
 
         private void UpdateStatusBar()
         {
-            StatusBarSummary = FileCollection.Count > 0
-                ? string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count)
-                : string.Empty;
+            StatusBarSummary = string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count);
+
+            IsStatusBarVisible = FileCollection.Count > 0;
         }
 
         private void SelectAll()
