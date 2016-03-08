@@ -119,38 +119,35 @@
   </resheader>
   <data name="TitleClean3Ds" xml:space="preserve">
     <value>Farben in 3DS entfernen</value>
-    <comment>c</comment>
   </data>
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} von {1} Dateien gewählt</value>
-    <comment>c</comment>
   </data>
   <data name="MessageDialogCancelContent" xml:space="preserve">
     <value>Der Vorgang wurde vor der Fertigstellung abgebrochen!</value>
-    <comment>c</comment>
   </data>
   <data name="MessageDialogCancelTitle" xml:space="preserve">
     <value>Abbruch!</value>
-    <comment>c</comment>
   </data>
   <data name="MessageDialogCompleteContent" xml:space="preserve">
     <value>Der Vorgang wurde erfolgreich abgeschlossen.{0}{0}Sollen Die Dateien angezeigt werden?</value>
-    <comment>c</comment>
   </data>
   <data name="MessageDialogCompleteTitle" xml:space="preserve">
     <value>Fertig!</value>
-    <comment>c</comment>
   </data>
   <data name="ProgressDialogPreviewContent" xml:space="preserve">
     <value>Die Verarbeitung wird vorbereitet ...</value>
-    <comment>c</comment>
   </data>
   <data name="ProgressDialogRunningContent" xml:space="preserve">
     <value>Es sind bereits {0} von {1} Dateien verarbeitet.</value>
-    <comment>c</comment>
   </data>
   <data name="ProgressDialogTitle" xml:space="preserve">
     <value>Einen kurzen Moment ...</value>
-    <comment>c</comment>
+  </data>
+  <data name="ProgressDialogPrepareingContent" xml:space="preserve">
+    <value>{0} von {1} Dateien vorbereitet.</value>
+  </data>
+  <data name="ProgressDialogWritingContent" xml:space="preserve">
+    <value>{0} von {1} Dateien geschrieben.</value>
   </data>
 </root>

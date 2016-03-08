@@ -1,6 +1,7 @@
 ﻿namespace SHD.KPSA.Tools.Clean3Ds.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
@@ -8,6 +9,7 @@
     using System.Windows;
     using System.Windows.Input;
     using KPSA.Utils;
+    using KPSA.Utils.Converter;
     using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
     using Models;
@@ -257,30 +259,94 @@
 
             controller.Maximum = sumFiles;
 
-            await Task.Delay(1000);
+            await Task.Delay(250);
 
-            foreach (var file in SelectedFilesCollection.Select(selectedFile => selectedFile.FullFilePath))
+            var selectedFiles = new List<string>();
+
+            foreach (var file in SelectedFilesCollection.Where(file => File.Exists(file.FullFilePath)))
             {
-                if (File.Exists(file))
+                try
                 {
-                    try
+                    if (!Directory.Exists(Constants.TempFolder))
                     {
-                        Programs.OpenThirdParty("fix3ds.exe", " -m \"" + file + "\"", Constants.DefaultThirdPartyFolder);
-
-                        controller.SetProgress(++curFile);
-                        controller.SetMessage(string.Format(Resources.ProgressDialogRunningContent, curFile, sumFiles));
-
-                        File.SetCreationTime(file, DateTime.Now);
-
-                        await Task.Delay(200);
+                        Directory.CreateDirectory(Constants.TempFolder);
                     }
-                    catch (Exception ex)
-                    {
-                        Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
-                    }
+
+                    var tmpFile = Constants.TempFolder + AdditionalCharConverter.ConvertCharsToAscii(file.FileName + EXTENSION);
+
+                    File.Copy(file.FullFilePath, tmpFile, true);
+
+                    selectedFiles.Add(tmpFile);
+
+                    File.Delete(file.FullFilePath);
+
+                    controller.SetProgress(++curFile);
+                    controller.SetMessage(string.Format(Resources.ProgressDialogPrepareingContent, curFile, sumFiles));
+
+                    await Task.Delay(100);
+                }
+                catch (Exception ex)
+                {
+                    Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
+                }
+
+
+                if (controller.IsCanceled) break;
+            }
+
+            await Task.Delay(250);
+
+            curFile = 0;
+
+            foreach (var file in selectedFiles.Where(File.Exists))
+            {
+                try
+                {
+                    // ToDo: Umlaute entfernen
+                    Programs.OpenThirdParty("fix3ds.exe", " -m \"" + file + "\"", Constants.DefaultThirdPartyFolder);
+
+                    controller.SetProgress(++curFile);
+                    controller.SetMessage(string.Format(Resources.ProgressDialogRunningContent, curFile, sumFiles));
+
+                    File.SetCreationTime(file, DateTime.Now);
+
+                    await Task.Delay(100);
+                }
+                catch (Exception ex)
+                {
+                    Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
+                }
+
+
+                if (controller.IsCanceled) break;
+            }
+
+            await Task.Delay(250);
+
+            curFile = 0;
+
+            foreach (var file in selectedFiles.Where(File.Exists))
+            {
+                try
+                {
+                    File.Copy(file, SelectedPath + Path.GetFileName(file), true);
+
+                    controller.SetProgress(++curFile);
+                    controller.SetMessage(string.Format(Resources.ProgressDialogWritingContent, curFile, sumFiles));
+
+                    await Task.Delay(100);
+                }
+                catch (Exception ex)
+                {
+                    Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
                 }
 
                 if (controller.IsCanceled) break;
+            }
+
+            if (Directory.Exists(Constants.TempFolder))
+            {
+                Directory.Delete(Constants.TempFolder, true);
             }
 
             await controller.CloseAsync();
@@ -320,8 +386,6 @@
 
         private void UpdateStatusBar()
         {
-            // ToDo: Umbau auf visibility
-
             StatusBarSummary = string.Format(Resources.DataGridFilesStatusBarText, SelectedFilesCollection.Count, FileCollection.Count);
 
             IsStatusBarVisible = FileCollection.Count > 0;

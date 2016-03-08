@@ -113,14 +113,5 @@ namespace SHD.KPSA.Tools.Utils.Properties {
                 return ResourceManager.GetString("DataGridFilesHeaderName", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} / {1} files processed ähnelt.
-        /// </summary>
-        public static string ProgressLabelState {
-            get {
-                return ResourceManager.GetString("ProgressLabelState", resourceCulture);
-            }
-        }
     }
 }

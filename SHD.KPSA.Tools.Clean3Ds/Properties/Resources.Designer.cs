@@ -106,6 +106,15 @@ namespace SHD.KPSA.Tools.Clean3Ds.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} of {1} files prepared. ähnelt.
+        /// </summary>
+        public static string ProgressDialogPrepareingContent {
+            get {
+                return ResourceManager.GetString("ProgressDialogPrepareingContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The processing is being prepared ... ähnelt.
         /// </summary>
         public static string ProgressDialogPreviewContent {
@@ -129,6 +138,15 @@ namespace SHD.KPSA.Tools.Clean3Ds.Properties {
         public static string ProgressDialogTitle {
             get {
                 return ResourceManager.GetString("ProgressDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0} von {1} files wrote. ähnelt.
+        /// </summary>
+        public static string ProgressDialogWritingContent {
+            get {
+                return ResourceManager.GetString("ProgressDialogWritingContent", resourceCulture);
             }
         }
         

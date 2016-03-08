@@ -135,7 +135,4 @@
   <data name="DataGridFilesHeaderName" xml:space="preserve">
     <value>Datei</value>
   </data>
-  <data name="ProgressLabelState" xml:space="preserve">
-    <value>{0} / {1} Dateien verarbeitet</value>
-  </data>
 </root>

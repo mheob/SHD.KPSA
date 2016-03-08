@@ -43,11 +43,6 @@
                                                                 Settings.Default.ThirdPartyFolder;
 
         /// <summary>
-        /// Gets the state within a progress label.
-        /// </summary>
-        public static string ProgressLabelState { get; } = Resources.ProgressLabelState;
-
-        /// <summary>
         /// Gets the location of the default temp directory in the system.
         /// </summary>
         public static string TempFolder { get; } = string.Format(Settings.Default.TempFolder, Path.GetTempPath());

@@ -14,6 +14,7 @@
         {
             s = s.ToLower();
 
+            s = s.Replace("*", "");
             s = s.Replace("ä", "ae");
             s = s.Replace("ö", "oe");
             s = s.Replace("ü", "ue");

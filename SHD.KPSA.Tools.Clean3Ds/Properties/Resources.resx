@@ -144,4 +144,10 @@
   <data name="ProgressDialogTitle" xml:space="preserve">
     <value>A short moment ...</value>
   </data>
+  <data name="ProgressDialogPrepareingContent" xml:space="preserve">
+    <value>{0} of {1} files prepared.</value>
+  </data>
+  <data name="ProgressDialogWritingContent" xml:space="preserve">
+    <value>{0} von {1} files wrote.</value>
+  </data>
 </root>
