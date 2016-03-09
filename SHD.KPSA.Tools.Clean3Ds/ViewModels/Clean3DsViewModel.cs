@@ -1,7 +1,6 @@
 ﻿namespace SHD.KPSA.Tools.Clean3Ds.ViewModels
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
@@ -261,87 +260,40 @@
 
             await Task.Delay(250);
 
-            var selectedFiles = new List<string>();
+            if (!Directory.Exists(Constants.TempFolder))
+            {
+                Directory.CreateDirectory(Constants.TempFolder);
+            }
 
             foreach (var file in SelectedFilesCollection.Where(file => File.Exists(file.FullFilePath)))
             {
                 try
                 {
-                    if (!Directory.Exists(Constants.TempFolder))
-                    {
-                        Directory.CreateDirectory(Constants.TempFolder);
-                    }
-
                     var tmpFile = Constants.TempFolder + AdditionalCharConverter.ConvertCharsToAscii(file.FileName + EXTENSION);
 
                     File.Copy(file.FullFilePath, tmpFile, true);
+                    File.SetCreationTime(tmpFile, DateTime.Now);
 
-                    selectedFiles.Add(tmpFile);
+                    await Task.Delay(50);
+
+                    Programs.OpenThirdParty("fix3ds.exe", " -m \"" + tmpFile + "\"", Constants.DefaultThirdPartyFolder);
+
+                    await Task.Delay(50);
 
                     File.Delete(file.FullFilePath);
+                    File.Copy(tmpFile, SelectedPath + Path.GetFileName(tmpFile), true);
 
-                    controller.SetProgress(++curFile);
-                    controller.SetMessage(string.Format(Resources.ProgressDialogPrepareingContent, curFile, sumFiles));
-
-                    await Task.Delay(100);
-                }
-                catch (Exception ex)
-                {
-                    Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
-                }
-
-
-                if (controller.IsCanceled) break;
-            }
-
-            await Task.Delay(250);
-
-            curFile = 0;
-
-            foreach (var file in selectedFiles.Where(File.Exists))
-            {
-                try
-                {
-                    // ToDo: Umlaute entfernen
-                    Programs.OpenThirdParty("fix3ds.exe", " -m \"" + file + "\"", Constants.DefaultThirdPartyFolder);
+                    await Task.Delay(50);
 
                     controller.SetProgress(++curFile);
                     controller.SetMessage(string.Format(Resources.ProgressDialogRunningContent, curFile, sumFiles));
 
-                    File.SetCreationTime(file, DateTime.Now);
-
-                    await Task.Delay(100);
+                    await Task.Delay(50);
                 }
                 catch (Exception ex)
                 {
                     Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
                 }
-
-
-                if (controller.IsCanceled) break;
-            }
-
-            await Task.Delay(250);
-
-            curFile = 0;
-
-            foreach (var file in selectedFiles.Where(File.Exists))
-            {
-                try
-                {
-                    File.Copy(file, SelectedPath + Path.GetFileName(file), true);
-
-                    controller.SetProgress(++curFile);
-                    controller.SetMessage(string.Format(Resources.ProgressDialogWritingContent, curFile, sumFiles));
-
-                    await Task.Delay(100);
-                }
-                catch (Exception ex)
-                {
-                    Dialogs.Exception(ex, Dialogs.ExceptionType.Universal);
-                }
-
-                if (controller.IsCanceled) break;
             }
 
             if (Directory.Exists(Constants.TempFolder))
