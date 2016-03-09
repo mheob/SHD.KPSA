@@ -147,13 +147,13 @@
   <data name="MatFileGenCheckBoxBorderOuter" xml:space="preserve">
     <value>outer Frame:</value>
   </data>
-  <data name="MatFileGenCheckBoxColorHex" xml:space="preserve">
+  <data name="MatFileGenTextBlockColorHex" xml:space="preserve">
     <value>Color as HEX:</value>
   </data>
-  <data name="MatFileGenCheckBoxColorRgb" xml:space="preserve">
+  <data name="MatFileGenTextBlockColorRgb" xml:space="preserve">
     <value>Color as RGB:</value>
   </data>
-  <data name="MatFileGenCheckBoxColorSelection" xml:space="preserve">
+  <data name="MatFileGenTextBlockColorSelection" xml:space="preserve">
     <value>Choose a color:</value>
   </data>
   <data name="MatFileGenCheckBoxThumb" xml:space="preserve">

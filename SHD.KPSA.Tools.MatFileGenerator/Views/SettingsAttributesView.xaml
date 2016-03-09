@@ -38,6 +38,8 @@
                 <ColumnDefinition Width="52" />
             </Grid.ColumnDefinitions>
 
+            <!-- ToDo: CheckBox-Binding -->
+
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxScale"
                       Content="{x:Static rx:Resources.MatFileGenCheckBoxScale}"
                       ToolTip="{x:Static rx:Resources.MatFileGenToolTipScale}"
@@ -91,6 +93,8 @@
                       IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
         </Grid>
 
+        <!-- ToDo: CheckBox-Binding -->
+
         <Grid Grid.Row="1" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Style="{StaticResource GridHeightDefault}" />
@@ -131,6 +135,8 @@
                 <ColumnDefinition Width="3.5*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+            <!-- ToDo: CheckBox- and TextBox-Binding -->
 
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxMirror"
                       Content="{x:Static rx:Resources.MatFileGenCheckBoxMirror}"

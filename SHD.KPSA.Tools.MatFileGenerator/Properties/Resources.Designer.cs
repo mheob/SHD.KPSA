@@ -97,33 +97,6 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Color as HEX: ähnelt.
-        /// </summary>
-        public static string MatFileGenCheckBoxColorHex {
-            get {
-                return ResourceManager.GetString("MatFileGenCheckBoxColorHex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Color as RGB: ähnelt.
-        /// </summary>
-        public static string MatFileGenCheckBoxColorRgb {
-            get {
-                return ResourceManager.GetString("MatFileGenCheckBoxColorRgb", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Choose a color: ähnelt.
-        /// </summary>
-        public static string MatFileGenCheckBoxColorSelection {
-            get {
-                return ResourceManager.GetString("MatFileGenCheckBoxColorSelection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Type Glass ähnelt.
         /// </summary>
         public static string MatFileGenCheckBoxGlass {
@@ -255,6 +228,33 @@ namespace SHD.KPSA.Tools.MatFileGenerator.Properties {
         public static string MatFileGenTabItemTexture {
             get {
                 return ResourceManager.GetString("MatFileGenTabItemTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Color as HEX: ähnelt.
+        /// </summary>
+        public static string MatFileGenTextBlockColorHex {
+            get {
+                return ResourceManager.GetString("MatFileGenTextBlockColorHex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Color as RGB: ähnelt.
+        /// </summary>
+        public static string MatFileGenTextBlockColorRgb {
+            get {
+                return ResourceManager.GetString("MatFileGenTextBlockColorRgb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Choose a color: ähnelt.
+        /// </summary>
+        public static string MatFileGenTextBlockColorSelection {
+            get {
+                return ResourceManager.GetString("MatFileGenTextBlockColorSelection", resourceCulture);
             }
         }
         

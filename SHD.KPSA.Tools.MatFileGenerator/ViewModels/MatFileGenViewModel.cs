@@ -29,7 +29,15 @@
         private string selectedRotateY;
         private string selectedRotateZ;
 
+        private int selectedVariantTab;
+        private string solidColorName;
         private Color selectedColor;
+
+        private string thumbFolder;
+        private int outerFrameSize;
+        private int innerFrameSize;
+        private Color outerFrameColor;
+        private Color innerFrameColor;
 
         private ObservableCollection<MatFileGenFiles> fileCollection = new ObservableCollection<MatFileGenFiles>();
         private ObservableCollection<MatFileGenFiles> selectedFilesCollection = new ObservableCollection<MatFileGenFiles>();
@@ -49,7 +57,12 @@
         public MatFileGenViewModel()
         {
             SelectedPath = Constants.DesktopPath;
-            SelectedColor = Color.FromRgb(17, 34, 51);
+            SelectedColor = Color.FromRgb(51, 68, 85);
+            ThumbFolder = Resources.MatFileGenThumbFolderDefault;
+            OuterFrameSize = int.Parse(Resources.MatFileGenTextBoxOuterSizeDefault);
+            InnerFrameSize = int.Parse(Resources.MatFileGenTextBoxInnerSizeDefault);
+            OuterFrameColor = Color.FromRgb(0, 0, 0);
+            InnerFrameColor = Color.FromRgb(255, 255, 255);
 
             InitComboBoxes();
             CheckTextBoxPath(SelectedPath);
@@ -235,6 +248,34 @@
         }
 
         /// <summary>
+        /// Gets and sets the tab, where the settings for the generation variant can be found.
+        /// </summary>
+        public int SelectedVariantTab
+        {
+            get { return selectedVariantTab; }
+            set
+            {
+                if (value == selectedVariantTab) return;
+                selectedVariantTab = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the name for the solid color file.
+        /// </summary>
+        public string SolidColorName
+        {
+            get { return solidColorName; }
+            set
+            {
+                if (value == solidColorName) return;
+                solidColorName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
         /// Gets and sets the selected color for the solid generation.
         /// </summary>
         public Color SelectedColor
@@ -244,6 +285,76 @@
             {
                 if (value.Equals(selectedColor)) return;
                 selectedColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the sub folder, where the thumbnails should store.
+        /// </summary>
+        public string ThumbFolder
+        {
+            get { return thumbFolder; }
+            set
+            {
+                if (value == thumbFolder) return;
+                thumbFolder = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the border size of the outer frame.
+        /// </summary>
+        public int OuterFrameSize
+        {
+            get { return outerFrameSize; }
+            set
+            {
+                if (value == outerFrameSize) return;
+                outerFrameSize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the border size of the inner frame.
+        /// </summary>
+        public int InnerFrameSize
+        {
+            get { return innerFrameSize; }
+            set
+            {
+                if (value == innerFrameSize) return;
+                innerFrameSize = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the color of the outer frame.
+        /// </summary>
+        public Color OuterFrameColor
+        {
+            get { return outerFrameColor; }
+            set
+            {
+                if (value.Equals(outerFrameColor)) return;
+                outerFrameColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the color of the inner frame.
+        /// </summary>
+        public Color InnerFrameColor
+        {
+            get { return innerFrameColor; }
+            set
+            {
+                if (value.Equals(innerFrameColor)) return;
+                innerFrameColor = value;
                 OnPropertyChanged();
             }
         }

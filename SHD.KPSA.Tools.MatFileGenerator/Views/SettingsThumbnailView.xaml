@@ -5,8 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:rx="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.Properties"
+             xmlns:vm="clr-namespace:SHD.KPSA.Tools.MatFileGenerator.ViewModels"
+             xmlns:wpfConverter="clr-namespace:SHD.KPSA.Utils.WpfConverter;assembly=SHD.KPSA.Utils"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="300">
+             d:DesignHeight="150" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance vm:MatFileGenViewModel}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -33,6 +36,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!-- ToDo: CheckBox-Binding -->
+
         <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxThumb"
                   Content="{x:Static rx:Resources.MatFileGenCheckBoxThumb}"
                   ToolTip="{x:Static rx:Resources.MatFileGenToolTipThumb}"
@@ -45,7 +50,7 @@
                VerticalAlignment="Center" />
 
         <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxThumbFolder"
-                 Text="{x:Static rx:Resources.MatFileGenThumbFolderDefault}"
+                 Text="{Binding ThumbFolder}"
                  Style="{StaticResource TextBoxColor}"
                  HorizontalContentAlignment="Center"
                  IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked}" />
@@ -69,11 +74,11 @@
                       IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}" />
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
-                              SelectedColor="Black"
+                              SelectedColor="{Binding OuterFrameColor}"
                               IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxBorderOuterSize"
-                     Text="{x:Static rx:Resources.MatFileGenTextBoxOuterSizeDefault}"
+                     Text="{Binding OuterFrameSize, Converter={wpfConverter:IntegerToStringConverter}, Mode=TwoWay}"
                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderSize}"
                      Style="{StaticResource TextBoxColorPicker}"
                      IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}" />
@@ -86,11 +91,11 @@
                       IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked, Mode=OneWay}" />
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPickerBorderInner"
-                              SelectedColor="White"
+                              SelectedColor="{Binding InnerFrameColor}"
                               IsEnabled="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="1" x:Name="TextBoxBorderInnerSize"
-                     Text="{x:Static rx:Resources.MatFileGenTextBoxInnerSizeDefault}"
+                     Text="{Binding InnerFrameSize, Converter={wpfConverter:IntegerToStringConverter}, Mode=TwoWay}"
                      ToolTip="{x:Static rx:Resources.MatFileGenToolTipBorderSize}"
                      Style="{StaticResource TextBoxColorPicker}"
                      IsEnabled="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked}" />
