@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="progName">The file to start.</param>
         /// <param name="args">The desired parameters to be used.</param>
-        /// <param name="path">The default subdirectory.</param>
+        /// <param name="path">The subdirectory.</param>
         public static void OpenThirdParty(string progName, string args, string path)
         {
             try
