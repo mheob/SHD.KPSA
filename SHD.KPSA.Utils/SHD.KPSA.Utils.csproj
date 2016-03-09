@@ -79,6 +79,7 @@
     <Compile Include="WpfConverter\CaseConverter.cs" />
     <Compile Include="WpfConverter\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="WpfConverter\ColorToStringConverter.cs" />
+    <Compile Include="WpfConverter\IntegerToStringConverter.cs" />
     <Compile Include="WpfConverter\InverseBoolConverter.cs" />
     <Compile Include="WpfConverter\StringFormatConverter.cs" />
     <Compile Include="Dialogs.cs" />
