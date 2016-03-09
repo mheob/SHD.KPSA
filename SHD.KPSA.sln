@@ -92,6 +92,7 @@ Global
 		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Debug|Any CPU.ActiveCfg = Debug
 		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Debug|x64.ActiveCfg = Debug
 		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Release|Any CPU.ActiveCfg = Release
+		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Release|Any CPU.Build.0 = Release
 		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Release|x64.ActiveCfg = Release
 		{256FC410-CCBC-4250-ADA1-DA2492261D5C}.Release|x64.Build.0 = Release
 	EndGlobalSection
