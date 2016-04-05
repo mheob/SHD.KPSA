@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Icons 16x16-->
+    <ImageSource x:Key="AddOn16X16">/Resources/BitmapGraphics/Icons/16x16/add_on.png</ImageSource>
+
+    <!-- Icons 32x32 -->
+    <ImageSource x:Key="AddOn32X32">/Resources/BitmapGraphics/Icons/32x32/add_on.png</ImageSource>
+
+</ResourceDictionary>

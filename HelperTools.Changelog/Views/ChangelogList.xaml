@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="HelperTools.Changelog.Views.ChangelogList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:props="clr-namespace:HelperTools.Changelog.Properties"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="120" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
+    </UserControl.Resources>
+
+    <DockPanel>
+        <!-- Header -->
+        <Label DockPanel.Dock="Top"
+               Template="{StaticResource HeaderTemplate}"
+               Content="{x:Static props:Resources.ChangelogTitle}" />
+
+        <!-- Content -->
+        <ScrollViewer CanContentScroll="True"
+                      Padding="8"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+
+            <DockPanel x:Name="StackPanelMainContent"
+                       Margin="16,8">
+
+                <Label x:Name="LabelContent" DockPanel.Dock="Top"
+                       Content="{Binding BuildNote, FallbackValue=Changelog__Items}"
+                       HorizontalContentAlignment="Right"
+                       FontFamily="Consolas"
+                       FontStyle="Italic" />
+
+                <ItemsControl ItemsSource="{Binding ChangelogLines}" />
+            </DockPanel>
+        </ScrollViewer>
+    </DockPanel>
+
+</UserControl>

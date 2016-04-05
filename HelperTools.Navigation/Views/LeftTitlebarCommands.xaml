@@ -1,0 +1,35 @@
+﻿<StackPanel x:Class="HelperTools.Navigation.Views.LeftTitlebarCommands"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:prism="http://prismlibrary.com/"
+            xmlns:infraConsts="clr-namespace:HelperTools.Infrastructure.Constants;assembly=HelperTools.Infrastructure"
+            xmlns:infra="clr-namespace:HelperTools.Infrastructure;assembly=HelperTools.Infrastructure"
+            xmlns:props="clr-namespace:HelperTools.Navigation.Properties"
+            prism:ViewModelLocator.AutoWireViewModel="True"
+            mc:Ignorable="d"
+            d:DesignHeight="30" d:DesignWidth="300">
+
+    <StackPanel.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
+    </StackPanel.Resources>
+
+    <Button Command="{x:Static infra:ApplicationCommands.ShowFlyoutCommand}"
+            CommandParameter="{x:Static infraConsts:FlyoutNames.NAVIGATION_FLYOUT}">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Height="20"
+                       Width="20"
+                       Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+                                 Visual="{StaticResource appbar_home_garage}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock Margin="4,0,0,0"
+                       VerticalAlignment="Center"
+                       Text="{x:Static props:Resources.HomeTilesFlyoutTitle}" />
+        </StackPanel>
+    </Button>
+
+</StackPanel>

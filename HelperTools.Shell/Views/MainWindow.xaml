@@ -1,0 +1,55 @@
+﻿<metro:MetroWindow x:Class="HelperTools.Shell.Views.MainWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:prism="http://www.codeplex.com/prism"
+                   xmlns:infraBehaviors="clr-namespace:HelperTools.Infrastructure.Behaviors;assembly=HelperTools.Infrastructure"
+                   xmlns:infraConsts="clr-namespace:HelperTools.Infrastructure.Constants;assembly=HelperTools.Infrastructure"
+                   xmlns:props="clr-namespace:HelperTools.Shell.Properties"
+                   prism:ViewModelLocator.AutoWireViewModel="True"
+                   infraBehaviors:RegionPopupBehaviors.CreatePopupRegionWithName="{x:Static infraConsts:RegionNames.DIALOG_POPUP_REGION}"
+                   infraBehaviors:RegionPopupBehaviors.ContainerWindowStyle="{StaticResource PopupRegionWindowStyle}"
+                   ResizeMode="CanResizeWithGrip"
+                   SaveWindowPosition="True"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   ShowIconOnTitleBar="True"
+                   mc:Ignorable="d"
+                   Title="SHD KPSa HelperTools" Height="600" Width="800">
+
+    <!-- LeftWindow Commands -->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands x:Name="LeftWindowCommandsRegion" />
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <!-- RightWindow Commands -->
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands x:Name="RightWindowCommandsRegion" />
+    </metro:MetroWindow.RightWindowCommands>
+
+    <!-- Flyouts -->
+    <metro:MetroWindow.Flyouts>
+        <metro:FlyoutsControl x:Name="FlyoutsControlRegion" />
+    </metro:MetroWindow.Flyouts>
+
+    <metro:MetroContentControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Main-Region -->
+            <ContentControl Grid.Row="0" prism:RegionManager.RegionName="{x:Static infraConsts:RegionNames.MAIN_REGION}" />
+
+            <!-- StatusBar -->
+            <StatusBar Grid.Row="1">
+                <StatusBarItem>HelperTools DEMO Application</StatusBarItem>
+                <Separator Style="{StaticResource StatusBarSeparator}" />
+                <StatusBarItem Content="{x:Static props:Resources.StatusBarLastActivity}" />
+                <StatusBarItem Content="{Binding Path=StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+            </StatusBar>
+        </Grid>
+    </metro:MetroContentControl>
+</metro:MetroWindow>
