@@ -21,6 +21,14 @@
     </metro:Flyout.Resources>
 
     <StackPanel>
+        <GroupBox Header="{x:Static props:Resources.SettingsGroupInformation}"
+                  Style="{StaticResource GroupBoxStyle}">
+            <Button Content="{x:Static props:Resources.SettingsChangelog}"
+                    Style="{StaticResource SettingsButton}"
+                    Command="{x:Static infra:ApplicationCommands.ShowContentCommand}"
+                    CommandParameter="{x:Static infraConsts:ContentNames.CHANGELOG_CONTENT}" />
+        </GroupBox>
+
         <GroupBox Header="{x:Static props:Resources.SettingsGroupApplication}"
                   Style="{StaticResource GroupBoxStyle}">
             <Grid>
@@ -72,14 +80,6 @@
                           ItemsSource="{Binding Path=SupportedLanguages, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </Grid>
-        </GroupBox>
-
-        <GroupBox Header="{x:Static props:Resources.SettingsGroupInformation}"
-                  Style="{StaticResource GroupBoxStyle}">
-            <Button Content="{x:Static props:Resources.SettingsChangelog}"
-                    Style="{StaticResource SettingsButton}"
-                    Command="{x:Static infra:ApplicationCommands.ShowContentCommand}"
-                    CommandParameter="{x:Static infraConsts:ContentNames.CHANGELOG_CONTENT}" />
         </GroupBox>
     </StackPanel>
 
