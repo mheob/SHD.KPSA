@@ -16,14 +16,14 @@
     using MahApps.Metro.Controls.Dialogs;
     using Models;
     using Prism.Commands;
+    using Views;
 
     /// <summary>The Clean3DsViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
-    public class Clean3DsViewModel : ViewModelBase
+    public class Clean3DsViewModel : ViewModelBase, IFileWorking
     {
         #region Fields
         private const string EXTENSION = "*.3ds";
-
         private string selectedPath;
 
         private ObservableCollection<IFiles> fileCollection = new ObservableCollection<IFiles>();
@@ -46,6 +46,10 @@
         #endregion Constructor
 
         #region Properties
+        /// <summary>Gets or sets my view.</summary>
+        /// <value>My view.</value>
+        public string MyView => typeof (Clean3Ds).ToString();
+
         /// <summary>Gets and sets the path, where the Files are.</summary>
         /// <value>The selected path.</value>
         public string SelectedPath
@@ -94,6 +98,10 @@
         #region Methods
         private void GetFiles()
         {
+            var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
+
+            if (currentView == null || !currentView.ToString().Equals(MyView)) return;
+
             FileCollection.Clear();
 
             foreach (var file in Directory.GetFiles(SelectedPath, EXTENSION))

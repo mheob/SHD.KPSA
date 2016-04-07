@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\logo_shd.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.3.0.109, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA109\lib\net45\MahApps.Metro.dll</HintPath>
@@ -76,6 +79,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -124,10 +128,10 @@
     <Compile Include="Views\SettingsFlyout.xaml.cs">
       <DependentUpon>SettingsFlyout.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\Icons.xaml">
+    <None Include="Resources\logo_shd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </None>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -174,7 +178,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -192,18 +195,32 @@
       <Project>{77a8bdc2-9f14-4d1b-a21f-6239435418ad}</Project>
       <Name>HelperTools.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HelperTools.MatFileGen\HelperTools.MatFileGen.csproj">
+      <Project>{613325f3-35c7-4bf9-953e-0e8f5ac67cb3}</Project>
+      <Name>HelperTools.MatFileGen</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelperTools.Navigation\HelperTools.Navigation.csproj">
       <Project>{9b2c7898-2982-4e2c-8a61-931effe548e2}</Project>
       <Name>HelperTools.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelperTools.SharedModules\HelperTools.SharedModules.csproj">
+      <Project>{A92EFC53-2B3D-4A44-B364-E4F9FE24E2CC}</Project>
+      <Name>HelperTools.SharedModules</Name>
     </ProjectReference>
     <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
       <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
       <Name>HelperTools.Styling</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\Entypo-license.txt" />
-    <Resource Include="Resources\WindowsIcons-license.txt" />
+    <None Include="Resources\logo_shd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Resources\SplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_shd.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

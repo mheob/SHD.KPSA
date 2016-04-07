@@ -61,6 +61,46 @@ namespace HelperTools.Shell.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon icon_shd {
+            get {
+                object obj = ResourceManager.GetObject("icon_shd", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap logo_shd_bitmap {
+            get {
+                object obj = ResourceManager.GetObject("logo_shd_bitmap", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///
+        ///&lt;!--This file is compatible with Silverlight--&gt;
+        ///&lt;Canvas xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot; Name=&quot;svg3336&quot; Width=&quot;176.25&quot; Height=&quot;62.5&quot;&gt;
+        ///    &lt;Canvas.RenderTransform&gt;
+        ///        &lt;TranslateTransform X=&quot;0&quot; Y=&quot;0&quot; /&gt;
+        ///    &lt;/Canvas.RenderTransform&gt;
+        ///    &lt;Canvas.Resources /&gt;
+        ///    &lt;!--Unknown tag: metadata--&gt;
+        ///    &lt;!--Unknown tag: sodipodi:namedview--&gt;
+        ///    &lt;Path xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot; Fill=&quot;#FF009EE0&quot;
+        ///          Data=&quot;M 18 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string logo_shd_xaml {
+            get {
+                return ResourceManager.GetString("logo_shd_xaml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
         public static string SettingsChangelog {
@@ -120,6 +160,16 @@ namespace HelperTools.Shell.Properties {
         public static string SettingsTitle {
             get {
                 return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SplashScreen {
+            get {
+                object obj = ResourceManager.GetObject("SplashScreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

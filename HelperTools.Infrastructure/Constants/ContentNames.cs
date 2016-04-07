@@ -13,6 +13,6 @@
         public const string CLEAN3_DS_CONTENT = "Clean3Ds";
 
         /// <summary>The MAT_FILE_GEN_CONTENT.</summary>
-        public const string MAT_FILE_GEN_CONTENT = "ChangelogList";
+        public const string MAT_FILE_GEN_CONTENT = "MatFileGen";
     }
 }

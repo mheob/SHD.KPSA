@@ -4,8 +4,11 @@
     using System.Windows.Controls;
     using System.Windows.Input;
     using Constants;
+    using Events;
     using Interfaces;
+    using Microsoft.Practices.ServiceLocation;
     using Prism.Commands;
+    using Prism.Events;
     using Prism.Regions;
 
     /// <summary>The ContentService.</summary>
@@ -14,6 +17,7 @@
     {
         #region Fields
         private readonly IRegionManager regionManager;
+        private IEventAggregator eventAggregator;
         #endregion Fields
 
         #region Constructor
@@ -46,7 +50,7 @@
 
             if (content == null) return;
 
-            regionManager.RequestNavigate(RegionNames.MAIN_REGION, contentName);
+            regionManager.RequestNavigate(RegionNames.MAIN_REGION, contentName, NavigationCompleted);
         }
 
         /// <summary>Determines whether this instance [can show the content] the specified content name.</summary>
@@ -57,5 +61,13 @@
             return true;
         }
         #endregion Implementation of IContentService
+
+        #region Methods
+        private void NavigationCompleted(NavigationResult navigationResult)
+        {
+            eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+            eventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(PathNames.DesktopPath);
+        }
+        #endregion Methods
     }
 }

@@ -117,50 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="logo_shd_bitmap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_shd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CheckBoxAuto" xml:space="preserve">
+    <value>auto</value>
   </data>
-  <data name="icon_shd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_shd.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CheckBoxBorderInner" xml:space="preserve">
+    <value>innerer Rahmen:</value>
   </data>
-  <data name="logo_shd_xaml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_shd.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="CheckBoxBorderOuter" xml:space="preserve">
+    <value>äußerer Rahmen:</value>
   </data>
-  <data name="SettingsChangelog" xml:space="preserve">
-    <value>Changelog</value>
+  <data name="CheckBoxGlass" xml:space="preserve">
+    <value>type glass</value>
   </data>
-  <data name="SettingsGroupApplication" xml:space="preserve">
-    <value>Application base</value>
+  <data name="CheckBoxMirror" xml:space="preserve">
+    <value>mirror</value>
   </data>
-  <data name="SettingsGroupInformation" xml:space="preserve">
-    <value>Informations</value>
+  <data name="CheckBoxRauto" xml:space="preserve">
+    <value>rauto</value>
   </data>
-  <data name="SettingsTextBlockColor" xml:space="preserve">
-    <value>Color:</value>
+  <data name="CheckBoxRef" xml:space="preserve">
+    <value>ref</value>
   </data>
-  <data name="SettingsTextBlockLanguage" xml:space="preserve">
-    <value>Language:</value>
+  <data name="CheckBoxRotate" xml:space="preserve">
+    <value>rotate (x/y/z)</value>
   </data>
-  <data name="SettingsTextBlockTheme" xml:space="preserve">
-    <value>Theme:</value>
+  <data name="CheckBoxScale" xml:space="preserve">
+    <value>scale (x/y/z)</value>
   </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
+  <data name="CheckBoxShi" xml:space="preserve">
+    <value>shi</value>
   </data>
-  <data name="SplashScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SplashScreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CheckBoxThumb" xml:space="preserve">
+    <value>Thumb erstellen</value>
   </data>
-  <data name="StatusBarAccentColorChanged" xml:space="preserve">
-    <value>Accent color changed to </value>
+  <data name="CheckBoxTra" xml:space="preserve">
+    <value>tra</value>
   </data>
-  <data name="StatusBarLanguageChanged" xml:space="preserve">
-    <value>Changed language to </value>
+  <data name="GroupSettings" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
-  <data name="StatusBarLastActivity" xml:space="preserve">
-    <value>Last activity:</value>
+  <data name="GroupThumbnails" xml:space="preserve">
+    <value>Thumbnails</value>
   </data>
-  <data name="StatusBarThemeChanged" xml:space="preserve">
-    <value>Theme changed to </value>
+  <data name="LabelColorName" xml:space="preserve">
+    <value>Farbname:</value>
+  </data>
+  <data name="LabelThumb" xml:space="preserve">
+    <value>Ordner:</value>
+  </data>
+  <data name="MatFileGenTitle" xml:space="preserve">
+    <value>Mat-Files-Generator</value>
+  </data>
+  <data name="TabItemSolid" xml:space="preserve">
+    <value>_2. Solid</value>
+  </data>
+  <data name="TabItemTexture" xml:space="preserve">
+    <value>_1. Textur</value>
+  </data>
+  <data name="TextBlockColorHex" xml:space="preserve">
+    <value>Farbe als HEX:</value>
+  </data>
+  <data name="TextBlockColorRgb" xml:space="preserve">
+    <value>Farbe als RGB:</value>
+  </data>
+  <data name="TextBlockColorSelection" xml:space="preserve">
+    <value>Farbe auswählen:</value>
+  </data>
+  <data name="ToolTipAuto" xml:space="preserve">
+    <value>Automatisches Texturaufbringung auf eine allgemeine viereckige Fläche.</value>
+  </data>
+  <data name="ToolTipBorderInner" xml:space="preserve">
+    <value>Die Einstellungen für den inneren Rahmen des Vorschaubildes.</value>
+  </data>
+  <data name="ToolTipBorderOuter" xml:space="preserve">
+    <value>Die Einstellungen für den äußeren Rahmen des Vorschaubildes.</value>
+  </data>
+  <data name="ToolTipBorderSize" xml:space="preserve">
+    <value>Angabe in Pixel</value>
+  </data>
+  <data name="ToolTipColorHex" xml:space="preserve">
+    <value>Für einen einfachen Lack kann hier der Farbwert als Hex-Wert eingegeben werden.</value>
+  </data>
+  <data name="ToolTipColorHexInput" xml:space="preserve">
+    <value>Den Farbwert in Form "#112233" eintragen!</value>
+  </data>
+  <data name="ToolTipColorName" xml:space="preserve">
+    <value>der Farbname (ohne Dateiendung)</value>
+  </data>
+  <data name="ToolTipColorRgb" xml:space="preserve">
+    <value>Für einen einfachen Lack kann hier der RGB-Farbwert (von 0 bis 255) eingegeben werden.</value>
+  </data>
+  <data name="ToolTipColorSelection" xml:space="preserve">
+    <value>Für einen einfachen Lack kann hier der Farbwert ausgewählt werden.</value>
+  </data>
+  <data name="ToolTipGlass" xml:space="preserve">
+    <value>Beschreibt, ob es sich um ein Material aus Glas handelt. Die Werte 0 und 1 sind möglich.</value>
+  </data>
+  <data name="ToolTipMirror" xml:space="preserve">
+    <value>Steuert die Spiegeloberfläche. Werte 0 bis 1 sind möglich. 1 bedeutet volle Spiegelung; 0.5 könnte man z. B. für Hochglanz-Lackfront verwenden.</value>
+  </data>
+  <data name="ToolTipRauto" xml:space="preserve">
+    <value>Skalierung der Textur auf die Größe der gesamten Fläche.</value>
+  </data>
+  <data name="ToolTipRef" xml:space="preserve">
+    <value>Der Schlüssel "ref" spezifiziert die Brechung durch eine positive Gleitkommazahl. Die initiale Brechung hat den Wert 1.0 und entspricht dem Brechungswert im Vakuum.</value>
+  </data>
+  <data name="ToolTipRotate" xml:space="preserve">
+    <value>Rotiert das JPG. Interessant ist hier nur die Z-Achse. Die Werte bei den X- und Y-Achsen bleiben auf 0.</value>
+  </data>
+  <data name="ToolTipScale" xml:space="preserve">
+    <value>Hierüber wird die Skalierung verändert. Benötigt wird dies natürlich nur, wenn mit Texturen gearbeitet wird. Die einzelnen Werte besagen, wie oft das JPG pro Meter dargestellt wird (Werte sind für X, Y und Z).</value>
+  </data>
+  <data name="ToolTipShi" xml:space="preserve">
+    <value>Der Schlüssel "shi" spezifiziert den spekularen Exponent durch eine positive Gleitkommazahl. Je höher der Exponent ist, desto geringer ist die Ausbreitung der spekularen Highlights. Der initiale Exponent hat den Wert 30.0.</value>
+  </data>
+  <data name="ToolTipThumb" xml:space="preserve">
+    <value>Erstellt zusätzlich ein Thumbnail in den Abmessungen 50x25 Pixel. Gespeichert wird dies im angegebenen Ordner.</value>
+  </data>
+  <data name="ToolTipTra" xml:space="preserve">
+    <value>Der Schlüssel "tra" spezifiziert die Transparenz durch eine nicht negative Gleitkommazahl, die &lt;= 1 ist. Der Wert 0.0 steht für völlige Undurchlässigkeit; der Wert 1.0 bedeutet totale Transparenz. Der Initialwert beträgt 0.0.</value>
   </data>
 </root>

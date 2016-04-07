@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CheckBoxAuto" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="CheckBoxBorderInner" xml:space="preserve">
+    <value>inner border</value>
+  </data>
+  <data name="CheckBoxBorderOuter" xml:space="preserve">
+    <value>outer frame:</value>
+  </data>
+  <data name="CheckBoxGlass" xml:space="preserve">
+    <value>type glass</value>
+  </data>
+  <data name="CheckBoxMirror" xml:space="preserve">
+    <value>mirror</value>
+  </data>
+  <data name="CheckBoxRauto" xml:space="preserve">
+    <value>rauto</value>
+  </data>
+  <data name="CheckBoxRef" xml:space="preserve">
+    <value>ref</value>
+  </data>
+  <data name="CheckBoxRotate" xml:space="preserve">
+    <value>rotate (x/y/z)</value>
+  </data>
+  <data name="CheckBoxScale" xml:space="preserve">
+    <value>scale (x/y/z)</value>
+  </data>
+  <data name="CheckBoxShi" xml:space="preserve">
+    <value>shi</value>
+  </data>
+  <data name="CheckBoxThumb" xml:space="preserve">
+    <value>create thumb</value>
+  </data>
+  <data name="CheckBoxTra" xml:space="preserve">
+    <value>tra</value>
+  </data>
+  <data name="GroupSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="GroupThumbnails" xml:space="preserve">
+    <value>Thumbnails</value>
+  </data>
+  <data name="LabelColorName" xml:space="preserve">
+    <value>color name:</value>
+  </data>
+  <data name="LabelThumb" xml:space="preserve">
+    <value>folder:</value>
+  </data>
+  <data name="MatFileGenTitle" xml:space="preserve">
+    <value>Mat-Files-Generator</value>
+  </data>
+  <data name="TabItemSolid" xml:space="preserve">
+    <value>_2. Solid</value>
+  </data>
+  <data name="TabItemTexture" xml:space="preserve">
+    <value>_1. Texture</value>
+  </data>
+  <data name="TextBlockColorHex" xml:space="preserve">
+    <value>color as HEX:</value>
+  </data>
+  <data name="TextBlockColorRgb" xml:space="preserve">
+    <value>color as RGB:</value>
+  </data>
+  <data name="TextBlockColorSelection" xml:space="preserve">
+    <value>select a color</value>
+  </data>
+  <data name="ToolTipAuto" xml:space="preserve">
+    <value>Automatic texture generation on a general rectangular area.</value>
+  </data>
+  <data name="ToolTipBorderInner" xml:space="preserve">
+    <value>The settings for the inner frame of the preview picture.</value>
+  </data>
+  <data name="ToolTipBorderOuter" xml:space="preserve">
+    <value>The settings for the outer frame of the preview picture.</value>
+  </data>
+  <data name="ToolTipBorderSize" xml:space="preserve">
+    <value>specify in pixels</value>
+  </data>
+  <data name="ToolTipColorHex" xml:space="preserve">
+    <value>For a simple paint, the color as a hex value can be entered here.</value>
+  </data>
+  <data name="ToolTipColorHexInput" xml:space="preserve">
+    <value>Enter the color value in the form "#112233"!</value>
+  </data>
+  <data name="ToolTipColorName" xml:space="preserve">
+    <value>the color name (without extension)</value>
+  </data>
+  <data name="ToolTipColorRgb" xml:space="preserve">
+    <value>For a simple polish the RGB color value can be entered here (from 0 to 255).</value>
+  </data>
+  <data name="ToolTipColorSelection" xml:space="preserve">
+    <value>For a simple paint, the color value can be selected here.</value>
+  </data>
+  <data name="ToolTipGlass" xml:space="preserve">
+    <value>Describes whether a material made of glass. The values 0 and 1 are possible.</value>
+  </data>
+  <data name="ToolTipMirror" xml:space="preserve">
+    <value>Controls the mirror surface. Possible values 0 and 1. 1 means full mirroring; 0.5 could be used for example for high-gloss lacquer front.</value>
+  </data>
+  <data name="ToolTipRauto" xml:space="preserve">
+    <value>Scaling of the texture to the size of the whole area.</value>
+  </data>
+  <data name="ToolTipRef" xml:space="preserve">
+    <value>The key "ref" specifies the refraction through a positive floating point number. The initial refraction has a value of 1.0 and the refraction value vacuum.</value>
+  </data>
+  <data name="ToolTipRotate" xml:space="preserve">
+    <value>Rotates the JPG. Here only the Z axis is interesting. The values in the X and y axes remain to 0.</value>
+  </data>
+  <data name="ToolTipScale" xml:space="preserve">
+    <value>On this, the scale is changed. Required this is of course only when working with textures. The individual values indicate how often the JPG per meter is shown (values are X, Y, and Z).</value>
+  </data>
+  <data name="ToolTipShi" xml:space="preserve">
+    <value>The key "shi" specifies the spekularen exponent by a positive floating point number. The higher is the exponent, the less is the spread of the spekularen highlights. The initial exponent is 30.0.</value>
+  </data>
+  <data name="ToolTipThumb" xml:space="preserve">
+    <value>Creates a thumbnail in the dimensions 50 x 25 pixels. This is stored in the specified folder.</value>
+  </data>
+  <data name="ToolTipTra" xml:space="preserve">
+    <value>The key "tra" specifies the transparency by a non-negative floating point number &lt;=1. Value of 0.0 indicates total impermeability; a value of 1.0 means total transparency. The initial value is 0.0.</value>
+  </data>
+</root>

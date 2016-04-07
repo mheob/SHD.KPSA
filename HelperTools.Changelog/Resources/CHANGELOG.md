@@ -2,7 +2,7 @@
 
 ## 0.3.0
 [ADD]    Nutzung vom Mah-Apps-Metro-Style-Framework<br />
-[CHANGE] Kompletter Um- bzw. Neubau auf Basis von MVVM<br />
+[CHANGE] Kompletter Um- bzw. Neubau auf Basis von PRISM-MVVM<br />
 
 ## 0.2.6
 [ADD]    Möglichst viele Exceptions abgefangen<br />

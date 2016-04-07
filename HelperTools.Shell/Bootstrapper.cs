@@ -8,6 +8,7 @@
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
     using Logging;
+    using MatFileGen;
     using Microsoft.Practices.Unity;
     using Navigation;
     using Prism.Logging;
@@ -77,13 +78,17 @@
         {
             ModuleCatalog moduleCatalog = (ModuleCatalog) ModuleCatalog;
 
+            // starting module
             moduleCatalog.AddModule(typeof (Navigation));
+
+            // single modules
             moduleCatalog.AddModule(typeof (Changelog));
             moduleCatalog.AddModule(typeof (Clean3Ds));
+            moduleCatalog.AddModule(typeof (MatFileGen));
         }
 
         /// <summary>Create the <see cref="T:Prism.Logging.ILoggerFacade" /> used by the Bootstrapper.</summary>
-        /// <returns></returns>
+        /// <returns>The NLogLogger.</returns>
         /// <remarks>The base implementation returns a new TextLogger.</remarks>
         protected override ILoggerFacade CreateLogger()
         {

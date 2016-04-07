@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A92EFC53-2B3D-4A44-B364-E4F9FE24E2CC}</ProjectGuid>
+    <ProjectGuid>{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HelperTools.SharedModules</RootNamespace>
-    <AssemblyName>HelperTools.SharedModules</AssemblyName>
+    <RootNamespace>HelperTools.MatFileGen</RootNamespace>
+    <AssemblyName>HelperTools.MatFileGen</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\HelperTools.Shell\bin\Debug\HelperTools.SharedModules.XML</DocumentationFile>
+    <DocumentationFile>..\HelperTools.Shell\bin\Debug\HelperTools.MatFileGen.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,10 +53,12 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Prism">
+    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Prism.Wpf">
+    <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Prism.Wpf.6.1.1-pre2\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -73,53 +75,34 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.0.16174.17450, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Xceed.Wpf.Toolkit.3.0.16174.17450\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\RegionNames.cs" />
+    <Compile Include="MatFileGen.cs" />
+    <Compile Include="Models\MatFileGenFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\DataGridFilesViewModel.cs" />
-    <Compile Include="ViewModels\PathSelectionViewModel.cs" />
-    <Compile Include="Views\DataGridFiles.xaml.cs">
-      <DependentUpon>DataGridFiles.xaml</DependentUpon>
+    <Compile Include="ViewModels\MatFileGenViewModel.cs" />
+    <Compile Include="Views\MatFileGen.xaml.cs">
+      <DependentUpon>MatFileGen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FooterStart.xaml.cs">
-      <DependentUpon>FooterStart.xaml</DependentUpon>
+    <Compile Include="Views\SettingsAttributes.xaml.cs">
+      <DependentUpon>SettingsAttributes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PathSelection.xaml.cs">
-      <DependentUpon>PathSelection.xaml</DependentUpon>
+    <Compile Include="Views\SettingsSolid.xaml.cs">
+      <DependentUpon>SettingsSolid.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Views\DataGridFiles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FooterStart.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PathSelection.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HelperTools.Infrastructure\HelperTools.Infrastructure.csproj">
-      <Project>{77A8BDC2-9F14-4D1B-A21F-6239435418AD}</Project>
-      <Name>HelperTools.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
-      <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
-      <Name>HelperTools.Styling</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Views\SettingsThumbnail.xaml.cs">
+      <DependentUpon>SettingsThumbnail.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
@@ -127,6 +110,42 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperTools.Infrastructure\HelperTools.Infrastructure.csproj">
+      <Project>{77a8bdc2-9f14-4d1b-a21f-6239435418ad}</Project>
+      <Name>HelperTools.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelperTools.SharedModules\HelperTools.SharedModules.csproj">
+      <Project>{a92efc53-2b3d-4a44-b364-e4f9fe24e2cc}</Project>
+      <Name>HelperTools.SharedModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
+      <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
+      <Name>HelperTools.Styling</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\MatFileGen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsAttributes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsSolid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsThumbnail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

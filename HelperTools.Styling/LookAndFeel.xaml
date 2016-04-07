@@ -21,6 +21,7 @@
         <ResourceDictionary Source="Styles/Sections/DataGridFiles.xaml" />
         <ResourceDictionary Source="Styles/Sections/Footer.xaml" />
         <ResourceDictionary Source="Styles/Sections/Header.xaml" />
+        <ResourceDictionary Source="Styles/Sections/MatFileGen.xaml" />
         <ResourceDictionary Source="Styles/Sections/NavigationFlyout.xaml" />
         <ResourceDictionary Source="Styles/Sections/PreviewToDo.xaml" />
         <ResourceDictionary Source="Styles/Sections/SettingsFlyout.xaml" />

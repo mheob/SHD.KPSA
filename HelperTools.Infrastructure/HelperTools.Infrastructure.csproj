@@ -119,6 +119,7 @@
     <Compile Include="Interfaces\IContentService.cs" />
     <Compile Include="Interfaces\IContentView.cs" />
     <Compile Include="Interfaces\IFiles.cs" />
+    <Compile Include="Interfaces\IFileWorking.cs" />
     <Compile Include="Interfaces\IFlyoutService.cs" />
     <Compile Include="Interfaces\IFlyoutView.cs" />
     <Compile Include="Interfaces\IListItemConverter.cs" />

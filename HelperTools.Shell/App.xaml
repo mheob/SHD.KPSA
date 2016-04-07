@@ -16,7 +16,7 @@
                 <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
 
                 <!-- ModernUI-Icons -->
-                <ResourceDictionary Source="/Resources/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/Resources/Icons.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
