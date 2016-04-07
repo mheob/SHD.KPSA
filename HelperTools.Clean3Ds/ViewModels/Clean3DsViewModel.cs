@@ -1,11 +1,5 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -16,6 +10,12 @@
     using MahApps.Metro.Controls.Dialogs;
     using Models;
     using Prism.Commands;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows;
     using Views;
 
     /// <summary>The Clean3DsViewModel.</summary>
@@ -82,7 +82,7 @@
         #region Event-Handler
         private void OnSelectedPathUpdateEvent(string path)
         {
-            SelectedPath = path;
+            SelectedPath = string.IsNullOrEmpty(path) ? selectedPath : path;
 
             GetFiles();
         }

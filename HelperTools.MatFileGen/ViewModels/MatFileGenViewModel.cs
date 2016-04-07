@@ -44,7 +44,7 @@
         #region Properties
         /// <summary>Gets or sets my view.</summary>
         /// <value>My view.</value>
-        public string MyView => typeof(MatFileGen).ToString();
+        public string MyView => typeof (MatFileGen).ToString();
 
         /// <summary>Gets or sets the selected path.</summary>
         /// <value>The selected path.</value>
@@ -78,7 +78,7 @@
         #region Event-Handler
         private void OnSelectedPathUpdateEvent(string path)
         {
-            SelectedPath = path;
+            SelectedPath = string.IsNullOrEmpty(path) ? selectedPath : path;
 
             GetFiles();
         }

@@ -66,7 +66,7 @@
         private void NavigationCompleted(NavigationResult navigationResult)
         {
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
-            eventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(PathNames.DesktopPath);
+            eventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(null);
         }
         #endregion Methods
     }

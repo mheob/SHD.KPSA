@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:props="clr-namespace:HelperTools.SharedModules.Properties"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
@@ -24,14 +23,7 @@
         <TextBox x:Name="TextBoxPath"
                  Text="{Binding SelectedPath}"
                  Margin="0,0,4,4"
-                 Padding="4">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="LostFocus">
-                    <i:InvokeCommandAction Command="{Binding CheckTextBoxPathCommand}"
-                                           CommandParameter="{Binding SelectedPath}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </TextBox>
+                 Padding="4" />
 
         <Button Grid.Column="1"
                 Content="{x:Static props:Resources.ButtonSelectPath}"
