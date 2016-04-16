@@ -12,6 +12,7 @@
 
         <!-- Controls -->
         <ResourceDictionary Source="Styles/Controls/Buttons.xaml" />
+        <ResourceDictionary Source="Styles/Controls/ColorPicker.xaml" />
         <ResourceDictionary Source="Styles/Controls/GroupBox.xaml" />
         <ResourceDictionary Source="Styles/Controls/Splitter.xaml" />
         <ResourceDictionary Source="Styles/Controls/StatusBar.xaml" />

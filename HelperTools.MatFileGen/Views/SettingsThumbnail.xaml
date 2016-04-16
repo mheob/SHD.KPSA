@@ -6,10 +6,12 @@
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:props="clr-namespace:HelperTools.MatFileGen.Properties"
+             xmlns:vm="clr-namespace:HelperTools.MatFileGen.ViewModels"
              xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="300">
+    <!--d:DataContext="{d:DesignInstance vm:SettingsThumbnailViewModel, IsDesignTimeCreatable=True}">-->
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -36,12 +38,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- ToDo: CheckBox-Binding -->
-
         <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxThumb"
                   Content="{x:Static props:Resources.CheckBoxThumb}"
-                  ToolTip="{x:Static props:Resources.ToolTipThumb}"
-                  Style="{StaticResource CheckBoxLabelThumb}" />
+                  Style="{StaticResource CheckBoxLabelThumb}"
+                  IsChecked="{Binding GenerateThumb}"
+                  ToolTip="{x:Static props:Resources.ToolTipThumb}" />
 
         <Label Grid.Column="1" Grid.Row="0" x:Name="LabelThumb"
                Content="{x:Static props:Resources.LabelThumb}"
@@ -52,8 +53,8 @@
         <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxThumbFolder"
                  Text="{Binding ThumbFolder}"
                  Style="{StaticResource TextBoxColor}"
-                 HorizontalContentAlignment="Center"
-                 IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked}" />
+                 IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked}"
+                 HorizontalContentAlignment="Center" />
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -66,12 +67,14 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <!-- TODO: Bindings in the ViewModel -->
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxBorderOuter"
                       Content="{x:Static props:Resources.CheckBoxBorderOuter}"
                       ToolTip="{x:Static props:Resources.ToolTipBorderOuter}"
                       Style="{StaticResource CheckBoxLabelThumb}"
-                      IsChecked="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}"
+                      IsChecked="{Binding GenerateOuterFrame}"
                       IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}" />
+            <!--IsChecked="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}"-->
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
                               SelectedColor="{Binding OuterFrameColor}"
@@ -87,7 +90,7 @@
                       Content="{x:Static props:Resources.CheckBoxBorderInner}"
                       ToolTip="{x:Static props:Resources.ToolTipBorderInner}"
                       Style="{StaticResource CheckBoxLabelThumb}"
-                      IsChecked="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked, Mode=OneWay}"
+                      IsChecked="{Binding GenerateInnerFrame}"
                       IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked, Mode=OneWay}" />
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPickerBorderInner"
