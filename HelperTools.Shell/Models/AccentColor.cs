@@ -1,4 +1,4 @@
-﻿namespace HelperTools.Shell.Model
+﻿namespace HelperTools.Shell.Models
 {
     using System.Windows.Media;
     using Infrastructure.Base;

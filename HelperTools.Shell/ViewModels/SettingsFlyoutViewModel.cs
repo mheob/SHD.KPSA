@@ -11,7 +11,7 @@
     using Infrastructure.Interfaces;
     using MahApps.Metro;
     using Microsoft.Practices.Unity;
-    using Model;
+    using Models;
     using Properties;
 
     /// <summary>The SettingsFlyoutViewModel.</summary>

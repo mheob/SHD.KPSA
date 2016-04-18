@@ -6,12 +6,10 @@
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:props="clr-namespace:HelperTools.MatFileGen.Properties"
-             xmlns:vm="clr-namespace:HelperTools.MatFileGen.ViewModels"
              xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="300">
-    <!--d:DataContext="{d:DesignInstance vm:SettingsThumbnailViewModel, IsDesignTimeCreatable=True}">-->
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -67,14 +65,12 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- TODO: Bindings in the ViewModel -->
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxBorderOuter"
                       Content="{x:Static props:Resources.CheckBoxBorderOuter}"
                       ToolTip="{x:Static props:Resources.ToolTipBorderOuter}"
                       Style="{StaticResource CheckBoxLabelThumb}"
                       IsChecked="{Binding GenerateOuterFrame}"
                       IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}" />
-            <!--IsChecked="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}"-->
 
             <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
                               SelectedColor="{Binding OuterFrameColor}"

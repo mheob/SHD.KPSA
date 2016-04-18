@@ -71,6 +71,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <!-- TODO: enable editing mode for RGB -->
             <TextBox x:Name="TextBoxColorR" Grid.Column="0"
                      Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"

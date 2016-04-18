@@ -96,6 +96,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MatFileGenViewModel.cs" />
+    <Compile Include="ViewModels\SettingsAttributesViewModel.cs" />
+    <Compile Include="ViewModels\SettingsSolidViewModel.cs" />
     <Compile Include="ViewModels\SettingsThumbnailViewModel.cs" />
     <Compile Include="Views\MatFileGen.xaml.cs">
       <DependentUpon>MatFileGen.xaml</DependentUpon>

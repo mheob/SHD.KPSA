@@ -33,61 +33,64 @@
                 <ColumnDefinition Width="52" />
             </Grid.ColumnDefinitions>
 
-            <!-- TODO: CheckBox-Binding -->
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxScale"
                       Content="{x:Static props:Resources.CheckBoxScale}"
                       ToolTip="{x:Static props:Resources.ToolTipScale}"
-                      Style="{StaticResource CheckBoxLabel}" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding AddScale}" />
 
             <ComboBox Grid.Column="1" Grid.Row="0" x:Name="ComboBoxScaleX"
-                      ItemsSource="{Binding ComboBoxScaleCollectionX}"
+                      ItemsSource="{Binding ComboBoxScaleCollection}"
                       SelectedItem="{Binding SelectedScaleX}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="0,4,2,4"
+                      IsEditable="True"
                       IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
 
             <ComboBox Grid.Column="2" Grid.Row="0" x:Name="ComboBoxScaleY"
-                      ItemsSource="{Binding ComboBoxScaleCollectionY}"
+                      ItemsSource="{Binding ComboBoxScaleCollection}"
                       SelectedItem="{Binding SelectedScaleY}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="2,4"
+                      IsEditable="True"
                       IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
 
             <ComboBox Grid.Column="3" Grid.Row="0" x:Name="ComboBoxScaleZ"
-                      ItemsSource="{Binding ComboBoxScaleCollectionZ}"
+                      ItemsSource="{Binding ComboBoxScaleCollection}"
                       SelectedItem="{Binding SelectedScaleZ}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="2,4,0,4"
+                      IsEditable="True"
                       IsEnabled="{Binding ElementName=CheckBoxScale, Path=IsChecked}" />
 
             <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxRotate"
                       Content="{x:Static props:Resources.CheckBoxRotate}"
                       ToolTip="{x:Static props:Resources.ToolTipRotate}"
-                      Style="{StaticResource  CheckBoxLabel}" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding AddRotate}" />
 
             <ComboBox Grid.Column="1" Grid.Row="1" x:Name="ComboBoxRotateX"
-                      ItemsSource="{Binding ComboBoxRotateCollectionX}"
+                      ItemsSource="{Binding ComboBoxRotateCollection}"
                       SelectedItem="{Binding SelectedRotateX}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="0,4,2,4"
                       IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
 
             <ComboBox Grid.Column="2" Grid.Row="1" x:Name="ComboBoxRotateY"
-                      ItemsSource="{Binding ComboBoxRotateCollectionY}"
+                      ItemsSource="{Binding ComboBoxRotateCollection}"
                       SelectedItem="{Binding SelectedRotateY}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="2,4"
                       IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
 
             <ComboBox Grid.Column="3" Grid.Row="1" x:Name="ComboBoxRotateZ"
-                      ItemsSource="{Binding ComboBoxRotateCollectionZ}"
+                      ItemsSource="{Binding ComboBoxRotateCollection}"
                       SelectedItem="{Binding SelectedRotateZ}"
                       Style="{StaticResource ComboBoxXyz}"
                       Margin="2,4,0,4"
                       IsEnabled="{Binding ElementName=CheckBoxRotate, Path=IsChecked}" />
         </Grid>
 
-        <!-- TODO: CheckBox-Binding -->
         <Grid Grid.Row="1" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Style="{StaticResource GridHeightDefault}" />
@@ -102,17 +105,23 @@
             <CheckBox Grid.Column="0" x:Name="CheckBoxAuto"
                       Content="{x:Static props:Resources.CheckBoxAuto}"
                       ToolTip="{x:Static props:Resources.ToolTipAuto}"
-                      HorizontalAlignment="Left" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      HorizontalAlignment="Left"
+                      IsChecked="{Binding AddAuto}" />
 
             <CheckBox Grid.Column="1" x:Name="CheckBoxRauto"
                       Content="{x:Static props:Resources.CheckBoxRauto}"
                       ToolTip="{x:Static props:Resources.ToolTipRauto}"
-                      HorizontalAlignment="Center" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      HorizontalAlignment="Center"
+                      IsChecked="{Binding AddRauto}" />
 
             <CheckBox Grid.Column="2" x:Name="CheckBoxTypeGlass"
                       Content="{x:Static props:Resources.CheckBoxGlass}"
                       ToolTip="{x:Static props:Resources.ToolTipGlass}"
-                      HorizontalAlignment="Right" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      HorizontalAlignment="Right"
+                      IsChecked="{Binding AddGlass}" />
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Top">
@@ -129,64 +138,67 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- TODO: CheckBox- and TextBox-Binding -->
             <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxMirror"
                       Content="{x:Static props:Resources.CheckBoxMirror}"
                       ToolTip="{x:Static props:Resources.ToolTipMirror}"
-                      Style="{StaticResource  CheckBoxLabel}" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding AddMirror}" />
 
             <Slider Grid.Column="1" Grid.Row="0" x:Name="SliderMirror"
                     Style="{StaticResource Slider}"
-                    Value="1.0" Maximum="1" SmallChange="0.05" LargeChange="0.2" TickFrequency="0.05"
+                    Value="{Binding Mirror}" Maximum="1" SmallChange="0.05" LargeChange="0.2" TickFrequency="0.05"
                     IsEnabled="{Binding ElementName=CheckBoxMirror, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxMirrorValue"
-                     Text="{Binding ElementName=SliderMirror, Path=Value}"
+                     Text="{Binding Mirror}"
                      Style="{StaticResource TextBoxSlider}"
                      IsEnabled="{Binding ElementName=CheckBoxMirror, Path=IsChecked}" />
 
             <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxShi"
                       Content="{x:Static props:Resources.CheckBoxShi}"
                       ToolTip="{x:Static props:Resources.ToolTipShi}"
-                      Style="{StaticResource  CheckBoxLabel}" />
+                      Style="{StaticResource  CheckBoxLabel}"
+                      IsChecked="{Binding AddShi}" />
 
             <Slider Grid.Column="1" Grid.Row="1" x:Name="SliderShi"
                     Style="{StaticResource Slider}"
-                    Value="30" Maximum="90" SmallChange="2" LargeChange="20" TickFrequency="2"
+                    Value="{Binding Shi}" Maximum="90" SmallChange="2" LargeChange="20" TickFrequency="2"
                     IsEnabled="{Binding ElementName=CheckBoxShi, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="1" x:Name="TextBoxShiValue"
-                     Text="{Binding ElementName=SliderShi, Path=Value}"
+                     Text="{Binding Shi}"
                      Style="{StaticResource TextBoxSlider}"
                      IsEnabled="{Binding ElementName=CheckBoxShi, Path=IsChecked}" />
 
             <CheckBox Grid.Column="0" Grid.Row="2" x:Name="CheckBoxRef"
                       Content="{x:Static props:Resources.CheckBoxRef}"
                       ToolTip="{x:Static props:Resources.ToolTipRef}"
-                      Style="{StaticResource  CheckBoxLabel}" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding AddRef}" />
 
             <Slider Grid.Column="1" Grid.Row="2" x:Name="SliderRef"
                     Style="{StaticResource Slider}"
-                    Value="1.0" Maximum="2" LargeChange="0.2" TickFrequency="0.1"
+                    Value="{Binding Ref}" Maximum="2" LargeChange="0.2" TickFrequency="0.1"
                     IsEnabled="{Binding ElementName=CheckBoxRef, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="2" x:Name="TextBoxRefValue"
-                     Text="{Binding ElementName=SliderRef, Path=Value}"
+                     Text="{Binding Ref}"
                      Style="{StaticResource TextBoxSlider}"
                      IsEnabled="{Binding ElementName=CheckBoxRef, Path=IsChecked}" />
 
             <CheckBox Grid.Column="0" Grid.Row="3" x:Name="CheckBoxTra"
                       Content="{x:Static props:Resources.CheckBoxTra}"
                       ToolTip="{x:Static props:Resources.ToolTipTra}"
-                      Style="{StaticResource  CheckBoxLabel}" />
+                      Style="{StaticResource CheckBoxLabel}"
+                      IsChecked="{Binding AddTra}" />
 
             <Slider Grid.Column="1" Grid.Row="3" x:Name="SliderTra"
                     Style="{StaticResource Slider}"
-                    Value="0.75" Maximum="1" SmallChange="0.05" LargeChange="0.2" TickFrequency="0.05"
+                    Value="{Binding Tra}" Maximum="1" SmallChange="0.05" LargeChange="0.2" TickFrequency="0.05"
                     IsEnabled="{Binding ElementName=CheckBoxTra, Path=IsChecked}" />
 
             <TextBox Grid.Column="2" Grid.Row="3" x:Name="TextBoxTraValue"
-                     Text="{Binding ElementName=SliderTra, Path=Value}"
+                     Text="{Binding Tra}"
                      Style="{StaticResource TextBoxSlider}"
                      IsEnabled="{Binding ElementName=CheckBoxTra, Path=IsChecked}" />
         </Grid>
