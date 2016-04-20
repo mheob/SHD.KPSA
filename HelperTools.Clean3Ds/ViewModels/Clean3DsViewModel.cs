@@ -1,5 +1,12 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Windows;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -10,12 +17,6 @@
     using MahApps.Metro.Controls.Dialogs;
     using Models;
     using Prism.Commands;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows;
     using Views;
 
     /// <summary>The Clean3DsViewModel.</summary>
@@ -32,6 +33,7 @@
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="Clean3DsViewModel" /> class.</summary>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public Clean3DsViewModel()
         {
             EventAggregator.GetEvent<SelectedPathUpdateEvent>().Subscribe(OnSelectedPathUpdateEvent);
@@ -48,10 +50,12 @@
         #region Properties
         /// <summary>Gets or sets my view.</summary>
         /// <value>My view.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public string MyView => typeof (Clean3Ds).ToString();
 
         /// <summary>Gets and sets the path, where the Files are.</summary>
         /// <value>The selected path.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public string SelectedPath
         {
             get { return selectedPath; }
@@ -60,6 +64,7 @@
 
         /// <summary>Gets and sets a collection of the files in the selected path.</summary>
         /// <value>The file collection.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public ObservableCollection<IFiles> FileCollection
         {
             get { return fileCollection; }
@@ -68,6 +73,7 @@
 
         /// <summary>Gets and sets a collection of all selected files.</summary>
         /// <value>The selected files collection.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public ObservableCollection<IFiles> SelectedFilesCollection
         {
             get { return selectedFilesCollection; }
@@ -76,10 +82,12 @@
 
         /// <summary>Gets the command to start the working thread.</summary>
         /// <value>The start generation command.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public DelegateCommand StartGenerationCommand { get; }
         #endregion Properties
 
         #region Event-Handler
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void OnSelectedPathUpdateEvent(string path)
         {
             SelectedPath = string.IsNullOrEmpty(path) ? selectedPath : path;
@@ -87,6 +95,7 @@
             GetFiles();
         }
 
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void OnSelectedFilesUpdateEvent(ObservableCollection<IFiles> files)
         {
             SelectedFilesCollection = files;
@@ -94,6 +103,8 @@
             StartGenerationCommand.RaiseCanExecuteChanged();
         }
         #endregion Event-Handler
+
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
 
         #region Methods
         private void GetFiles()
@@ -122,11 +133,13 @@
             StartGenerationCommand.RaiseCanExecuteChanged();
         }
 
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private bool CanStartGeneration()
         {
             return SelectedFilesCollection.Count > 0;
         }
 
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private async void StartGeneration()
         {
             var window = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();

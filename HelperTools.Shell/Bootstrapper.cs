@@ -1,6 +1,5 @@
 ﻿namespace HelperTools.Shell
 {
-    using System.Windows;
     using Changelog;
     using Clean3Ds;
     using Infrastructure;
@@ -15,6 +14,7 @@
     using Prism.Modularity;
     using Prism.Regions;
     using Prism.Unity;
+    using System.Windows;
     using Views;
 
     /// <summary>The Bootstrapper.</summary>
@@ -50,6 +50,7 @@
             {
                 regionManager.RegisterViewWithRegion(RegionNames.RIGHT_WINDOW_COMMANDS_REGION, typeof (RightTitlebarCommands));
                 regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof (SettingsFlyout));
+                //regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (HomeTiles));
             }
 
             // Register services
