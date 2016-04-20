@@ -2,7 +2,6 @@
 {
     using System;
     using System.IO;
-    using System.Reflection;
     using Properties;
 
     /// <summary>Constants with the PathNames.</summary>
@@ -10,7 +9,9 @@
     {
         /// <summary>Gets the application path.</summary>
         /// <value>The application path.</value>
-        public static string AppPath => Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        public static string AppPath => Directory.GetCurrentDirectory();
+
+//        public static string AppPath => Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
         /// <summary>Gets the path to the current user desktop path.</summary>
         /// <value>The desktop path.</value>

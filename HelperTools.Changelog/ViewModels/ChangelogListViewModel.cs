@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Reflection;
     using System.Windows.Controls;
@@ -49,6 +50,7 @@
         #endregion Properties
 
         #region Methods
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void DesignChangelogContent()
         {
             if (!File.Exists(ChangelogFile)) return;
