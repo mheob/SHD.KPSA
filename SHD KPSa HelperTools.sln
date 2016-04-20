@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.Shell", "HelperTools.Shell\HelperTools.Shell.csproj", "{8EF0E385-90C9-4E22-A9E6-9B47E03EBC5B}"
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.SharedModules", "HelperTools.SharedModules\HelperTools.SharedModules.csproj", "{A92EFC53-2B3D-4A44-B364-E4F9FE24E2CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.MatFileGen", "HelperTools.MatFileGen\HelperTools.MatFileGen.csproj", "{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3D901EFE-9FB4-4F27-91FA-C9E74BBD6527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.Shell.Test", "HelperTools.Shell.Test\HelperTools.Shell.Test.csproj", "{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,10 @@ Global
 		{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,9 +84,10 @@ Global
 		{D0279BB5-7FDB-4CC6-BE7D-D8F65B7240AF} = {754C526B-DD57-4F44-9CAD-A51738A15692}
 		{A92EFC53-2B3D-4A44-B364-E4F9FE24E2CC} = {9CCB209E-9591-4C31-8122-85D860B29086}
 		{613325F3-35C7-4BF9-953E-0E8F5AC67CB3} = {754C526B-DD57-4F44-9CAD-A51738A15692}
+		{1F7F187B-35EB-4E77-8F17-F12CB44BC6CC} = {3D901EFE-9FB4-4F27-91FA-C9E74BBD6527}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_SortFileContentOnSave = True
 		RESX_PrefixTranslations = False
+		RESX_SortFileContentOnSave = True
 	EndGlobalSection
 EndGlobal
