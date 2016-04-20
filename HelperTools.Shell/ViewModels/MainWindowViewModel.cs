@@ -4,13 +4,14 @@
     using Infrastructure.Events;
     using Microsoft.Practices.Unity;
     using Prism.Logging;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>The MainWindowViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
     public class MainWindowViewModel : ViewModelBase
     {
         #region Fields
-        private string statusBarMessage;
+        private string statusBarMessage = string.Empty;
         #endregion Fields
 
         #region Constructor
@@ -34,6 +35,7 @@
         #endregion Properties
 
         #region Event-Handler
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void OnStatusBarMessageUpdateEvent(string statusBarMsg)
         {
             StatusBarMessage = statusBarMsg;
