@@ -2,6 +2,9 @@
 {
     using Infrastructure.Constants;
     using Infrastructure.Interfaces;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
 
     /// <summary>Interaction logic for SettingsFlyout.xaml</summary>
     /// <seealso cref="MahApps.Metro.Controls.Flyout" />
@@ -13,6 +16,9 @@
         public SettingsFlyout()
         {
             InitializeComponent();
+
+            var container = ServiceLocator.Current.GetInstance<IUnityContainer>();
+            container.Resolve<ILoggerFacade>().Log("SettingsFlyoutView created", Category.Info, Priority.None);
         }
 
         /// <summary>Gets the name of the flyout.</summary>

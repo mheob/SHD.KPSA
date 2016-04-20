@@ -16,21 +16,21 @@
         /// <param name="message">Message body to log.</param>
         /// <param name="category">Category of the entry.</param>
         /// <param name="priority">The priority of the entry.</param>
-        public void Log(string message, Category category, Priority priority)
+        public void Log(string message, Category category = Category.Info, Priority priority = Priority.None)
         {
             switch (category)
             {
                 case Category.Debug:
                     logger.Debug(message);
                     break;
-                case Category.Exception:
-                    logger.Error(message);
-                    break;
                 case Category.Info:
                     logger.Info(message);
                     break;
                 case Category.Warn:
                     logger.Warn(message);
+                    break;
+                case Category.Exception:
+                    logger.Error(message);
                     break;
                 default:
                     logger.Info(message);

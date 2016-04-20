@@ -3,6 +3,9 @@
     using System.Diagnostics.CodeAnalysis;
     using System.Windows;
     using Infrastructure.Constants;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using Prism.Regions;
 
     /// <summary>Interaction logic for MainWindow.xaml</summary>
@@ -25,6 +28,9 @@
             SetRegionManager(regionManager, LeftWindowCommandsRegion, RegionNames.LEFT_WINDOW_COMMANDS_REGION);
             SetRegionManager(regionManager, RightWindowCommandsRegion, RegionNames.RIGHT_WINDOW_COMMANDS_REGION);
             SetRegionManager(regionManager, FlyoutsControlRegion, RegionNames.FLYOUT_REGION);
+
+            var container = ServiceLocator.Current.GetInstance<IUnityContainer>();
+            container.Resolve<ILoggerFacade>().Log("MainWindow created", Category.Info, Priority.None);
         }
 
         [SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Local")]
