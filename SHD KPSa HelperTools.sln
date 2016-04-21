@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.Navigation.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.Clean3Ds.Test", "HelperTools.Clean3Ds.Test\HelperTools.Clean3Ds.Test.csproj", "{19C1B445-2448-4443-8632-EF04AE3A51EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperTools.MatFileGen.Test", "HelperTools.MatFileGen.Test\HelperTools.MatFileGen.Test.csproj", "{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{19C1B445-2448-4443-8632-EF04AE3A51EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19C1B445-2448-4443-8632-EF04AE3A51EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19C1B445-2448-4443-8632-EF04AE3A51EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{D856D3A8-269A-41C5-BA2A-C82F6933645C} = {3D901EFE-9FB4-4F27-91FA-C9E74BBD6527}
 		{789E4072-7958-4514-BEC4-8447013EC84C} = {D856D3A8-269A-41C5-BA2A-C82F6933645C}
 		{19C1B445-2448-4443-8632-EF04AE3A51EC} = {D856D3A8-269A-41C5-BA2A-C82F6933645C}
+		{6CB3FC47-08D4-4EDF-90C4-C1C7684C5A32} = {D856D3A8-269A-41C5-BA2A-C82F6933645C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		RESX_SortFileContentOnSave = True

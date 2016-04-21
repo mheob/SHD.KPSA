@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
     using Infrastructure.Base;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
@@ -77,6 +78,7 @@
 
         /// <summary>Gets or sets the ComboBox scale collection.</summary>
         /// <value>The ComboBox scale collection.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public ObservableCollection<string> ComboBoxScaleCollection => new ObservableCollection<string>()
         {
             "0.1",
@@ -135,6 +137,7 @@
 
         /// <summary>Gets or sets the ComboBox scale collection.</summary>
         /// <value>The ComboBox scale collection.</value>
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         public ObservableCollection<string> ComboBoxRotateCollection => new ObservableCollection<string>() {"0", "90"};
 
         /// <summary>Gets or sets the selected rotate X.</summary>
@@ -277,6 +280,7 @@
         #endregion Properties
 
         #region Methods
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void InitComboBoxes(ComboBoxes comboBox)
         {
             switch (comboBox)
