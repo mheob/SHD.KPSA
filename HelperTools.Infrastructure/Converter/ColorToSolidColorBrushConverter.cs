@@ -10,7 +10,7 @@
     /// </summary>
     /// <seealso cref="BaseConverter" />
     /// <seealso cref="IValueConverter" />
-    [ValueConversion(typeof (Color), typeof (Brush))]
+    [ValueConversion(typeof(Color), typeof(Brush))]
     public class ColorToSolidColorBrushConverter : BaseConverter, IValueConverter
     {
         #region IValueConverter Members

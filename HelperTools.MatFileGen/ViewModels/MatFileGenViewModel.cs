@@ -44,7 +44,7 @@
         #region Properties
         /// <summary>Gets or sets my view.</summary>
         /// <value>My view.</value>
-        public string MyView => typeof (MatFileGen).ToString();
+        public string MyView => typeof(MatFileGen).ToString();
 
         /// <summary>Gets or sets the selected path.</summary>
         /// <value>The selected path.</value>
@@ -96,7 +96,10 @@
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
 
-            if (currentView == null || !currentView.ToString().Equals(MyView)) return;
+            if (currentView == null || !currentView.ToString().Equals(MyView))
+            {
+                return;
+            }
 
             FileCollection.Clear();
 
@@ -113,7 +116,10 @@
 
             EventAggregator.GetEvent<FilesUpdateEvent>().Publish(FileCollection);
 
-            if (FileCollection.Count < 1) return;
+            if (FileCollection.Count < 1)
+            {
+                return;
+            }
 
             StartGenerationCommand.RaiseCanExecuteChanged();
         }

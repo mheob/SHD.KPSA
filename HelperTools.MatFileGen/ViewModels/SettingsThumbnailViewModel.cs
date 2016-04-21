@@ -46,7 +46,10 @@
             get { return generateThumb; }
             set
             {
-                if (!SetProperty(ref generateThumb, value)) return;
+                if (!SetProperty(ref generateThumb, value))
+                {
+                    return;
+                }
 
                 GenerateOuterFrame = value;
                 GenerateInnerFrame = value;
@@ -68,9 +71,15 @@
             get { return generateOuterFrame; }
             set
             {
-                if (!SetProperty(ref generateOuterFrame, value)) return;
+                if (!SetProperty(ref generateOuterFrame, value))
+                {
+                    return;
+                }
 
-                if (!GenerateOuterFrame) GenerateInnerFrame = value;
+                if (!GenerateOuterFrame)
+                {
+                    GenerateInnerFrame = value;
+                }
             }
         }
 

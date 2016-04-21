@@ -1,10 +1,10 @@
 ﻿namespace HelperTools.Shell.Models
 {
+    using System.Windows.Media;
     using Infrastructure.Base;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Logging;
-    using System.Windows.Media;
 
     /// <summary>The model for the AccentColor.</summary>
     /// <seealso cref="BindableBase" />
@@ -16,9 +16,7 @@
         #endregion Fields
 
         #region Constructor
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccentColor"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="AccentColor" /> class.</summary>
         public AccentColor()
         {
             var container = ServiceLocator.Current.GetInstance<IUnityContainer>();

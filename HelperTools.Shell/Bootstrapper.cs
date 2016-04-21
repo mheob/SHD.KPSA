@@ -1,5 +1,6 @@
 ﻿namespace HelperTools.Shell
 {
+    using System.Windows;
     using Changelog;
     using Clean3Ds;
     using Infrastructure;
@@ -14,7 +15,6 @@
     using Prism.Modularity;
     using Prism.Regions;
     using Prism.Unity;
-    using System.Windows;
     using Views;
 
     /// <summary>The Bootstrapper.</summary>
@@ -32,7 +32,7 @@
         /// </remarks>
         protected override DependencyObject CreateShell()
         {
-            Container.RegisterInstance(typeof (Window), WindowNames.MAIN_WINDOW_NAME, Container.Resolve<MainWindow>(),
+            Container.RegisterInstance(typeof(Window), WindowNames.MAIN_WINDOW_NAME, Container.Resolve<MainWindow>(),
                 new ContainerControlledLifetimeManager());
 
             return Container.Resolve<Window>(WindowNames.MAIN_WINDOW_NAME);
@@ -48,8 +48,8 @@
 
             if (regionManager != null)
             {
-                regionManager.RegisterViewWithRegion(RegionNames.RIGHT_WINDOW_COMMANDS_REGION, typeof (RightTitlebarCommands));
-                regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof (SettingsFlyout));
+                regionManager.RegisterViewWithRegion(RegionNames.RIGHT_WINDOW_COMMANDS_REGION, typeof(RightTitlebarCommands));
+                regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof(SettingsFlyout));
                 //regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (HomeTiles));
             }
 
@@ -70,7 +70,7 @@
             Container.RegisterType<IApplicationCommands, ApplicationCommandsProxy>();
             Container.RegisterInstance<IContentService>(Container.Resolve<ContentService>());
             Container.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
-            Container.RegisterInstance(typeof (ILocalizerService), ServiceNames.LOCALIZER_SERVICE, new LocalizerService("de-DE"),
+            Container.RegisterInstance(typeof(ILocalizerService), ServiceNames.LOCALIZER_SERVICE, new LocalizerService("de-DE"),
                 new ContainerControlledLifetimeManager());
         }
 
@@ -80,12 +80,12 @@
             ModuleCatalog moduleCatalog = (ModuleCatalog) ModuleCatalog;
 
             // starting module
-            moduleCatalog.AddModule(typeof (Navigation));
+            moduleCatalog.AddModule(typeof(Navigation));
 
             // single modules
-            moduleCatalog.AddModule(typeof (Changelog));
-            moduleCatalog.AddModule(typeof (Clean3Ds));
-            moduleCatalog.AddModule(typeof (MatFileGen));
+            moduleCatalog.AddModule(typeof(Changelog));
+            moduleCatalog.AddModule(typeof(Clean3Ds));
+            moduleCatalog.AddModule(typeof(MatFileGen));
         }
 
         /// <summary>Create the <see cref="T:Prism.Logging.ILoggerFacade" /> used by the Bootstrapper.</summary>

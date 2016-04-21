@@ -33,7 +33,7 @@
     /// <TextBox Visibility="{Binding IsTrue, Converter={converter:BoolToVisibleConverter}}"/>
     /// ]]></code>
     /// </example>
-    [ValueConversion(typeof (bool), typeof (Visibility))]
+    [ValueConversion(typeof(bool), typeof(Visibility))]
     public class BoolToVisibleConverter : BaseConverter, IValueConverter
     {
         #region Constructor

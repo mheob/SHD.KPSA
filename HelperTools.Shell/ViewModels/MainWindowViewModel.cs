@@ -1,10 +1,10 @@
 ﻿namespace HelperTools.Shell.ViewModels
 {
+    using System.Diagnostics.CodeAnalysis;
     using Infrastructure.Base;
     using Infrastructure.Events;
     using Microsoft.Practices.Unity;
     using Prism.Logging;
-    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>The MainWindowViewModel.</summary>
     /// <seealso cref="ViewModelBase" />

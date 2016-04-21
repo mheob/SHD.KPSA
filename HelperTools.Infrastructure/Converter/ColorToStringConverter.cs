@@ -11,7 +11,7 @@
     /// </summary>
     /// <seealso cref="BaseConverter" />
     /// <seealso cref="IValueConverter" />
-    [ValueConversion(typeof (Color), typeof (string))]
+    [ValueConversion(typeof(Color), typeof(string))]
     public class ColorToStringConverter : BaseConverter, IValueConverter
     {
         #region Enum

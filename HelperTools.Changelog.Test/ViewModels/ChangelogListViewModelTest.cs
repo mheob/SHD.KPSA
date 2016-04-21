@@ -46,7 +46,7 @@
             vm.ChangelogLines.Clear();
             vm.ChangelogLines.Add(new Label {Content = "Test"});
             Assert.AreEqual(expected.Content, vm.ChangelogLines.FirstOrDefault()?.Content);
-            Assert.IsInstanceOfType(vm.ChangelogLines.FirstOrDefault(), typeof (Label));
+            Assert.IsInstanceOfType(vm.ChangelogLines.FirstOrDefault(), typeof(Label));
         }
 
         [TestMethod]

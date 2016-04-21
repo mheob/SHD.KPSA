@@ -12,10 +12,10 @@
     {
         /// <summary>...</summary>
         public static readonly DependencyProperty SynchronizedSelectedItems = DependencyProperty.RegisterAttached("SynchronizedSelectedItems",
-            typeof (IList), typeof (MultiSelectorBehaviours), new PropertyMetadata(null, OnSynchronizedSelectedItemsChanged));
+            typeof(IList), typeof(MultiSelectorBehaviours), new PropertyMetadata(null, OnSynchronizedSelectedItemsChanged));
 
         private static readonly DependencyProperty SynchronizationManagerProperty = DependencyProperty.RegisterAttached("SynchronizationManager",
-            typeof (SynchronizationManager), typeof (MultiSelectorBehaviours), new PropertyMetadata(null));
+            typeof(SynchronizationManager), typeof(MultiSelectorBehaviours), new PropertyMetadata(null));
 
         /// <summary>Gets the synchronized selected items.</summary>
         /// <param name="dependencyObject">The dependency object.</param>
@@ -88,7 +88,10 @@
             {
                 IList list = GetSynchronizedSelectedItems(multiSelector);
 
-                if (list == null) return;
+                if (list == null)
+                {
+                    return;
+                }
 
                 synchronizer = new TwoListSynchronizerService(GetSelectedItemsCollection(multiSelector), list);
                 synchronizer.StartSynchronizing();

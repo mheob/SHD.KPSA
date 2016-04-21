@@ -10,11 +10,11 @@
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="150" d:DesignWidth="300">
-    
+
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
     </UserControl.Resources>
-    
+
     <Grid VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Style="{StaticResource GridHeightDefault}" />

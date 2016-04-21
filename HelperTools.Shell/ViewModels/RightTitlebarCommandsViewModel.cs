@@ -9,9 +9,7 @@
     public class RightTitlebarCommandsViewModel : ViewModelBase
     {
         #region Constructor
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RightTitlebarCommandsViewModel"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="RightTitlebarCommandsViewModel" /> class.</summary>
         public RightTitlebarCommandsViewModel()
         {
             Container.Resolve<ILoggerFacade>().Log("RightTitlebarCommandsViewModel created", Category.Info, Priority.None);

@@ -25,7 +25,10 @@
         {
             try
             {
-                if (!Directory.Exists(path)) return;
+                if (!Directory.Exists(path))
+                {
+                    return;
+                }
 
                 var proc = new Process
                 {

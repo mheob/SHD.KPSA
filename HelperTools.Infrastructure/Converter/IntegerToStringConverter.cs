@@ -8,7 +8,7 @@
     /// <see cref="string" /> formats.</summary>
     /// <seealso cref="BaseConverter" />
     /// <seealso cref="IValueConverter" />
-    [ValueConversion(typeof (object), typeof (string))]
+    [ValueConversion(typeof(object), typeof(string))]
     public class IntegerToStringConverter : BaseConverter, IValueConverter
     {
         /// <summary>Gets and sets a helper value.</summary>
@@ -23,9 +23,18 @@
         /// <returns>A converted value.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null) return null;
-            if (value is string) return value;
-            if (value is int && (int) value == EmptyStringValue) return string.Empty;
+            if (value == null)
+            {
+                return null;
+            }
+            if (value is string)
+            {
+                return value;
+            }
+            if (value is int && (int) value == EmptyStringValue)
+            {
+                return string.Empty;
+            }
 
             return value.ToString();
         }
@@ -38,7 +47,10 @@
         /// <returns>A converted value.</returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is string)) return value;
+            if (!(value is string))
+            {
+                return value;
+            }
 
             string s = (string) value;
             int tmpInt;

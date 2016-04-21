@@ -67,7 +67,10 @@
             get { return addScale; }
             set
             {
-                if (!SetProperty(ref addScale, value)) return;
+                if (!SetProperty(ref addScale, value))
+                {
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(SelectedScaleX) || string.IsNullOrEmpty(SelectedScaleY) || string.IsNullOrEmpty(SelectedScaleZ))
                 {
@@ -126,7 +129,10 @@
             get { return addRotate; }
             set
             {
-                if (!SetProperty(ref addRotate, value)) return;
+                if (!SetProperty(ref addRotate, value))
+                {
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(SelectedRotateX) || string.IsNullOrEmpty(SelectedRotateY) || string.IsNullOrEmpty(SelectedRotateZ))
                 {
@@ -171,8 +177,14 @@
             get { return addAuto; }
             set
             {
-                if (!SetProperty(ref addAuto, value)) return;
-                if (value) AddRauto = false;
+                if (!SetProperty(ref addAuto, value))
+                {
+                    return;
+                }
+                if (value)
+                {
+                    AddRauto = false;
+                }
             }
         }
 
@@ -184,8 +196,14 @@
             get { return addRauto; }
             set
             {
-                if (!SetProperty(ref addRauto, value)) return;
-                if (value) AddAuto = false;
+                if (!SetProperty(ref addRauto, value))
+                {
+                    return;
+                }
+                if (value)
+                {
+                    AddAuto = false;
+                }
             }
         }
 
@@ -205,8 +223,14 @@
             get { return addMirror; }
             set
             {
-                if (!SetProperty(ref addMirror, value)) return;
-                if (string.IsNullOrEmpty(Mirror)) Mirror = INIT_MIRROR;
+                if (!SetProperty(ref addMirror, value))
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(Mirror))
+                {
+                    Mirror = INIT_MIRROR;
+                }
             }
         }
 
@@ -225,8 +249,14 @@
             get { return addShi; }
             set
             {
-                if (!SetProperty(ref addShi, value)) return;
-                if (string.IsNullOrEmpty(Shi)) Shi = INIT_SHI;
+                if (!SetProperty(ref addShi, value))
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(Shi))
+                {
+                    Shi = INIT_SHI;
+                }
             }
         }
 
@@ -245,8 +275,14 @@
             get { return addRef; }
             set
             {
-                if (!SetProperty(ref addRef, value)) return;
-                if (string.IsNullOrEmpty(Ref)) Ref = INIT_REF;
+                if (!SetProperty(ref addRef, value))
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(Ref))
+                {
+                    Ref = INIT_REF;
+                }
             }
         }
 
@@ -265,8 +301,14 @@
             get { return addTra; }
             set
             {
-                if (!SetProperty(ref addTra, value)) return;
-                if (string.IsNullOrEmpty(Tra)) Tra = INIT_TRA;
+                if (!SetProperty(ref addTra, value))
+                {
+                    return;
+                }
+                if (string.IsNullOrEmpty(Tra))
+                {
+                    Tra = INIT_TRA;
+                }
             }
         }
 

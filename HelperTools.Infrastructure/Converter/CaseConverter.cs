@@ -29,7 +29,7 @@
     /// <Label Content="{Binding Name, Converter={CaseConverter SourceCasing=Upper, TargetCasing=Lower}}"/>
     /// ]]></code>
     /// </example>
-    [ValueConversion(typeof (string), typeof (string))]
+    [ValueConversion(typeof(string), typeof(string))]
     public class CaseConverter : BaseConverter, IValueConverter
     {
         #region Constructor
@@ -91,7 +91,10 @@
         {
             var str = value as string;
 
-            if (str == null) return DependencyProperty.UnsetValue;
+            if (str == null)
+            {
+                return DependencyProperty.UnsetValue;
+            }
 
             culture = culture ?? CultureInfo.CurrentCulture;
 
@@ -119,7 +122,10 @@
         {
             var str = value as string;
 
-            if (str == null) return DependencyProperty.UnsetValue;
+            if (str == null)
+            {
+                return DependencyProperty.UnsetValue;
+            }
 
             culture = culture ?? CultureInfo.CurrentCulture;
 

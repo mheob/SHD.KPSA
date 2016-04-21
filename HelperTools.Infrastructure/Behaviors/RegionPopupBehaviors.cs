@@ -18,12 +18,12 @@
     {
         /// <summary>The create popup region with name property</summary>
         public static readonly DependencyProperty CreatePopupRegionWithNameProperty =
-            DependencyProperty.RegisterAttached("CreatePopupRegionWithName", typeof (string), typeof (RegionPopupBehaviors),
+            DependencyProperty.RegisterAttached("CreatePopupRegionWithName", typeof(string), typeof(RegionPopupBehaviors),
                 new PropertyMetadata(CreatePopupRegionWithNamePropertyChanged));
 
         /// <summary>The container window style property</summary>
         public static readonly DependencyProperty ContainerWindowStyleProperty =
-            DependencyProperty.RegisterAttached("ContainerWindowStyle", typeof (Style), typeof (RegionPopupBehaviors), null);
+            DependencyProperty.RegisterAttached("ContainerWindowStyle", typeof(Style), typeof(RegionPopupBehaviors), null);
 
         /// <summary>Gets the name of the create popup region with.</summary>
         /// <param name="owner">The owner.</param>
@@ -91,7 +91,10 @@
             // DelayedRegionCreationBehavior overriding the CreateRegion method and create an instance of it that will be in 
             // charge of registering the Region once a RegionManager is set as an attached property in the Visual Tree.
             IRegionManager regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
-            if (regionManager == null) return;
+            if (regionManager == null)
+            {
+                return;
+            }
 
             IRegion region = new SingleActiveRegion();
 
@@ -116,7 +119,7 @@
         {
             // Due to a known issue in Cider, GetIsInDesignMode attached property value is not enough to know if it's in design mode.
             return DesignerProperties.GetIsInDesignMode(element) || Application.Current == null ||
-                   Application.Current.GetType() == typeof (Application);
+                   Application.Current.GetType() == typeof(Application);
         }
     }
 }

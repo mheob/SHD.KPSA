@@ -15,11 +15,11 @@
         /// <param name="regionManager">The region manager.</param>
         public Clean3Ds(IUnityContainer unityContainer, IRegionManager regionManager) : base(unityContainer, regionManager)
         {
-            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (Views.Clean3Ds));
+            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof(Views.Clean3Ds));
 
-            regionManager.RegisterViewWithRegion(Constants.RegionNames.PATH_SELECTION_REGION, typeof (PathSelection));
-            regionManager.RegisterViewWithRegion(Constants.RegionNames.DATA_GRID_FILES_REGION, typeof (DataGridFiles));
-            regionManager.RegisterViewWithRegion(Constants.RegionNames.FOOTER_START_REGION, typeof (FooterStart));
+            regionManager.RegisterViewWithRegion(Constants.RegionNames.PATH_SELECTION_REGION, typeof(PathSelection));
+            regionManager.RegisterViewWithRegion(Constants.RegionNames.DATA_GRID_FILES_REGION, typeof(DataGridFiles));
+            regionManager.RegisterViewWithRegion(Constants.RegionNames.FOOTER_START_REGION, typeof(FooterStart));
         }
     }
 }

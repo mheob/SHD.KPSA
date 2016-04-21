@@ -49,7 +49,7 @@
         /// <summary>Gets or sets my view.</summary>
         /// <value>My view.</value>
         [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
-        public string MyView => typeof (Clean3Ds).ToString();
+        public string MyView => typeof(Clean3Ds).ToString();
 
         /// <summary>Gets and sets the path, where the Files are.</summary>
         /// <value>The selected path.</value>
@@ -109,7 +109,10 @@
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
 
-            if (currentView == null || !currentView.ToString().Equals(MyView)) return;
+            if (currentView == null || !currentView.ToString().Equals(MyView))
+            {
+                return;
+            }
 
             FileCollection.Clear();
 
@@ -126,7 +129,10 @@
 
             EventAggregator.GetEvent<FilesUpdateEvent>().Publish(FileCollection);
 
-            if (FileCollection.Count < 1) return;
+            if (FileCollection.Count < 1)
+            {
+                return;
+            }
 
             StartGenerationCommand.RaiseCanExecuteChanged();
         }

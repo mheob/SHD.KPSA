@@ -15,7 +15,7 @@
         /// <param name="regionManager">The region manager.</param>
         public Changelog(IUnityContainer unityContainer, IRegionManager regionManager) : base(unityContainer, regionManager)
         {
-            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (ChangelogList));
+            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof(ChangelogList));
         }
     }
 }

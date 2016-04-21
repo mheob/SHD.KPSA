@@ -15,9 +15,9 @@
         /// <param name="regionManager">The region manager.</param>
         public Navigation(IUnityContainer unityContainer, IRegionManager regionManager) : base(unityContainer, regionManager)
         {
-            regionManager.RegisterViewWithRegion(RegionNames.LEFT_WINDOW_COMMANDS_REGION, typeof (LeftTitlebarCommands));
-            regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof (NavigationFlyout));
-            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (HomeTiles));
+            regionManager.RegisterViewWithRegion(RegionNames.LEFT_WINDOW_COMMANDS_REGION, typeof(LeftTitlebarCommands));
+            regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof(NavigationFlyout));
+            regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof(HomeTiles));
         }
     }
 }

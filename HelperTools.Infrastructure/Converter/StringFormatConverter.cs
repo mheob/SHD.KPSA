@@ -5,7 +5,7 @@
     using System.Windows.Data;
 
     /// <summary>An implementation of <see cref="IValueConverter" /> that converts the string formats.</summary>
-    [ValueConversion(typeof (object), typeof (string))]
+    [ValueConversion(typeof(object), typeof(string))]
     public class StringFormatConverter : BaseConverter, IValueConverter
     {
         #region IValueConverter Members
