@@ -6,14 +6,12 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Windows;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Properties;
     using Infrastructure.Services;
-    using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
     using Models;
     using Prism.Commands;
@@ -142,9 +140,8 @@
         [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private async void StartGeneration()
         {
-            var window = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault();
-
-            var controller = await window.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);
+            var metroDialog = new MetroMessageDisplayService(Container);
+            var controller = await metroDialog.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);
 
             controller.SetIndeterminate();
             controller.SetCancelable(true);
@@ -203,15 +200,13 @@
 
             if (controller.IsCanceled)
             {
-                await window.ShowMessageAsync(Resources.MessageDialogCancelTitle, Resources.MessageDialogCancelContent);
-
+                await metroDialog.ShowMessageAsync(Resources.MessageDialogCancelTitle, Resources.MessageDialogCancelContent);
                 return;
             }
 
-            if (
-                await
-                    window.ShowMessageAsync(Resources.MessageDialogCompleteTitle, string.Format(Resources.MessageDialogCompleteContent, "\n"),
-                        MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
+            if (await
+                metroDialog.ShowMessageAsync(Resources.MessageDialogCompleteTitle, string.Format(Resources.MessageDialogCompleteContent, "\n"),
+                    MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
             {
                 ExternalProgramService.OpenExplorer(SelectedPath);
             }
