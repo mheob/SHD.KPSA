@@ -6,6 +6,13 @@
     /// <summary>The IMetroMessageDisplayService.</summary>
     public interface IMetroMessageDisplayService
     {
+        /// <summary>Shows the input asynchronous.</summary>
+        /// <param name="title">The title.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="settings">The settings.</param>
+        /// <returns>The input string.</returns>
+        Task<string> ShowInputAsync(string title, string message, MetroDialogSettings settings = null);
+
         /// <summary>Shows the message async.</summary>
         /// <param name="title">The title.</param>
         /// <param name="message">The message.</param>
