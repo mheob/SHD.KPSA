@@ -1,9 +1,11 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using Infrastructure.Base;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
-    using Infrastructure.Base;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -56,7 +58,7 @@
         /// <summary>Initializes a new instance of the <see cref="SettingsAttributesViewModel" /> class.</summary>
         public SettingsAttributesViewModel()
         {
-            //Mirror = INIT_MIRROR;
+            Container.Resolve<ILoggerFacade>().Log("SettingsAttributesViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

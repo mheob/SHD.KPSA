@@ -10,6 +10,8 @@
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Services;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using Properties;
 
     /// <summary>The ChangelogListViewModel.</summary>
@@ -24,6 +26,8 @@
         public ChangelogListViewModel()
         {
             DesignChangelogContent();
+
+            Container.Resolve<ILoggerFacade>().Log("ChangelogListViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

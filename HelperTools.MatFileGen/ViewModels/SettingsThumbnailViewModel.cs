@@ -2,6 +2,8 @@
 {
     using System.Windows.Media;
     using Infrastructure.Base;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using Properties;
 
     /// <summary>The SettingsThumbnailViewModel.</summary>
@@ -35,6 +37,8 @@
             GenerateInnerFrame = true;
             InnerFrameColor = Color.FromRgb(255, 255, 255);
             InnerFrameSize = Settings.Default.InnerFrameSize;
+
+            Container.Resolve<ILoggerFacade>().Log("SettingsThumbnailViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

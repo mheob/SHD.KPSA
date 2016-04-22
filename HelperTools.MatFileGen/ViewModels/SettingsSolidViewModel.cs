@@ -1,7 +1,9 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System.Windows.Media;
     using Infrastructure.Base;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
+    using System.Windows.Media;
 
     /// <summary>The SettingsSolidViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -17,6 +19,8 @@
         public SettingsSolidViewModel()
         {
             SelectedColor = Color.FromRgb(51, 68, 85);
+
+            Container.Resolve<ILoggerFacade>().Log("SettingsAttributesViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 
