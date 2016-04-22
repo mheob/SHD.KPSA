@@ -14,7 +14,8 @@
               Position="Right"
               Header="{x:Static props:Resources.SettingsTitle}"
               Width="Auto"
-              d:DesignHeight="400" d:DesignWidth="250">
+              d:DesignHeight="400"
+              d:DesignWidth="250">
 
     <metro:Flyout.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
@@ -68,7 +69,7 @@
                           SelectedItem="{Binding Path=SelectedAccentColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
                 <!-- Language -->
-                <TextBlock Grid.Row="2"
+                <!--<TextBlock Grid.Row="2"
                            Grid.Column="0"
                            Text="{x:Static props:Resources.SettingsTextBlockLanguage}"
                            Style="{StaticResource SettingsTextBlock}" />
@@ -78,7 +79,7 @@
                           Style="{StaticResource SettingsComboBox}"
                           DisplayMemberPath="DisplayName"
                           ItemsSource="{Binding Path=SupportedLanguages, UpdateSourceTrigger=PropertyChanged}"
-                          SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                          SelectedItem="{Binding Path=SelectedLanguage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />-->
             </Grid>
         </GroupBox>
     </StackPanel>

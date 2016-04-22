@@ -56,6 +56,10 @@
         /// <summary>Initializes a new instance of the <see cref="SettingsAttributesViewModel" /> class.</summary>
         public SettingsAttributesViewModel()
         {
+            Mirror = "0";
+            Shi = "0";
+            Ref = "0";
+            Tra = "0";
         }
         #endregion Constructor
 
@@ -227,7 +231,7 @@
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(Mirror))
+                if (Mirror.Equals("0"))
                 {
                     Mirror = INIT_MIRROR;
                 }
@@ -253,7 +257,7 @@
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(Shi))
+                if (Shi.Equals("0"))
                 {
                     Shi = INIT_SHI;
                 }
@@ -279,7 +283,7 @@
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(Ref))
+                if (Ref.Equals("0"))
                 {
                     Ref = INIT_REF;
                 }
@@ -305,7 +309,7 @@
                 {
                     return;
                 }
-                if (string.IsNullOrEmpty(Tra))
+                if (Tra.Equals("0"))
                 {
                     Tra = INIT_TRA;
                 }

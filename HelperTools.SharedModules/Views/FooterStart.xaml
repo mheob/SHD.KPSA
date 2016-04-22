@@ -7,7 +7,8 @@
              xmlns:props="clr-namespace:HelperTools.SharedModules.Properties"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="50" d:DesignWidth="300">
+             d:DesignHeight="50"
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
@@ -18,6 +19,7 @@
                 Content="{x:Static props:Resources.ButtonStart}"
                 Style="{StaticResource FooterButtonRight}"
                 Command="{Binding StartGenerationCommand}"
-                CommandParameter="{Binding ElementName=DataGridContent, Path=ItemsSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                CommandParameter="{Binding FileCollection}" />
+        <!--CommandParameter="{Binding ElementName=DataGridContent, Path=ItemsSource, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />-->
     </StackPanel>
 </UserControl>

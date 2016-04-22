@@ -9,7 +9,8 @@
              xmlns:consts="clr-namespace:HelperTools.MatFileGen.Constants"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="500" d:DesignWidth="800">
+             d:DesignHeight="500"
+             d:DesignWidth="800">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -17,8 +18,11 @@
                 <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Style x:Key="TabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
-                <Setter Property="mahapps:ControlsHelper.HeaderFontSize" Value="16" />
+            <Style x:Key="TabItem"
+                   TargetType="{x:Type TabItem}"
+                   BasedOn="{StaticResource {x:Type TabItem}}">
+                <Setter Property="mahapps:ControlsHelper.HeaderFontSize"
+                        Value="16" />
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -37,7 +41,8 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <ContentControl Grid.Row="0" mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.PATH_SELECTION_REGION}" />
+            <ContentControl Grid.Row="0"
+                            mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.PATH_SELECTION_REGION}" />
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -48,46 +53,58 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <TabControl Grid.Column="0" SelectedIndex="{Binding SelectedVariantTab}">
-                    <TabItem Header="{x:Static props:Resources.TabItemTexture}" Style="{StaticResource TabItem}">
-                        <ContentControl Grid.Row="0" mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.DATA_GRID_FILES_REGION}" />
+                <!-- TODO: Setup the tab binding -->
+                <!--<TabControl Grid.Column="0" SelectedIndex="{Binding SelectedVariantTab}">-->
+                <TabControl Grid.Column="0">
+                    <TabItem Header="{x:Static props:Resources.TabItemTexture}"
+                             Style="{StaticResource TabItem}">
+                        <ContentControl Grid.Row="0"
+                                        mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.DATA_GRID_FILES_REGION}" />
                     </TabItem>
 
-                    <TabItem Header="{x:Static props:Resources.TabItemSolid}" Style="{StaticResource TabItem}">
+                    <TabItem Header="{x:Static props:Resources.TabItemSolid}"
+                             Style="{StaticResource TabItem}">
                         <GroupBox Header="{x:Static props:Resources.GroupSettings}">
                             <ContentControl mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.SETTINGS_SOLID_REGION}" />
                         </GroupBox>
                     </TabItem>
                 </TabControl>
 
-                <GridSplitter Grid.Column="1" Style="{StaticResource HorizontalGridSplitter}" />
+                <GridSplitter Grid.Column="1"
+                              Style="{StaticResource HorizontalGridSplitter}" />
                 <!-- TODO: displaying the preview -->
-                <TextBlock Grid.Column="2" Style="{StaticResource PreviewToDo}" />
-                <GridSplitter Grid.Column="3" Style="{StaticResource HorizontalGridSplitter}" />
+                <TextBlock Grid.Column="2"
+                           Style="{StaticResource PreviewToDo}" />
+                <GridSplitter Grid.Column="3"
+                              Style="{StaticResource HorizontalGridSplitter}" />
 
                 <Grid Grid.Column="4">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <GroupBox Grid.Row="0" Header="{x:Static props:Resources.GroupSettings}">
+                            <GroupBox Grid.Row="0"
+                                      Header="{x:Static props:Resources.GroupSettings}">
                                 <ContentControl mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.SETTINGS_ATTRIBUTES_REGION}" />
                             </GroupBox>
 
-                            <GroupBox Grid.Row="1" Header="{x:Static props:Resources.GroupThumbnails}">
+                            <GroupBox Grid.Row="1"
+                                      Header="{x:Static props:Resources.GroupThumbnails}">
                                 <ContentControl mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.SETTINGS_THUMBNAIL_REGION}" />
                             </GroupBox>
                         </Grid>
                     </ScrollViewer>
 
-                    <ContentControl Grid.Row="1" mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.FOOTER_START_REGION}" />
+                    <ContentControl Grid.Row="1"
+                                    mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.FOOTER_START_REGION}" />
                 </Grid>
             </Grid>
         </Grid>

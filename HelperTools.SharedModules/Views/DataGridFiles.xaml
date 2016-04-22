@@ -10,7 +10,8 @@
              xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="180" d:DesignWidth="300">
+             d:DesignHeight="180"
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -35,13 +36,13 @@
                     Content="{x:Static props:Resources.DataGridFilesButtonSelectAll}"
                     Style="{StaticResource DataGridButton}"
                     Command="{Binding SelectAllCommand}"
-                    CommandParameter="{Binding ElementName=DataGridContent, Path=ItemsSource,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    CommandParameter="{Binding FileCollection}" />
 
             <Button x:Name="DataGridButtonSelectNone"
                     Content="{x:Static props:Resources.DataGridFilesButtonSelectNone}"
                     Style="{StaticResource DataGridButton}"
                     Command="{Binding SelectNoneCommand}"
-                    CommandParameter="{Binding ElementName=DataGridContent, Path=ItemsSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    CommandParameter="{Binding FileCollection}" />
         </StackPanel>
 
         <DataGrid x:Name="DataGridContent"
@@ -56,12 +57,13 @@
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding UpdateSelectedFilesCommand}"
-                                           CommandParameter="{Binding ElementName=LabelStatusBar, Path=Content}" />
+                                           CommandParameter="{Binding StatusBarSummary}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 
             <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MetroDataGridRow}">
+                <Style TargetType="{x:Type DataGridRow}"
+                       BasedOn="{StaticResource MetroDataGridRow}">
                     <Setter Property="IsSelected"
                             Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </Style>
