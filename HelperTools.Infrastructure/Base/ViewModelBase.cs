@@ -4,6 +4,7 @@
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
+    using Prism.Logging;
     using Prism.Regions;
 
     /// <summary>The ViewModelBase.</summary>
@@ -24,6 +25,9 @@
             Container = ServiceLocator.Current.GetInstance<IUnityContainer>();
             RegionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
             EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+
+            var logMessage = $"[{GetType().Name}] is initialized";
+            Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
         #endregion Constructor
 

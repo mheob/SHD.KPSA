@@ -6,6 +6,9 @@
     using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using JetBrains.Annotations;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using Prism.Mvvm;
 
     /// <summary>Implementation of <see cref="INotifyPropertyChanged" /> to simplify models.</summary>
@@ -35,6 +38,10 @@
 
             storage = value;
             OnPropertyChanged(propertyName);
+
+            var uc = ServiceLocator.Current.GetInstance<IUnityContainer>();
+            var logMessage = $"[{GetType().Name}] property changed: {propertyName}";
+            uc.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return true;
         }

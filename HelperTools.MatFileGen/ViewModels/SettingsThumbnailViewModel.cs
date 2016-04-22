@@ -1,10 +1,8 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System.Windows.Media;
     using Infrastructure.Base;
-    using Microsoft.Practices.Unity;
-    using Prism.Logging;
     using Properties;
+    using System.Windows.Media;
 
     /// <summary>The SettingsThumbnailViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -37,8 +35,6 @@
             GenerateInnerFrame = true;
             InnerFrameColor = Color.FromRgb(255, 255, 255);
             InnerFrameSize = Settings.Default.InnerFrameSize;
-
-            Container.Resolve<ILoggerFacade>().Log("SettingsThumbnailViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

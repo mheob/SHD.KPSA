@@ -4,9 +4,7 @@
     using Infrastructure.Base;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
-    using Microsoft.Practices.Unity;
     using Prism.Commands;
-    using Prism.Logging;
     using Properties;
 
     /// <summary>The DataGridFilesViewModel.</summary>
@@ -32,8 +30,6 @@
             InitializeCommands();
 
             RaiseCanExecuteChanged();
-
-            Container.Resolve<ILoggerFacade>().Log("DataGridFilesViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

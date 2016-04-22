@@ -1,17 +1,15 @@
 ﻿namespace HelperTools.Shell.ViewModels
 {
+    using Infrastructure.Base;
+    using Infrastructure.Events;
+    using MahApps.Metro;
+    using Models;
+    using Properties;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Windows;
     using System.Windows.Media;
-    using Infrastructure.Base;
-    using Infrastructure.Events;
-    using MahApps.Metro;
-    using Microsoft.Practices.Unity;
-    using Models;
-    using Prism.Logging;
-    using Properties;
 
     //    using Infrastructure.Constants;
     //    using Infrastructure.Interfaces;
@@ -54,8 +52,6 @@
 
             SelectedTheme = ApplicationThemes.FirstOrDefault(t => t.Name.Equals("BaseDark"));
             SelectedAccentColor = AccentColors.FirstOrDefault(c => c.Name.Equals("Cobalt"));
-
-            Container.Resolve<ILoggerFacade>().Log("SettingsFlyoutViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

@@ -1,5 +1,11 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -7,16 +13,8 @@
     using Infrastructure.Properties;
     using Infrastructure.Services;
     using MahApps.Metro.Controls.Dialogs;
-    using Microsoft.Practices.Unity;
     using Models;
     using Prism.Commands;
-    using Prism.Logging;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Views;
 
     /// <summary>The Clean3DsViewModel.</summary>
@@ -44,8 +42,6 @@
             GetFiles();
 
             StartGenerationCommand = new DelegateCommand(StartGeneration, CanStartGeneration);
-
-            Container.Resolve<ILoggerFacade>().Log("Clean3DsViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

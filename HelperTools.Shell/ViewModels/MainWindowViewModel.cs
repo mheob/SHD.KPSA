@@ -1,10 +1,8 @@
 ﻿namespace HelperTools.Shell.ViewModels
 {
-    using System.Diagnostics.CodeAnalysis;
     using Infrastructure.Base;
     using Infrastructure.Events;
-    using Microsoft.Practices.Unity;
-    using Prism.Logging;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>The MainWindowViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -19,8 +17,6 @@
         public MainWindowViewModel()
         {
             EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Subscribe(OnStatusBarMessageUpdateEvent);
-
-            Container.Resolve<ILoggerFacade>().Log("MainViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

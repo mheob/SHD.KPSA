@@ -8,10 +8,8 @@
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
-    using Microsoft.Practices.Unity;
     using Models;
     using Prism.Commands;
-    using Prism.Logging;
     using Views;
 
     /// <summary>The MatFileGenViewModel.</summary>
@@ -40,8 +38,6 @@
             GetFiles();
 
             StartGenerationCommand = new DelegateCommand(StartGeneration, CanStartGeneration);
-
-            Container.Resolve<ILoggerFacade>().Log("MatFileGenViewModel created", Category.Info, Priority.None);
         }
         #endregion Constructor
 

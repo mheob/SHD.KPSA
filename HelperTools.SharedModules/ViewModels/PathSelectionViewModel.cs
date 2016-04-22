@@ -1,14 +1,12 @@
 ﻿namespace HelperTools.SharedModules.ViewModels
 {
-    using System;
-    using System.Windows.Input;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Services;
-    using Microsoft.Practices.Unity;
     using Prism.Commands;
-    using Prism.Logging;
+    using System;
+    using System.Windows.Input;
 
     /// <summary>The PathSelectionViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -25,8 +23,7 @@
             selectedPath = PathNames.DesktopPath;
 
             GetDirectoryCommand = new DelegateCommand<string>(GetDirectory);
-
-            Container.Resolve<ILoggerFacade>().Log("PathSelectionViewModel created", Category.Info, Priority.None);
+            
         }
         #endregion Constructor
 
