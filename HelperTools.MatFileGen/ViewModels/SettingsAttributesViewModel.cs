@@ -17,16 +17,14 @@
         }
         #endregion Enumeration
 
-        #region Constants
+        #region Fields
         private const string INIT_SCALE = "1.0";
         private const string INIT_ROTATE = "0";
         private const string INIT_MIRROR = "1.0";
         private const string INIT_SHI = "30";
         private const string INIT_REF = "1.0";
         private const string INIT_TRA = "0.75";
-        #endregion Constants
 
-        #region Fields
         private bool addScale;
         private string selectedScaleX;
         private string selectedScaleY;
@@ -43,10 +41,13 @@
 
         private bool addMirror;
         private string mirror;
+
         private bool addShi;
         private string shi;
+
         private bool addRef;
         private string _ref;
+
         private bool addTra;
         private string tra;
         #endregion Fields

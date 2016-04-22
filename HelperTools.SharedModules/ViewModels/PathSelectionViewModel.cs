@@ -27,6 +27,10 @@
         #endregion Constructor
 
         #region Properties
+        /// <summary>Gets the command to call up the directory with needed files.</summary>
+        /// <value>The get directory command.</value>
+        public ICommand GetDirectoryCommand { get; }
+
         /// <summary>Gets and sets the path, where the Files are.</summary>
         /// <value>The selected path.</value>
         public string SelectedPath
@@ -47,10 +51,6 @@
                 EventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(SelectedPath);
             }
         }
-
-        /// <summary>Gets the command to call up the directory with needed files.</summary>
-        /// <value>The get directory command.</value>
-        public ICommand GetDirectoryCommand { get; }
         #endregion Properties
 
         #region Methods

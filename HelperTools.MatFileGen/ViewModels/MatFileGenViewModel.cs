@@ -91,7 +91,7 @@
         }
         #endregion Event-Handler
 
-        #region Methods   
+        #region Methods
         private void GetFiles()
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();

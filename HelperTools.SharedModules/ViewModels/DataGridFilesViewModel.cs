@@ -14,6 +14,7 @@
         #region Fields
         private bool isSelected;
         private bool isStatusBarVisible;
+
         private string statusBarSummary;
 
         private ObservableCollection<IFiles> fileCollection = new ObservableCollection<IFiles>();
@@ -73,10 +74,6 @@
             set { SetProperty(ref selectedFilesCollection, value); }
         }
 
-        /// <summary>Gets the command to update the status bar.</summary>
-        /// <value>The update status bar command.</value>
-        public DelegateCommand UpdateSelectedFilesCommand { get; private set; }
-
         /// <summary>Gets the command to select all files at once.</summary>
         /// <value>The select all command.</value>
         public DelegateCommand SelectAllCommand { get; private set; }
@@ -84,6 +81,10 @@
         /// <summary>Gets the command to deselect all files at once.</summary>
         /// <value>The select none command.</value>
         public DelegateCommand SelectNoneCommand { get; private set; }
+
+        /// <summary>Gets the command to update the status bar.</summary>
+        /// <value>The update status bar command.</value>
+        public DelegateCommand UpdateSelectedFilesCommand { get; private set; }
         #endregion Properties
 
         #region Event-Handler
