@@ -248,5 +248,23 @@ namespace HelperTools.Infrastructure.Properties {
                 return ResourceManager.GetString("ProgressFinishedDialogTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to displayed &quot;{0}&quot; flayout.
+        /// </summary>
+        public static string StatusBarFlayoutDisplayed {
+            get {
+                return ResourceManager.GetString("StatusBarFlayoutDisplayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to changed content to &quot;{0}&quot;.
+        /// </summary>
+        public static string StatusBarViewChanged {
+            get {
+                return ResourceManager.GetString("StatusBarViewChanged", resourceCulture);
+            }
+        }
     }
 }

@@ -100,4 +100,8 @@
   <data name="Clean3DsTitle" xml:space="preserve">
     <value>Clean 3DS-Files</value>
   </data>
+  <data name="StatusBarFilesGenerated" xml:space="preserve">
+    <value>{0} 3ds files cleaned up</value>
+    
+  </data>
 </root>

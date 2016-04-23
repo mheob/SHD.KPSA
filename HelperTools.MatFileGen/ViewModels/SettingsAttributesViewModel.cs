@@ -4,6 +4,8 @@
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
     using Infrastructure.Base;
+    using Infrastructure.Events;
+    using Properties;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -80,6 +82,9 @@
                 {
                     InitComboBoxes(ComboBoxes.Scale);
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxScale));
             }
         }
 
@@ -142,6 +147,9 @@
                 {
                     InitComboBoxes(ComboBoxes.Rotate);
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRotate));
             }
         }
 
@@ -185,13 +193,16 @@
                 {
                     return;
                 }
+
                 if (value)
                 {
                     AddRauto = false;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxAuto));
             }
         }
-
 
         /// <summary>Gets or sets a value indicating whether rauto should added.</summary>
         /// <value><c>true</c> if rauto should added; otherwise, <c>false</c>.</value>
@@ -204,13 +215,16 @@
                 {
                     return;
                 }
+
                 if (value)
                 {
                     AddAuto = false;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRauto));
             }
         }
-
 
         /// <summary>Gets or sets a value indicating whether glass should added.</summary>
         /// <value><c>true</c> if glass should added; otherwise, <c>false</c>.</value>
@@ -231,10 +245,14 @@
                 {
                     return;
                 }
+
                 if (Mirror.Equals("0"))
                 {
                     Mirror = INIT_MIRROR;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxMirror));
             }
         }
 
@@ -257,10 +275,14 @@
                 {
                     return;
                 }
+
                 if (Shi.Equals("0"))
                 {
                     Shi = INIT_SHI;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxShi));
             }
         }
 
@@ -283,10 +305,14 @@
                 {
                     return;
                 }
+
                 if (Ref.Equals("0"))
                 {
                     Ref = INIT_REF;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRef));
             }
         }
 
@@ -309,10 +335,14 @@
                 {
                     return;
                 }
+
                 if (Tra.Equals("0"))
                 {
                     Tra = INIT_TRA;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxTra));
             }
         }
 

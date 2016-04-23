@@ -41,6 +41,7 @@
 
             var uc = ServiceLocator.Current.GetInstance<IUnityContainer>();
             var logMessage = $"[{GetType().Name}] property changed: {propertyName}";
+
             uc.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return true;

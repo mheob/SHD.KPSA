@@ -10,6 +10,7 @@
     using Prism.Commands;
     using Prism.Events;
     using Prism.Regions;
+    using Properties;
 
     /// <summary>The ContentService.</summary>
     /// <seealso cref="IContentService" />
@@ -54,6 +55,8 @@
             }
 
             regionManager.RequestNavigate(RegionNames.MAIN_REGION, contentName, NavigationCompleted);
+
+            eventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(Resources.StatusBarViewChanged, contentName));
         }
 
         /// <summary>Determines whether this instance [can show the content] the specified content name.</summary>

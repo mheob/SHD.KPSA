@@ -79,7 +79,7 @@ namespace HelperTools.MatFileGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to outer frame:.
+        ///   Looks up a localized string similar to outer frame.
         /// </summary>
         public static string CheckBoxBorderOuter {
             get {
@@ -210,6 +210,24 @@ namespace HelperTools.MatFileGen.Properties {
         public static string MatFileGenTitle {
             get {
                 return ResourceManager.GetString("MatFileGenTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} checked.
+        /// </summary>
+        public static string StatusBarChecked {
+            get {
+                return ResourceManager.GetString("StatusBarChecked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} unchecked.
+        /// </summary>
+        public static string StatusBarUnchecked {
+            get {
+                return ResourceManager.GetString("StatusBarUnchecked", resourceCulture);
             }
         }
         

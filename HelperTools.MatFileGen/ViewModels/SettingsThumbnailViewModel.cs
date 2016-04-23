@@ -1,8 +1,9 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using Infrastructure.Base;
-    using Properties;
     using System.Windows.Media;
+    using Infrastructure.Base;
+    using Infrastructure.Events;
+    using Properties;
 
     /// <summary>The SettingsThumbnailViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -53,6 +54,9 @@
 
                 GenerateOuterFrame = value;
                 GenerateInnerFrame = value;
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxThumb));
             }
         }
 
@@ -80,6 +84,9 @@
                 {
                     GenerateInnerFrame = value;
                 }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderOuter));
             }
         }
 
@@ -104,7 +111,16 @@
         public bool GenerateInnerFrame
         {
             get { return generateInnerFrame; }
-            set { SetProperty(ref generateInnerFrame, value); }
+            set
+            {
+                if (!SetProperty(ref generateInnerFrame, value))
+                {
+                    return;
+                }
+
+                var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderInner));
+            }
         }
 
         /// <summary>Gets or sets the color of the inner frame.</summary>

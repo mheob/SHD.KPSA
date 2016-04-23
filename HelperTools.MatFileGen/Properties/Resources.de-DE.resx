@@ -121,10 +121,10 @@
     <value>auto</value>
   </data>
   <data name="CheckBoxBorderInner" xml:space="preserve">
-    <value>innerer Rahmen:</value>
+    <value>innerer Rahmen</value>
   </data>
   <data name="CheckBoxBorderOuter" xml:space="preserve">
-    <value>äußerer Rahmen:</value>
+    <value>äußerer Rahmen</value>
   </data>
   <data name="CheckBoxGlass" xml:space="preserve">
     <value>type glass</value>
@@ -167,6 +167,12 @@
   </data>
   <data name="MatFileGenTitle" xml:space="preserve">
     <value>Mat-Files-Generator</value>
+  </data>
+  <data name="StatusBarChecked" xml:space="preserve">
+    <value>{0} ausgewählt</value>
+  </data>
+  <data name="StatusBarUnchecked" xml:space="preserve">
+    <value>{0} abgewählt</value>
   </data>
   <data name="TabItemSolid" xml:space="preserve">
     <value>_2. Solid</value>

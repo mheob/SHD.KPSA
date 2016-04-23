@@ -120,4 +120,7 @@
   <data name="Clean3DsTitle" xml:space="preserve">
     <value>3DS-Dateien säubern</value>
   </data>
+  <data name="StatusBarFilesGenerated" xml:space="preserve">
+    <value>{0} 3ds-Dateien bereinigt</value>
+  </data>
 </root>

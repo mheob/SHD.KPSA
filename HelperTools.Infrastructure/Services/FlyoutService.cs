@@ -3,10 +3,14 @@
     using System.Linq;
     using System.Windows.Input;
     using Constants;
+    using Events;
     using Interfaces;
     using MahApps.Metro.Controls;
+    using Microsoft.Practices.ServiceLocation;
     using Prism.Commands;
+    using Prism.Events;
     using Prism.Regions;
+    using Properties;
 
     /// <summary>The FlyoutService.</summary>
     /// <seealso cref="IFlyoutService" />
@@ -14,6 +18,7 @@
     {
         #region Fields
         private readonly IRegionManager regionManager;
+        private IEventAggregator eventAggregator;
         #endregion Fields
 
         #region Constructor
@@ -50,6 +55,9 @@
             }
 
             flyout.IsOpen = !flyout.IsOpen;
+
+            eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+            eventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(Resources.StatusBarFlayoutDisplayed, flyoutName));
         }
 
         /// <summary>Determines whether this instance [can show flyout] the specified flyout name.</summary>

@@ -5,9 +5,9 @@
     using Infrastructure.Events;
     using Infrastructure.Services;
     using Prism.Commands;
+    using Properties;
     using System;
     using System.Windows.Input;
-
     /// <summary>The PathSelectionViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
     public class PathSelectionViewModel : ViewModelBase
@@ -23,7 +23,6 @@
             selectedPath = PathNames.DesktopPath;
 
             GetDirectoryCommand = new DelegateCommand<string>(GetDirectory);
-            
         }
         #endregion Constructor
 
@@ -50,6 +49,7 @@
                 }
 
                 EventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(SelectedPath);
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectedPathChanged);
             }
         }
         #endregion Properties

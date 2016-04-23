@@ -68,5 +68,14 @@ namespace HelperTools.Clean3Ds.Properties {
                 return ResourceManager.GetString("Clean3DsTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} 3ds files cleaned up.
+        /// </summary>
+        public static string StatusBarFilesGenerated {
+            get {
+                return ResourceManager.GetString("StatusBarFilesGenerated", resourceCulture);
+            }
+        }
     }
 }

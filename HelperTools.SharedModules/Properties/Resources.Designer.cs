@@ -122,5 +122,41 @@ namespace HelperTools.SharedModules.Properties {
                 return ResourceManager.GetString("DataGridFilesStatusBarText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to updated the file list.
+        /// </summary>
+        public static string StatusBarFileCollectionChanged {
+            get {
+                return ResourceManager.GetString("StatusBarFileCollectionChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all files selected.
+        /// </summary>
+        public static string StatusBarSelectAll {
+            get {
+                return ResourceManager.GetString("StatusBarSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to changed the working path.
+        /// </summary>
+        public static string StatusBarSelectedPathChanged {
+            get {
+                return ResourceManager.GetString("StatusBarSelectedPathChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all files unselected.
+        /// </summary>
+        public static string StatusBarSelectNone {
+            get {
+                return ResourceManager.GetString("StatusBarSelectNone", resourceCulture);
+            }
+        }
     }
 }

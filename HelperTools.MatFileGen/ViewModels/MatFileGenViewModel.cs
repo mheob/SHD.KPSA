@@ -1,15 +1,15 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Models;
     using Prism.Commands;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
     using Views;
 
     /// <summary>The MatFileGenViewModel.</summary>
@@ -132,6 +132,7 @@
         private void StartGeneration()
         {
             throw new NotImplementedException();
+            //EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarFileCollectionChanged);
         }
         #endregion Methods
     }

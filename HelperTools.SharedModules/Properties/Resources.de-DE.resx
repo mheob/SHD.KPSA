@@ -138,4 +138,16 @@
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} von {1} Dateien gewählt</value>
   </data>
+  <data name="StatusBarFileCollectionChanged" xml:space="preserve">
+    <value>Dateiliste aktualisiert</value>
+  </data>
+  <data name="StatusBarSelectAll" xml:space="preserve">
+    <value>alle Dateien ausgewählt</value>
+  </data>
+  <data name="StatusBarSelectedPathChanged" xml:space="preserve">
+    <value>Arbeitsverzeichnis geändert</value>
+  </data>
+  <data name="StatusBarSelectNone" xml:space="preserve">
+    <value>alle Dateien abgewählt</value>
+  </data>
 </root>

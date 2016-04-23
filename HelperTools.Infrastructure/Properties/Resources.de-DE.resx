@@ -180,4 +180,10 @@
   <data name="ProgressFinishedDialogTitle" xml:space="preserve">
     <value>Vorgang abgeschlossen</value>
   </data>
+  <data name="StatusBarFlayoutDisplayed" xml:space="preserve">
+    <value>Flayout "{0}" angezeigt</value>
+  </data>
+  <data name="StatusBarViewChanged" xml:space="preserve">
+    <value>Inhalt zu "{0}" geändert</value>
+  </data>
 </root>

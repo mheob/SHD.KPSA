@@ -28,7 +28,6 @@
             EventAggregator.GetEvent<FilesUpdateEvent>().Subscribe(OnFilesUpdateEvent);
 
             InitializeCommands();
-
             RaiseCanExecuteChanged();
         }
         #endregion Constructor
@@ -93,6 +92,8 @@
             FileCollection = files;
 
             RaiseCanExecuteChanged();
+
+            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarFileCollectionChanged);
         }
         #endregion Event-Handler
 
@@ -120,6 +121,15 @@
             EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Publish(SelectedFilesCollection);
 
             RaiseCanExecuteChanged();
+
+            if (SelectedFilesCollection.Count < 1)
+            {
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectNone);
+            }
+            else if (SelectedFilesCollection.Count.Equals(FileCollection.Count))
+            {
+                EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectAll);
+            }
         }
 
         private bool CanSelectAll()
@@ -138,6 +148,8 @@
             }
 
             RaiseCanExecuteChanged();
+
+            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectAll);
         }
 
         private bool CanSelectNone()
@@ -149,6 +161,8 @@
         {
             SelectedFilesCollection.Clear();
             RaiseCanExecuteChanged();
+
+            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectNone);
         }
         #endregion Methods
     }

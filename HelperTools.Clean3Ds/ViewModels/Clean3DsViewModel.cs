@@ -10,12 +10,13 @@
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
-    using Infrastructure.Properties;
     using Infrastructure.Services;
     using MahApps.Metro.Controls.Dialogs;
     using Models;
     using Prism.Commands;
+    using Properties;
     using Views;
+    using infraProps = Infrastructure.Properties;
 
     /// <summary>The Clean3DsViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -147,7 +148,8 @@
         private async void StartGeneration()
         {
             var metroDialog = new MetroMessageDisplayService(Container);
-            var controller = await metroDialog.ShowProgressAsync(Resources.ProgressDialogTitle, Resources.ProgressDialogPreviewContent);
+            var controller =
+                await metroDialog.ShowProgressAsync(infraProps.Resources.ProgressDialogTitle, infraProps.Resources.ProgressDialogPreviewContent);
 
             controller.SetIndeterminate();
             controller.SetCancelable(true);
@@ -185,7 +187,7 @@
                     await Task.Delay(50);
 
                     controller.SetProgress(++curFile);
-                    controller.SetMessage(string.Format(Resources.ProgressDialogRunningContent, curFile, sumFiles));
+                    controller.SetMessage(string.Format(infraProps.Resources.ProgressDialogRunningContent, curFile, sumFiles));
 
                     await Task.Delay(50);
                 }
@@ -206,16 +208,19 @@
 
             if (controller.IsCanceled)
             {
-                await metroDialog.ShowMessageAsync(Resources.MessageDialogCancelTitle, Resources.MessageDialogCancelContent);
+                await metroDialog.ShowMessageAsync(infraProps.Resources.MessageDialogCancelTitle, infraProps.Resources.MessageDialogCancelContent);
                 return;
             }
 
             if (await
-                metroDialog.ShowMessageAsync(Resources.MessageDialogCompleteTitle, string.Format(Resources.MessageDialogCompleteContent, "\n"),
+                metroDialog.ShowMessageAsync(infraProps.Resources.MessageDialogCompleteTitle,
+                    string.Format(infraProps.Resources.MessageDialogCompleteContent, "\n"),
                     MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
             {
                 ExternalProgramService.OpenExplorer(SelectedPath);
             }
+
+            EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(Resources.StatusBarFilesGenerated, sumFiles));
         }
         #endregion Methods
     }
