@@ -20,6 +20,10 @@
         /// <value>The last time of modified.</value>
         public DateTime CreatedTime { get; set; }
 
+        /// <summary>Gets or sets the size of the file.</summary>
+        /// <value>The size of the file.</value>
+        public long FileSize { get; set; }
+
         /// <summary>Gets or sets a value indicating whether this instance is selected.</summary>
         /// <value><c>true</c> if this instance is selected; otherwise, <c>false</c>.</value>
         public bool IsSelected { get; set; }

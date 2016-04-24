@@ -84,6 +84,10 @@
                                     Width="*"
                                     IsReadOnly="True"
                                     Binding="{Binding CreatedTime, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}" />
+
+                <DataGridTextColumn Header="{x:Static props:Resources.DataGridFilesHeaderSize}"
+                                    IsReadOnly="True"
+                                    Binding="{Binding FileSize, StringFormat={}{0} KB}" />
             </DataGrid.Columns>
         </DataGrid>
 

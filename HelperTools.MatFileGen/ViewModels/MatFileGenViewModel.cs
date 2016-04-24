@@ -1,15 +1,15 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Models;
     using Prism.Commands;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
     using Views;
 
     /// <summary>The MatFileGenViewModel.</summary>
@@ -105,11 +105,14 @@
 
             foreach (var file in Directory.GetFiles(SelectedPath, EXTENSION))
             {
+                var fi = new FileInfo(file);
+
                 FileCollection.Add(new MatFileGenFiles()
                 {
                     FullFilePath = Path.GetFullPath(file),
                     FileName = Path.GetFileNameWithoutExtension(file),
-                    CreatedTime = File.GetCreationTimeUtc(file).ToLocalTime(),
+                    CreatedTime = fi.CreationTimeUtc.ToLocalTime(),
+                    FileSize = (fi.Length / 1024) + 1,
                     IsSelected = false
                 });
             }

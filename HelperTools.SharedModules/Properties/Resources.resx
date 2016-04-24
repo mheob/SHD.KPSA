@@ -115,6 +115,9 @@
   <data name="DataGridFilesHeaderName" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="DataGridFilesHeaderSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
   <data name="DataGridFilesStatusBarText" xml:space="preserve">
     <value>{0} of {1} files selected</value>
   </data>

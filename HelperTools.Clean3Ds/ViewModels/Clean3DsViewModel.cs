@@ -119,11 +119,14 @@
 
             foreach (var file in Directory.GetFiles(SelectedPath, EXTENSION))
             {
+                var fi = new FileInfo(file);
+
                 FileCollection.Add(new Clean3DsFiles()
                 {
                     FullFilePath = Path.GetFullPath(file),
                     FileName = Path.GetFileNameWithoutExtension(file),
-                    CreatedTime = File.GetCreationTimeUtc(file).ToLocalTime(),
+                    CreatedTime = fi.CreationTimeUtc.ToLocalTime(),
+                    FileSize = (fi.Length / 1024) + 1,
                     IsSelected = false
                 });
             }

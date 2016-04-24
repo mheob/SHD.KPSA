@@ -115,6 +115,15 @@ namespace HelperTools.SharedModules.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        public static string DataGridFilesHeaderSize {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} of {1} files selected.
         /// </summary>
         public static string DataGridFilesStatusBarText {
