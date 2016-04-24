@@ -1,20 +1,22 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
     using MahApps.Metro.Controls.Dialogs;
+    using Microsoft.Practices.Unity;
     using Models;
     using Prism.Commands;
+    using Prism.Logging;
     using Properties;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Views;
     using infraProps = Infrastructure.Properties;
 
@@ -196,6 +198,9 @@
                 }
                 catch (Exception ex)
                 {
+                    var logMessage = $"[{GetType().Name}] Exception at generation: {ex}";
+                    Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
+
                     DialogService.Exception(ex, DialogService.ExceptionType.Universal);
                 }
             }
