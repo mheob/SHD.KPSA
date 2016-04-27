@@ -3,7 +3,7 @@
     using System.Drawing;
     using System.Globalization;
     using System.Windows.Media;
-    using Color = System.Drawing.Color;
+    using Color = System.Windows.Media.Color;
 
     /// <summary>Converter class for colors.</summary>
     public class ColorConverterService
@@ -42,7 +42,7 @@
             {
                 for (int y = 0, maxY = img.Height; y < maxY; y++)
                 {
-                    Color color = img.GetPixel(x, y);
+                    System.Drawing.Color color = img.GetPixel(x, y);
 
                     rgb[0] += color.R;
                     rgb[1] += color.G;
@@ -54,6 +54,20 @@
             {
                 rgb[i] = (byte) (rgb[i] / pixel);
             }
+
+            return rgb;
+        }
+
+        /// <summary>Get the RGB values back using a Color.</summary>
+        /// <param name="color">The color.</param>
+        /// <returns>The values (R)ed, (G)reen und (B)lue.</returns>
+        public static byte[] GetRgbFromColor(Color color)
+        {
+            byte[] rgb = new byte[3];
+
+            rgb[0] = color.R;
+            rgb[1] = color.G;
+            rgb[2] = color.B;
 
             return rgb;
         }
@@ -77,7 +91,7 @@
         /// <returns>The color as SolidBrush.</returns>
         public static SolidBrush SolidColorBrushToSolidBrush(SolidColorBrush br)
         {
-            return new SolidBrush(Color.FromArgb(br.Color.A, br.Color.R, br.Color.G, br.Color.B));
+            return new SolidBrush(System.Drawing.Color.FromArgb(br.Color.A, br.Color.R, br.Color.G, br.Color.B));
         }
     }
 }

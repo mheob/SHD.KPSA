@@ -83,6 +83,9 @@
   <ItemGroup>
     <Compile Include="Constants\RegionNames.cs" />
     <Compile Include="MatFileGen.cs" />
+    <Compile Include="Models\FileGeneration.cs" />
+    <Compile Include="Models\GenerateMatFile.cs" />
+    <Compile Include="Models\GenerateThumbs.cs" />
     <Compile Include="Models\MatFileGenFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

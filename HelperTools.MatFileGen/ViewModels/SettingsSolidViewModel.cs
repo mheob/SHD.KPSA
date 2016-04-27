@@ -2,6 +2,8 @@
 {
     using System.Windows.Media;
     using Infrastructure.Base;
+    using Infrastructure.Events;
+    using Infrastructure.Services;
 
     /// <summary>The SettingsSolidViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -26,7 +28,15 @@
         public string SolidColorName
         {
             get { return solidColorName; }
-            set { SetProperty(ref solidColorName, value); }
+            set
+            {
+                if (!SetProperty(ref solidColorName, value))
+                {
+                    return;
+                }
+
+                EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Publish(SolidColorName);
+            }
         }
 
 
@@ -35,7 +45,15 @@
         public Color SelectedColor
         {
             get { return selectedColor; }
-            set { SetProperty(ref selectedColor, value); }
+            set
+            {
+                if (SetProperty(ref selectedColor, value))
+                {
+                    return;
+                }
+
+                EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(SelectedColor));
+            }
         }
         #endregion Properties
 

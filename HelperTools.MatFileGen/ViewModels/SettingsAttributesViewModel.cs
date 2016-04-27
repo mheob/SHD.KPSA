@@ -1,11 +1,14 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using Infrastructure.Base;
+    using Infrastructure.Events;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
+    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
-    using Infrastructure.Base;
-    using Infrastructure.Events;
-    using Properties;
+    using System.Reflection;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -372,7 +375,10 @@
                     SelectedRotateZ = INIT_ROTATE;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(comboBox), comboBox, null);
+                    var ex = new ArgumentOutOfRangeException(nameof(comboBox), comboBox, null);
+                    var logMessage = $"[{GetType().Name}] Exception at {MethodBase.GetCurrentMethod()}: {ex.Message}";
+                    Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
+                    throw ex;
             }
         }
         #endregion Methods

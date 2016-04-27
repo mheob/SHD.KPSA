@@ -4,10 +4,14 @@
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Services;
+    using Microsoft.Practices.Unity;
     using Prism.Commands;
+    using Prism.Logging;
     using Properties;
     using System;
+    using System.Reflection;
     using System.Windows.Input;
+
     /// <summary>The PathSelectionViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
     public class PathSelectionViewModel : ViewModelBase
@@ -63,6 +67,9 @@
             }
             catch (Exception ex)
             {
+                var logMessage = $"[{GetType().Name}] Exception at {MethodBase.GetCurrentMethod()}: {ex}";
+                Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
+
                 DialogService.Exception(ex, DialogService.ExceptionType.Universal);
             }
         }

@@ -151,6 +151,9 @@
   <data name="StatusBarChecked" xml:space="preserve">
     <value>{0} checked</value>
   </data>
+  <data name="StatusBarFilesGenerated" xml:space="preserve">
+    <value>{0} mat files generated</value>
+  </data>
   <data name="StatusBarUnchecked" xml:space="preserve">
     <value>{0} unchecked</value>
   </data>

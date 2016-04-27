@@ -223,6 +223,15 @@ namespace HelperTools.MatFileGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} mat files generated.
+        /// </summary>
+        public static string StatusBarFilesGenerated {
+            get {
+                return ResourceManager.GetString("StatusBarFilesGenerated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} unchecked.
         /// </summary>
         public static string StatusBarUnchecked {

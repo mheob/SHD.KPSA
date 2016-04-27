@@ -1,6 +1,5 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Linq;
@@ -21,6 +20,10 @@
         private const string EXTENSION = "*.jpg";
 
         private string selectedPath;
+        private string solidColorName;
+        private byte[] solidRgb;
+
+        private int selectedVariantTab;
 
         private ObservableCollection<IFiles> fileCollection = new ObservableCollection<IFiles>();
         private ObservableCollection<IFiles> selectedFilesCollection = new ObservableCollection<IFiles>();
@@ -32,6 +35,8 @@
         {
             EventAggregator.GetEvent<SelectedPathUpdateEvent>().Subscribe(OnSelectedPathUpdateEvent);
             EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Subscribe(OnSolidColorNameUpdateEvent);
+            EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
 
             SelectedPath = PathNames.DesktopPath;
 
@@ -52,6 +57,30 @@
         {
             get { return selectedPath; }
             set { SetProperty(ref selectedPath, value); }
+        }
+
+        /// <summary>Gets or sets the name of the solid color.</summary>
+        /// <value>The name of the solid color.</value>
+        public string SolidColorName
+        {
+            get { return solidColorName; }
+            set { SetProperty(ref solidColorName, value); }
+        }
+
+        /// <summary>Gets or sets the solid RGB.</summary>
+        /// <value>The solid RGB.</value>
+        public byte[] SolidRgb
+        {
+            get { return solidRgb; }
+            set { SetProperty(ref solidRgb, value); }
+        }
+
+        /// <summary>Gets or sets the selected variant tab.</summary>
+        /// <value>The selected variant tab.</value>
+        public int SelectedVariantTab
+        {
+            get { return selectedVariantTab; }
+            set { SetProperty(ref selectedVariantTab, value); }
         }
 
         /// <summary>Gets or sets the file collection.</summary>
@@ -88,6 +117,16 @@
             SelectedFilesCollection = files;
 
             StartGenerationCommand.RaiseCanExecuteChanged();
+        }
+
+        private void OnSolidColorNameUpdateEvent(string colorName)
+        {
+            SolidColorName = colorName;
+        }
+
+        private void OnSolidRgbUpdateEvent(byte[] rgb)
+        {
+            SolidRgb = rgb;
         }
         #endregion Event-Handler
 
@@ -134,8 +173,29 @@
 
         private void StartGeneration()
         {
-            throw new NotImplementedException();
-            //EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarFileCollectionChanged);
+            if (SelectedVariantTab == 1)
+            {
+                SelectedFilesCollection.Clear();
+
+                SelectedFilesCollection.Add(new MatFileGenFiles()
+                {
+                    FullFilePath = SelectedPath + SolidColorName + EXTENSION.Substring(1),
+                    FileName = SolidColorName
+                });
+            }
+
+            // TODO: get the settings via the event aggregator -- maybe these settings should be saved tempory in a JSON file
+
+            var mfg = new FileGeneration()
+            {
+                GenerationFiles = SelectedFilesCollection,
+                Extension = EXTENSION,
+                SelectedPath = SelectedPath,
+                SolidRgb = SolidRgb,
+                IsFromJpg = SelectedVariantTab == 0
+            };
+
+            mfg.DoGenerationAsync();
         }
         #endregion Methods
     }

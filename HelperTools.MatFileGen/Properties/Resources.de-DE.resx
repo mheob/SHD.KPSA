@@ -171,6 +171,9 @@
   <data name="StatusBarChecked" xml:space="preserve">
     <value>{0} ausgewählt</value>
   </data>
+  <data name="StatusBarFilesGenerated" xml:space="preserve">
+    <value>{0} "*.mat"-Dateien erstellt</value>
+  </data>
   <data name="StatusBarUnchecked" xml:space="preserve">
     <value>{0} abgewählt</value>
   </data>
