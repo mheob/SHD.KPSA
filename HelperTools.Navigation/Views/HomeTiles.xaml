@@ -10,7 +10,8 @@
              xmlns:props="clr-namespace:HelperTools.Navigation.Properties"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="250" d:DesignWidth="500">
+             d:DesignHeight="250"
+             d:DesignWidth="500">
 
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
@@ -31,7 +32,8 @@
                         CommandParameter="{x:Static infraConsts:ContentNames.MAT_FILE_GEN_CONTENT}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_stamp}" />
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_stamp}" />
                     </Grid.OpacityMask>
                 </Grid>
             </metro:Tile>
@@ -42,7 +44,8 @@
                         CommandParameter="{x:Static infraConsts:ContentNames.CLEAN3_DS_CONTENT}">
                 <Grid Style="{StaticResource SmallTileStyleGrid}">
                     <Grid.OpacityMask>
-                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_3d_3ds}" />
+                        <VisualBrush Stretch="Fill"
+                                     Visual="{DynamicResource appbar_3d_3ds}" />
                     </Grid.OpacityMask>
                 </Grid>
             </metro:Tile>

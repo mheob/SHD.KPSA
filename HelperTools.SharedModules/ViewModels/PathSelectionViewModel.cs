@@ -1,5 +1,8 @@
 ﻿namespace HelperTools.SharedModules.ViewModels
 {
+    using System;
+    using System.Reflection;
+    using System.Windows.Input;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -8,9 +11,6 @@
     using Prism.Commands;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Reflection;
-    using System.Windows.Input;
 
     /// <summary>The PathSelectionViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -48,9 +48,7 @@
             set
             {
                 if (!SetProperty(ref selectedPath, value))
-                {
                     return;
-                }
 
                 EventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(SelectedPath);
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectedPathChanged);

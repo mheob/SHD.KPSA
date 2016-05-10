@@ -16,7 +16,9 @@
                    GlowBrush="{DynamicResource AccentColorBrush}"
                    ShowIconOnTitleBar="True"
                    mc:Ignorable="d"
-                   Title="SHD KPSa HelperTools" Height="600" Width="800">
+                   Title="SHD KPSa HelperTools"
+                   Height="600"
+                   Width="800">
 
     <!-- LeftWindow Commands -->
     <metro:MetroWindow.LeftWindowCommands>
@@ -41,7 +43,8 @@
             </Grid.RowDefinitions>
 
             <!-- Main-Region -->
-            <ContentControl Grid.Row="0" prism:RegionManager.RegionName="{x:Static infraConsts:RegionNames.MAIN_REGION}" />
+            <ContentControl Grid.Row="0"
+                            prism:RegionManager.RegionName="{x:Static infraConsts:RegionNames.MAIN_REGION}" />
 
             <!-- StatusBar -->
             <StatusBar Grid.Row="1">

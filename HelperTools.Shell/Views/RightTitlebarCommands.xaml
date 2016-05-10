@@ -10,7 +10,8 @@
             xmlns:metro="clr-namespace:MahApps.Metro;assembly=MahApps.Metro"
             prism:ViewModelLocator.AutoWireViewModel="True"
             mc:Ignorable="d"
-            d:DesignHeight="30" d:DesignWidth="300">
+            d:DesignHeight="30"
+            d:DesignWidth="300">
 
     <Button Command="{x:Static infra:ApplicationCommands.ShowFlyoutCommand}"
             CommandParameter="{x:Static infraConsts:FlyoutNames.SHELL_SETTINGS_FLYOUT}">

@@ -9,7 +9,8 @@
              xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="300">
+             d:DesignHeight="150"
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
@@ -28,43 +29,54 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0"
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0"
                    Text="{x:Static props:Resources.LabelColorName}"
                    ToolTip="{x:Static props:Resources.ToolTipColorName}"
                    Style="{StaticResource TextBlockLabel}" />
 
-        <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBoxColorName"
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 x:Name="TextBoxColorName"
                  Text="{Binding SolidColorName}"
                  ToolTip="{x:Static props:Resources.ToolTipColorName}"
                  Style="{StaticResource TextBox}"
                  IsEnabled="True" />
 
-        <TextBlock Grid.Column="0" Grid.Row="1"
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1"
                    Text="{x:Static props:Resources.TextBlockColorSelection}"
                    ToolTip="{x:Static props:Resources.ToolTipColorSelection}"
                    Style="{StaticResource TextBlockLabel}" />
 
-        <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPicker"
+        <xctk:ColorPicker Grid.Column="1"
+                          Grid.Row="1"
+                          x:Name="ColorPicker"
                           SelectedColor="{Binding SelectedColor}"
                           IsEnabled="True" />
 
-        <TextBlock Grid.Column="0" Grid.Row="2"
+        <TextBlock Grid.Column="0"
+                   Grid.Row="2"
                    Text="{x:Static props:Resources.TextBlockColorHex}"
                    ToolTip="{x:Static props:Resources.ToolTipColorHex}"
                    Style="{StaticResource TextBlockLabel}" />
 
-        <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBoxColorHex"
+        <TextBox Grid.Column="1"
+                 Grid.Row="2"
+                 x:Name="TextBoxColorHex"
                  Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter}, Mode=TwoWay}"
                  ToolTip="{x:Static props:Resources.ToolTipColorHexInput}"
                  Style="{StaticResource TextBox}"
                  IsEnabled="True" />
 
-        <TextBlock Grid.Column="0" Grid.Row="3"
+        <TextBlock Grid.Column="0"
+                   Grid.Row="3"
                    Text="{x:Static props:Resources.TextBlockColorRgb}"
                    ToolTip="{x:Static props:Resources.ToolTipColorRgb}"
                    Style="{StaticResource TextBlockLabel}" />
 
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Column="1"
+              Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -72,19 +84,22 @@
             </Grid.ColumnDefinitions>
 
             <!-- TODO: enable editing mode for RGB -->
-            <TextBox x:Name="TextBoxColorR" Grid.Column="0"
+            <TextBox x:Name="TextBoxColorR"
+                     Grid.Column="0"
                      Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="0,4,4,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
-            <TextBox x:Name="TextBoxColorG" Grid.Column="1"
+            <TextBox x:Name="TextBoxColorG"
+                     Grid.Column="1"
                      Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Green}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="2,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
-            <TextBox x:Name="TextBoxColorB" Grid.Column="2"
+            <TextBox x:Name="TextBoxColorB"
+                     Grid.Column="2"
                      Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Blue}, Mode=TwoWay}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="4,4,0,4" />

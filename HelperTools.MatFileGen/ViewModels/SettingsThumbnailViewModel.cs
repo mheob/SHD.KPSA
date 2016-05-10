@@ -48,9 +48,7 @@
             set
             {
                 if (!SetProperty(ref generateThumb, value))
-                {
                     return;
-                }
 
                 GenerateOuterFrame = value;
                 GenerateInnerFrame = value;
@@ -76,14 +74,10 @@
             set
             {
                 if (!SetProperty(ref generateOuterFrame, value))
-                {
                     return;
-                }
 
                 if (!GenerateOuterFrame)
-                {
                     GenerateInnerFrame = value;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderOuter));
@@ -114,9 +108,7 @@
             set
             {
                 if (!SetProperty(ref generateInnerFrame, value))
-                {
                     return;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderInner));

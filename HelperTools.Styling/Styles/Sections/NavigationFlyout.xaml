@@ -5,8 +5,11 @@
         <ResourceDictionary Source="../Controls/Buttons.xaml" />
 
         <ResourceDictionary>
-            <Style x:Key="NaviagtionButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="8,0,8,8" />
+            <Style x:Key="NaviagtionButton"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="8,0,8,8" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

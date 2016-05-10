@@ -31,9 +31,7 @@
             set
             {
                 if (!SetProperty(ref solidColorName, value))
-                {
                     return;
-                }
 
                 EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Publish(SolidColorName);
             }
@@ -48,9 +46,7 @@
             set
             {
                 if (SetProperty(ref selectedColor, value))
-                {
                     return;
-                }
 
                 EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(SelectedColor));
             }

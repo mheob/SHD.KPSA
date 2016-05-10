@@ -6,22 +6,35 @@
 
         <!-- BUTTONS -->
         <ResourceDictionary>
-            <Style x:Key="FooterButtonGroup" TargetType="{x:Type StackPanel}">
-                <Setter Property="Margin" Value="0,8,0,0" />
-                <Setter Property="Orientation" Value="Horizontal" />
-                <Setter Property="HorizontalAlignment" Value="Right" />
+            <Style x:Key="FooterButtonGroup"
+                   TargetType="{x:Type StackPanel}">
+                <Setter Property="Margin"
+                        Value="0,8,0,0" />
+                <Setter Property="Orientation"
+                        Value="Horizontal" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
             </Style>
 
-            <Style x:Key="FooterButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="4,0,4,0" />
+            <Style x:Key="FooterButton"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="4,0,4,0" />
             </Style>
 
-            <Style x:Key="FooterButtonLeft" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="0,0,4,0" />
+            <Style x:Key="FooterButtonLeft"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="0,0,4,0" />
             </Style>
 
-            <Style x:Key="FooterButtonRight" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="4,0,0,0" />
+            <Style x:Key="FooterButtonRight"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="4,0,0,0" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

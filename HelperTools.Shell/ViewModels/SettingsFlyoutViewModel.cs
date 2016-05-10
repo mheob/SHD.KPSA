@@ -1,15 +1,15 @@
 ﻿namespace HelperTools.Shell.ViewModels
 {
-    using Infrastructure.Base;
-    using Infrastructure.Events;
-    using MahApps.Metro;
-    using Models;
-    using Properties;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Windows;
     using System.Windows.Media;
+    using Infrastructure.Base;
+    using Infrastructure.Events;
+    using MahApps.Metro;
+    using Models;
+    using Properties;
 
     //    using Infrastructure.Constants;
     //    using Infrastructure.Interfaces;
@@ -83,9 +83,7 @@
             set
             {
                 if (!SetProperty(ref selectedTheme, value))
-                {
                     return;
-                }
 
                 var theme = ThemeManager.DetectAppStyle(Application.Current);
                 var appTheme = ThemeManager.GetAppTheme(value.Name);
@@ -105,9 +103,7 @@
             set
             {
                 if (!SetProperty(ref selectedAccentColor, value))
-                {
                     return;
-                }
 
                 var theme = ThemeManager.DetectAppStyle(Application.Current);
                 var accent = ThemeManager.GetAccent(value.Name);

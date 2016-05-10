@@ -5,9 +5,13 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.groupbox.xaml" />
 
         <ResourceDictionary>
-            <Style x:Key="GroupBoxStyle" TargetType="{x:Type GroupBox}" BasedOn="{StaticResource MetroGroupBox}">
-                <Setter Property="Padding" Value="8" />
-                <Setter Property="VerticalAlignment" Value="Top" />
+            <Style x:Key="GroupBoxStyle"
+                   TargetType="{x:Type GroupBox}"
+                   BasedOn="{StaticResource MetroGroupBox}">
+                <Setter Property="Padding"
+                        Value="8" />
+                <Setter Property="VerticalAlignment"
+                        Value="Top" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

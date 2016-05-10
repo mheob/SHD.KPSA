@@ -7,18 +7,29 @@
         <ResourceDictionary Source="../Controls/Buttons.xaml" />
 
         <ResourceDictionary>
-            <Style x:Key="SettingsTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">
-                <Setter Property="Margin" Value="4,4,8,4" />
-                <Setter Property="VerticalAlignment" Value="Center" />
+            <Style x:Key="SettingsTextBlock"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource MetroTextBlock}">
+                <Setter Property="Margin"
+                        Value="4,4,8,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
             </Style>
 
-            <Style x:Key="SettingsComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MetroComboBox}">
-                <Setter Property="Margin" Value="8,4,4,4" />
-                <Setter Property="DisplayMemberPath" Value="Name" />
+            <Style x:Key="SettingsComboBox"
+                   TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource MetroComboBox}">
+                <Setter Property="Margin"
+                        Value="8,4,4,4" />
+                <Setter Property="DisplayMemberPath"
+                        Value="Name" />
             </Style>
 
-            <Style x:Key="SettingsButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="0,0,0,8" />
+            <Style x:Key="SettingsButton"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin"
+                        Value="0,0,0,8" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

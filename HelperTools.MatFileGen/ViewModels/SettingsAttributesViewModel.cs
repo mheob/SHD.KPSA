@@ -1,14 +1,14 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
     using Infrastructure.Base;
     using Infrastructure.Events;
     using Microsoft.Practices.Unity;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -77,14 +77,10 @@
             set
             {
                 if (!SetProperty(ref addScale, value))
-                {
                     return;
-                }
 
                 if (string.IsNullOrEmpty(SelectedScaleX) || string.IsNullOrEmpty(SelectedScaleY) || string.IsNullOrEmpty(SelectedScaleZ))
-                {
                     InitComboBoxes(ComboBoxes.Scale);
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxScale));
@@ -142,14 +138,10 @@
             set
             {
                 if (!SetProperty(ref addRotate, value))
-                {
                     return;
-                }
 
                 if (string.IsNullOrEmpty(SelectedRotateX) || string.IsNullOrEmpty(SelectedRotateY) || string.IsNullOrEmpty(SelectedRotateZ))
-                {
                     InitComboBoxes(ComboBoxes.Rotate);
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRotate));
@@ -193,14 +185,10 @@
             set
             {
                 if (!SetProperty(ref addAuto, value))
-                {
                     return;
-                }
 
                 if (value)
-                {
                     AddRauto = false;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxAuto));
@@ -215,14 +203,10 @@
             set
             {
                 if (!SetProperty(ref addRauto, value))
-                {
                     return;
-                }
 
                 if (value)
-                {
                     AddAuto = false;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRauto));
@@ -245,14 +229,10 @@
             set
             {
                 if (!SetProperty(ref addMirror, value))
-                {
                     return;
-                }
 
                 if (Mirror.Equals("0"))
-                {
                     Mirror = INIT_MIRROR;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxMirror));
@@ -275,14 +255,10 @@
             set
             {
                 if (!SetProperty(ref addShi, value))
-                {
                     return;
-                }
 
                 if (Shi.Equals("0"))
-                {
                     Shi = INIT_SHI;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxShi));
@@ -305,14 +281,10 @@
             set
             {
                 if (!SetProperty(ref addRef, value))
-                {
                     return;
-                }
 
                 if (Ref.Equals("0"))
-                {
                     Ref = INIT_REF;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRef));
@@ -335,14 +307,10 @@
             set
             {
                 if (!SetProperty(ref addTra, value))
-                {
                     return;
-                }
 
                 if (Tra.Equals("0"))
-                {
                     Tra = INIT_TRA;
-                }
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxTra));

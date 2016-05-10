@@ -9,7 +9,8 @@
             xmlns:props="clr-namespace:HelperTools.Navigation.Properties"
             prism:ViewModelLocator.AutoWireViewModel="True"
             mc:Ignorable="d"
-            d:DesignHeight="30" d:DesignWidth="300">
+            d:DesignHeight="30"
+            d:DesignWidth="300">
 
     <StackPanel.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />

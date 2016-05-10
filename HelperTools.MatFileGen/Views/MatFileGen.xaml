@@ -55,7 +55,8 @@
 
                 <!-- TODO: Setup the tab binding -->
                 <!--<TabControl Grid.Column="0" SelectedIndex="{Binding SelectedVariantTab}">-->
-                <TabControl Grid.Column="0" SelectedIndex="{Binding SelectedVariantTab}">
+                <TabControl Grid.Column="0"
+                            SelectedIndex="{Binding SelectedVariantTab}">
                     <TabItem Header="{x:Static props:Resources.TabItemTexture}"
                              Style="{StaticResource TabItem}">
                         <ContentControl Grid.Row="0"

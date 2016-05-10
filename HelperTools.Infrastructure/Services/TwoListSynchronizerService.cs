@@ -48,9 +48,7 @@
             // so update the master list from the target list
             // (This is the case with a ListBox SelectedItems collection: only items from the ItemsSource can be included in SelectedItems)
             if (!TargetAndMasterCollectionsAreEqual())
-            {
                 SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
-            }
         }
 
         /// <summary>Stop synchronizing the lists.</summary>
@@ -82,9 +80,7 @@
         {
             var source = list as INotifyCollectionChanged;
             if (source != null)
-            {
                 CollectionChangedEventManager.AddListener(source, this);
-            }
         }
 
         /// <summary>Stops listening for change events.</summary>
@@ -93,9 +89,7 @@
         {
             var source = list as INotifyCollectionChanged;
             if (source != null)
-            {
                 CollectionChangedEventManager.RemoveListener(source, this);
-            }
         }
 
         private static void AddItems(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter)
@@ -107,13 +101,9 @@
                 int insertionPoint = e.NewStartingIndex + i;
 
                 if (insertionPoint > list.Count)
-                {
                     list.Add(converter(e.NewItems[i]));
-                }
                 else
-                {
                     list.Insert(insertionPoint, converter(e.NewItems[i]));
-                }
             }
         }
 
@@ -163,13 +153,9 @@
             NotifyCollectionChangedEventArgs collectionChangedArgs)
         {
             if (Equals(sourceList, masterList))
-            {
                 PerformActionOnList(targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
-            }
             else
-            {
                 PerformActionOnList(masterList, action, collectionChangedArgs, ConvertFromTargetToMaster);
-            }
         }
 
         private void PerformActionOnList(IList list, ChangeListAction action,
@@ -222,13 +208,9 @@
         private void UpdateListsFromSource(IEnumerable sourceList)
         {
             if (Equals(sourceList, masterList))
-            {
                 SetListValuesFromSource(masterList, targetList, ConvertFromMasterToTarget);
-            }
             else
-            {
                 SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
-            }
         }
 
         /// <summary>An implementation that does nothing in the conversions.</summary>

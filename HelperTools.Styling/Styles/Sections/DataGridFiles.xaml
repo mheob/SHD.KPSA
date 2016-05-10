@@ -8,21 +8,32 @@
         <!-- DATAGRID FOR FILES -->
         <ResourceDictionary>
             <!-- DATAGRID BUTTONS -->
-            <Style x:Key="DataGridButtonGroup" TargetType="{x:Type StackPanel}">
-                <Setter Property="Orientation" Value="Horizontal" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
+            <Style x:Key="DataGridButtonGroup"
+                   TargetType="{x:Type StackPanel}">
+                <Setter Property="Orientation"
+                        Value="Horizontal" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
             </Style>
 
-            <Style x:Key="DataGridButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Padding" Value="8,4" />
-                <Setter Property="Margin" Value="4" />
+            <Style x:Key="DataGridButton"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Padding"
+                        Value="8,4" />
+                <Setter Property="Margin"
+                        Value="4" />
             </Style>
 
             <!-- DATAGRID STATUSBAR -->
-            <Style x:Key="DataGridFilesStatusBar" TargetType="{x:Type Label}">
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="VerticalAlignment" Value="Bottom" />
-                <Setter Property="FontStyle" Value="Italic" />
+            <Style x:Key="DataGridFilesStatusBar"
+                   TargetType="{x:Type Label}">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalAlignment"
+                        Value="Bottom" />
+                <Setter Property="FontStyle"
+                        Value="Italic" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

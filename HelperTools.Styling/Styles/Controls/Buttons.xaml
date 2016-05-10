@@ -6,10 +6,15 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
 
         <ResourceDictionary>
-            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource SquareButtonStyle}">
-                <Setter Property="Padding" Value="16,8" />
-                <Setter Property="FontSize" Value="12" />
-                <Setter Property="metro:ControlsHelper.ContentCharacterCasing" Value="Normal" />
+            <Style x:Key="ButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource SquareButtonStyle}">
+                <Setter Property="Padding"
+                        Value="16,8" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="metro:ControlsHelper.ContentCharacterCasing"
+                        Value="Normal" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

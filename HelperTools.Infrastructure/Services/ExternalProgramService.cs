@@ -12,9 +12,7 @@
         public static void OpenExplorer(string path)
         {
             if (Directory.Exists(path))
-            {
                 Process.Start("explorer.exe", path);
-            }
         }
 
         /// <summary>Opens a 3rd party application (with params) in the specified subdirectory.</summary>
@@ -26,9 +24,7 @@
             try
             {
                 if (!Directory.Exists(path))
-                {
                     return;
-                }
 
                 var proc = new Process
                 {

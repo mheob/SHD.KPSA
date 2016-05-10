@@ -65,9 +65,7 @@
             bool bValue = (bool) value;
 
             if (bValue != Reverse)
-            {
                 return Visibility.Visible;
-            }
 
             return Collapse ? Visibility.Collapsed : Visibility.Hidden;
         }
@@ -83,9 +81,7 @@
             Visibility visibility = (Visibility) value;
 
             if (visibility == Visibility.Visible)
-            {
                 return !Reverse;
-            }
 
             return Reverse;
         }

@@ -2,13 +2,21 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:props="clr-namespace:HelperTools.Styling.Properties">
 
-    <Style x:Key="PreviewToDo" TargetType="{x:Type TextBlock}">
-        <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Foreground" Value="Orange" />
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="Text" Value="{x:Static props:Resources.PreviewToDo}" />
-        <Setter Property="TextWrapping" Value="Wrap"></Setter>
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="PreviewToDo"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="Foreground"
+                Value="Orange" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Text"
+                Value="{x:Static props:Resources.PreviewToDo}" />
+        <Setter Property="TextWrapping"
+                Value="Wrap">
+        </Setter>
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
     </Style>
 
 </ResourceDictionary>

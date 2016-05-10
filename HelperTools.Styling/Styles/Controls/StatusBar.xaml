@@ -5,8 +5,11 @@
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.statusbar.xaml" />
 
         <ResourceDictionary>
-            <Style x:Key="StatusBarSeparator" TargetType="{x:Type Separator}" BasedOn="{StaticResource MetroStatusBarSeparator}">
-                <Setter Property="Width" Value="2" />
+            <Style x:Key="StatusBarSeparator"
+                   TargetType="{x:Type Separator}"
+                   BasedOn="{StaticResource MetroStatusBarSeparator}">
+                <Setter Property="Width"
+                        Value="2" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

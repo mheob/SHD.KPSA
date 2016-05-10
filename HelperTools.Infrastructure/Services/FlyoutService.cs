@@ -50,9 +50,7 @@
             var flyout = region?.Views?.FirstOrDefault(v => v is IFlyoutView && ((IFlyoutView) v).FlyoutName.Equals(flyoutName)) as Flyout;
 
             if (flyout == null)
-            {
                 return;
-            }
 
             flyout.IsOpen = !flyout.IsOpen;
 

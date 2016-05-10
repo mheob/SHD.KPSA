@@ -9,81 +9,139 @@
 
         <ResourceDictionary>
             <Style x:Key="GridHeightDefault">
-                <Setter Property="Control.Height" Value="28" />
+                <Setter Property="Control.Height"
+                        Value="28" />
             </Style>
 
             <!-- TextBlock Label -->
-            <Style x:Key="TextBlockLabel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">
-                <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
-                <Setter Property="Margin" Value="0,4" />
-                <Setter Property="VerticalAlignment" Value="Center" />
+            <Style x:Key="TextBlockLabel"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource MetroTextBlock}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource TextBrush}" />
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- Checkbox Label -->
-            <Style x:Key="CheckBoxLabel" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-                <Setter Property="Margin" Value="0,4" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style x:Key="CheckBoxLabel"
+                   TargetType="{x:Type CheckBox}"
+                   BasedOn="{StaticResource {x:Type CheckBox}}">
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- Text Color -->
-            <Style x:Key="TextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="IsEnabled" Value="False" />
-                <Setter Property="Margin" Value="0,4" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style x:Key="TextBox"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- RGB -->
-            <Style x:Key="TextBoxColorRgb" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="IsEnabled" Value="False" />
-                <Setter Property="Margin" Value="0,4" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="ToolTip" Value="Nur Werte von 0 bis 255 zulässig!" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style x:Key="TextBoxColorRgb"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="ToolTip"
+                        Value="Nur Werte von 0 bis 255 zulässig!" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- Text Color -->
-            <Style x:Key="TextBoxColor" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="Margin" Value="0,4" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style x:Key="TextBoxColor"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- Text ColorPicker -->
-            <Style x:Key="TextBoxColorPicker" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="Margin" Value="4,4,0,4" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="IsEnabled" Value="False" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style x:Key="TextBoxColorPicker"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="4,4,0,4" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
             </Style>
 
             <!-- ComboBox -->
-            <Style x:Key="ComboBoxXyz" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MetroComboBox}">
-                <Setter Property="Margin" Value="4" />
-                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="IsEnabled" Value="False" />
+            <Style x:Key="ComboBoxXyz"
+                   TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource MetroComboBox}">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
             </Style>
 
             <!-- Slider and Textbox -->
-            <Style x:Key="Slider" TargetType="{x:Type Slider}" BasedOn="{StaticResource MetroSlider}">
-                <Setter Property="Margin" Value="4" />
-                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="IsEnabled" Value="False" />
-                <Setter Property="IsSnapToTickEnabled" Value="True" />
+            <Style x:Key="Slider"
+                   TargetType="{x:Type Slider}"
+                   BasedOn="{StaticResource MetroSlider}">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="IsSnapToTickEnabled"
+                        Value="True" />
             </Style>
 
-            <Style x:Key="TextBoxSlider" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroTextBox}">
-                <Setter Property="Margin" Value="4,4,0,4" />
-                <Setter Property="HorizontalAlignment" Value="Stretch" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
-                <Setter Property="IsEnabled" Value="False" />
+            <Style x:Key="TextBoxSlider"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="4,4,0,4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
             </Style>
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

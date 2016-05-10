@@ -89,9 +89,7 @@
                 IList list = GetSynchronizedSelectedItems(multiSelector);
 
                 if (list == null)
-                {
                     return;
-                }
 
                 synchronizer = new TwoListSynchronizerService(GetSelectedItemsCollection(multiSelector), list);
                 synchronizer.StartSynchronizing();
@@ -107,15 +105,11 @@
             {
                 var multiSelector = selector as MultiSelector;
                 if (multiSelector != null)
-                {
                     return multiSelector.SelectedItems;
-                }
 
                 var box = selector as ListBox;
                 if (box != null)
-                {
                     return box.SelectedItems;
-                }
                 throw new InvalidOperationException("Target object has no SelectedItems property to bind.");
             }
         }

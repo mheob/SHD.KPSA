@@ -9,7 +9,8 @@
              xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="150" d:DesignWidth="300">
+             d:DesignHeight="150"
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -18,8 +19,11 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Override Checkbox Label -->
-            <Style x:Key="CheckBoxLabelThumb" TargetType="{x:Type CheckBox}" BasedOn="{StaticResource CheckBoxLabel}">
-                <Setter Property="IsChecked" Value="True" />
+            <Style x:Key="CheckBoxLabelThumb"
+                   TargetType="{x:Type CheckBox}"
+                   BasedOn="{StaticResource CheckBoxLabel}">
+                <Setter Property="IsChecked"
+                        Value="True" />
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -36,25 +40,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxThumb"
+        <CheckBox Grid.Column="0"
+                  Grid.Row="0"
+                  x:Name="CheckBoxThumb"
                   Content="{x:Static props:Resources.CheckBoxThumb}"
                   Style="{StaticResource CheckBoxLabelThumb}"
                   IsChecked="{Binding GenerateThumb}"
                   ToolTip="{x:Static props:Resources.ToolTipThumb}" />
 
-        <Label Grid.Column="1" Grid.Row="0" x:Name="LabelThumb"
+        <Label Grid.Column="1"
+               Grid.Row="0"
+               x:Name="LabelThumb"
                Content="{x:Static props:Resources.LabelThumb}"
                ToolTip="{x:Static props:Resources.ToolTipThumb}"
                HorizontalAlignment="Right"
                VerticalAlignment="Center" />
 
-        <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxThumbFolder"
+        <TextBox Grid.Column="2"
+                 Grid.Row="0"
+                 x:Name="TextBoxThumbFolder"
                  Text="{Binding ThumbFolder}"
                  Style="{StaticResource TextBoxColor}"
                  IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked}"
                  HorizontalContentAlignment="Center" />
 
-        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Style="{StaticResource GridHeightDefault}" />
                 <RowDefinition Style="{StaticResource GridHeightDefault}" />
@@ -65,35 +77,47 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <CheckBox Grid.Column="0" Grid.Row="0" x:Name="CheckBoxBorderOuter"
+            <CheckBox Grid.Column="0"
+                      Grid.Row="0"
+                      x:Name="CheckBoxBorderOuter"
                       Content="{x:Static props:Resources.CheckBoxBorderOuter}"
                       ToolTip="{x:Static props:Resources.ToolTipBorderOuter}"
                       Style="{StaticResource CheckBoxLabelThumb}"
                       IsChecked="{Binding GenerateOuterFrame}"
                       IsEnabled="{Binding ElementName=CheckBoxThumb, Path=IsChecked, Mode=OneWay}" />
 
-            <xctk:ColorPicker Grid.Column="1" Grid.Row="0" x:Name="ColorPickerBorderOuter"
+            <xctk:ColorPicker Grid.Column="1"
+                              Grid.Row="0"
+                              x:Name="ColorPickerBorderOuter"
                               SelectedColor="{Binding OuterFrameColor}"
                               IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}" />
 
-            <TextBox Grid.Column="2" Grid.Row="0" x:Name="TextBoxBorderOuterSize"
+            <TextBox Grid.Column="2"
+                     Grid.Row="0"
+                     x:Name="TextBoxBorderOuterSize"
                      Text="{Binding OuterFrameSize, Converter={converter:IntegerToStringConverter}, Mode=TwoWay}"
                      ToolTip="{x:Static props:Resources.ToolTipBorderSize}"
                      Style="{StaticResource TextBoxColorPicker}"
                      IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked}" />
 
-            <CheckBox Grid.Column="0" Grid.Row="1" x:Name="CheckBoxBorderInner"
+            <CheckBox Grid.Column="0"
+                      Grid.Row="1"
+                      x:Name="CheckBoxBorderInner"
                       Content="{x:Static props:Resources.CheckBoxBorderInner}"
                       ToolTip="{x:Static props:Resources.ToolTipBorderInner}"
                       Style="{StaticResource CheckBoxLabelThumb}"
                       IsChecked="{Binding GenerateInnerFrame}"
                       IsEnabled="{Binding ElementName=CheckBoxBorderOuter, Path=IsChecked, Mode=OneWay}" />
 
-            <xctk:ColorPicker Grid.Column="1" Grid.Row="1" x:Name="ColorPickerBorderInner"
+            <xctk:ColorPicker Grid.Column="1"
+                              Grid.Row="1"
+                              x:Name="ColorPickerBorderInner"
                               SelectedColor="{Binding InnerFrameColor}"
                               IsEnabled="{Binding ElementName=CheckBoxBorderInner, Path=IsChecked}" />
 
-            <TextBox Grid.Column="2" Grid.Row="1" x:Name="TextBoxBorderInnerSize"
+            <TextBox Grid.Column="2"
+                     Grid.Row="1"
+                     x:Name="TextBoxBorderInnerSize"
                      Text="{Binding InnerFrameSize, Converter={converter:IntegerToStringConverter}, Mode=TwoWay}"
                      ToolTip="{x:Static props:Resources.ToolTipBorderSize}"
                      Style="{StaticResource TextBoxColorPicker}"

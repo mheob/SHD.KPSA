@@ -7,7 +7,8 @@
              xmlns:props="clr-namespace:HelperTools.Changelog.Properties"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
-             d:DesignHeight="120" d:DesignWidth="300">
+             d:DesignHeight="120"
+             d:DesignWidth="300">
 
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
@@ -28,7 +29,8 @@
             <DockPanel x:Name="StackPanelMainContent"
                        Margin="16,8">
 
-                <Label x:Name="LabelContent" DockPanel.Dock="Top"
+                <Label x:Name="LabelContent"
+                       DockPanel.Dock="Top"
                        Content="{Binding BuildNote, FallbackValue=Changelog__Items}"
                        HorizontalContentAlignment="Right"
                        FontFamily="Consolas"

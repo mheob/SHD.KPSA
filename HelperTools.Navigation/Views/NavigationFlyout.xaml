@@ -14,7 +14,8 @@
               Position="Left"
               Header="{x:Static props:Resources.HomeTilesFlyoutTitle}"
               Width="Auto"
-              d:DesignHeight="400" d:DesignWidth="250">
+              d:DesignHeight="400"
+              d:DesignWidth="250">
 
     <metro:Flyout.Resources>
         <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />

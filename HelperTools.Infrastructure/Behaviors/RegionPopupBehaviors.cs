@@ -32,9 +32,7 @@
         public static string GetCreatePopupRegionWithName(DependencyObject owner)
         {
             if (owner == null)
-            {
                 throw new ArgumentNullException(nameof(owner));
-            }
 
             return owner.GetValue(CreatePopupRegionWithNameProperty) as string;
         }
@@ -46,9 +44,7 @@
         public static void SetCreatePopupRegionWithName(DependencyObject owner, string value)
         {
             if (owner == null)
-            {
                 throw new ArgumentNullException(nameof(owner));
-            }
 
             owner.SetValue(CreatePopupRegionWithNameProperty, value);
         }
@@ -60,9 +56,7 @@
         public static Style GetContainerWindowStyle(DependencyObject owner)
         {
             if (owner == null)
-            {
                 throw new ArgumentNullException(nameof(owner));
-            }
 
             return owner.GetValue(ContainerWindowStyleProperty) as Style;
         }
@@ -74,9 +68,7 @@
         public static void SetContainerWindowStyle(DependencyObject owner, Style style)
         {
             if (owner == null)
-            {
                 throw new ArgumentNullException(nameof(owner));
-            }
 
             owner.SetValue(ContainerWindowStyleProperty, style);
         }
@@ -92,9 +84,7 @@
             // charge of registering the Region once a RegionManager is set as an attached property in the Visual Tree.
             IRegionManager regionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
             if (regionManager == null)
-            {
                 return;
-            }
 
             IRegion region = new SingleActiveRegion();
 
@@ -108,9 +98,7 @@
         private static void CreatePopupRegionWithNamePropertyChanged(DependencyObject hostControl, DependencyPropertyChangedEventArgs e)
         {
             if (IsInDesignMode(hostControl))
-            {
                 return;
-            }
 
             RegisterNewPopupRegion(hostControl, e.NewValue as string);
         }

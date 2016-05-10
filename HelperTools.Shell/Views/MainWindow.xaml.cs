@@ -24,9 +24,7 @@
             // (the Window) cannot be found using LogicalTreeHelper.FindParent therefore the regionManager is never found and cannot be
             // assigned automatically by Prism.  This means we have to handle this ourselves
             if (regionManager == null)
-            {
                 return;
-            }
 
             SetRegionManager(regionManager, LeftWindowCommandsRegion, RegionNames.LEFT_WINDOW_COMMANDS_REGION);
             SetRegionManager(regionManager, RightWindowCommandsRegion, RegionNames.RIGHT_WINDOW_COMMANDS_REGION);

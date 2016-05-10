@@ -37,19 +37,13 @@
         public async Task<string> ShowInputAsync(string title, string message, MetroDialogSettings settings = null)
         {
             if (settings != null)
-            {
                 MainWindow.MetroDialogOptions = settings;
-            }
 
             if (settings != null && settings.AffirmativeButtonText == null || settings == null)
-            {
                 MainWindow.MetroDialogOptions.AffirmativeButtonText = Resources.DialogOk;
-            }
 
             if (settings != null && settings.NegativeButtonText == null || settings == null)
-            {
                 MainWindow.MetroDialogOptions.NegativeButtonText = Resources.DialogCancel;
-            }
 
             return await MainWindow.ShowInputAsync(title, message, MainWindow.MetroDialogOptions);
         }
@@ -64,19 +58,13 @@
             MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
         {
             if (settings != null)
-            {
                 MainWindow.MetroDialogOptions = settings;
-            }
 
             if (settings != null && settings.AffirmativeButtonText == null || settings == null)
-            {
                 MainWindow.MetroDialogOptions.AffirmativeButtonText = Resources.DialogYes;
-            }
 
             if (settings != null && settings.NegativeButtonText == null || settings == null)
-            {
                 MainWindow.MetroDialogOptions.NegativeButtonText = Resources.DialogNo;
-            }
 
             return await MainWindow.ShowMessageAsync(title, message, style, MainWindow.MetroDialogOptions);
         }
@@ -91,14 +79,10 @@
             MetroDialogSettings settings = null)
         {
             if (settings != null)
-            {
                 MainWindow.MetroDialogOptions = settings;
-            }
 
             if (settings != null && settings.NegativeButtonText == null || settings == null)
-            {
                 MainWindow.MetroDialogOptions.NegativeButtonText = Resources.DialogCancel;
-            }
 
             return await MainWindow.ShowProgressAsync(title, message, isCancelable, MainWindow.MetroDialogOptions);
         }

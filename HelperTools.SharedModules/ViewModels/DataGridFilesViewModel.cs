@@ -123,13 +123,9 @@
             RaiseCanExecuteChanged();
 
             if (SelectedFilesCollection.Count < 1)
-            {
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectNone);
-            }
             else if (SelectedFilesCollection.Count.Equals(FileCollection.Count))
-            {
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectAll);
-            }
         }
 
         private bool CanSelectAll()

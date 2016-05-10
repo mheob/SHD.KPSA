@@ -87,9 +87,7 @@
                         var pathForOrig = fi.DirectoryName + @"\_orig_images_\"; // TODO: outsource string
 
                         if (!Directory.Exists(pathForOrig))
-                        {
                             Directory.CreateDirectory(pathForOrig);
-                        }
 
                         // ReSharper disable once AssignNullToNotNullAttribute
                         File.Copy(fileToGenerate, pathForOrig + file.FileName, true);
@@ -102,9 +100,7 @@
                     }
 
                     if (!file.FullFilePath.Equals($@"{new FileInfo(fileToGenerate).DirectoryName}\{filename}"))
-                    {
                         File.Move(file.FullFilePath, fileToGenerate);
-                    }
 
                     await Task.Delay(50);
 
@@ -143,9 +139,7 @@
                 metroDialog.ShowMessageAsync(infraProps.Resources.MessageDialogCompleteTitle,
                     string.Format(infraProps.Resources.MessageDialogCompleteContent, "\n"),
                     MessageDialogStyle.AffirmativeAndNegative) == MessageDialogResult.Affirmative)
-            {
                 ExternalProgramService.OpenExplorer(SelectedPath);
-            }
 
             eventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(Resources.StatusBarFilesGenerated, sumFiles));
         }

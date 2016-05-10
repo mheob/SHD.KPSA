@@ -50,9 +50,7 @@
             var content = region?.Views?.FirstOrDefault(v => v is IContentView && ((IContentView) v).ContentName.Equals(contentName)) as UserControl;
 
             if (content == null)
-            {
                 return;
-            }
 
             regionManager.RequestNavigate(RegionNames.MAIN_REGION, contentName, NavigationCompleted);
 

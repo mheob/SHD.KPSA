@@ -54,16 +54,12 @@
         private void DesignChangelogContent()
         {
             if (!File.Exists(ChangelogFile))
-            {
                 return;
-            }
 
             foreach (var line in FileService.Read(ChangelogFile))
             {
                 if (line.Equals("# CHANGELOG"))
-                {
                     continue;
-                }
 
                 var label = new Label
                 {
@@ -74,9 +70,7 @@
                 var tmpLine = line;
 
                 if (tmpLine.EndsWith("<br />"))
-                {
                     tmpLine = tmpLine.Remove(tmpLine.Length - 6, 6);
-                }
 
                 if (tmpLine.StartsWith("## "))
                 {
@@ -86,17 +80,11 @@
                 }
 
                 if (tmpLine.StartsWith("[ADD]"))
-                {
                     label.Foreground = Brushes.Green;
-                }
                 else if (tmpLine.StartsWith("[FIX]"))
-                {
                     label.Foreground = Brushes.Orange;
-                }
                 else if (tmpLine.StartsWith("[REMOVE]"))
-                {
                     label.Foreground = Brushes.Red;
-                }
 
                 label.Content = tmpLine;
 
