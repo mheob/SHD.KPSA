@@ -1,5 +1,10 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
@@ -9,11 +14,6 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using infraProps = Infrastructure.Properties;
 
     /// <summary>The FileGeneration.</summary>
@@ -90,7 +90,7 @@
                             Directory.CreateDirectory(pathForOrig);
 
                         // ReSharper disable once AssignNullToNotNullAttribute
-                        File.Copy(fileToGenerate, pathForOrig + file.FileName, true);
+                        File.Copy(fileToGenerate, pathForOrig + file.FileName + Extension, true);
 
                         await Task.Delay(50);
 
