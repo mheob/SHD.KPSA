@@ -1,10 +1,5 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
@@ -14,6 +9,11 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using infraProps = Infrastructure.Properties;
 
     /// <summary>The FileGeneration.</summary>
@@ -73,38 +73,45 @@
 
             await Task.Delay(250);
 
-            //if (!Directory.Exists(PathNames.TempFolderPath))
-            //{
-            //    Directory.CreateDirectory(PathNames.TempFolderPath);
-            //}
-
             foreach (var file in GenerationFiles)
             {
                 try
                 {
-                    // TODO: create the generation
-
                     var fileToGenerate = file.FullFilePath;
+                    var filename = CharConverterService.ConvertCharsToAscii(file.FileName) + Extension;
+
+                    // TODO: create the generation
+                    if (File.Exists(fileToGenerate))
+                    {
+                        var fi = new FileInfo(fileToGenerate);
+                        var pathForOrig = fi.DirectoryName + @"\_orig_images_\"; // TODO: outsource string
+
+                        if (!Directory.Exists(pathForOrig))
+                        {
+                            Directory.CreateDirectory(pathForOrig);
+                        }
+
+                        // ReSharper disable once AssignNullToNotNullAttribute
+                        File.Copy(fileToGenerate, pathForOrig + file.FileName, true);
+
+                        await Task.Delay(50);
+
+                        fileToGenerate = $@"{fi.DirectoryName}\{filename}";
+
+                        await Task.Delay(50);
+                    }
+
+                    if (!file.FullFilePath.Equals($@"{new FileInfo(fileToGenerate).DirectoryName}\{filename}"))
+                    {
+                        File.Move(file.FullFilePath, fileToGenerate);
+                    }
+
+                    await Task.Delay(50);
 
                     var rgb = File.Exists(fileToGenerate) ? ColorConverterService.GetRgbFromImage(fileToGenerate) : SolidRgb;
 
                     var generateFile = new GenerateMatFile(fileToGenerate, rgb, IsFromJpg);
-
                     generateFile.CreateMatFile();
-
-                    //var tmpFile = PathNames.TempFolderPath + CharConverterService.ConvertCharsToAscii(file.FileName + Extension);
-                    //
-                    //File.Copy(file.FullFilePath, tmpFile, true);
-                    //
-                    //await Task.Delay(50);
-                    //
-                    //ExternalProgramService.OpenThirdParty("fix3ds.exe", " -m \"" + tmpFile + "\"", PathNames.ThirdPartyPath);
-                    //
-                    //await Task.Delay(50);
-                    //
-                    //File.Delete(file.FullFilePath);
-                    //File.Copy(tmpFile, SelectedPath + Path.GetFileName(tmpFile), true);
-                    //File.SetCreationTime(SelectedPath + Path.GetFileName(tmpFile), DateTime.Now);
 
                     await Task.Delay(50);
 
@@ -121,11 +128,6 @@
                     DialogService.Exception(ex, DialogService.ExceptionType.Universal);
                 }
             }
-
-            //if (Directory.Exists(PathNames.TempFolderPath))
-            //{
-            //    Directory.Delete(PathNames.TempFolderPath, true);
-            //}
 
             await controller.CloseAsync();
 

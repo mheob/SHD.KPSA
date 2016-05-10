@@ -64,7 +64,15 @@
         public string SolidColorName
         {
             get { return solidColorName; }
-            set { SetProperty(ref solidColorName, value); }
+            set
+            {
+                if (!SetProperty(ref solidColorName, value))
+                {
+                    return;
+                }
+
+                StartGenerationCommand.RaiseCanExecuteChanged();
+            }
         }
 
         /// <summary>Gets or sets the solid RGB.</summary>
@@ -80,7 +88,15 @@
         public int SelectedVariantTab
         {
             get { return selectedVariantTab; }
-            set { SetProperty(ref selectedVariantTab, value); }
+            set
+            {
+                if (!SetProperty(ref selectedVariantTab, value))
+                {
+                    return;
+                }
+
+                StartGenerationCommand.RaiseCanExecuteChanged();
+            }
         }
 
         /// <summary>Gets or sets the file collection.</summary>
@@ -168,7 +184,7 @@
 
         private bool CanStartGeneration()
         {
-            return SelectedFilesCollection.Count > 0;
+            return SelectedFilesCollection.Count > 0 || (SelectedVariantTab == 1 && !string.IsNullOrEmpty(SolidColorName));
         }
 
         private void StartGeneration()
@@ -189,7 +205,7 @@
             var mfg = new FileGeneration()
             {
                 GenerationFiles = SelectedFilesCollection,
-                Extension = EXTENSION,
+                Extension = EXTENSION.Substring(1),
                 SelectedPath = SelectedPath,
                 SolidRgb = SolidRgb,
                 IsFromJpg = SelectedVariantTab == 0

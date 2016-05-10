@@ -17,7 +17,8 @@
 
         private string file;
         private readonly byte[] rgb;
-        private bool fromJpg;
+        private readonly bool fromJpg;
+        private List<string> matFile;
         #endregion Fields
 
         #region Constructor
@@ -126,11 +127,12 @@
             var colorsDif = new string[3];
             var colorsSpe = new string[3];
 
-            if (file.EndsWith(Extension))
-            {
-                file = file.Replace(Extension, string.Empty);
-                fromJpg = true;
-            }
+            //if (file.EndsWith(Extension))
+            //{
+            //    file = file.Replace(Extension, string.Empty);
+            //    fromJpg = true;
+            //}
+            file = file.Replace(Extension, string.Empty);
 
             for (int i = 0; i < rgb.Length; i++)
             {
@@ -138,7 +140,7 @@
                 colorsSpe[i] = (rgb[i] / 2550F).ToString(CultureInfo.InvariantCulture);
             }
 
-            var matFile = new List<string>
+            matFile = new List<string>
             {
                 $"mat {filename}",
                 $"dif {colorsDif[0]} {colorsDif[1]} {colorsDif[2]}",
@@ -151,63 +153,59 @@
                 matFile.Add($"tex image jpg {filename}");
             }
 
-            matFile.Add(AddOptionals());
+            AddOptionals();
 
             FileService.Write($"{file}.mat", matFile);
         }
 
         /// <summary>Adds the optionals.</summary>
         /// <returns></returns>
-        private string AddOptionals()
+        private void AddOptionals()
         {
-            var text = string.Empty;
-
             if (AddScale)
             {
-                text += $"scale {SelectedScaleX} {SelectedScaleY} {SelectedScaleZ}\n";
+                matFile.Add($"scale {SelectedScaleX} {SelectedScaleY} {SelectedScaleZ}");
             }
 
             if (AddRotate)
             {
-                text += $"rotate {SelectedRotateX} {SelectedRotateY} {SelectedRotateZ}\n";
+                matFile.Add($"rotate {SelectedRotateX} {SelectedRotateY} {SelectedRotateZ}");
             }
 
             if (AddAuto)
             {
-                text += "auto\n";
+                matFile.Add("auto");
             }
 
             if (AddRauto)
             {
-                text += "rauto\n";
+                matFile.Add("rauto");
             }
 
             if (AddGlass)
             {
-                text += "type glass\n";
+                matFile.Add("type glass");
             }
 
             if (AddMirror)
             {
-                text += $"mirror {Mirror}\n";
+                matFile.Add($"mirror {Mirror}");
             }
 
             if (AddShi)
             {
-                text += $"shi {Shi}\n";
+                matFile.Add($"shi {Shi}");
             }
 
             if (AddRef)
             {
-                text += $"ref {Ref}\n";
+                matFile.Add($"ref {Ref}");
             }
 
             if (AddTra)
             {
-                text += $"tra {Tra}\n";
+                matFile.Add($"tra {Tra}");
             }
-
-            return text;
         }
         #endregion Methods
     }

@@ -36,7 +36,7 @@
 
             Bitmap img = (Bitmap) Image.FromFile(file);
 
-            int pixel = img.Width * img.Height;
+//            int pixel = img.Width * img.Height;
 
             for (int x = 0, maxX = img.Width; x < maxX; x++)
             {
@@ -50,10 +50,10 @@
                 }
             }
 
-            for (int i = 0; i < rgb.Length; i++)
-            {
-                rgb[i] = (byte) (rgb[i] / pixel);
-            }
+//            for (int i = 0; i < rgb.Length; i++)
+//            {
+//                rgb[i] = (byte) (rgb[i] / pixel);
+//            }
 
             return rgb;
         }
