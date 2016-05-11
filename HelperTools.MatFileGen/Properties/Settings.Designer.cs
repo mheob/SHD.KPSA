@@ -58,5 +58,41 @@ namespace HelperTools.MatFileGen.Properties {
                 this["InnerFrameSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        public int MappingImageMaxWidth {
+            get {
+                return ((int)(this["MappingImageMaxWidth"]));
+            }
+            set {
+                this["MappingImageMaxWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        public int MappingImageMaxHeight {
+            get {
+                return ((int)(this["MappingImageMaxHeight"]));
+            }
+            set {
+                this["MappingImageMaxHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\_orig_images_\\")]
+        public string MappingImageSuffixPathForOrig {
+            get {
+                return ((string)(this["MappingImageSuffixPathForOrig"]));
+            }
+            set {
+                this["MappingImageSuffixPathForOrig"] = value;
+            }
+        }
     }
 }

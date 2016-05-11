@@ -24,6 +24,10 @@
         #region Fields
         private readonly IUnityContainer unityContainer;
         private readonly IEventAggregator eventAggregator;
+
+        private readonly int maxWidth = Settings.Default.MappingImageMaxWidth;
+        private readonly int maxHeight = Settings.Default.MappingImageMaxHeight;
+        private readonly string suffixPathForOrig = Settings.Default.MappingImageSuffixPathForOrig;
         #endregion Fields
 
         #region Constructor
@@ -85,17 +89,15 @@
                     if (File.Exists(fileToGenerate))
                     {
                         var fi = new FileInfo(fileToGenerate);
-                        var pathForOrig = fi.DirectoryName + @"\_orig_images_\"; // TODO: outsource string
+                        var pathForOrig = fi.DirectoryName + suffixPathForOrig;
 
                         if (!Directory.Exists(pathForOrig))
                             Directory.CreateDirectory(pathForOrig);
 
-                        // ReSharper disable once AssignNullToNotNullAttribute
                         File.Copy(fileToGenerate, pathForOrig + file.FileName + Extension, true);
 
                         var imageService = new ImageService();
-                        // TODO: outsource the resize configurations
-                        var resizedImage = imageService.ResizeBitmap(new Bitmap(file.FullFilePath), 250, 250, false);
+                        var resizedImage = imageService.ResizeBitmap(new Bitmap(file.FullFilePath), maxWidth, maxHeight, false);
                         resizedImage.Save(file.FullFilePath, ImageFormat.Jpeg);
 
                         await Task.Delay(50);

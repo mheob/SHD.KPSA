@@ -1,25 +1,24 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings"
-              CurrentProfile="(Default)"
-              GeneratedClassNamespace="HelperTools.MatFileGen.Properties"
-              GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HelperTools.MatFileGen.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ThumbFolder"
-             Type="System.String"
-             Scope="User">
+    <Setting Name="ThumbFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">thumb</Value>
     </Setting>
-    <Setting Name="OuterFrameSize"
-             Type="System.Int32"
-             Scope="User">
+    <Setting Name="OuterFrameSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
-    <Setting Name="InnerFrameSize"
-             Type="System.Int32"
-             Scope="User">
+    <Setting Name="InnerFrameSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MappingImageMaxWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="MappingImageMaxHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="MappingImageSuffixPathForOrig" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\_orig_images_\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -80,13 +80,13 @@
         }
 
         /// <summary>Creates a single framed image.</summary>
-        /// <param name="b">The b.</param>
-        /// <param name="outline">The outline.</param>
-        /// <param name="inline">The inline.</param>
-        /// <param name="borderOut">The border out.</param>
-        /// <param name="borderIn">The border in.</param>
-        /// <returns></returns>
-        public Bitmap CreateBorder(Bitmap b, SolidBrush outline, SolidBrush inline, int borderOut, int borderIn)
+        /// <param name="b">The bitmap.</param>
+        /// <param name="outline">The outline color.</param>
+        /// <param name="inline">The inline color.</param>
+        /// <param name="borderOut">The outline border thickness.</param>
+        /// <param name="borderIn">The inline border thickness.</param>
+        /// <returns>The framed image.</returns>
+        public Bitmap CreateDoubleBorder(Bitmap b, SolidBrush outline, SolidBrush inline, int borderOut, int borderIn)
         {
             int border = borderIn + borderOut;
 
