@@ -6,7 +6,7 @@
     /// <summary>The ImageService.</summary>
     public class ImageService
     {
-        /// <summary>Resizes the bitmap.</summary>
+        /// <summary>Resizes the bitmap in case of a scale value.</summary>
         /// <param name="b">The bitmap.</param>
         /// <param name="scale">The scale.</param>
         /// <returns>The resized bitmap.</returns>
@@ -20,7 +20,7 @@
             return resizedImage;
         }
 
-        /// <summary>Resizes the bitmap.</summary>
+        /// <summary>Resizes the bitmap in case of maximal dimension values.</summary>
         /// <param name="b">The bitmap.</param>
         /// <param name="maxWidth">The maximum width.</param>
         /// <param name="maxHeight">The maximum height.</param>
@@ -49,11 +49,6 @@
             return resizedImage;
         }
 
-        /// <summary>Resizes the bitmap.</summary>
-        /// <param name="b">The bitmap.</param>
-        /// <param name="nWidth">New width of the bitmap.</param>
-        /// <param name="nHeight">New height of the bitmap.</param>
-        /// <returns>The resized bitmap.</returns>
         private static Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
         {
             Bitmap resizedImage = new Bitmap(nWidth, nHeight);
@@ -65,6 +60,45 @@
             b.Dispose();
 
             return resizedImage;
+        }
+
+        /// <summary>Creates a single framed image.</summary>
+        /// <param name="b">The bitmap.</param>
+        /// <param name="outline">The outline color.</param>
+        /// <param name="border">The border thickness.</param>
+        /// <returns>The framed image.</returns>
+        public Bitmap CreateSingleBorder(Bitmap b, SolidBrush outline, int border)
+        {
+            Bitmap nImage = new Bitmap(b);
+            using (Graphics g = Graphics.FromImage(nImage))
+            {
+                g.FillRectangle(outline, 0, 0, b.Width, b.Height);
+                g.DrawImage(b, border, border, b.Width - (border * 2), b.Height - (border * 2));
+            }
+
+            return nImage;
+        }
+
+        /// <summary>Creates a single framed image.</summary>
+        /// <param name="b">The b.</param>
+        /// <param name="outline">The outline.</param>
+        /// <param name="inline">The inline.</param>
+        /// <param name="borderOut">The border out.</param>
+        /// <param name="borderIn">The border in.</param>
+        /// <returns></returns>
+        public Bitmap CreateBorder(Bitmap b, SolidBrush outline, SolidBrush inline, int borderOut, int borderIn)
+        {
+            int border = borderIn + borderOut;
+
+            Bitmap nImage = new Bitmap(b);
+            using (Graphics g = Graphics.FromImage(nImage))
+            {
+                g.FillRectangle(outline, 0, 0, b.Width, b.Height);
+                g.FillRectangle(inline, borderOut, borderOut, b.Width - (borderOut * 2), b.Height - (borderOut * 2));
+                g.DrawImage(b, border, border, b.Width - (border * 2), b.Height - (border * 2));
+            }
+
+            return nImage;
         }
     }
 }
