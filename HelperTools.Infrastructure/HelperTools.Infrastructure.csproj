@@ -146,6 +146,7 @@
     <Compile Include="Services\ExternalProgramService.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\FlyoutService.cs" />
+    <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\LocalizerService.cs" />
     <Compile Include="Services\MetroMessageDisplayService.cs" />
     <Compile Include="Services\TwoListSynchronizerService.cs" />

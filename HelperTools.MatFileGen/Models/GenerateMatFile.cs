@@ -1,12 +1,12 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
 
     /// <summary>The GenerateMatFile.</summary>
     public class GenerateMatFile
@@ -142,7 +142,7 @@
 
             matFile = new List<string>
             {
-                $"mat {filename}",
+                $"mat {filename.Replace(Extension, string.Empty)}",
                 $"dif {colorsDif[0]} {colorsDif[1]} {colorsDif[2]}",
                 $"amb {colorsDif[0]} {colorsDif[1]} {colorsDif[2]}",
                 $"spe {colorsSpe[0]} {colorsSpe[1]} {colorsSpe[2]}"

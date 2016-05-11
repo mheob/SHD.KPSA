@@ -1,10 +1,5 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
@@ -14,6 +9,13 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using infraProps = Infrastructure.Properties;
 
     /// <summary>The FileGeneration.</summary>
@@ -80,7 +82,6 @@
                     var fileToGenerate = file.FullFilePath;
                     var filename = CharConverterService.ConvertCharsToAscii(file.FileName) + Extension;
 
-                    // TODO: create the generation
                     if (File.Exists(fileToGenerate))
                     {
                         var fi = new FileInfo(fileToGenerate);
@@ -91,6 +92,11 @@
 
                         // ReSharper disable once AssignNullToNotNullAttribute
                         File.Copy(fileToGenerate, pathForOrig + file.FileName + Extension, true);
+
+                        var imageService = new ImageService();
+                        // TODO: outsource the resize configurations
+                        var resizedImage = imageService.ResizeBitmap(new Bitmap(file.FullFilePath), 250, 250, false);
+                        resizedImage.Save(file.FullFilePath, ImageFormat.Jpeg);
 
                         await Task.Delay(50);
 
@@ -106,6 +112,7 @@
 
                     var rgb = File.Exists(fileToGenerate) ? ColorConverterService.GetRgbFromImage(fileToGenerate) : SolidRgb;
 
+                    // TODO: add the configurations
                     var generateFile = new GenerateMatFile(fileToGenerate, rgb, IsFromJpg);
                     generateFile.CreateMatFile();
 
