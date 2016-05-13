@@ -1,9 +1,9 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using System.Windows.Media;
     using Infrastructure.Base;
     using Infrastructure.Events;
     using Properties;
-    using System.Windows.Media;
 
     /// <summary>The SettingsThumbnailViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -74,8 +74,7 @@
             {
                 if (!SetProperty(ref generateOuterFrame, value)) return;
 
-                if (!GenerateOuterFrame)
-                    GenerateInnerFrame = value;
+                if (!GenerateOuterFrame) GenerateInnerFrame = value;
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderOuter));
