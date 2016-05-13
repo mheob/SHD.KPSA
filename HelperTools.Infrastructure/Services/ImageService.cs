@@ -29,11 +29,9 @@
         /// <returns>The resized bitmap.</returns>
         public Bitmap ResizeBitmap(Bitmap b, int maxWidth, int maxHeight, bool allowLargerImageCreation, bool keepRatio = true)
         {
-            if (!allowLargerImageCreation && maxWidth >= b.Width && maxHeight >= b.Height)
-                return ResizeBitmap(b, b.Width, b.Height);
+            if (!allowLargerImageCreation && maxWidth >= b.Width && maxHeight >= b.Height) return ResizeBitmap(b, b.Width, b.Height);
 
-            if (!keepRatio)
-                return ResizeBitmap(b, maxWidth, maxHeight);
+            if (!keepRatio) return ResizeBitmap(b, maxWidth, maxHeight);
 
             double ratioWidth = (double) maxWidth / b.Width;
             double ratioHeight = (double) maxHeight / b.Height;

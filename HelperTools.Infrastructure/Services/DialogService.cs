@@ -62,8 +62,7 @@
             };
 
             var showDialog = dlg.ShowDialog();
-            if (showDialog != null && (bool) showDialog)
-                return dlg.SelectedPath;
+            if (showDialog != null && (bool) showDialog) return dlg.SelectedPath;
 
             return null;
         }

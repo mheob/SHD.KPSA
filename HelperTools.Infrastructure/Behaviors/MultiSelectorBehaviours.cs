@@ -57,6 +57,7 @@
             Selector selector = dependencyObject as Selector;
 
             // check that this property is an IList, and that it is being set on a ListBox
+            // ReSharper disable once InvertIf
             if (list != null && selector != null)
             {
                 SynchronizationManager synchronizer = GetSynchronizationManager(dependencyObject);
@@ -88,8 +89,7 @@
             {
                 IList list = GetSynchronizedSelectedItems(multiSelector);
 
-                if (list == null)
-                    return;
+                if (list == null) return;
 
                 synchronizer = new TwoListSynchronizerService(GetSelectedItemsCollection(multiSelector), list);
                 synchronizer.StartSynchronizing();
@@ -104,12 +104,11 @@
             private static IList GetSelectedItemsCollection(Selector selector)
             {
                 var multiSelector = selector as MultiSelector;
-                if (multiSelector != null)
-                    return multiSelector.SelectedItems;
+                if (multiSelector != null) return multiSelector.SelectedItems;
 
                 var box = selector as ListBox;
-                if (box != null)
-                    return box.SelectedItems;
+                if (box != null) return box.SelectedItems;
+
                 throw new InvalidOperationException("Target object has no SelectedItems property to bind.");
             }
         }

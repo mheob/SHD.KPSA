@@ -70,8 +70,7 @@
 
         private void CloseContentDialog()
         {
-            if (contentDialog == null)
-                return;
+            if (contentDialog == null) return;
 
             contentDialog.Closed -= ContentDialogClosed;
             contentDialog.Close();

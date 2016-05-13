@@ -1,11 +1,11 @@
 ﻿namespace HelperTools.Infrastructure.Services
 {
+    using Interfaces;
     using System;
     using System.Collections;
     using System.Collections.Specialized;
     using System.Linq;
     using System.Windows;
-    using Interfaces;
 
     /// <summary>Keeps two lists synchronized.</summary>
     public class TwoListSynchronizerService : IWeakEventListener
@@ -79,8 +79,7 @@
         protected void ListenForChangeEvents(IList list)
         {
             var source = list as INotifyCollectionChanged;
-            if (source != null)
-                CollectionChangedEventManager.AddListener(source, this);
+            if (source != null) CollectionChangedEventManager.AddListener(source, this);
         }
 
         /// <summary>Stops listening for change events.</summary>
@@ -88,8 +87,7 @@
         protected void StopListeningForChangeEvents(IList list)
         {
             var source = list as INotifyCollectionChanged;
-            if (source != null)
-                CollectionChangedEventManager.RemoveListener(source, this);
+            if (source != null) CollectionChangedEventManager.RemoveListener(source, this);
         }
 
         private static void AddItems(IList list, NotifyCollectionChangedEventArgs e, Converter<object, object> converter)
@@ -100,10 +98,8 @@
             {
                 int insertionPoint = e.NewStartingIndex + i;
 
-                if (insertionPoint > list.Count)
-                    list.Add(converter(e.NewItems[i]));
-                else
-                    list.Insert(insertionPoint, converter(e.NewItems[i]));
+                if (insertionPoint > list.Count) list.Add(converter(e.NewItems[i]));
+                else list.Insert(insertionPoint, converter(e.NewItems[i]));
             }
         }
 
@@ -152,10 +148,8 @@
         private void PerformActionOnAllLists(ChangeListAction action, IEnumerable sourceList,
             NotifyCollectionChangedEventArgs collectionChangedArgs)
         {
-            if (Equals(sourceList, masterList))
-                PerformActionOnList(targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
-            else
-                PerformActionOnList(masterList, action, collectionChangedArgs, ConvertFromTargetToMaster);
+            if (Equals(sourceList, masterList)) PerformActionOnList(targetList, action, collectionChangedArgs, ConvertFromMasterToTarget);
+            else PerformActionOnList(masterList, action, collectionChangedArgs, ConvertFromTargetToMaster);
         }
 
         private void PerformActionOnList(IList list, ChangeListAction action,
@@ -207,10 +201,8 @@
         /// <param name="sourceList">The source list.</param>
         private void UpdateListsFromSource(IEnumerable sourceList)
         {
-            if (Equals(sourceList, masterList))
-                SetListValuesFromSource(masterList, targetList, ConvertFromMasterToTarget);
-            else
-                SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
+            if (Equals(sourceList, masterList)) SetListValuesFromSource(masterList, targetList, ConvertFromMasterToTarget);
+            else SetListValuesFromSource(targetList, masterList, ConvertFromTargetToMaster);
         }
 
         /// <summary>An implementation that does nothing in the conversions.</summary>

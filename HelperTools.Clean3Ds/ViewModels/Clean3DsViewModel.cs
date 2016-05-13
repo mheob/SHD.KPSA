@@ -1,11 +1,5 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -17,6 +11,12 @@
     using Prism.Commands;
     using Prism.Logging;
     using Properties;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Views;
     using infraProps = Infrastructure.Properties;
 
@@ -112,8 +112,7 @@
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
 
-            if (currentView == null || !currentView.ToString().Equals(MyView))
-                return;
+            if (currentView == null || !currentView.ToString().Equals(MyView)) return;
 
             FileCollection.Clear();
 
@@ -133,8 +132,7 @@
 
             EventAggregator.GetEvent<FilesUpdateEvent>().Publish(FileCollection);
 
-            if (FileCollection.Count < 1)
-                return;
+            if (FileCollection.Count < 1) return;
 
             StartGenerationCommand.RaiseCanExecuteChanged();
         }
@@ -162,8 +160,7 @@
 
             await Task.Delay(250);
 
-            if (!Directory.Exists(PathNames.TempFolderPath))
-                Directory.CreateDirectory(PathNames.TempFolderPath);
+            if (!Directory.Exists(PathNames.TempFolderPath)) Directory.CreateDirectory(PathNames.TempFolderPath);
 
             foreach (var file in SelectedFilesCollection.Where(file => File.Exists(file.FullFilePath)))
             {
@@ -199,8 +196,7 @@
                 }
             }
 
-            if (Directory.Exists(PathNames.TempFolderPath))
-                Directory.Delete(PathNames.TempFolderPath, true);
+            if (Directory.Exists(PathNames.TempFolderPath)) Directory.Delete(PathNames.TempFolderPath, true);
 
             await controller.CloseAsync();
 

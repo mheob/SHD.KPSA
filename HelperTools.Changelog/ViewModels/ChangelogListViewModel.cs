@@ -58,8 +58,7 @@
 
             foreach (var line in FileService.Read(ChangelogFile))
             {
-                if (line.Equals("# CHANGELOG"))
-                    continue;
+                if (line.Equals("# CHANGELOG")) continue;
 
                 var label = new Label
                 {
@@ -79,12 +78,9 @@
                     label.FontSize = 18;
                 }
 
-                if (tmpLine.StartsWith("[ADD]"))
-                    label.Foreground = Brushes.Green;
-                else if (tmpLine.StartsWith("[FIX]"))
-                    label.Foreground = Brushes.Orange;
-                else if (tmpLine.StartsWith("[REMOVE]"))
-                    label.Foreground = Brushes.Red;
+                if (tmpLine.StartsWith("[ADD]")) label.Foreground = Brushes.Green;
+                else if (tmpLine.StartsWith("[FIX]")) label.Foreground = Brushes.Orange;
+                else if (tmpLine.StartsWith("[REMOVE]")) label.Foreground = Brushes.Red;
 
                 label.Content = tmpLine;
 

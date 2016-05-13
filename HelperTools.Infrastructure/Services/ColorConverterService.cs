@@ -50,11 +50,6 @@
                 }
             }
 
-//            for (int i = 0; i < rgb.Length; i++)
-//            {
-//                rgb[i] = (byte) (rgb[i] / pixel);
-//            }
-
             return rgb;
         }
 

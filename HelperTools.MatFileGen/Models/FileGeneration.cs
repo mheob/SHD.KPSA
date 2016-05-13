@@ -1,5 +1,12 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
@@ -9,13 +16,6 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Drawing;
-    using System.Drawing.Imaging;
-    using System.IO;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using infraProps = Infrastructure.Properties;
 
     /// <summary>The FileGeneration.</summary>
@@ -91,8 +91,7 @@
                         var fi = new FileInfo(fileToGenerate);
                         var pathForOrig = fi.DirectoryName + suffixPathForOrig;
 
-                        if (!Directory.Exists(pathForOrig))
-                            Directory.CreateDirectory(pathForOrig);
+                        if (!Directory.Exists(pathForOrig)) Directory.CreateDirectory(pathForOrig);
 
                         File.Copy(fileToGenerate, pathForOrig + file.FileName + Extension, true);
 

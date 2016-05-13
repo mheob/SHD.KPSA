@@ -36,8 +36,7 @@
         /// <returns>The input string.</returns>
         public async Task<string> ShowInputAsync(string title, string message, MetroDialogSettings settings = null)
         {
-            if (settings != null)
-                MainWindow.MetroDialogOptions = settings;
+            if (settings != null) MainWindow.MetroDialogOptions = settings;
 
             if (settings != null && settings.AffirmativeButtonText == null || settings == null)
                 MainWindow.MetroDialogOptions.AffirmativeButtonText = Resources.DialogOk;
@@ -57,8 +56,7 @@
         public async Task<MessageDialogResult> ShowMessageAsync(string title, string message,
             MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null)
         {
-            if (settings != null)
-                MainWindow.MetroDialogOptions = settings;
+            if (settings != null) MainWindow.MetroDialogOptions = settings;
 
             if (settings != null && settings.AffirmativeButtonText == null || settings == null)
                 MainWindow.MetroDialogOptions.AffirmativeButtonText = Resources.DialogYes;
@@ -78,8 +76,7 @@
         public async Task<ProgressDialogController> ShowProgressAsync(string title, string message, bool isCancelable = false,
             MetroDialogSettings settings = null)
         {
-            if (settings != null)
-                MainWindow.MetroDialogOptions = settings;
+            if (settings != null) MainWindow.MetroDialogOptions = settings;
 
             if (settings != null && settings.NegativeButtonText == null || settings == null)
                 MainWindow.MetroDialogOptions.NegativeButtonText = Resources.DialogCancel;

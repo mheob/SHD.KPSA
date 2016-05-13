@@ -1,12 +1,12 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
 
     /// <summary>The GenerateMatFile.</summary>
     public class GenerateMatFile
@@ -148,8 +148,7 @@
                 $"spe {colorsSpe[0]} {colorsSpe[1]} {colorsSpe[2]}"
             };
 
-            if (fromJpg)
-                matFile.Add($"tex image jpg {filename}");
+            if (fromJpg) matFile.Add($"tex image jpg {filename}");
 
             AddOptionals();
 
@@ -160,32 +159,15 @@
         /// <returns></returns>
         private void AddOptionals()
         {
-            if (AddScale)
-                matFile.Add($"scale {SelectedScaleX} {SelectedScaleY} {SelectedScaleZ}");
-
-            if (AddRotate)
-                matFile.Add($"rotate {SelectedRotateX} {SelectedRotateY} {SelectedRotateZ}");
-
-            if (AddAuto)
-                matFile.Add("auto");
-
-            if (AddRauto)
-                matFile.Add("rauto");
-
-            if (AddGlass)
-                matFile.Add("type glass");
-
-            if (AddMirror)
-                matFile.Add($"mirror {Mirror}");
-
-            if (AddShi)
-                matFile.Add($"shi {Shi}");
-
-            if (AddRef)
-                matFile.Add($"ref {Ref}");
-
-            if (AddTra)
-                matFile.Add($"tra {Tra}");
+            if (AddScale) matFile.Add($"scale {SelectedScaleX} {SelectedScaleY} {SelectedScaleZ}");
+            if (AddRotate) matFile.Add($"rotate {SelectedRotateX} {SelectedRotateY} {SelectedRotateZ}");
+            if (AddAuto) matFile.Add("auto");
+            if (AddRauto) matFile.Add("rauto");
+            if (AddGlass) matFile.Add("type glass");
+            if (AddMirror) matFile.Add($"mirror {Mirror}");
+            if (AddShi) matFile.Add($"shi {Shi}");
+            if (AddRef) matFile.Add($"ref {Ref}");
+            if (AddTra) matFile.Add($"tra {Tra}");
         }
         #endregion Methods
     }

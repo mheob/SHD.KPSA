@@ -47,8 +47,7 @@
             }
             set
             {
-                if (!SetProperty(ref selectedPath, value))
-                    return;
+                if (!SetProperty(ref selectedPath, value)) return;
 
                 EventAggregator.GetEvent<SelectedPathUpdateEvent>().Publish(SelectedPath);
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarSelectedPathChanged);

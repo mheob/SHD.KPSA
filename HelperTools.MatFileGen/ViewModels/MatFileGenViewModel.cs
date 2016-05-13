@@ -1,14 +1,14 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Models;
     using Prism.Commands;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
     using Views;
 
     /// <summary>The MatFileGenViewModel.</summary>
@@ -66,8 +66,7 @@
             get { return solidColorName; }
             set
             {
-                if (!SetProperty(ref solidColorName, value))
-                    return;
+                if (!SetProperty(ref solidColorName, value)) return;
 
                 StartGenerationCommand.RaiseCanExecuteChanged();
             }
@@ -88,8 +87,7 @@
             get { return selectedVariantTab; }
             set
             {
-                if (!SetProperty(ref selectedVariantTab, value))
-                    return;
+                if (!SetProperty(ref selectedVariantTab, value)) return;
 
                 StartGenerationCommand.RaiseCanExecuteChanged();
             }
@@ -147,8 +145,7 @@
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
 
-            if (currentView == null || !currentView.ToString().Equals(MyView))
-                return;
+            if (currentView == null || !currentView.ToString().Equals(MyView)) return;
 
             FileCollection.Clear();
 
@@ -168,8 +165,7 @@
 
             EventAggregator.GetEvent<FilesUpdateEvent>().Publish(FileCollection);
 
-            if (FileCollection.Count < 1)
-                return;
+            if (FileCollection.Count < 1) return;
 
             StartGenerationCommand.RaiseCanExecuteChanged();
         }

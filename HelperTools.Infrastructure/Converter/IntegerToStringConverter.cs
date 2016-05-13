@@ -23,12 +23,9 @@
         /// <returns>A converted value.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
-                return null;
-            if (value is string)
-                return value;
-            if (value is int && (int) value == EmptyStringValue)
-                return string.Empty;
+            if (value == null) return null;
+            if (value is string) return value;
+            if (value is int && (int) value == EmptyStringValue) return string.Empty;
 
             return value.ToString();
         }
@@ -41,8 +38,7 @@
         /// <returns>A converted value.</returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is string))
-                return value;
+            if (!(value is string)) return value;
 
             string s = (string) value;
             int tmpInt;

@@ -91,8 +91,7 @@
         {
             var str = value as string;
 
-            if (str == null)
-                return DependencyProperty.UnsetValue;
+            if (str == null) return DependencyProperty.UnsetValue;
 
             culture = culture ?? CultureInfo.CurrentCulture;
 
@@ -120,8 +119,7 @@
         {
             var str = value as string;
 
-            if (str == null)
-                return DependencyProperty.UnsetValue;
+            if (str == null) return DependencyProperty.UnsetValue;
 
             culture = culture ?? CultureInfo.CurrentCulture;
 
