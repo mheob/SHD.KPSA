@@ -64,7 +64,7 @@
         <TextBox Grid.Column="1"
                  Grid.Row="2"
                  x:Name="TextBoxColorHex"
-                 Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter}, Mode=TwoWay}"
+                 Text="{Binding SelectedColor, Converter={converter:ColorToStringConverter}}"
                  ToolTip="{x:Static props:Resources.ToolTipColorHexInput}"
                  Style="{StaticResource TextBox}"
                  IsEnabled="True" />
@@ -86,21 +86,21 @@
             <!-- TODO: enable editing mode for RGB -->
             <TextBox x:Name="TextBoxColorR"
                      Grid.Column="0"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}, Mode=TwoWay}"
+                     Text="{Binding SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Red}}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="0,4,4,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorG"
                      Grid.Column="1"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Green}, Mode=TwoWay}"
+                     Text="{Binding SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Green}}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="2,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
 
             <TextBox x:Name="TextBoxColorB"
                      Grid.Column="2"
-                     Text="{Binding Path=SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Blue}, Mode=TwoWay}"
+                     Text="{Binding SelectedColor, Converter={converter:ColorToStringConverter ShowColorFormat=Blue}}"
                      Style="{StaticResource TextBoxColorRgb}"
                      Margin="4,4,0,4" />
             <!--IsEnabled="{Binding ElementName=CheckBoxColorPicker, Path=IsChecked}" />-->
