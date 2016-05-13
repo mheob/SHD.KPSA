@@ -15,7 +15,7 @@
 
         /// <summary>Gets the path to the current user desktop path.</summary>
         /// <value>The desktop path.</value>
-        public static string DesktopPath => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static string DesktopPath => Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
 
         /// <summary>Gets the location of the default temp directory in the system.</summary>
         /// <value>The temporary folder path.</value>
