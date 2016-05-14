@@ -93,6 +93,7 @@
     <Compile Include="Models\GenerateMatFile.cs" />
     <Compile Include="Models\GenerateThumbs.cs" />
     <Compile Include="Models\MatFileGenFiles.cs" />
+    <Compile Include="Models\SettingsThumbnail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,11 +106,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MatFileGenViewModel.cs" />
+    <Compile Include="ViewModels\PreviewImageViewModel.cs" />
     <Compile Include="ViewModels\SettingsAttributesViewModel.cs" />
     <Compile Include="ViewModels\SettingsSolidViewModel.cs" />
     <Compile Include="ViewModels\SettingsThumbnailViewModel.cs" />
     <Compile Include="Views\MatFileGen.xaml.cs">
       <DependentUpon>MatFileGen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PreviewImage.xaml.cs">
+      <DependentUpon>PreviewImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsAttributes.xaml.cs">
       <DependentUpon>SettingsAttributes.xaml</DependentUpon>
@@ -153,6 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MatFileGen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PreviewImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

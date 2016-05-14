@@ -259,6 +259,15 @@ namespace HelperTools.Infrastructure.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to load settings.
+        /// </summary>
+        public static string StatusBarReadSettings {
+            get {
+                return ResourceManager.GetString("StatusBarReadSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to changed content to &quot;{0}&quot;.
         /// </summary>
         public static string StatusBarViewChanged {

@@ -183,6 +183,9 @@
   <data name="StatusBarFlayoutDisplayed" xml:space="preserve">
     <value>displayed "{0}" flayout</value>
   </data>
+  <data name="StatusBarReadSettings" xml:space="preserve">
+    <value>load settings</value>
+  </data>
   <data name="StatusBarViewChanged" xml:space="preserve">
     <value>changed content to "{0}"</value>
   </data>

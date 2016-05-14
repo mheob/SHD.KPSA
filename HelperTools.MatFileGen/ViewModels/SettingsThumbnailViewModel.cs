@@ -1,8 +1,12 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
+    using System.IO;
     using System.Windows.Media;
     using Infrastructure.Base;
+    using Infrastructure.Constants;
     using Infrastructure.Events;
+    using Infrastructure.Services;
+    using Models;
     using Properties;
 
     /// <summary>The SettingsThumbnailViewModel.</summary>
@@ -10,6 +14,9 @@
     public class SettingsThumbnailViewModel : ViewModelBase
     {
         #region Fields
+        private readonly string configFile = Settings.Default.SettingsThumbnailFile;
+        private readonly JsonService jsonService = new JsonService();
+
         private bool generateThumb;
         private string thumbFolder;
 
@@ -26,16 +33,10 @@
         /// <summary>Initializes a new instance of the <see cref="SettingsThumbnailViewModel" /> class.</summary>
         public SettingsThumbnailViewModel()
         {
-            GenerateThumb = true;
-            ThumbFolder = Settings.Default.ThumbFolder;
+            if (!File.Exists(PathNames.ConfigPath + configFile)) InitializeInternalSettings();
 
-            GenerateOuterFrame = true;
-            OuterFrameColor = Color.FromRgb(0, 0, 0);
-            OuterFrameSize = Settings.Default.OuterFrameSize;
-
-            GenerateInnerFrame = true;
-            InnerFrameColor = Color.FromRgb(255, 255, 255);
-            InnerFrameSize = Settings.Default.InnerFrameSize;
+            ReadJson();
+            WriteJson();
         }
         #endregion Constructor
 
@@ -52,6 +53,8 @@
                 GenerateOuterFrame = value;
                 GenerateInnerFrame = value;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxThumb));
             }
@@ -62,7 +65,12 @@
         public string ThumbFolder
         {
             get { return thumbFolder; }
-            set { SetProperty(ref thumbFolder, value); }
+            set
+            {
+                if (SetProperty(ref thumbFolder, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether the outer frame should generate.</summary>
@@ -76,6 +84,8 @@
 
                 if (!GenerateOuterFrame) GenerateInnerFrame = value;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderOuter));
             }
@@ -86,7 +96,12 @@
         public Color OuterFrameColor
         {
             get { return outerFrameColor; }
-            set { SetProperty(ref outerFrameColor, value); }
+            set
+            {
+                if (SetProperty(ref outerFrameColor, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the size of the outer frame.</summary>
@@ -94,7 +109,12 @@
         public int OuterFrameSize
         {
             get { return outerFrameSize; }
-            set { SetProperty(ref outerFrameSize, value); }
+            set
+            {
+                if (SetProperty(ref outerFrameSize, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether inner frame should generate.</summary>
@@ -106,6 +126,8 @@
             {
                 if (!SetProperty(ref generateInnerFrame, value)) return;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxBorderInner));
             }
@@ -116,7 +138,12 @@
         public Color InnerFrameColor
         {
             get { return innerFrameColor; }
-            set { SetProperty(ref innerFrameColor, value); }
+            set
+            {
+                if (SetProperty(ref innerFrameColor, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the size of the inner frame.</summary>
@@ -124,11 +151,61 @@
         public int InnerFrameSize
         {
             get { return innerFrameSize; }
-            set { SetProperty(ref innerFrameSize, value); }
+            set
+            {
+                if (SetProperty(ref innerFrameSize, value)) return;
+
+                WriteJson();
+            }
         }
         #endregion Properties
 
         #region Methods
+        private void InitializeInternalSettings()
+        {
+            GenerateThumb = true;
+            ThumbFolder = Settings.Default.ThumbFolder;
+
+            GenerateOuterFrame = true;
+            OuterFrameColor = Color.FromRgb(0, 0, 0);
+            OuterFrameSize = Settings.Default.OuterFrameSize;
+
+            GenerateInnerFrame = true;
+            InnerFrameColor = Color.FromRgb(255, 255, 255);
+            InnerFrameSize = Settings.Default.InnerFrameSize;
+        }
+
+        private void ReadJson()
+        {
+            SettingsThumbnail settings = jsonService.ReadJson<SettingsThumbnail>(configFile);
+            GenerateThumb = settings.GenerateThumb;
+            ThumbFolder = settings.ThumbFolder;
+
+            GenerateOuterFrame = settings.GenerateOuterFrame;
+            OuterFrameColor = settings.OuterFrameColor;
+            OuterFrameSize = settings.OuterFrameSize;
+
+            GenerateInnerFrame = settings.GenerateInnerFrame;
+            InnerFrameColor = settings.InnerFrameColor;
+            InnerFrameSize = settings.InnerFrameSize;
+        }
+
+        private void WriteJson()
+        {
+            SettingsThumbnail settingsThumbnail = new SettingsThumbnail()
+            {
+                GenerateThumb = GenerateThumb,
+                ThumbFolder = ThumbFolder,
+                GenerateOuterFrame = GenerateOuterFrame,
+                OuterFrameColor = OuterFrameColor,
+                OuterFrameSize = OuterFrameSize,
+                GenerateInnerFrame = GenerateInnerFrame,
+                InnerFrameColor = InnerFrameColor,
+                InnerFrameSize = InnerFrameSize
+            };
+
+            jsonService.WriteJson(settingsThumbnail, configFile);
+        }
         #endregion Methods
     }
 }

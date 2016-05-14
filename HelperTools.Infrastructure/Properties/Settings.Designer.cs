@@ -34,10 +34,46 @@ namespace HelperTools.Infrastructure.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\3rd-Party\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3rd-Party\\")]
         public string ThirdPartyFolder {
             get {
                 return ((string)(this["ThirdPartyFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int ThumbWidth {
+            get {
+                return ((int)(this["ThumbWidth"]));
+            }
+            set {
+                this["ThumbWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("18")]
+        public int ThumbHeight {
+            get {
+                return ((int)(this["ThumbHeight"]));
+            }
+            set {
+                this["ThumbHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Config\\")]
+        public string ConfigFolder {
+            get {
+                return ((string)(this["ConfigFolder"]));
+            }
+            set {
+                this["ConfigFolder"] = value;
             }
         }
     }

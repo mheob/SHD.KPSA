@@ -73,9 +73,19 @@
 
                 <GridSplitter Grid.Column="1"
                               Style="{StaticResource HorizontalGridSplitter}" />
-                <!-- TODO: displaying the preview -->
-                <TextBlock Grid.Column="2"
-                           Style="{StaticResource PreviewToDo}" />
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <!-- TODO: displaying the preview -->
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource PreviewToDo}" />
+                    <ContentControl Grid.Row="1"
+                                    mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.PREVIEW_IMAGE_REGION}" />
+                </Grid>
+
                 <GridSplitter Grid.Column="3"
                               Style="{StaticResource HorizontalGridSplitter}" />
 

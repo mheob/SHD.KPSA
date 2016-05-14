@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll</HintPath>
       <Private>True</Private>
@@ -112,6 +116,7 @@
     <Compile Include="Converter\IntegerToStringConverter.cs" />
     <Compile Include="Converter\InverseBoolConverter.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
+    <Compile Include="Events\PreviewImageUpdateEvent.cs" />
     <Compile Include="Events\SolidRgbUpdateEvent.cs" />
     <Compile Include="Events\SolidColorNameUpdateEvent.cs" />
     <Compile Include="Events\SelectedFilesUpdateEvent.cs" />
@@ -147,8 +152,10 @@
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\FlyoutService.cs" />
     <Compile Include="Services\ImageService.cs" />
+    <Compile Include="Services\JsonService.cs" />
     <Compile Include="Services\LocalizerService.cs" />
     <Compile Include="Services\MetroMessageDisplayService.cs" />
+    <Compile Include="Services\ThumbnailService.cs" />
     <Compile Include="Services\TwoListSynchronizerService.cs" />
   </ItemGroup>
   <ItemGroup>

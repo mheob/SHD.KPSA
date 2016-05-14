@@ -59,6 +59,10 @@
         /// <summary>Gets or sets a value indicating whether this instance is from JPG.</summary>
         /// <value><c>true</c> if this instance is from JPG; otherwise, <c>false</c>.</value>
         public bool IsFromJpg { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether thumbnails should generate.</summary>
+        /// <value><c>true</c> if generate thumbnails; otherwise, <c>false</c>.</value>
+        public bool GenerateThumb { get; set; }
         #endregion Properties
 
         #region Methods
@@ -112,6 +116,11 @@
                     await Task.Delay(50);
 
                     var rgb = File.Exists(fileToGenerate) ? ColorConverterService.GetRgbFromImage(fileToGenerate) : SolidRgb;
+
+                    //var generateThumb = new GenerateThumbs();
+                    new GenerateThumbs().DoGeneration(fileToGenerate, rgb, IsFromJpg, false);
+
+                    await Task.Delay(50);
 
                     // TODO: add the configurations
                     var generateFile = new GenerateMatFile(fileToGenerate, rgb, IsFromJpg);

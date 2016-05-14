@@ -9,7 +9,11 @@
     {
         /// <summary>Gets the application path.</summary>
         /// <value>The application path.</value>
-        public static string AppPath => Directory.GetCurrentDirectory();
+        public static string AppPath => Directory.GetCurrentDirectory() + @"\";
+
+        /// <summary>Gets the configuration path.</summary>
+        /// <value>The configuration path.</value>
+        public static string ConfigPath => AppPath + Settings.Default.ConfigFolder;
 
 //        public static string AppPath => Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 

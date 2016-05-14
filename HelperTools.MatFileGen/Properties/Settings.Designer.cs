@@ -94,5 +94,14 @@ namespace HelperTools.MatFileGen.Properties {
                 this["MappingImageSuffixPathForOrig"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SettingsThumbnail.json")]
+        public string SettingsThumbnailFile {
+            get {
+                return ((string)(this["SettingsThumbnailFile"]));
+            }
+        }
     }
 }

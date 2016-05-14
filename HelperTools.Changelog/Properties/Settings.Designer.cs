@@ -25,7 +25,7 @@ namespace HelperTools.Changelog.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\Resources\\CHANGELOG.md")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources\\CHANGELOG.md")]
         public string PathToChangelog {
             get {
                 return ((string)(this["PathToChangelog"]));

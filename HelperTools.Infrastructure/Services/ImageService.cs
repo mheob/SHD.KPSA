@@ -2,6 +2,9 @@
 {
     using System;
     using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Windows.Media.Imaging;
 
     /// <summary>The ImageService.</summary>
     public class ImageService
@@ -47,7 +50,12 @@
             return resizedImage;
         }
 
-        private static Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
+        /// <summary>Resizes the bitmap in case of new dimension values.</summary>
+        /// <param name="b">The bitmap.</param>
+        /// <param name="nWidth">The new width.</param>
+        /// <param name="nHeight">The new height.</param>
+        /// <returns>The resized bitmap.</returns>
+        public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
         {
             Bitmap resizedImage = new Bitmap(nWidth, nHeight);
             using (Graphics g = Graphics.FromImage(resizedImage))
@@ -71,7 +79,7 @@
             using (Graphics g = Graphics.FromImage(nImage))
             {
                 g.FillRectangle(outline, 0, 0, b.Width, b.Height);
-                g.DrawImage(b, border, border, b.Width - (border * 2), b.Height - (border * 2));
+                g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
 
             return nImage;
@@ -92,11 +100,33 @@
             using (Graphics g = Graphics.FromImage(nImage))
             {
                 g.FillRectangle(outline, 0, 0, b.Width, b.Height);
-                g.FillRectangle(inline, borderOut, borderOut, b.Width - (borderOut * 2), b.Height - (borderOut * 2));
-                g.DrawImage(b, border, border, b.Width - (border * 2), b.Height - (border * 2));
+                g.FillRectangle(inline, borderOut, borderOut, b.Width - borderOut * 2, b.Height - borderOut * 2);
+                g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
 
             return nImage;
+        }
+
+        /// <summary>Prepares a bitmap for display in an image element.</summary>
+        /// <param name="bitmap">The bitmap that is to be converted.</param>
+        /// <param name="imgFormat">The format in which the image is to be cached.</param>
+        /// <returns>The image, rendered for viewing in a Imagebox.</returns>
+        public BitmapImage BitmapToImageSource(Bitmap bitmap, ImageFormat imgFormat)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, imgFormat);
+                memory.Position = 0;
+
+                BitmapImage bi = new BitmapImage();
+
+                bi.BeginInit();
+                bi.StreamSource = memory;
+                bi.CacheOption = BitmapCacheOption.OnLoad;
+                bi.EndInit();
+
+                return bi;
+            }
         }
     }
 }

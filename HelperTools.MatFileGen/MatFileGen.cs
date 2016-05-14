@@ -25,6 +25,8 @@
             regionManager.RegisterViewWithRegion(Constants.RegionNames.SETTINGS_ATTRIBUTES_REGION, typeof(SettingsAttributes));
             regionManager.RegisterViewWithRegion(Constants.RegionNames.SETTINGS_SOLID_REGION, typeof(SettingsSolid));
             regionManager.RegisterViewWithRegion(Constants.RegionNames.SETTINGS_THUMBNAIL_REGION, typeof(SettingsThumbnail));
+
+            regionManager.RegisterViewWithRegion(Constants.RegionNames.PREVIEW_IMAGE_REGION, typeof(PreviewImage));
         }
     }
 }

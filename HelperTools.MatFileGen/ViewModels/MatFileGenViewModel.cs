@@ -190,7 +190,7 @@
 
             // TODO: get the settings via the event aggregator -- maybe these settings should be saved tempory in a JSON file
 
-            var mfg = new FileGeneration()
+            var fg = new FileGeneration()
             {
                 GenerationFiles = SelectedFilesCollection,
                 Extension = EXTENSION.Substring(1),
@@ -199,7 +199,7 @@
                 IsFromJpg = SelectedVariantTab == 0
             };
 
-            mfg.DoGenerationAsync();
+            fg.DoGenerationAsync();
         }
         #endregion Methods
     }

@@ -20,5 +20,8 @@
     <Setting Name="MappingImageSuffixPathForOrig" Type="System.String" Scope="User">
       <Value Profile="(Default)">\_orig_images_\</Value>
     </Setting>
+    <Setting Name="SettingsThumbnailFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SettingsThumbnail.json</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
