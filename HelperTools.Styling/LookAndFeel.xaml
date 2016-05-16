@@ -16,6 +16,7 @@
         <ResourceDictionary Source="Styles/Controls/GroupBox.xaml" />
         <ResourceDictionary Source="Styles/Controls/Splitter.xaml" />
         <ResourceDictionary Source="Styles/Controls/StatusBar.xaml" />
+        <ResourceDictionary Source="Styles/Controls/TextBlock.xaml" />
         <ResourceDictionary Source="Styles/Controls/Tiles.xaml" />
 
         <!-- Sections -->
@@ -24,6 +25,7 @@
         <ResourceDictionary Source="Styles/Sections/Header.xaml" />
         <ResourceDictionary Source="Styles/Sections/MatFileGen.xaml" />
         <ResourceDictionary Source="Styles/Sections/NavigationFlyout.xaml" />
+        <ResourceDictionary Source="Styles/Sections/PreviewImage.xaml" />
         <ResourceDictionary Source="Styles/Sections/PreviewToDo.xaml" />
         <ResourceDictionary Source="Styles/Sections/SettingsFlyout.xaml" />
 

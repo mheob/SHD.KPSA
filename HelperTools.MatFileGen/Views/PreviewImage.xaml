@@ -9,7 +9,36 @@
              mc:Ignorable="d"
              d:DesignHeight="150"
              d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
+    </UserControl.Resources>
+
     <Grid>
-        <Image Source="{Binding PreviewImage}" Stretch="None" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top"
+                       Style="{StaticResource PreviewImageTitle}"
+                       Text="{x:Static props:Resources.TitlePreviewImage}"
+                       TextWrapping="WrapWithOverflow" />
+
+            <Image DockPanel.Dock="Bottom"
+                   Source="{Binding PreviewImage}"
+                   Style="{StaticResource PreviewImage}" />
+        </DockPanel>
+
+        <DockPanel Grid.Column="1">
+            <TextBlock DockPanel.Dock="Top"
+                       Style="{StaticResource PreviewImageTitle}"
+                       Text="{x:Static props:Resources.TitlePreviewThumbnail}"
+                       TextWrapping="WrapWithOverflow" />
+
+            <Image DockPanel.Dock="Bottom"
+                   Source="{Binding PreviewThumbnail}"
+                   Style="{StaticResource PreviewImage}" />
+        </DockPanel>
     </Grid>
 </UserControl>

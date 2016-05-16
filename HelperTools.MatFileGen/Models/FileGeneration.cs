@@ -117,8 +117,7 @@
 
                     var rgb = File.Exists(fileToGenerate) ? ColorConverterService.GetRgbFromImage(fileToGenerate) : SolidRgb;
 
-                    //var generateThumb = new GenerateThumbs();
-                    new GenerateThumbs().DoGeneration(fileToGenerate, rgb, IsFromJpg, false);
+                    new GenerateThumbs().DoGeneration(fileToGenerate, rgb, IsFromJpg, ThumbnailService.ShowPreview.No);
 
                     await Task.Delay(50);
 

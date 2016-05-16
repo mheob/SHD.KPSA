@@ -6,6 +6,7 @@
     using Infrastructure.Base;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
+    using Infrastructure.Services;
     using Models;
 
     /// <summary>The PreviewImageViewModel.</summary>
@@ -13,6 +14,7 @@
     {
         #region Fields
         private BitmapImage previewImage;
+        private BitmapImage previewThumbnail;
         #endregion Fields
 
         #region Constructor
@@ -20,7 +22,6 @@
         public PreviewImageViewModel()
         {
             EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
-            EventAggregator.GetEvent<PreviewImageUpdateEvent>().Subscribe(OnPreviewImageUpdateEvent);
         }
         #endregion Constructor
 
@@ -32,6 +33,15 @@
             get { return previewImage; }
             set { SetProperty(ref previewImage, value); }
         }
+
+
+        /// <summary>Gets or sets the preview thumbnail.</summary>
+        /// <value>The preview thumbnail.</value>
+        public BitmapImage PreviewThumbnail
+        {
+            get { return previewThumbnail; }
+            set { SetProperty(ref previewThumbnail, value); }
+        }
         #endregion Properties
 
         #region Methods
@@ -42,18 +52,9 @@
             var fileToGenerate = files.FirstOrDefault();
             if (fileToGenerate == null) return;
 
-            var generateThumb = new GenerateThumbs
-            {
-                GenerateInnerFrame = false,
-                GenerateOuterFrame = false
-            };
-
-            generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, true);
-        }
-
-        private void OnPreviewImageUpdateEvent(BitmapImage image)
-        {
-            PreviewImage = image;
+            var generateThumb = new GenerateThumbs();
+            PreviewImage = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Original, true);
+            PreviewThumbnail = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Thumbnail, true);
         }
         #endregion Methods
     }

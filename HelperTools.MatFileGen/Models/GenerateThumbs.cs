@@ -1,7 +1,7 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
     using System.Windows.Media;
-    using Infrastructure.Events;
+    using System.Windows.Media.Imaging;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
@@ -68,10 +68,20 @@
         /// <param name="file">The full path to the image.</param>
         /// <param name="rgb">The desired color as RGB values.</param>
         /// <param name="isFromJpg">if set to <c>true</c> a thumbnail should create from an existing image.</param>
-        /// <param name="isPreview">if set to <c>true</c> only a preview should displayed.</param>
-        public void DoGeneration(string file, byte[] rgb, bool isFromJpg, bool isPreview)
+        /// <param name="preview">The preview.</param>
+        /// <param name="previewOnly">if set to <c>true</c> only a preview will generate.</param>
+        /// <returns>The preview BitmapImage.</returns>
+        public BitmapImage DoGeneration(string file, byte[] rgb, bool isFromJpg, ThumbnailService.ShowPreview preview, bool previewOnly = false)
         {
+            BitmapImage previewImage;
+
             ReadJson();
+
+            if (preview == ThumbnailService.ShowPreview.Original)
+            {
+                GenerateInnerFrame = false;
+                GenerateOuterFrame = false;
+            }
 
             var outerColor = new SolidColorBrush(OuterFrameColor);
             var innerColor = new SolidColorBrush(InnerFrameColor);
@@ -79,24 +89,24 @@
             if (isFromJpg)
             {
                 if (GenerateInnerFrame)
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, innerColor, InnerFrameSize, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, innerColor, InnerFrameSize, preview);
                 else if (GenerateOuterFrame)
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, preview);
                 else
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, preview);
             }
             else
             {
                 if (GenerateInnerFrame)
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, innerColor, InnerFrameSize, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, innerColor, InnerFrameSize,
+                        preview);
                 else if (GenerateOuterFrame)
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, preview);
                 else
-                    thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, isPreview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, preview);
             }
 
-            if (isPreview)
-                eventAggregator.GetEvent<PreviewImageUpdateEvent>().Publish(thumbnailService.PreviewImage);
+            return previewImage;
         }
 
         private void ReadJson()

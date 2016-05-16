@@ -17,5 +17,8 @@
     <Setting Name="ConfigFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">Config\</Value>
     </Setting>
+    <Setting Name="OriginalImagePreview" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

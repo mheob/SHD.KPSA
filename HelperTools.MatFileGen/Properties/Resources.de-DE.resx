@@ -192,6 +192,12 @@
   <data name="TextBlockColorSelection" xml:space="preserve">
     <value>Farbe auswählen:</value>
   </data>
+  <data name="TitlePreviewImage" xml:space="preserve">
+    <value>Vorschaubild</value>
+  </data>
+  <data name="TitlePreviewThumbnail" xml:space="preserve">
+    <value>Vorschaubild Thumbnail</value>
+  </data>
   <data name="ToolTipAuto" xml:space="preserve">
     <value>Automatisches Texturaufbringung auf eine allgemeine viereckige Fläche.</value>
   </data>

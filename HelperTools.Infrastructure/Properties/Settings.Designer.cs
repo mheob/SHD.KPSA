@@ -76,5 +76,17 @@ namespace HelperTools.Infrastructure.Properties {
                 this["ConfigFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        public int OriginalImagePreview {
+            get {
+                return ((int)(this["OriginalImagePreview"]));
+            }
+            set {
+                this["OriginalImagePreview"] = value;
+            }
+        }
     }
 }

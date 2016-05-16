@@ -286,6 +286,24 @@ namespace HelperTools.MatFileGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview image.
+        /// </summary>
+        public static string TitlePreviewImage {
+            get {
+                return ResourceManager.GetString("TitlePreviewImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview Thumbnail.
+        /// </summary>
+        public static string TitlePreviewThumbnail {
+            get {
+                return ResourceManager.GetString("TitlePreviewThumbnail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatic texture generation on a general rectangular area..
         /// </summary>
         public static string ToolTipAuto {
