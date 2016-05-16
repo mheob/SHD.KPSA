@@ -1,14 +1,32 @@
 ﻿namespace HelperTools.Infrastructure.Services
 {
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using System;
     using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.IO;
+    using System.Linq;
     using System.Windows.Media.Imaging;
 
     /// <summary>The ImageService.</summary>
     public class ImageService
     {
+        #region Fields
+        private readonly IUnityContainer unityContainer;
+        #endregion Fields
+
+        #region Constructor
+        /// <summary>Initializes a new instance of the <see cref="ImageService" /> class.</summary>
+        public ImageService()
+        {
+            unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
+        }
+        #endregion Constructor
+
+        #region Methods
         /// <summary>Resizes the bitmap in case of a scale value.</summary>
         /// <param name="b">The bitmap.</param>
         /// <param name="scale">The scale.</param>
@@ -57,13 +75,15 @@
         /// <returns>The resized bitmap.</returns>
         public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
         {
-            Bitmap resizedImage = new Bitmap(nWidth, nHeight);
+            Bitmap resizedImage = new Bitmap(b, nWidth, nHeight);
             using (Graphics g = Graphics.FromImage(resizedImage))
             {
                 g.DrawImage(b, 0, 0, nWidth, nHeight);
+                g.Dispose();
             }
 
-            b.Dispose();
+            var logMessage = $"[{GetType().Name}] Bitmap was resized";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return resizedImage;
         }
@@ -81,6 +101,9 @@
                 g.FillRectangle(outline, 0, 0, b.Width, b.Height);
                 g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
+
+            var logMessage = $"[{GetType().Name}] Bitmap with a single border was created";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return nImage;
         }
@@ -103,6 +126,9 @@
                 g.FillRectangle(inline, borderOut, borderOut, b.Width - borderOut * 2, b.Height - borderOut * 2);
                 g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
+            
+            var logMessage = $"[{GetType().Name}] Bitmap with a double border was created";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return nImage;
         }
@@ -125,8 +151,48 @@
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.EndInit();
 
+                var logMessage = $"[{GetType().Name}] BitmapImage with was created from a Bitmap";
+                unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+
                 return bi;
             }
         }
+
+        /// <summary>Method to resize, convert and save the image.</summary>
+        /// <param name="b">Bitmap image.</param>
+        /// <param name="filePath">file path.</param>
+        /// <param name="quality">quality setting value.</param>
+        /// <param name="format">The image format.</param>
+        public void Save(Bitmap b, string filePath, int quality, ImageFormat format)
+        {
+            var newImage = new Bitmap(b);
+
+            using (Graphics g = Graphics.FromImage(newImage))
+            {
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = SmoothingMode.HighQuality;
+                g.DrawImage(b, 0, 0, b.Width, b.Height);
+            }
+
+            newImage.Dispose();
+
+            var imageCodecInfo = GetEncoderInfo(format);
+            var encoder = Encoder.Quality;
+            var encoderParameters = new EncoderParameters(1);
+
+            var encoderParameter = new EncoderParameter(encoder, quality);
+            encoderParameters.Param[0] = encoderParameter;
+            newImage.Save(filePath, imageCodecInfo, encoderParameters);
+        }
+
+        /// <summary>Method to get encoder for a given image format.</summary>
+        /// <param name="format">Image format</param>
+        /// <returns>image codec info.</returns>
+        private static ImageCodecInfo GetEncoderInfo(ImageFormat format)
+        {
+            return ImageCodecInfo.GetImageDecoders().SingleOrDefault(c => c.FormatID == format.Guid);
+        }
+        #endregion Methods
     }
 }

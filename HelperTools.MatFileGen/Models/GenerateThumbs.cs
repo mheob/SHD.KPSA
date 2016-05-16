@@ -30,6 +30,10 @@
         #endregion Constructor
 
         #region Properties
+        /// <summary>Gets or sets a value indicating whether thumbnails should generate.</summary>
+        /// <value><c>true</c> if thumbnails should generate; otherwise, <c>false</c>.</value>
+        public bool GenerateThumb { get; set; }
+
         /// <summary>Gets or sets the thumb folder.</summary>
         /// <value>The thumb folder.</value>
         public string ThumbFolder { get; set; }
@@ -57,10 +61,6 @@
         /// <summary>Gets or sets the size of the inner frame.</summary>
         /// <value>The size of the inner frame.</value>
         public int InnerFrameSize { get; set; }
-
-        ///// <summary>Gets or sets the preview image.</summary>
-        ///// <value>The preview image.</value>
-        //public BitmapImage PreviewImage { get; set; }
         #endregion Properties
 
         #region Methods
@@ -69,9 +69,8 @@
         /// <param name="rgb">The desired color as RGB values.</param>
         /// <param name="isFromJpg">if set to <c>true</c> a thumbnail should create from an existing image.</param>
         /// <param name="preview">The preview.</param>
-        /// <param name="previewOnly">if set to <c>true</c> only a preview will generate.</param>
         /// <returns>The preview BitmapImage.</returns>
-        public BitmapImage DoGeneration(string file, byte[] rgb, bool isFromJpg, ThumbnailService.ShowPreview preview, bool previewOnly = false)
+        public BitmapImage DoGeneration(string file, byte[] rgb, bool isFromJpg, ThumbnailService.ShowPreview preview)
         {
             BitmapImage previewImage;
 
@@ -89,21 +88,22 @@
             if (isFromJpg)
             {
                 if (GenerateInnerFrame)
-                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, innerColor, InnerFrameSize, preview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, innerColor, InnerFrameSize, preview,
+                        GenerateThumb);
                 else if (GenerateOuterFrame)
-                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, preview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, outerColor, OuterFrameSize, preview, GenerateThumb);
                 else
-                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, preview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, preview, GenerateThumb);
             }
             else
             {
                 if (GenerateInnerFrame)
                     previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, innerColor, InnerFrameSize,
-                        preview);
+                        preview, GenerateThumb);
                 else if (GenerateOuterFrame)
-                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, preview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, outerColor, OuterFrameSize, preview, GenerateThumb);
                 else
-                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, preview);
+                    previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, preview, GenerateThumb);
             }
 
             return previewImage;
@@ -112,6 +112,7 @@
         private void ReadJson()
         {
             SettingsThumbnail settings = jsonService.ReadJson<SettingsThumbnail>(configFile);
+            GenerateThumb = settings.GenerateThumb;
             ThumbFolder = settings.ThumbFolder;
 
             GenerateOuterFrame = settings.GenerateOuterFrame;

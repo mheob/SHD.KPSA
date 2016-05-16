@@ -295,7 +295,7 @@ namespace HelperTools.MatFileGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Preview Thumbnail.
+        ///   Looks up a localized string similar to Thumbnail.
         /// </summary>
         public static string TitlePreviewThumbnail {
             get {

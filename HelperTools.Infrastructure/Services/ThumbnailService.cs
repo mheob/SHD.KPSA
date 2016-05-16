@@ -5,8 +5,12 @@
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.IO;
+    using System.Reflection;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
     using Properties;
     using Color = System.Drawing.Color;
 
@@ -41,12 +45,14 @@
             Double
         }
 
+        private readonly IUnityContainer unityContainer;
         private readonly ImageService imageService;
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="ThumbnailService" /> class.</summary>
         public ThumbnailService()
         {
+            unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
             imageService = new ImageService();
         }
         #endregion Constructor
@@ -60,12 +66,14 @@
         /// <param name="thumbFolder">The folder where the thumbnail should be saved.</param>
         /// <param name="rgb">The desired color as RGB values.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
-        public BitmapImage BuildThumbnail(string file, string thumbFolder, byte[] rgb, ShowPreview preview)
+        public BitmapImage BuildThumbnail(string file, string thumbFolder, byte[] rgb, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
-            return CreateThumbnail(file, thumbFolder, rgb, Border.None, null, 0, null, 0, preview);
+            return CreateThumbnail(file, thumbFolder, rgb, Border.None, null, 0, null, 0, preview, saveThumb);
         }
 
         /// <summary>Creates a thumbnail based on RGB values with a single frame.</summary>
@@ -75,14 +83,16 @@
         /// <param name="borderBrush">The border brush.</param>
         /// <param name="borderSize">Size of the border.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
         public BitmapImage BuildThumbnail(string file, string thumbFolder, byte[] rgb, SolidColorBrush borderBrush, int borderSize,
-            ShowPreview preview)
+            ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
             return CreateThumbnail(file, thumbFolder, rgb, Border.Single, ColorConverterService.SolidColorBrushToSolidBrush(borderBrush), borderSize,
-                null, 0, preview);
+                null, 0, preview, saveThumb);
         }
 
         /// <summary>Creates a thumbnail based on RGB values with a double frame.</summary>
@@ -94,26 +104,30 @@
         /// <param name="innerBorderBrush">The inner border brush.</param>
         /// <param name="innerBorderSize">Size of the inner border.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
         public BitmapImage BuildThumbnail(string file, string thumbFolder, byte[] rgb, SolidColorBrush outerBorderBrush, int outerBorderSize,
-            SolidColorBrush innerBorderBrush, int innerBorderSize, ShowPreview preview)
+            SolidColorBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
             return CreateThumbnail(file, thumbFolder, rgb, Border.Double, ColorConverterService.SolidColorBrushToSolidBrush(outerBorderBrush),
-                outerBorderSize, ColorConverterService.SolidColorBrushToSolidBrush(innerBorderBrush), innerBorderSize, preview);
+                outerBorderSize, ColorConverterService.SolidColorBrushToSolidBrush(innerBorderBrush), innerBorderSize, preview, saveThumb);
         }
 
         /// <summary>Creates a thumbnail based on an existing image without a frame.</summary>
         /// <param name="file">The full path to the original image.</param>
         /// <param name="thumbFolder">The folder where the thumbnail should be saved.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
-        public BitmapImage BuildThumbnail(string file, string thumbFolder, ShowPreview preview)
+        public BitmapImage BuildThumbnail(string file, string thumbFolder, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
-            return CreateThumbnail(file, thumbFolder, Border.None, null, 0, null, 0, preview);
+            return CreateThumbnail(file, thumbFolder, Border.None, null, 0, null, 0, preview, saveThumb);
         }
 
         /// <summary>Creates a thumbnail based on an existing image single a frame.</summary>
@@ -122,13 +136,16 @@
         /// <param name="borderBrush">The border brush.</param>
         /// <param name="borderSize">Size of the border.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
-        public BitmapImage BuildThumbnail(string file, string thumbFolder, SolidColorBrush borderBrush, int borderSize, ShowPreview preview)
+        public BitmapImage BuildThumbnail(string file, string thumbFolder, SolidColorBrush borderBrush, int borderSize, ShowPreview preview,
+            bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
             return CreateThumbnail(file, thumbFolder, Border.Single, ColorConverterService.SolidColorBrushToSolidBrush(borderBrush), borderSize, null,
-                0, preview);
+                0, preview, saveThumb);
         }
 
         /// <summary>Creates a thumbnail based on an existing image double a frame.</summary>
@@ -139,21 +156,22 @@
         /// <param name="innerBorderBrush">The inner border brush.</param>
         /// <param name="innerBorderSize">Size of the inner border.</param>
         /// <param name="preview">The variant of the preview.</param>
+        /// <param name="saveThumb">if set to <c>true</c> the thumbnail should save.</param>
         /// <returns>The preview BitmapImage.</returns>
         public BitmapImage BuildThumbnail(string file, string thumbFolder, SolidColorBrush outerBorderBrush, int outerBorderSize,
-            SolidColorBrush innerBorderBrush, int innerBorderSize, ShowPreview preview)
+            SolidColorBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.No && !File.Exists(thumbFolder)) Directory.CreateDirectory(thumbFolder);
+            if (preview == ShowPreview.No && !File.Exists(thumbFolder))
+                Directory.CreateDirectory(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder));
 
             return CreateThumbnail(file, thumbFolder, Border.Double, ColorConverterService.SolidColorBrushToSolidBrush(outerBorderBrush),
-                outerBorderSize, ColorConverterService.SolidColorBrushToSolidBrush(innerBorderBrush), innerBorderSize, preview);
+                outerBorderSize, ColorConverterService.SolidColorBrushToSolidBrush(innerBorderBrush), innerBorderSize, preview, saveThumb);
         }
 
-        private BitmapImage CreateThumbnail(string file, string thumbFolder, IReadOnlyList<byte> rgb, Border border,
-            SolidBrush outerBorderBrush, int outerBorderSize, SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview)
+        private BitmapImage CreateThumbnail(string file, string thumbFolder, IReadOnlyList<byte> rgb, Border border, SolidBrush outerBorderBrush,
+            int outerBorderSize, SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.Original) ChoiceDimension(true);
-            else ChoiceDimension();
+            ChoiceDimension(preview == ShowPreview.Original);
 
             var b = new Bitmap(ThumbDim[0], ThumbDim[1]);
 
@@ -161,24 +179,24 @@
             {
                 g.FillRectangle(new SolidBrush(Color.FromArgb(rgb[0], rgb[1], rgb[2])), 0, 0, ThumbDim[0], ThumbDim[1]);
                 g.DrawImage(b, 0, 0, ThumbDim[0], ThumbDim[1]);
+                g.Dispose();
             }
 
-            return SwitchDoing(b, file, thumbFolder, border, outerBorderBrush, outerBorderSize, innerBorderBrush, innerBorderSize, preview);
+            return SwitchDoing(b, file, thumbFolder, border, outerBorderBrush, outerBorderSize, innerBorderBrush, innerBorderSize, preview, saveThumb);
         }
 
-        private BitmapImage CreateThumbnail(string file, string thumbFolder, Border border, SolidBrush outerBorderBrush,
-            int outerBorderSize, SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview)
+        private BitmapImage CreateThumbnail(string file, string thumbFolder, Border border, SolidBrush outerBorderBrush, int outerBorderSize,
+            SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
-            if (preview == ShowPreview.Original) ChoiceDimension(true);
-            else ChoiceDimension();
+            ChoiceDimension(preview == ShowPreview.Original);
 
             var b = new Bitmap(file);
             b = imageService.ResizeBitmap(b, ThumbDim[0], ThumbDim[1]);
 
-            return SwitchDoing(b, file, thumbFolder, border, outerBorderBrush, outerBorderSize, innerBorderBrush, innerBorderSize, preview);
+            return SwitchDoing(b, file, thumbFolder, border, outerBorderBrush, outerBorderSize, innerBorderBrush, innerBorderSize, preview, saveThumb);
         }
 
-        private void ChoiceDimension(bool original = false)
+        private void ChoiceDimension(bool original)
         {
             if (original)
             {
@@ -193,8 +211,10 @@
         }
 
         private BitmapImage SwitchDoing(Bitmap b, string file, string thumbFolder, Border border, SolidBrush outerBorderBrush, int outerBorderSize,
-            SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview)
+            SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
+            string logMessage;
+
             switch (border)
             {
                 case Border.Single:
@@ -206,20 +226,46 @@
                 case Border.None:
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(border), border, null);
+                    var ex = new ArgumentOutOfRangeException(nameof(border), border, null);
+
+                    logMessage = $"[{GetType().Name}] Exception at {MethodBase.GetCurrentMethod()}: {ex}";
+                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
+
+                    DialogService.Exception(ex, DialogService.ExceptionType.Universal);
+                    throw ex;
             }
 
             switch (preview)
             {
                 case ShowPreview.No:
-                    b.Save(Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder) + @"\" + Path.GetFileName(file), ImageFormat.Jpeg);
+                    if (!saveThumb) return null;
+
+                    var newFile = Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder) + @"\" + Path.GetFileName(file);
+                    
+                    imageService.Save(b, newFile, 60, ImageFormat.Jpeg);
+
+                    logMessage = $"[{GetType().Name}] File ({newFile}) was created";
+                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+
                     return null;
                 case ShowPreview.Original:
+                    logMessage = $"[{GetType().Name}] Preview in original size was created";
+                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+
                     return imageService.BitmapToImageSource(b, ImageFormat.Jpeg);
                 case ShowPreview.Thumbnail:
+                    logMessage = $"[{GetType().Name}] Preview in thumbnail size was created";
+                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+
                     return imageService.BitmapToImageSource(b, ImageFormat.Jpeg);
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(preview), preview, null);
+                    var ex = new ArgumentOutOfRangeException(nameof(preview), preview, null);
+
+                    logMessage = $"[{GetType().Name}] Exception at {MethodBase.GetCurrentMethod()}: {ex}";
+                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
+
+                    DialogService.Exception(ex, DialogService.ExceptionType.Universal);
+                    throw ex;
             }
         }
     }

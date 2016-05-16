@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mvvm="http://prismlibrary.com/"
              xmlns:props="clr-namespace:HelperTools.MatFileGen.Properties"
+             xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              mvvm:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="150"
@@ -23,7 +24,8 @@
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
                        Text="{x:Static props:Resources.TitlePreviewImage}"
-                       TextWrapping="WrapWithOverflow" />
+                       TextWrapping="WrapWithOverflow"
+                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter}}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewImage}"
@@ -34,7 +36,8 @@
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
                        Text="{x:Static props:Resources.TitlePreviewThumbnail}"
-                       TextWrapping="WrapWithOverflow" />
+                       TextWrapping="WrapWithOverflow"
+                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter}}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewThumbnail}"

@@ -100,8 +100,8 @@
                         File.Copy(fileToGenerate, pathForOrig + file.FileName + Extension, true);
 
                         var imageService = new ImageService();
-                        var resizedImage = imageService.ResizeBitmap(new Bitmap(file.FullFilePath), maxWidth, maxHeight, false);
-                        resizedImage.Save(file.FullFilePath, ImageFormat.Jpeg);
+                        var resizedImage = imageService.ResizeBitmap(new Bitmap(fileToGenerate), maxWidth, maxHeight, false);
+                        imageService.Save(resizedImage, fileToGenerate, 60, ImageFormat.Jpeg);
 
                         await Task.Delay(50);
 

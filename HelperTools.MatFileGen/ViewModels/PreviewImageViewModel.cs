@@ -13,6 +13,7 @@
     public class PreviewImageViewModel : ViewModelBase
     {
         #region Fields
+        private bool isPreviewVisible;
         private BitmapImage previewImage;
         private BitmapImage previewThumbnail;
         #endregion Fields
@@ -26,6 +27,14 @@
         #endregion Constructor
 
         #region Properties
+        /// <summary>Gets or sets a value indicating whether this instance is preview visible.</summary>
+        /// <value><c>true</c> if this instance is preview visible; otherwise, <c>false</c>.</value>
+        public bool IsPreviewVisible
+        {
+            get { return isPreviewVisible; }
+            set { SetProperty(ref isPreviewVisible, value); }
+        }
+
         /// <summary>Gets or sets the preview image.</summary>
         /// <value>The preview image.</value>
         public BitmapImage PreviewImage
@@ -47,14 +56,23 @@
         #region Methods
         private void OnSelectedFilesUpdateEvent(ObservableCollection<IFiles> files)
         {
-            if (files.Count <= 0) return;
+            if (files.Count <= 0)
+            {
+                PreviewImage = null;
+                PreviewThumbnail = null;
+                IsPreviewVisible = false;
+
+                return;
+            }
+
+            IsPreviewVisible = true;
 
             var fileToGenerate = files.FirstOrDefault();
             if (fileToGenerate == null) return;
 
             var generateThumb = new GenerateThumbs();
-            PreviewImage = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Original, true);
-            PreviewThumbnail = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Thumbnail, true);
+            PreviewImage = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Original);
+            PreviewThumbnail = generateThumb.DoGeneration(fileToGenerate.FullFilePath, new byte[3], true, ThumbnailService.ShowPreview.Thumbnail);
         }
         #endregion Methods
     }

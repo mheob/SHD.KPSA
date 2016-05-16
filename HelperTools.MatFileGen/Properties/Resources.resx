@@ -176,7 +176,7 @@
     <value>Preview image</value>
   </data>
   <data name="TitlePreviewThumbnail" xml:space="preserve">
-    <value>Preview Thumbnail</value>
+    <value>Thumbnail</value>
   </data>
   <data name="ToolTipAuto" xml:space="preserve">
     <value>Automatic texture generation on a general rectangular area.</value>

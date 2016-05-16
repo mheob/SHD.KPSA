@@ -181,7 +181,7 @@
             {
                 SelectedFilesCollection.Clear();
 
-                SelectedFilesCollection.Add(new MatFileGenFiles()
+                SelectedFilesCollection.Add(new MatFileGenFiles
                 {
                     FullFilePath = SelectedPath + SolidColorName + EXTENSION.Substring(1),
                     FileName = SolidColorName
@@ -190,7 +190,7 @@
 
             // TODO: get the settings via the event aggregator -- maybe these settings should be saved tempory in a JSON file
 
-            var fg = new FileGeneration()
+            var fg = new FileGeneration
             {
                 GenerationFiles = SelectedFilesCollection,
                 Extension = EXTENSION.Substring(1),
