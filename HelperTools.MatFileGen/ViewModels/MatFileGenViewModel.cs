@@ -7,9 +7,12 @@
     using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
+    using Infrastructure.Services;
     using Models;
     using Prism.Commands;
+    using Properties;
     using Views;
+    using SettingsSolid = Models.SettingsSolid;
 
     /// <summary>The MatFileGenViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -88,6 +91,16 @@
             set
             {
                 if (!SetProperty(ref selectedVariantTab, value)) return;
+
+                if (SelectedVariantTab == 1)
+                {
+                    var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsSolidFile);
+                    EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(settings.SelectedColor));
+                }
+                else
+                {
+                    GetFiles();
+                }
 
                 StartGenerationCommand.RaiseCanExecuteChanged();
             }

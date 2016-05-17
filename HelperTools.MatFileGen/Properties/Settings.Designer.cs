@@ -103,5 +103,14 @@ namespace HelperTools.MatFileGen.Properties {
                 return ((string)(this["SettingsThumbnailFile"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SettingsSolid.json")]
+        public string SettingsSolidFile {
+            get {
+                return ((string)(this["SettingsSolidFile"]));
+            }
+        }
     }
 }

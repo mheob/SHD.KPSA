@@ -1,19 +1,40 @@
 ﻿namespace HelperTools.Infrastructure.Services
 {
-    using Microsoft.Practices.ServiceLocation;
-    using Microsoft.Practices.Unity;
-    using Prism.Logging;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.IO;
-    using System.Linq;
     using System.Windows.Media.Imaging;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
 
     /// <summary>The ImageService.</summary>
     public class ImageService
     {
+        #region Enum
+        /// <summary>The Anchor positions.</summary>
+        public enum AnchorPosition
+        {
+            /// <summary>Position center.</summary>
+            Center,
+
+            /// <summary>Position top.</summary>
+            Top,
+
+            /// <summary>Position bottom.</summary>
+            Bottom,
+
+            /// <summary>Position left.</summary>
+            Left,
+
+            /// <summary>Position right.</summary>
+            Right,
+        }
+        #endregion Enum
+
         #region Fields
         private readonly IUnityContainer unityContainer;
         #endregion Fields
@@ -23,69 +44,145 @@
         public ImageService()
         {
             unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
+
+            var logMessage = $"[{GetType().Name}] is initialized";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
         #endregion Constructor
 
         #region Methods
-        /// <summary>Resizes the bitmap in case of a scale value.</summary>
-        /// <param name="b">The bitmap.</param>
-        /// <param name="scale">The scale.</param>
-        /// <returns>The resized bitmap.</returns>
-        public Bitmap ResizeBitmap(Bitmap b, float scale)
+        /// <summary>Resizes the bitmap in case of new dimension values</summary>
+        /// <param name="file">The file.</param>
+        /// <param name="width">The new width.</param>
+        /// <param name="height">The new height.</param>
+        /// <returns>The resized image.</returns>
+        public Image ResizeImage(string file, int width, int height)
         {
-            int nWidth = (int) Math.Ceiling(b.Width * scale);
-            int nHeight = (int) Math.Ceiling(b.Height * scale);
+            Image nImage = Image.FromFile(file);
 
-            Bitmap resizedImage = ResizeBitmap(b, nWidth, nHeight);
-
-            return resizedImage;
+            return ResizeImage(nImage, width, height);
         }
 
-        /// <summary>Resizes the bitmap in case of maximal dimension values.</summary>
-        /// <param name="b">The bitmap.</param>
+        /// <summary>Resizes a image from a file in case of a scale value in percent.</summary>
+        /// <param name="file">The file.</param>
+        /// <param name="scale">The scale.</param>
+        /// <returns>The resized image.</returns>
+        public Image ResizeImage(string file, int scale)
+        {
+            Image nImage = Image.FromFile(file);
+
+            var percent = (float) scale / 100;
+
+            var sourceWidth = nImage.Width;
+            var sourceHeight = nImage.Height;
+
+            var destWidth = (int) Math.Ceiling(sourceWidth * percent);
+            var destHeight = (int) Math.Ceiling(sourceHeight * percent);
+
+            return ResizeImage(nImage, destWidth, destHeight);
+        }
+
+        /// <summary>Resizes a image from a file in case of maximal dimension values.</summary>
+        /// <param name="file">The file.</param>
         /// <param name="maxWidth">The maximum width.</param>
         /// <param name="maxHeight">The maximum height.</param>
-        /// <param name="allowLargerImageCreation">if set to <c>true</c> allow larger image creation.</param>
+        /// <param name="allowLargerImage">if set to <c>true</c> larger image creation is allowed.</param>
         /// <param name="keepRatio">if set to <c>true</c> keep the ratio.</param>
-        /// <returns>The resized bitmap.</returns>
-        public Bitmap ResizeBitmap(Bitmap b, int maxWidth, int maxHeight, bool allowLargerImageCreation, bool keepRatio = true)
+        /// <returns>The resized image.</returns>
+        public Image ResizeImage(string file, int maxWidth, int maxHeight, bool allowLargerImage, bool keepRatio = true)
         {
-            if (!allowLargerImageCreation && maxWidth >= b.Width && maxHeight >= b.Height) return ResizeBitmap(b, b.Width, b.Height);
+            Image nImage = Image.FromFile(file);
 
-            if (!keepRatio) return ResizeBitmap(b, maxWidth, maxHeight);
+            var sourceWidth = nImage.Width;
+            var sourceHeight = nImage.Height;
 
-            double ratioWidth = (double) maxWidth / b.Width;
-            double ratioHeight = (double) maxHeight / b.Height;
+            if (!allowLargerImage && maxWidth >= sourceWidth && maxHeight >= sourceHeight) return ResizeImage(nImage, sourceWidth, sourceHeight);
+            if (!keepRatio) return ResizeImage(nImage, maxWidth, maxHeight);
 
-            bool scaleToMaxWidth = ratioWidth < ratioHeight;
-            double ratio = scaleToMaxWidth ? ratioWidth : ratioHeight;
+            var percentW = (float) maxWidth / sourceWidth;
+            var percentH = (float) maxHeight / sourceHeight;
 
-            var newWidth = Convert.ToInt32(b.Width * ratio);
-            var newHeight = Convert.ToInt32(b.Height * ratio);
+            var percent = percentW < percentH ? percentW : percentH;
 
-            Bitmap resizedImage = ResizeBitmap(b, newWidth, newHeight);
+            var destWidth = (int) Math.Ceiling(sourceWidth * percent);
+            var destHeight = (int) Math.Ceiling(sourceHeight * percent);
 
-            return resizedImage;
+            return ResizeImage(nImage, destWidth, destHeight);
         }
 
-        /// <summary>Resizes the bitmap in case of new dimension values.</summary>
-        /// <param name="b">The bitmap.</param>
-        /// <param name="nWidth">The new width.</param>
-        /// <param name="nHeight">The new height.</param>
-        /// <returns>The resized bitmap.</returns>
-        public Bitmap ResizeBitmap(Image b, int nWidth, int nHeight)
+        /// <summary>Resizes and crop a image from a file in case of dimension values.</summary>
+        /// <param name="file">The file.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="anchor">The anchor position for the crop.</param>
+        /// <returns>The resized and cropped image.</returns>
+        [SuppressMessage("ReSharper", "ConvertIfStatementToSwitchStatement")]
+        public Image ResizeImage(string file, int width, int height, AnchorPosition anchor)
         {
-            Bitmap resizedImage = new Bitmap(b, nWidth, nHeight);
-            using (Graphics g = Graphics.FromImage(resizedImage))
+            Image nImage = Image.FromFile(file);
+
+            var sourceWidth = nImage.Width;
+            var sourceHeight = nImage.Height;
+
+            int destX = 0, destY = 0;
+
+            float percent;
+
+            var percentW = (float) width / sourceWidth;
+            var percentH = (float) height / sourceHeight;
+
+            if (percentH < percentW)
             {
-                g.DrawImage(b, 0, 0, nWidth, nHeight);
-                g.Dispose();
+                percent = percentW;
+                if (anchor == AnchorPosition.Top) destY = 0;
+                else if (anchor == AnchorPosition.Bottom) destY = (int) (height - sourceHeight * percent);
+                else destY = (int) ((height - sourceHeight * percent) / 2);
+            }
+            else
+            {
+                percent = percentH;
+                if (anchor == AnchorPosition.Left) destX = 0;
+                else if (anchor == AnchorPosition.Right) destX = (int) (width - sourceWidth * percent);
+                else destX = (int) ((width - sourceWidth * percent) / 2);
             }
 
-            var logMessage = $"[{GetType().Name}] Bitmap was resized";
+            int destWidth = (int) (sourceWidth * percent);
+            int destHeight = (int) (sourceHeight * percent);
+
+            Bitmap b = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            b.SetResolution(nImage.HorizontalResolution, nImage.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(b);
+            grPhoto.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            grPhoto.DrawImage(nImage, new Rectangle(destX, destY, destWidth, destHeight), new Rectangle(0, 0, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+            grPhoto.Dispose();
+
+            var logMessage = $"[{GetType().Name}] An existed file was cropped to an image";
             unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
-            return resizedImage;
+            return b;
+        }
+
+        /// <summary>Resizes the bitmap in case of new dimension values</summary>
+        /// <param name="image">The image.</param>
+        /// <param name="width">The new width.</param>
+        /// <param name="height">The new height.</param>
+        /// <returns>The resized image.</returns>
+        public Image ResizeImage(Image image, int width, int height)
+        {
+            Bitmap b = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+            b.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            Graphics gfx = Graphics.FromImage(b);
+            gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            gfx.DrawImage(image, 0, 0, width, height);
+            gfx.Dispose();
+
+            var logMessage = $"[{GetType().Name}] An image was resized to a new image object";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+
+            return b;
         }
 
         /// <summary>Creates a single framed image.</summary>
@@ -93,13 +190,13 @@
         /// <param name="outline">The outline color.</param>
         /// <param name="border">The border thickness.</param>
         /// <returns>The framed image.</returns>
-        public Bitmap CreateSingleBorder(Bitmap b, SolidBrush outline, int border)
+        public Image CreateSingleBorder(Image b, SolidBrush outline, int border)
         {
             Bitmap nImage = new Bitmap(b);
-            using (Graphics g = Graphics.FromImage(nImage))
+            using (Graphics gfx = Graphics.FromImage(nImage))
             {
-                g.FillRectangle(outline, 0, 0, b.Width, b.Height);
-                g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
+                gfx.FillRectangle(outline, 0, 0, b.Width, b.Height);
+                gfx.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
 
             var logMessage = $"[{GetType().Name}] Bitmap with a single border was created";
@@ -115,83 +212,48 @@
         /// <param name="borderOut">The outline border thickness.</param>
         /// <param name="borderIn">The inline border thickness.</param>
         /// <returns>The framed image.</returns>
-        public Bitmap CreateDoubleBorder(Bitmap b, SolidBrush outline, SolidBrush inline, int borderOut, int borderIn)
+        public Image CreateDoubleBorder(Image b, SolidBrush outline, SolidBrush inline, int borderOut, int borderIn)
         {
             int border = borderIn + borderOut;
 
             Bitmap nImage = new Bitmap(b);
-            using (Graphics g = Graphics.FromImage(nImage))
+            using (Graphics gfx = Graphics.FromImage(nImage))
             {
-                g.FillRectangle(outline, 0, 0, b.Width, b.Height);
-                g.FillRectangle(inline, borderOut, borderOut, b.Width - borderOut * 2, b.Height - borderOut * 2);
-                g.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
+                gfx.FillRectangle(outline, 0, 0, b.Width, b.Height);
+                gfx.FillRectangle(inline, borderOut, borderOut, b.Width - borderOut * 2, b.Height - borderOut * 2);
+                gfx.DrawImage(b, border, border, b.Width - border * 2, b.Height - border * 2);
             }
-            
-            var logMessage = $"[{GetType().Name}] Bitmap with a double border was created";
+
+            var logMessage = $"[{GetType().Name}] Image with a double border was created";
             unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return nImage;
         }
 
-        /// <summary>Prepares a bitmap for display in an image element.</summary>
-        /// <param name="bitmap">The bitmap that is to be converted.</param>
+        /// <summary>Prepares a image for display in an image element.</summary>
+        /// <param name="b">The image that is to be converted.</param>
         /// <param name="imgFormat">The format in which the image is to be cached.</param>
         /// <returns>The image, rendered for viewing in a Imagebox.</returns>
-        public BitmapImage BitmapToImageSource(Bitmap bitmap, ImageFormat imgFormat)
+        public BitmapImage GetBitmapImageFromImage(Image b, ImageFormat imgFormat)
         {
-            using (MemoryStream memory = new MemoryStream())
+            using (MemoryStream ms = new MemoryStream())
             {
-                bitmap.Save(memory, imgFormat);
-                memory.Position = 0;
+                b.Save(ms, imgFormat);
+                b.Dispose();
+                ms.Position = 0;
 
                 BitmapImage bi = new BitmapImage();
 
                 bi.BeginInit();
-                bi.StreamSource = memory;
+                bi.StreamSource = ms;
                 bi.CacheOption = BitmapCacheOption.OnLoad;
                 bi.EndInit();
 
-                var logMessage = $"[{GetType().Name}] BitmapImage with was created from a Bitmap";
+                var logMessage = $"[{GetType().Name}] BitmapImage with was created from an Image";
                 unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
                 return bi;
             }
-        }
-
-        /// <summary>Method to resize, convert and save the image.</summary>
-        /// <param name="b">Bitmap image.</param>
-        /// <param name="filePath">file path.</param>
-        /// <param name="quality">quality setting value.</param>
-        /// <param name="format">The image format.</param>
-        public void Save(Bitmap b, string filePath, int quality, ImageFormat format)
-        {
-            var newImage = new Bitmap(b);
-
-            using (Graphics g = Graphics.FromImage(newImage))
-            {
-                g.CompositingQuality = CompositingQuality.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.DrawImage(b, 0, 0, b.Width, b.Height);
-            }
-
-            newImage.Dispose();
-
-            var imageCodecInfo = GetEncoderInfo(format);
-            var encoder = Encoder.Quality;
-            var encoderParameters = new EncoderParameters(1);
-
-            var encoderParameter = new EncoderParameter(encoder, quality);
-            encoderParameters.Param[0] = encoderParameter;
-            newImage.Save(filePath, imageCodecInfo, encoderParameters);
-        }
-
-        /// <summary>Method to get encoder for a given image format.</summary>
-        /// <param name="format">Image format</param>
-        /// <returns>image codec info.</returns>
-        private static ImageCodecInfo GetEncoderInfo(ImageFormat format)
-        {
-            return ImageCodecInfo.GetImageDecoders().SingleOrDefault(c => c.FormatID == format.Guid);
         }
         #endregion Methods
     }

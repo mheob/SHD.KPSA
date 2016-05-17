@@ -54,6 +54,9 @@
         {
             unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
             imageService = new ImageService();
+
+            var logMessage = $"[{GetType().Name}] is initialized";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
         #endregion Constructor
 
@@ -190,8 +193,9 @@
         {
             ChoiceDimension(preview == ShowPreview.Original);
 
-            var b = new Bitmap(file);
-            b = imageService.ResizeBitmap(b, ThumbDim[0], ThumbDim[1]);
+            var b = saveThumb && preview != ShowPreview.Original
+                ? imageService.ResizeImage(file, ThumbDim[0], ThumbDim[1])
+                : imageService.ResizeImage(file, ThumbDim[0], ThumbDim[1], false);
 
             return SwitchDoing(b, file, thumbFolder, border, outerBorderBrush, outerBorderSize, innerBorderBrush, innerBorderSize, preview, saveThumb);
         }
@@ -210,7 +214,7 @@
             }
         }
 
-        private BitmapImage SwitchDoing(Bitmap b, string file, string thumbFolder, Border border, SolidBrush outerBorderBrush, int outerBorderSize,
+        private BitmapImage SwitchDoing(Image b, string file, string thumbFolder, Border border, SolidBrush outerBorderBrush, int outerBorderSize,
             SolidBrush innerBorderBrush, int innerBorderSize, ShowPreview preview, bool saveThumb)
         {
             string logMessage;
@@ -241,8 +245,8 @@
                     if (!saveThumb) return null;
 
                     var newFile = Path.Combine(Path.GetDirectoryName(file) + @"\", thumbFolder) + @"\" + Path.GetFileName(file);
-                    
-                    imageService.Save(b, newFile, 60, ImageFormat.Jpeg);
+
+                    b.Save(newFile, ImageFormat.Jpeg);
 
                     logMessage = $"[{GetType().Name}] File ({newFile}) was created";
                     unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
@@ -252,12 +256,12 @@
                     logMessage = $"[{GetType().Name}] Preview in original size was created";
                     unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
-                    return imageService.BitmapToImageSource(b, ImageFormat.Jpeg);
+                    return imageService.GetBitmapImageFromImage(b, ImageFormat.Jpeg);
                 case ShowPreview.Thumbnail:
                     logMessage = $"[{GetType().Name}] Preview in thumbnail size was created";
                     unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
-                    return imageService.BitmapToImageSource(b, ImageFormat.Jpeg);
+                    return imageService.GetBitmapImageFromImage(b, ImageFormat.Jpeg);
                 default:
                     var ex = new ArgumentOutOfRangeException(nameof(preview), preview, null);
 

@@ -6,6 +6,7 @@
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
+    using Prism.Logging;
     using Properties;
 
     /// <summary>The GenerateThumb.</summary>
@@ -15,8 +16,8 @@
         private readonly IUnityContainer unityContainer;
         private readonly IEventAggregator eventAggregator;
 
-        private readonly string configFile = Settings.Default.SettingsThumbnailFile;
         private readonly JsonService jsonService = new JsonService();
+        private readonly string configFile = Settings.Default.SettingsThumbnailFile;
         private readonly ThumbnailService thumbnailService = new ThumbnailService();
         #endregion Fields
 
@@ -26,6 +27,9 @@
         {
             unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+
+            var logMessage = $"[{GetType().Name}] is initialized";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
         #endregion Constructor
 
@@ -105,6 +109,9 @@
                 else
                     previewImage = thumbnailService.BuildThumbnail(file, ThumbFolder, rgb, preview, GenerateThumb);
             }
+
+            var logMessage = $"[{GetType().Name}] Thumbnail was generated";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
             return previewImage;
         }

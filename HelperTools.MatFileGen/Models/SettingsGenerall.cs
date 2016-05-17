@@ -1,7 +1,7 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    /// <summary>The ConfigSettings.</summary>
-    public class ConfigSettings
+    /// <summary>The SettingsGenerall.</summary>
+    public class SettingsGenerall
     {
         #region Fields
         #endregion Fields

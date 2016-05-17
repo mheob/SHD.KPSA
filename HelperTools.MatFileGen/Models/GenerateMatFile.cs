@@ -1,12 +1,13 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
+    using Prism.Logging;
 
     /// <summary>The GenerateMatFile.</summary>
     public class GenerateMatFile
@@ -33,6 +34,9 @@
             fromJpg = isFromJpg;
 
             Extension = ".jpg";
+
+            var logMessage = $"[{GetType().Name}] is initialized";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
         #endregion Constructor
 
@@ -127,11 +131,6 @@
             var colorsDif = new string[3];
             var colorsSpe = new string[3];
 
-            //if (file.EndsWith(Extension))
-            //{
-            //    file = file.Replace(Extension, string.Empty);
-            //    fromJpg = true;
-            //}
             file = file.Replace(Extension, string.Empty);
 
             for (int i = 0; i < rgb.Length; i++)
@@ -153,6 +152,9 @@
             AddOptionals();
 
             FileService.Write($"{file}.mat", matFile);
+
+            var logMessage = $"[{GetType().Name}] \"mat\" file generated";
+            unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
 
         /// <summary>Adds the optionals.</summary>

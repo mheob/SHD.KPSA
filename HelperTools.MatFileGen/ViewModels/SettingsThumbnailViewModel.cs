@@ -1,9 +1,7 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System.IO;
     using System.Windows.Media;
     using Infrastructure.Base;
-    using Infrastructure.Constants;
     using Infrastructure.Events;
     using Infrastructure.Services;
     using Models;
@@ -33,9 +31,7 @@
         /// <summary>Initializes a new instance of the <see cref="SettingsThumbnailViewModel" /> class.</summary>
         public SettingsThumbnailViewModel()
         {
-            if (!File.Exists(PathNames.ConfigPath + configFile)) InitializeInternalSettings();
-
-            ReadJson();
+            InitializeInternalSettings();
             WriteJson();
         }
         #endregion Constructor
@@ -175,24 +171,9 @@
             InnerFrameSize = Settings.Default.InnerFrameSize;
         }
 
-        private void ReadJson()
-        {
-            SettingsThumbnail settings = jsonService.ReadJson<SettingsThumbnail>(configFile);
-            GenerateThumb = settings.GenerateThumb;
-            ThumbFolder = settings.ThumbFolder;
-
-            GenerateOuterFrame = settings.GenerateOuterFrame;
-            OuterFrameColor = settings.OuterFrameColor;
-            OuterFrameSize = settings.OuterFrameSize;
-
-            GenerateInnerFrame = settings.GenerateInnerFrame;
-            InnerFrameColor = settings.InnerFrameColor;
-            InnerFrameSize = settings.InnerFrameSize;
-        }
-
         private void WriteJson()
         {
-            SettingsThumbnail settingsThumbnail = new SettingsThumbnail()
+            SettingsThumbnail settings = new SettingsThumbnail()
             {
                 GenerateThumb = GenerateThumb,
                 ThumbFolder = ThumbFolder,
@@ -204,7 +185,7 @@
                 InnerFrameSize = InnerFrameSize
             };
 
-            jsonService.WriteJson(settingsThumbnail, configFile);
+            jsonService.WriteJson(settings, configFile);
         }
         #endregion Methods
     }
