@@ -89,6 +89,8 @@
         #region Event-Handler
         private void OnFilesUpdateEvent(ObservableCollection<IFiles> files)
         {
+            IsStatusBarVisible = FileCollection.Count > 0;
+
             FileCollection = files;
 
             RaiseCanExecuteChanged();

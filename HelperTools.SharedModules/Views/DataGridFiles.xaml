@@ -93,12 +93,12 @@
 
         <Separator Grid.Row="2"
                    Style="{StaticResource VerticalSeparator}"
-                   Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter}}" />
+                   Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
 
         <Label Grid.Row="3"
                x:Name="LabelStatusBar"
                Content="{Binding StatusBarSummary}"
                Style="{StaticResource DataGridFilesStatusBar}"
-               Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter}}" />
+               Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
     </Grid>
 </UserControl>

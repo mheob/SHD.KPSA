@@ -135,6 +135,9 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\logo_shd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
