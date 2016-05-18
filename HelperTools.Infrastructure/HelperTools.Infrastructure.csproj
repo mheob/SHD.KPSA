@@ -116,6 +116,7 @@
     <Compile Include="Converter\IntegerToStringConverter.cs" />
     <Compile Include="Converter\InverseBoolConverter.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
+    <Compile Include="Events\MatFilePreviewUpdateEvent.cs" />
     <Compile Include="Events\SolidRgbUpdateEvent.cs" />
     <Compile Include="Events\SolidColorNameUpdateEvent.cs" />
     <Compile Include="Events\SelectedFilesUpdateEvent.cs" />

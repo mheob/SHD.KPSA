@@ -21,6 +21,9 @@
         /// <summary>The SETTINGS_THUMBNAIL_REGION</summary>
         public const string SETTINGS_THUMBNAIL_REGION = "SettingsThumbnailMfgRegion";
 
+        /// <summary>The PREVIEW_MAT_FILE_REGION</summary>
+        public const string PREVIEW_MAT_FILE_REGION = "PreviewMatFileMfgRegion";
+
         /// <summary>The PREVIEW_IMAGE_REGION</summary>
         public const string PREVIEW_IMAGE_REGION = "PreviewImageMfgRegion";
     }

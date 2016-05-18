@@ -53,8 +53,6 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!-- TODO: Setup the tab binding -->
-                <!--<TabControl Grid.Column="0" SelectedIndex="{Binding SelectedVariantTab}">-->
                 <TabControl Grid.Column="0"
                             SelectedIndex="{Binding SelectedVariantTab}">
                     <TabItem Header="{x:Static props:Resources.TabItemTexture}"
@@ -77,12 +75,17 @@
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
+                        <RowDefinition Height="10" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <!-- TODO: displaying the preview -->
-                    <TextBlock Grid.Row="0"
-                               Style="{StaticResource PreviewToDo}" />
-                    <ContentControl Grid.Row="1"
+
+                    <ContentControl Grid.Row="0"
+                                    mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.PREVIEW_MAT_FILE_REGION}" />
+
+                    <GridSplitter Grid.Row="1"
+                                  Style="{StaticResource VerticalGridSplitter}" />
+
+                    <ContentControl Grid.Row="2"
                                     mvvm:RegionManager.RegionName="{x:Static consts:RegionNames.PREVIEW_IMAGE_REGION}" />
                 </Grid>
 

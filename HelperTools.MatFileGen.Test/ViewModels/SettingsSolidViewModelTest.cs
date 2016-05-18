@@ -2,6 +2,7 @@
 {
     using System.Windows.Media;
     using HelperTools.MatFileGen.ViewModels;
+    using Infrastructure.Services;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
@@ -29,7 +30,7 @@
         public void CanSetAndGetSolidColorName()
         {
             vm.SolidColorName = EXEPTED_STRING;
-            Assert.AreEqual(EXEPTED_STRING, vm.SolidColorName);
+            Assert.AreEqual(CharConverterService.ConvertCharsToAscii(EXEPTED_STRING), vm.SolidColorName);
         }
 
         [TestMethod]

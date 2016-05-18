@@ -195,6 +195,9 @@
   <data name="TitlePreviewImage" xml:space="preserve">
     <value>Vorschaubild</value>
   </data>
+  <data name="TitlePreviewMatFile" xml:space="preserve">
+    <value>Vorschau des Mat-Files</value>
+  </data>
   <data name="TitlePreviewThumbnail" xml:space="preserve">
     <value>Thumbnail</value>
   </data>

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="HelperTools.MatFileGen.Views.PreviewMatFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:props="clr-namespace:HelperTools.MatFileGen.Properties"
+             xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="150"
+             d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Style="{StaticResource PreviewMatFileTitle}"
+                   Text="{x:Static props:Resources.TitlePreviewMatFile}"
+                   Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+
+        <ListView Grid.Row="1"
+                  Style="{StaticResource PreviewMatFile}"
+                  ItemContainerStyle="{StaticResource PreviewMatFileItems}"
+                  ItemsSource="{Binding MatFilePreview}"
+                  Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}">
+        </ListView>
+    </Grid>
+</UserControl>

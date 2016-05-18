@@ -24,24 +24,24 @@
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
                        Text="{x:Static props:Resources.TitlePreviewImage}"
-                       TextWrapping="WrapWithOverflow"
-                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter}}" />
+                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewImage}"
-                   Style="{StaticResource PreviewImage}" />
+                   Style="{StaticResource PreviewImage}"
+                   Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
         </DockPanel>
 
         <DockPanel Grid.Column="1">
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
                        Text="{x:Static props:Resources.TitlePreviewThumbnail}"
-                       TextWrapping="WrapWithOverflow"
-                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter}}" />
+                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewThumbnail}"
-                   Style="{StaticResource PreviewImage}" />
+                   Style="{StaticResource PreviewImage}"
+                   Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
         </DockPanel>
     </Grid>
 </UserControl>

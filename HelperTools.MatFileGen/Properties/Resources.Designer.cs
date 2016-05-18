@@ -295,6 +295,15 @@ namespace HelperTools.MatFileGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview of the &quot;mat-file&quot;.
+        /// </summary>
+        public static string TitlePreviewMatFile {
+            get {
+                return ResourceManager.GetString("TitlePreviewMatFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thumbnail.
         /// </summary>
         public static string TitlePreviewThumbnail {

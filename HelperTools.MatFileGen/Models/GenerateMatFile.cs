@@ -1,14 +1,15 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using Infrastructure.Events;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
     using Prism.Logging;
     using Properties;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
 
     /// <summary>The GenerateMatFile.</summary>
     public class GenerateMatFile
@@ -38,7 +39,7 @@
             file = fileToGenerate;
             rgb = rgbInBytes;
             fromJpg = isFromJpg;
-            
+
             var logMessage = $"[{GetType().Name}] is initialized";
             unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
@@ -128,7 +129,8 @@
 
         #region Methods
         /// <summary>Creates the mat file.</summary>
-        public void CreateMatFile()
+        /// <param name="preview">if set to <c>true</c> a preview only will create.</param>
+        public void CreateMatFile(bool preview = false)
         {
             var filename = CharConverterService.ConvertCharsToAscii(Path.GetFileName(file));
 
@@ -155,7 +157,8 @@
 
             AddOptionals();
 
-            FileService.Write($"{file}.mat", matFile);
+            if (preview) eventAggregator.GetEvent<MatFilePreviewUpdateEvent>().Publish(matFile);
+            else FileService.Write($"{file}.mat", matFile);
 
             var logMessage = $"[{GetType().Name}] \"mat\" file generated";
             unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);

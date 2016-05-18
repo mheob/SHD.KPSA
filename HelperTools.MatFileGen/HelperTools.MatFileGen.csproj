@@ -108,11 +108,15 @@
     </Compile>
     <Compile Include="ViewModels\MatFileGenViewModel.cs" />
     <Compile Include="ViewModels\PreviewImageViewModel.cs" />
+    <Compile Include="ViewModels\PreviewMatFileViewModel.cs" />
     <Compile Include="ViewModels\SettingsAttributesViewModel.cs" />
     <Compile Include="ViewModels\SettingsSolidViewModel.cs" />
     <Compile Include="ViewModels\SettingsThumbnailViewModel.cs" />
     <Compile Include="Views\MatFileGen.xaml.cs">
       <DependentUpon>MatFileGen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PreviewMatFile.xaml.cs">
+      <DependentUpon>PreviewMatFile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PreviewImage.xaml.cs">
       <DependentUpon>PreviewImage.xaml</DependentUpon>
@@ -161,6 +165,10 @@
     <Page Include="Views\MatFileGen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PreviewMatFile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PreviewImage.xaml">
       <SubType>Designer</SubType>

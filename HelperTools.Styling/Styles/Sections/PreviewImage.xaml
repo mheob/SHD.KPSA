@@ -5,6 +5,15 @@
         <ResourceDictionary Source="../Controls/TextBlock.xaml" />
 
         <ResourceDictionary>
+            <Style x:Key="PreviewTitleMatFile"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource TextBlock}">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,0,0,16" />
+            </Style>
+
             <Style x:Key="PreviewImageTitle"
                    TargetType="{x:Type TextBlock}"
                    BasedOn="{StaticResource TextBlock}">
