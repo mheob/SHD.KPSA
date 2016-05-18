@@ -13,7 +13,7 @@
     {
         #region Fields
         private readonly JsonService jsonService = new JsonService();
-        private readonly string configFile = Settings.Default.SettingsSolidFile;
+        private readonly string configFile = Settings.Default.SettingsMfgSolidFile;
 
         private string solidColorName;
         private Color selectedColor;
@@ -36,8 +36,9 @@
             get { return solidColorName; }
             set
             {
-                if (!SetProperty(ref solidColorName, value)) return;
+                if (!SetProperty(ref solidColorName, CharConverterService.ConvertCharsToAscii(value))) return;
 
+                WriteJson();
                 EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Publish(SolidColorName);
             }
         }
@@ -51,6 +52,7 @@
             {
                 if (!SetProperty(ref selectedColor, value)) return;
 
+                WriteJson();
                 EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(SelectedColor));
             }
         }
@@ -58,12 +60,12 @@
         private void InitializeInternalSettings()
         {
             SolidColorName = string.Empty;
-            SelectedColor = Color.FromRgb(200, 23, 25);
+            SelectedColor = Color.FromRgb(35, 23, 215);
         }
 
         private void WriteJson()
         {
-            SettingsSolid settings = new SettingsSolid()
+            SettingsSolid settings = new SettingsSolid
             {
                 SolidColorName = SolidColorName,
                 SelectedColor = SelectedColor

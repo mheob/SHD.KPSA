@@ -20,11 +20,14 @@
     <Setting Name="MappingImageSuffixPathForOrig" Type="System.String" Scope="User">
       <Value Profile="(Default)">\_orig_images_\</Value>
     </Setting>
-    <Setting Name="SettingsThumbnailFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SettingsThumbnail.json</Value>
+    <Setting Name="SettingsMfgThumbnailFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SettingsMfgThumbnail.json</Value>
     </Setting>
-    <Setting Name="SettingsSolidFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SettingsSolid.json</Value>
+    <Setting Name="SettingsMfgSolidFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SettingsMfgSolid.json</Value>
+    </Setting>
+    <Setting Name="SettingsMfgGenerellFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SettingsMfgGenerell.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>

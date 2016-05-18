@@ -17,7 +17,7 @@
         private readonly IEventAggregator eventAggregator;
 
         private readonly JsonService jsonService = new JsonService();
-        private readonly string configFile = Settings.Default.SettingsThumbnailFile;
+        private readonly string configFile = Settings.Default.SettingsMfgThumbnailFile;
         private readonly ThumbnailService thumbnailService = new ThumbnailService();
         #endregion Fields
 

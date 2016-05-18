@@ -1,14 +1,16 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using Infrastructure.Base;
-    using Infrastructure.Events;
-    using Microsoft.Practices.Unity;
-    using Prism.Logging;
-    using Properties;
     using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using Infrastructure.Base;
+    using Infrastructure.Events;
+    using Infrastructure.Services;
+    using Microsoft.Practices.Unity;
+    using Models;
+    using Prism.Logging;
+    using Properties;
 
     /// <summary>The SettingsAttributesViewModel.</summary>
     /// <seealso cref="ViewModelBase" />
@@ -23,6 +25,9 @@
         #endregion Enumeration
 
         #region Fields
+        private readonly JsonService jsonService = new JsonService();
+        private readonly string configFile = Settings.Default.SettingsMfgGenerellFile;
+
         private const string INIT_SCALE = "1.0";
         private const string INIT_ROTATE = "0";
         private const string INIT_MIRROR = "1.0";
@@ -65,6 +70,8 @@
             Shi = "0";
             Ref = "0";
             Tra = "0";
+
+            WriteJson();
         }
         #endregion Constructor
 
@@ -80,6 +87,8 @@
 
                 if (string.IsNullOrEmpty(SelectedScaleX) || string.IsNullOrEmpty(SelectedScaleY) || string.IsNullOrEmpty(SelectedScaleZ))
                     InitComboBoxes(ComboBoxes.Scale);
+
+                WriteJson();
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxScale));
@@ -110,7 +119,12 @@
         public string SelectedScaleX
         {
             get { return selectedScaleX; }
-            set { SetProperty(ref selectedScaleX, value); }
+            set
+            {
+                if (!SetProperty(ref selectedScaleX, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the selected scale Y.</summary>
@@ -118,7 +132,12 @@
         public string SelectedScaleY
         {
             get { return selectedScaleY; }
-            set { SetProperty(ref selectedScaleY, value); }
+            set
+            {
+                if (!SetProperty(ref selectedScaleY, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the selected scale Z.</summary>
@@ -126,7 +145,12 @@
         public string SelectedScaleZ
         {
             get { return selectedScaleZ; }
-            set { SetProperty(ref selectedScaleZ, value); }
+            set
+            {
+                if (!SetProperty(ref selectedScaleZ, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether the rotate should added.</summary>
@@ -140,6 +164,8 @@
 
                 if (string.IsNullOrEmpty(SelectedRotateX) || string.IsNullOrEmpty(SelectedRotateY) || string.IsNullOrEmpty(SelectedRotateZ))
                     InitComboBoxes(ComboBoxes.Rotate);
+
+                WriteJson();
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRotate));
@@ -156,7 +182,12 @@
         public string SelectedRotateX
         {
             get { return selectedRotateX; }
-            set { SetProperty(ref selectedRotateX, value); }
+            set
+            {
+                if (!SetProperty(ref selectedRotateX, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the selected rotate Y.</summary>
@@ -164,7 +195,12 @@
         public string SelectedRotateY
         {
             get { return selectedRotateY; }
-            set { SetProperty(ref selectedRotateY, value); }
+            set
+            {
+                if (!SetProperty(ref selectedRotateY, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets the selected rotate Z.</summary>
@@ -172,7 +208,12 @@
         public string SelectedRotateZ
         {
             get { return selectedRotateZ; }
-            set { SetProperty(ref selectedRotateZ, value); }
+            set
+            {
+                if (!SetProperty(ref selectedRotateZ, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether auto should added.</summary>
@@ -185,6 +226,8 @@
                 if (!SetProperty(ref addAuto, value)) return;
 
                 if (value) AddRauto = false;
+
+                WriteJson();
 
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxAuto));
@@ -202,6 +245,8 @@
 
                 if (value) AddAuto = false;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRauto));
             }
@@ -212,7 +257,12 @@
         public bool AddGlass
         {
             get { return addGlass; }
-            set { SetProperty(ref addGlass, value); }
+            set
+            {
+                if (!SetProperty(ref addGlass, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether mirror should added.</summary>
@@ -226,6 +276,8 @@
 
                 if (Mirror.Equals("0")) Mirror = INIT_MIRROR;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxMirror));
             }
@@ -236,7 +288,12 @@
         public string Mirror
         {
             get { return mirror; }
-            set { SetProperty(ref mirror, value); }
+            set
+            {
+                if (!SetProperty(ref mirror, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether shi should added.</summary>
@@ -250,6 +307,8 @@
 
                 if (Shi.Equals("0")) Shi = INIT_SHI;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxShi));
             }
@@ -260,7 +319,12 @@
         public string Shi
         {
             get { return shi; }
-            set { SetProperty(ref shi, value); }
+            set
+            {
+                if (!SetProperty(ref shi, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether ref should added.</summary>
@@ -274,6 +338,8 @@
 
                 if (Ref.Equals("0")) Ref = INIT_REF;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxRef));
             }
@@ -284,7 +350,12 @@
         public string Ref
         {
             get { return _ref; }
-            set { SetProperty(ref _ref, value); }
+            set
+            {
+                if (!SetProperty(ref _ref, value)) return;
+
+                WriteJson();
+            }
         }
 
         /// <summary>Gets or sets a value indicating whether tra should added.</summary>
@@ -298,6 +369,8 @@
 
                 if (Tra.Equals("0")) Tra = INIT_TRA;
 
+                WriteJson();
+
                 var isChecked = value ? Resources.StatusBarChecked : Resources.StatusBarUnchecked;
                 EventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(string.Format(isChecked, Resources.CheckBoxTra));
             }
@@ -308,7 +381,12 @@
         public string Tra
         {
             get { return tra; }
-            set { SetProperty(ref tra, value); }
+            set
+            {
+                if (!SetProperty(ref tra, value)) return;
+
+                WriteJson();
+            }
         }
         #endregion Properties
 
@@ -334,6 +412,34 @@
                     Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Exception, Priority.High);
                     throw ex;
             }
+        }
+
+        private void WriteJson()
+        {
+            SettingsGenerall settings = new SettingsGenerall
+            {
+                AddScale = AddScale,
+                SelectedScaleX = SelectedScaleX,
+                SelectedScaleY = SelectedScaleY,
+                SelectedScaleZ = SelectedScaleZ,
+                AddRotate = AddRotate,
+                SelectedRotateX = SelectedRotateX,
+                SelectedRotateY = SelectedRotateY,
+                SelectedRotateZ = SelectedRotateZ,
+                AddAuto = AddAuto,
+                AddRauto = AddRauto,
+                AddGlass = AddGlass,
+                AddMirror = AddMirror,
+                Mirror = Mirror,
+                AddShi = AddShi,
+                Shi = Shi,
+                AddRef = AddRef,
+                Ref = Ref,
+                AddTra = AddTra,
+                Tra = Tra
+            };
+
+            jsonService.WriteJson(settings, configFile);
         }
         #endregion Methods
     }

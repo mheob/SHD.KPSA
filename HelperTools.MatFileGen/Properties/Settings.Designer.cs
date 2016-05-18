@@ -97,19 +97,28 @@ namespace HelperTools.MatFileGen.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SettingsThumbnail.json")]
-        public string SettingsThumbnailFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("SettingsMfgThumbnail.json")]
+        public string SettingsMfgThumbnailFile {
             get {
-                return ((string)(this["SettingsThumbnailFile"]));
+                return ((string)(this["SettingsMfgThumbnailFile"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SettingsSolid.json")]
-        public string SettingsSolidFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("SettingsMfgSolid.json")]
+        public string SettingsMfgSolidFile {
             get {
-                return ((string)(this["SettingsSolidFile"]));
+                return ((string)(this["SettingsMfgSolidFile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SettingsMfgGenerell.json")]
+        public string SettingsMfgGenerellFile {
+            get {
+                return ((string)(this["SettingsMfgGenerellFile"]));
             }
         }
     }

@@ -12,7 +12,7 @@
     public class SettingsThumbnailViewModel : ViewModelBase
     {
         #region Fields
-        private readonly string configFile = Settings.Default.SettingsThumbnailFile;
+        private readonly string configFile = Settings.Default.SettingsMfgThumbnailFile;
         private readonly JsonService jsonService = new JsonService();
 
         private bool generateThumb;

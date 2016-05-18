@@ -109,7 +109,7 @@
 
             IsPreviewVisible = true;
 
-            var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsSolidFile);
+            var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsMfgSolidFile);
             var file = SelectedPath + settings.SolidColorName + EXTENSION;
 
             var generateThumb = new GenerateThumbs();

@@ -94,7 +94,7 @@
 
                 if (SelectedVariantTab == 1)
                 {
-                    var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsSolidFile);
+                    var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsMfgSolidFile);
                     EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(settings.SelectedColor));
                 }
                 else
@@ -201,10 +201,9 @@
                 });
             }
 
-            // TODO: get the settings via the event aggregator -- maybe these settings should be saved tempory in a JSON file
-
             var fg = new FileGeneration
             {
+                FileCollection = FileCollection,
                 GenerationFiles = SelectedFilesCollection,
                 Extension = EXTENSION.Substring(1),
                 SelectedPath = SelectedPath,

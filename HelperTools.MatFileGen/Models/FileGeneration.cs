@@ -1,5 +1,11 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Reflection;
+    using System.Threading.Tasks;
     using Infrastructure.Events;
     using Infrastructure.Interfaces;
     using Infrastructure.Services;
@@ -9,12 +15,6 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Drawing.Imaging;
-    using System.IO;
-    using System.Reflection;
-    using System.Threading.Tasks;
     using infraProps = Infrastructure.Properties;
 
     /// <summary>The FileGeneration.</summary>
@@ -44,6 +44,10 @@
         #endregion Constructor
 
         #region Properties
+        /// <summary>Gets or sets the file collection.</summary>
+        /// <value>The file collection.</value>
+        public ObservableCollection<IFiles> FileCollection { get; set; }
+
         /// <summary>Gets or sets the generation files.</summary>
         /// <value>The generation files.</value>
         public ObservableCollection<IFiles> GenerationFiles { get; set; }
@@ -119,8 +123,7 @@
                         await Task.Delay(50);
                     }
 
-                    if (!file.FullFilePath.Equals($@"{fi.DirectoryName}\{filename}"))
-                        File.Move(file.FullFilePath, $@"{fi.DirectoryName}\{filename.ToLowerInvariant()}");
+                    if (!file.FullFilePath.Equals($@"{fi.DirectoryName}\{filename}")) File.Move(file.FullFilePath, fileToGenerate);
 
                     await Task.Delay(50);
 
@@ -129,8 +132,7 @@
                     new GenerateThumbs().DoGeneration(fileToGenerate, rgb, IsFromJpg, ThumbnailService.ShowPreview.No);
 
                     await Task.Delay(50);
-
-                    // TODO: add the configurations
+                    
                     var generateFile = new GenerateMatFile(fileToGenerate, rgb, IsFromJpg);
                     generateFile.CreateMatFile();
 
@@ -152,7 +154,7 @@
 
             await controller.CloseAsync();
 
-            //GetFiles();
+            eventAggregator.GetEvent<FilesUpdateEvent>().Publish(FileCollection);
 
             if (controller.IsCanceled)
             {

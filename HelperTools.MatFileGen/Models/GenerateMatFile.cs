@@ -1,13 +1,14 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
     using Prism.Logging;
+    using Properties;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
 
     /// <summary>The GenerateMatFile.</summary>
     public class GenerateMatFile
@@ -15,6 +16,9 @@
         #region Fields
         private readonly IUnityContainer unityContainer;
         private readonly IEventAggregator eventAggregator;
+
+        private readonly JsonService jsonService = new JsonService();
+        private readonly string configFile = Settings.Default.SettingsMfgGenerellFile;
 
         private string file;
         private readonly byte[] rgb;
@@ -29,12 +33,12 @@
             unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
 
+            Extension = ".jpg";
+
             file = fileToGenerate;
             rgb = rgbInBytes;
             fromJpg = isFromJpg;
-
-            Extension = ".jpg";
-
+            
             var logMessage = $"[{GetType().Name}] is initialized";
             unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
@@ -161,6 +165,8 @@
         /// <returns></returns>
         private void AddOptionals()
         {
+            ReadJson();
+
             if (AddScale) matFile.Add($"scale {SelectedScaleX} {SelectedScaleY} {SelectedScaleZ}");
             if (AddRotate) matFile.Add($"rotate {SelectedRotateX} {SelectedRotateY} {SelectedRotateZ}");
             if (AddAuto) matFile.Add("auto");
@@ -170,6 +176,30 @@
             if (AddShi) matFile.Add($"shi {Shi}");
             if (AddRef) matFile.Add($"ref {Ref}");
             if (AddTra) matFile.Add($"tra {Tra}");
+        }
+
+        private void ReadJson()
+        {
+            SettingsGenerall settings = jsonService.ReadJson<SettingsGenerall>(configFile);
+            AddScale = settings.AddScale;
+            SelectedScaleX = settings.SelectedScaleX;
+            SelectedScaleY = settings.SelectedScaleY;
+            SelectedScaleZ = settings.SelectedScaleZ;
+            AddRotate = settings.AddRotate;
+            SelectedRotateX = settings.SelectedRotateX;
+            SelectedRotateY = settings.SelectedRotateY;
+            SelectedRotateZ = settings.SelectedRotateZ;
+            AddAuto = settings.AddAuto;
+            AddRauto = settings.AddRauto;
+            AddGlass = settings.AddGlass;
+            AddMirror = settings.AddMirror;
+            Mirror = settings.Mirror;
+            AddShi = settings.AddShi;
+            Shi = settings.Shi;
+            AddRef = settings.AddRef;
+            Ref = settings.Ref;
+            AddTra = settings.AddTra;
+            Tra = settings.Tra;
         }
         #endregion Methods
     }
