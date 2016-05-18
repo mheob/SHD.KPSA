@@ -1,0 +1,236 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ap="clr-namespace:HelperTools.Styling.AttachedProperties">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.combobox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.listview.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.slider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/controls.textbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/styles/fonts.xaml" />
+        <ResourceDictionary Source="../Controls/TextBlock.xaml" />
+
+        <ResourceDictionary>
+            <Style x:Key="GridHeightDefault">
+                <Setter Property="Control.Height"
+                        Value="28" />
+            </Style>
+
+            <!-- TextBlock Label -->
+            <Style x:Key="TextBlockLabel"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource TextBlock}">
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- Checkbox Label -->
+            <Style x:Key="CheckBoxLabel"
+                   TargetType="{x:Type CheckBox}"
+                   BasedOn="{StaticResource {x:Type CheckBox}}">
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- Text Color -->
+            <Style x:Key="TextBox"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- RGB -->
+            <Style x:Key="TextBoxColorRgb"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="ToolTip"
+                        Value="Nur Werte von 0 bis 255 zulässig!" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- Text Color -->
+            <Style x:Key="TextBoxColor"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="0,4" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- Text ColorPicker -->
+            <Style x:Key="TextBoxColorPicker"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="4,4,0,4" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+            </Style>
+
+            <!-- ComboBox -->
+            <Style x:Key="ComboBoxXyz"
+                   TargetType="{x:Type ComboBox}"
+                   BasedOn="{StaticResource MetroComboBox}">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+            </Style>
+
+            <!-- Slider and Textbox -->
+            <Style x:Key="Slider"
+                   TargetType="{x:Type Slider}"
+                   BasedOn="{StaticResource MetroSlider}">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+                <Setter Property="IsSnapToTickEnabled"
+                        Value="True" />
+            </Style>
+
+            <Style x:Key="TextBoxSlider"
+                   TargetType="{x:Type TextBox}"
+                   BasedOn="{StaticResource MetroTextBox}">
+                <Setter Property="Margin"
+                        Value="4,4,0,4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Stretch" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="IsEnabled"
+                        Value="False" />
+            </Style>
+
+            <!-- Preview section -->
+            <Style x:Key="PreviewMatFileTitle"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource TextBlock}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource HeaderFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,0,0,24" />
+            </Style>
+
+            <Style x:Key="PreviewMatFile"
+                   TargetType="{x:Type ListView}"
+                   BasedOn="{StaticResource MetroListView}">
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="FontFamily"
+                        Value="Courier New, Segoe UI Mono, Consolas, Lucida Console" />
+                <Setter Property="Padding"
+                        Value="8,8,8,8" />
+            </Style>
+
+            <Style x:Key="PreviewMatFileItems"
+                   TargetType="{x:Type ListViewItem}"
+                   BasedOn="{StaticResource MetroListViewItem}">
+                <Setter Property="ap:ListViewItemAttachedProperties.IsSelectable"
+                        Value="False" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                            <Border x:Name="border" Background="Transparent">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Disabled" />
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="SelectionStates">
+                                        <VisualState x:Name="Unselected" />
+                                        <VisualState x:Name="Selected">
+                                            <Storyboard>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                              Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="LightBlue" />
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                        <VisualState x:Name="SelectedUnfocused">
+                                            <Storyboard>
+                                                <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                              Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                                    <EasingColorKeyFrame KeyTime="0" Value="SkyBlue" />
+                                                </ColorAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="PreviewImageTitle"
+                   TargetType="{x:Type TextBlock}"
+                   BasedOn="{StaticResource TextBlock}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource HeaderFontFamily}" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,0,0,16" />
+            </Style>
+
+            <Style x:Key="PreviewImage"
+                   TargetType="{x:Type Image}">
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter Property="Stretch"
+                        Value="None" />
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
