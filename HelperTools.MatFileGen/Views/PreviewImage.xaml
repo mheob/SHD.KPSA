@@ -23,8 +23,7 @@
         <DockPanel Grid.Column="0">
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
-                       Text="{x:Static props:Resources.TitlePreviewImage}"
-                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+                       Text="{x:Static props:Resources.TitlePreviewImage}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewImage}"
@@ -35,8 +34,7 @@
         <DockPanel Grid.Column="1">
             <TextBlock DockPanel.Dock="Top"
                        Style="{StaticResource PreviewImageTitle}"
-                       Text="{x:Static props:Resources.TitlePreviewThumbnail}"
-                       Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+                       Text="{x:Static props:Resources.TitlePreviewThumbnail}" />
 
             <Image DockPanel.Dock="Bottom"
                    Source="{Binding PreviewThumbnail}"

@@ -3,9 +3,11 @@
     using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Reflection;
     using Infrastructure.Base;
     using Infrastructure.Events;
+    using Infrastructure.Interfaces;
     using Infrastructure.Services;
     using Microsoft.Practices.Unity;
     using Models;
@@ -22,6 +24,13 @@
             Scale,
             Rotate
         }
+
+        private enum Publisher
+        {
+            None,
+            File,
+            SolidRgb
+        }
         #endregion Enumeration
 
         #region Fields
@@ -34,6 +43,12 @@
         private const string INIT_SHI = "30";
         private const string INIT_REF = "1.0";
         private const string INIT_TRA = "0.75";
+
+        private GenerateMatFile generateFile;
+        private string file;
+        private byte[] rgb;
+
+        private Publisher publisher;
 
         private bool addScale;
         private string selectedScaleX;
@@ -70,6 +85,13 @@
             Shi = "0";
             Ref = "0";
             Tra = "0";
+
+            publisher = Publisher.None;
+
+            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Subscribe(OnSolidColorNameUpdateEvent);
+            EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
+            EventAggregator.GetEvent<SelectedTabUpdateEvent>().Subscribe(OnSelectedTabUpdateEvent);
 
             WriteJson();
         }
@@ -440,6 +462,47 @@
             };
 
             jsonService.WriteJson(settings, configFile);
+
+            if (publisher == Publisher.None) return;
+
+            generateFile = new GenerateMatFile(file, rgb, false);
+            generateFile.CreateMatFile(true);
+        }
+
+        private void OnSelectedTabUpdateEvent(int tab)
+        {
+            if (tab == 0)
+            {
+                publisher = Publisher.File;
+                EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            }
+            else
+            {
+                publisher = Publisher.SolidRgb;
+                EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Subscribe(OnSolidColorNameUpdateEvent);
+                EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
+            }
+        }
+
+        private void OnSelectedFilesUpdateEvent(ObservableCollection<IFiles> files)
+        {
+            var firstOrDefault = files.FirstOrDefault();
+            if (firstOrDefault != null) file = firstOrDefault.FullFilePath;
+
+            ColorConverterService.GetRgbFromImage(file);
+            publisher = Publisher.File;
+        }
+
+        private void OnSolidColorNameUpdateEvent(string colorName)
+        {
+            file = colorName;
+            publisher = Publisher.SolidRgb;
+        }
+
+        private void OnSolidRgbUpdateEvent(byte[] solidRgb)
+        {
+            rgb = solidRgb;
+            publisher = Publisher.SolidRgb;
         }
         #endregion Methods
     }

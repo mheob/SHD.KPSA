@@ -27,8 +27,8 @@
         #endregion Constructor
 
         #region Properties
-        /// <summary>Gets or sets a value indicating whether this instance is visible.</summary>
-        /// <value><c>true</c> if this instance is visible; otherwise, <c>false</c>.</value>
+        /// <summary>Gets or sets a value indicating whether this instance is preview visible.</summary>
+        /// <value><c>true</c> if this instance is preview visible; otherwise, <c>false</c>.</value>
         public bool IsPreviewVisible
         {
             get { return isPreviewVisible; }
@@ -47,19 +47,33 @@
         #region Methods
         private void OnSelectedFilesUpdateEvent(ObservableCollection<IFiles> files)
         {
+            if (files.Count <= 0)
+            {
+                IsPreviewVisible = false;
+                return;
+            }
+
+            IsPreviewVisible = true;
+
             var fileToPreview = files.FirstOrDefault();
             if (fileToPreview == null) return;
 
             var generateFile = new GenerateMatFile(fileToPreview.FullFilePath, ColorConverterService.GetRgbFromImage(fileToPreview.FullFilePath));
             generateFile.CreateMatFile(true);
-
-            IsPreviewVisible = true;
         }
-
-        // TODO: generation on each possible changes
 
         private void OnMatFilePreviewUpdateEvent(List<string> fileContent)
         {
+            var first = fileContent.First();
+            if (first != null && first.Length < 5)
+            {
+                IsPreviewVisible = false;
+
+                return;
+            }
+
+            IsPreviewVisible = true;
+
             MatFilePreview = fileContent;
         }
         #endregion Methods

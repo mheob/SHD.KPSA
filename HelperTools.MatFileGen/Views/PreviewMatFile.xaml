@@ -23,14 +23,12 @@
 
         <TextBlock Grid.Row="0"
                    Style="{StaticResource PreviewMatFileTitle}"
-                   Text="{x:Static props:Resources.TitlePreviewMatFile}"
-                   Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+                   Text="{x:Static props:Resources.TitlePreviewMatFile}" />
 
         <ListView Grid.Row="1"
                   Style="{StaticResource PreviewMatFile}"
                   ItemContainerStyle="{StaticResource PreviewMatFileItems}"
                   ItemsSource="{Binding MatFilePreview}"
-                  Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}">
-        </ListView>
+                  Visibility="{Binding IsPreviewVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
     </Grid>
 </UserControl>

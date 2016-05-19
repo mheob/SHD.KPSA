@@ -72,6 +72,9 @@
             };
 
             jsonService.WriteJson(settings, configFile);
+
+            var generateFile = new GenerateMatFile(SolidColorName, ColorConverterService.GetRgbFromColor(SelectedColor), false);
+            generateFile.CreateMatFile(true);
         }
         #endregion Properties
     }

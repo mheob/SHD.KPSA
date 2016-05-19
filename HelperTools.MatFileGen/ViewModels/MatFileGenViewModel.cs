@@ -92,14 +92,27 @@
             {
                 if (!SetProperty(ref selectedVariantTab, value)) return;
 
+                EventAggregator.GetEvent<SelectedTabUpdateEvent>().Publish(value);
+
                 if (SelectedVariantTab == 1)
                 {
                     var settings = new JsonService().ReadJson<SettingsSolid>(Settings.Default.SettingsMfgSolidFile);
                     EventAggregator.GetEvent<SolidRgbUpdateEvent>().Publish(ColorConverterService.GetRgbFromColor(settings.SelectedColor));
+
+                    var generateFile = new GenerateMatFile(SolidColorName, SolidRgb, false);
+                    generateFile.CreateMatFile(true);
                 }
                 else
                 {
                     GetFiles();
+
+                    var selectedFile = SelectedFilesCollection.FirstOrDefault();
+                    if (selectedFile != null)
+                    {
+                        var fileToPreview = selectedFile.FullFilePath;
+                        var generateFile = new GenerateMatFile(fileToPreview, ColorConverterService.GetRgbFromImage(fileToPreview));
+                        generateFile.CreateMatFile(true);
+                    }
                 }
 
                 StartGenerationCommand.RaiseCanExecuteChanged();
