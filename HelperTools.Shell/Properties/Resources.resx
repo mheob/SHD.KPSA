@@ -166,4 +166,10 @@
   <data name="StatusBarVersion" xml:space="preserve">
     <value>Version:</value>
   </data>
+  <data name="UpdateErrorDialogText" xml:space="preserve">
+    <value>Trying to search for updates has gone wrong.{0}{0}Please try again later or give the creators know.{0}{0}Thank you!</value>
+  </data>
+  <data name="UpdateErrorDialogTitle" xml:space="preserve">
+    <value>Version Adjustment not possible!</value>
+  </data>
 </root>

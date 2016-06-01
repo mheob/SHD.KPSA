@@ -133,4 +133,10 @@
   <data name="StatusBarVersion" xml:space="preserve">
     <value>Version:</value>
   </data>
+  <data name="UpdateErrorDialogText" xml:space="preserve">
+    <value>Beim Versuch nach Updates zu suchen ist etwas schief gegangen.{0}{0}Bitte später erneut versuchen oder dem Ersteller Bescheid geben.{0}{0}Vielen Dank!</value>
+  </data>
+  <data name="UpdateErrorDialogTitle" xml:space="preserve">
+    <value>Versionsabgleich nicht möglich</value>
+  </data>
 </root>

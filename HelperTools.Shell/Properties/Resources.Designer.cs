@@ -220,5 +220,23 @@ namespace HelperTools.Shell.Properties {
                 return ResourceManager.GetString("StatusBarVersion", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trying to search for updates has gone wrong.{0}{0}Please try again later or give the creators know.{0}{0}Thank you!.
+        /// </summary>
+        public static string UpdateErrorDialogText {
+            get {
+                return ResourceManager.GetString("UpdateErrorDialogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version Adjustment not possible!.
+        /// </summary>
+        public static string UpdateErrorDialogTitle {
+            get {
+                return ResourceManager.GetString("UpdateErrorDialogTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -1,5 +1,10 @@
 ﻿namespace HelperTools.Shell
 {
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Reflection;
     using System.Windows;
     using Changelog;
     using Clean3Ds;
@@ -15,6 +20,7 @@
     using Prism.Modularity;
     using Prism.Regions;
     using Prism.Unity;
+    using Properties;
     using Updater;
     using Views;
 
@@ -79,11 +85,9 @@
         {
             ModuleCatalog moduleCatalog = (ModuleCatalog) ModuleCatalog;
 
-            // starting module
-            moduleCatalog.AddModule(typeof(Updater));
-            moduleCatalog.AddModule(typeof(Navigation));
+            if (IsUpdateAvailable()) moduleCatalog.AddModule(typeof(Updater));
 
-            // single modules
+            moduleCatalog.AddModule(typeof(Navigation));
             moduleCatalog.AddModule(typeof(Changelog));
             moduleCatalog.AddModule(typeof(Clean3Ds));
             moduleCatalog.AddModule(typeof(MatFileGen));
@@ -102,6 +106,40 @@
             // MessageDisplayService
             Container.RegisterInstance<IMetroMessageDisplayService>(ServiceNames.METRO_MESSAGE_DISPLAY_SERVICE,
                 Container.Resolve<MetroMessageDisplayService>(), new ContainerControlledLifetimeManager());
+        }
+
+        private static bool IsUpdateAvailable()
+        {
+            try
+            {
+                var tmpPath = PathNames.TempFolderPath;
+                if (!Directory.Exists(tmpPath)) Directory.CreateDirectory(tmpPath);
+
+                var tmpFile = tmpPath + "version.txt";
+                new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile, tmpFile);
+
+                var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+                int[] newestVersion = new int[3];
+                string[] versionParts = File.ReadLines(tmpFile).First().Split('.');
+
+                for (int i = 0; i < versionParts.Length; i++)
+                {
+                    int.TryParse(versionParts[i], out newestVersion[i]);
+                }
+
+                Directory.Delete(tmpPath, true);
+
+                if (newestVersion[0] > currentVersion.Major) return true;
+                if (newestVersion[1] > currentVersion.Minor) return true;
+                if (newestVersion[2] > currentVersion.Build) return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return false;
         }
     }
 }
