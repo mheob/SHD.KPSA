@@ -123,7 +123,7 @@
                 int[] newestVersion = new int[3];
                 string[] versionParts = File.ReadLines(tmpFile).First().Split('.');
 
-                for (int i = 0; i < versionParts.Length; i++)
+                for (int i = 0; i < newestVersion.Length; i++)
                 {
                     int.TryParse(versionParts[i], out newestVersion[i]);
                 }

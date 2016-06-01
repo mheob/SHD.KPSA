@@ -59,7 +59,7 @@
                 var tmpLine = line;
 
                 if (tmpLine.EndsWith("<br />"))
-                    tmpLine = tmpLine.Remove(tmpLine.Length - 6, 6);
+                    tmpLine = tmpLine.Remove(tmpLine.Length - 6);
 
                 if (tmpLine.StartsWith("## "))
                 {

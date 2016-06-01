@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HelperTools.Updater.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StartupApplication" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0}HelperTools.Shell.exe</Value>
+    </Setting>
+    <Setting Name="WebUpdateVersionFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://shd.boehm.xyz/HelperTools/version.txt</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

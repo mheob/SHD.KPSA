@@ -116,6 +116,7 @@
     <Compile Include="Converter\ColorToStringConverter.cs" />
     <Compile Include="Converter\IntegerToStringConverter.cs" />
     <Compile Include="Converter\InverseBoolConverter.cs" />
+    <Compile Include="Converter\SpaceToNbspConverter.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
     <Compile Include="Events\MatFilePreviewUpdateEvent.cs" />
     <Compile Include="Events\SelectedTabUpdateEvent.cs" />

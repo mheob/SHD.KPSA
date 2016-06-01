@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
              xmlns:props="clr-namespace:HelperTools.Updater.Properties"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
@@ -33,7 +34,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="10*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
@@ -50,16 +51,16 @@
             <TextBlock Grid.Column="2"
                        Grid.Row="1"
                        Style="{StaticResource UpdaterContentTextBlock}"
-                       Text="1.0.0.0 " />
+                       Text="{Binding CurrentVersion}" />
 
             <TextBlock Grid.Column="1"
                        Grid.Row="2"
                        Style="{StaticResource UpdaterHeaderTextBlock}"
-                       Text="Aktuelle Version: " />
+                       Text="Aktuellste Version: " />
             <TextBlock Grid.Column="2"
                        Grid.Row="2"
                        Style="{StaticResource UpdaterContentTextBlock}"
-                       Text="2.0.0.0 " />
+                       Text="{Binding NewVersion}" />
 
             <TextBlock Grid.Column="1"
                        Grid.Row="3"
@@ -67,11 +68,8 @@
                        Text="Letzte Änderungen: " />
             <TextBlock Grid.Column="2"
                        Grid.Row="3"
-                       Style="{StaticResource UpdaterContentTextBlock}">
-                ## 0.3.0
-                [ADD]    Nutzung vom Mah-Apps-Metro-Style-Framework
-                [CHANGE] Kompletter Um- bzw. Neubau auf Basis von PRISM-MVVM"
-            </TextBlock>
+                       Style="{StaticResource UpdaterContentTextBlock}"
+                       Text="{Binding LastChange, Converter={converter:SpaceToNbspConverter}}" />
 
             <Button Grid.Column="2"
                     Grid.Row="4"

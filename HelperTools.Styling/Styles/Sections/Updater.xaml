@@ -32,6 +32,8 @@
             <Style x:Key="UpdaterHeaderTextBlock"
                    TargetType="{x:Type TextBlock}"
                    BasedOn="{StaticResource UpdaterTextBlock}">
+                <Setter Property="FontFamily"
+                        Value="Consolas" />
                 <Setter Property="Margin"
                         Value="0,8,8,8" />
                 <Setter Property="HorizontalAlignment"
@@ -41,6 +43,8 @@
             <Style x:Key="UpdaterContentTextBlock"
                    TargetType="{x:Type TextBlock}"
                    BasedOn="{StaticResource UpdaterTextBlock}">
+                <Setter Property="FontFamily"
+                        Value="Consolas" />
                 <Setter Property="Margin"
                         Value="8,8,0,8" />
             </Style>
