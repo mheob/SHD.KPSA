@@ -1,10 +1,8 @@
 ﻿namespace HelperTools.Changelog.ViewModels
 {
-    using System;
     using System.Collections.ObjectModel;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
-    using System.Reflection;
     using System.Windows.Controls;
     using System.Windows.Media;
     using Infrastructure.Base;
@@ -34,15 +32,7 @@
 
         /// <summary>Gets the build note.</summary>
         /// <value>The build note.</value>
-        public string BuildNote
-        {
-            get
-            {
-                DateTime buildDate = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-
-                return string.Format(Resources.LastChangeText, buildDate);
-            }
-        }
+        public string BuildNote => string.Format(Resources.LastChangeText, AssemblyInfo.BuildDate);
 
         /// <summary>Gets or sets the changelog lines.</summary>
         /// <value>The changelog lines.</value>

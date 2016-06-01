@@ -33,27 +33,21 @@
         /// <summary>Reads the JSON-File.</summary>
         /// <typeparam name="T">The type of the object to deserialize to.</typeparam>
         /// <param name="filename">The filename of the JSON file.</param>
+        /// <param name="forUpdates">if set to <c>true</c> the configuration is for updates.</param>
         /// <returns>The deserialized object from the JSON string.</returns>
-        public T ReadJson<T>(string filename)
+        public T ReadJson<T>(string filename, bool forUpdates = false)
         {
             try
             {
-                var serializer = new JsonSerializer();
+                var file = forUpdates ? filename : PathNames.ConfigPath + filename;
+                if (!File.Exists(file)) return new JsonSerializer().Deserialize<T>(null);
 
-                var file = PathNames.ConfigPath + filename;
-                if (!File.Exists(file)) return serializer.Deserialize<T>(null);
+                var logMessage = $"[{GetType().Name}] JSON ({filename}) was read";
+                unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
 
+                eventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarReadSettings);
 
-                using (StreamReader sr = new StreamReader(file))
-                using (JsonTextReader reader = new JsonTextReader(sr))
-                {
-                    var logMessage = $"[{GetType().Name}] JSON ({filename}) was read";
-                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
-
-                    eventAggregator.GetEvent<StatusBarMessageUpdateEvent>().Publish(Resources.StatusBarReadSettings);
-
-                    return serializer.Deserialize<T>(reader);
-                }
+                return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
             }
             catch (Exception ex)
             {
@@ -73,18 +67,12 @@
         {
             try
             {
-                var serializer = new JsonSerializer {Formatting = Formatting.Indented};
-
                 if (!Directory.Exists(PathNames.ConfigPath)) Directory.CreateDirectory(PathNames.ConfigPath);
 
-                using (StreamWriter sw = new StreamWriter(PathNames.ConfigPath + filename, false))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    var logMessage = $"[{GetType().Name}] JSON ({filename}) was write";
-                    unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+                File.WriteAllText(PathNames.ConfigPath + filename, JsonConvert.SerializeObject(settings, Formatting.Indented));
 
-                    serializer.Serialize(writer, settings);
-                }
+                var logMessage = $"[{GetType().Name}] JSON ({filename}) was write";
+                unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
             }
             catch (Exception ex)
             {

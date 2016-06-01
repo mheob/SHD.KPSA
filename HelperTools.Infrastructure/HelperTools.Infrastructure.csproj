@@ -102,6 +102,7 @@
     <Compile Include="Behaviors\RegionPopupBehaviors.cs" />
     <Compile Include="Behaviors\WindowDialogActivationBehavior.cs" />
     <Compile Include="Behaviors\WindowWrapper.cs" />
+    <Compile Include="Constants\AssemblyInfo.cs" />
     <Compile Include="Constants\ContentNames.cs" />
     <Compile Include="Constants\FlyoutNames.cs" />
     <Compile Include="Constants\PopupNames.cs" />

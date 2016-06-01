@@ -15,6 +15,7 @@
     using Prism.Modularity;
     using Prism.Regions;
     using Prism.Unity;
+    using Updater;
     using Views;
 
     /// <summary>The Bootstrapper.</summary>
@@ -25,9 +26,9 @@
         /// <returns>The shell of the application.</returns>
         /// <remarks>
         /// If the returned instance is a <see cref="T:System.Windows.DependencyObject" />, the
-        /// <see cref="T:Prism.Bootstrapper" /> will attach the default <see cref="T:Prism.Regions.IRegionManager" /> of the application
-        /// in its <see cref="F:Prism.Regions.RegionManager.RegionManagerProperty" /> attached property in order to be able to add
-        /// regions by using the <see cref="F:Prism.Regions.RegionManager.RegionNameProperty" />
+        /// <see cref="T:Prism.Bootstrapper" /> will attach the default <see cref="T:Prism.Regions.IRegionManager" /> of the application in
+        /// its <see cref="F:Prism.Regions.RegionManager.RegionManagerProperty" /> attached property in order to be able to add regions by
+        /// using the <see cref="F:Prism.Regions.RegionManager.RegionNameProperty" />
         /// attached property from XAML.
         /// </remarks>
         protected override DependencyObject CreateShell()
@@ -50,7 +51,6 @@
             {
                 regionManager.RegisterViewWithRegion(RegionNames.RIGHT_WINDOW_COMMANDS_REGION, typeof(RightTitlebarCommands));
                 regionManager.RegisterViewWithRegion(RegionNames.FLYOUT_REGION, typeof(SettingsFlyout));
-                //regionManager.RegisterViewWithRegion(RegionNames.MAIN_REGION, typeof (HomeTiles));
             }
 
             // Register services
@@ -60,8 +60,8 @@
         }
 
         /// <summary>
-        /// Configures the <see cref="T:Microsoft.Practices.Unity.IUnityContainer" />. May be overwritten in a derived class to
-        /// add specific type mappings required by the application.
+        /// Configures the <see cref="T:Microsoft.Practices.Unity.IUnityContainer" />. May be overwritten in a derived class to add
+        /// specific type mappings required by the application.
         /// </summary>
         protected override void ConfigureContainer()
         {
@@ -80,6 +80,7 @@
             ModuleCatalog moduleCatalog = (ModuleCatalog) ModuleCatalog;
 
             // starting module
+            moduleCatalog.AddModule(typeof(Updater));
             moduleCatalog.AddModule(typeof(Navigation));
 
             // single modules

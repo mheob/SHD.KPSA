@@ -1,16 +1,16 @@
-﻿namespace HelperTools.Navigation.Views
+﻿namespace HelperTools.Updater.Views
 {
     using Infrastructure.Constants;
     using Infrastructure.Interfaces;
 
-    /// <summary>Interaction logic for HomeTiles.xaml</summary>
-    /// <seealso cref="IContentView" />
-    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
+    /// <summary></summary>
     /// <seealso cref="System.Windows.Controls.UserControl" />
-    public partial class HomeTiles : IContentView
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
+    /// <seealso cref="IContentView" />
+    public partial class UpdateChecker : IContentView
     {
-        /// <summary>Initializes a new instance of the <see cref="HomeTiles" /> class.</summary>
-        public HomeTiles()
+        /// <summary>Initializes a new instance of the <see cref="UpdateChecker" /> class.</summary>
+        public UpdateChecker()
         {
             InitializeComponent();
         }

@@ -27,6 +27,7 @@
         <ResourceDictionary Source="Styles/Sections/NavigationFlyout.xaml" />
         <ResourceDictionary Source="Styles/Sections/PreviewToDo.xaml" />
         <ResourceDictionary Source="Styles/Sections/SettingsFlyout.xaml" />
+        <ResourceDictionary Source="Styles/Sections/Updater.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 

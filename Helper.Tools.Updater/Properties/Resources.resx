@@ -97,40 +97,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SettingsChangelog" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
-  <data name="SettingsGroupApplication" xml:space="preserve">
-    <value>Basisprogramm</value>
-  </data>
-  <data name="SettingsGroupInformation" xml:space="preserve">
-    <value>Informationen</value>
-  </data>
-  <data name="SettingsTextBlockColor" xml:space="preserve">
-    <value>Farbe:</value>
-  </data>
-  <data name="SettingsTextBlockLanguage" xml:space="preserve">
-    <value>Sprache:</value>
-  </data>
-  <data name="SettingsTextBlockTheme" xml:space="preserve">
-    <value>Theme:</value>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="StatusBarAccentColorChanged" xml:space="preserve">
-    <value>Akzentfarbe geändert zu </value>
-  </data>
-  <data name="StatusBarLanguageChanged" xml:space="preserve">
-    <value>Sprache geändert zu </value>
-  </data>
-  <data name="StatusBarLastActivity" xml:space="preserve">
-    <value>Letzte Aktion:</value>
-  </data>
-  <data name="StatusBarThemeChanged" xml:space="preserve">
-    <value>Design geändert zu </value>
-  </data>
-  <data name="StatusBarVersion" xml:space="preserve">
-    <value>Version:</value>
+  <data name="UpdaterTitle" xml:space="preserve">
+    <value>Update is available</value>
   </data>
 </root>

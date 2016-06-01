@@ -48,7 +48,8 @@
 
             <!-- StatusBar -->
             <StatusBar Grid.Row="1">
-                <StatusBarItem>HelperTools DEMO Application</StatusBarItem>
+                <StatusBarItem Content="{x:Static props:Resources.StatusBarVersion}" />
+                <StatusBarItem Content="{Binding StatusBarVersion}" />
                 <Separator Style="{StaticResource StatusBarSeparator}" />
                 <StatusBarItem Content="{x:Static props:Resources.StatusBarLastActivity}" />
                 <StatusBarItem Content="{Binding Path=StatusBarMessage, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />

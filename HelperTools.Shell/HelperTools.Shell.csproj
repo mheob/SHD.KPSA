@@ -192,6 +192,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Helper.Tools.Updater\HelperTools.Updater.csproj">
+      <Project>{d92c6296-42f1-4a3d-bb2f-49d5ee006d50}</Project>
+      <Name>HelperTools.Updater</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelperTools.Changelog\HelperTools.Changelog.csproj">
       <Project>{fb4abee0-57d7-4034-bd02-e49a1b552fa6}</Project>
       <Name>HelperTools.Changelog</Name>

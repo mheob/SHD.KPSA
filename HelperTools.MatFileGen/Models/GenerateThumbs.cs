@@ -1,13 +1,13 @@
 ﻿namespace HelperTools.MatFileGen.Models
 {
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
     using Infrastructure.Services;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
     using Prism.Logging;
     using Properties;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
 
     /// <summary>The GenerateThumb.</summary>
     public class GenerateThumbs
@@ -119,6 +119,7 @@
         private void ReadJson()
         {
             SettingsThumbnail settings = jsonService.ReadJson<SettingsThumbnail>(configFile);
+            
             GenerateThumb = settings.GenerateThumb;
             ThumbFolder = settings.ThumbFolder;
 
