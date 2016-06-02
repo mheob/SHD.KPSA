@@ -20,22 +20,7 @@
         /// <summary>Initializes a new instance of the <see cref="UpdateCheckerViewModel" /> class.</summary>
         public UpdateCheckerViewModel()
         {
-            var tmpPath = PathNames.TempFolderPath;
-            if (!Directory.Exists(tmpPath)) Directory.CreateDirectory(tmpPath);
-
-            var tmpFile = tmpPath + "version.txt";
-            new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile, tmpFile);
-
-            NewVersion = File.ReadLines(tmpFile).First();
-
-            LastChange = string.Empty;
-
-            foreach (var line in FileService.Read(tmpFile))
-            {
-                if (line.StartsWith("[")) LastChange += line + "\n";
-            }
-
-            Directory.Delete(tmpPath, true);
+            GetDataFromWebConfig();
         }
         #endregion Constructor
 
@@ -67,6 +52,25 @@
         #endregion Properties
 
         #region Methods
+        private void GetDataFromWebConfig()
+        {
+            var tmpPath = PathNames.TempFolderPath;
+            if (!Directory.Exists(tmpPath)) Directory.CreateDirectory(tmpPath);
+
+            var tmpFile = tmpPath + "version.txt";
+            new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile, tmpFile);
+
+            NewVersion = File.ReadLines(tmpFile).First();
+
+            LastChange = string.Empty;
+
+            foreach (var line in FileService.Read(tmpFile))
+            {
+                if (line.StartsWith("[")) LastChange += line + "\n";
+            }
+
+            Directory.Delete(tmpPath, true);
+        }
         #endregion Methods
     }
 }
