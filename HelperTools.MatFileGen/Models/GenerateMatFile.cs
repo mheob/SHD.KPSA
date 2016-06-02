@@ -153,7 +153,7 @@
                 $"spe {colorsSpe[0]} {colorsSpe[1]} {colorsSpe[2]}"
             };
 
-            if (fromJpg) matFile.Add($"tex image jpg {filename}");
+            if (fromJpg) matFile.Add($"tex image jpg {filename.Replace(Extension, string.Empty)}");
 
             AddOptionals();
 
