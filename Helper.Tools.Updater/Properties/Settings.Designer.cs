@@ -34,10 +34,19 @@ namespace HelperTools.Updater.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://shd.boehm.xyz/HelperTools/version.txt")]
-        public string WebUpdateVersionFile {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://shd.boehm.xyz/HelperTools/version.json")]
+        public global::System.Uri WebUpdateVersionFile {
             get {
-                return ((string)(this["WebUpdateVersionFile"]));
+                return ((global::System.Uri)(this["WebUpdateVersionFile"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("version.json")]
+        public string VersionJsonFileName {
+            get {
+                return ((string)(this["VersionJsonFileName"]));
             }
         }
     }

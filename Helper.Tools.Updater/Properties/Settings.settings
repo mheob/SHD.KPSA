@@ -5,8 +5,11 @@
     <Setting Name="StartupApplication" Type="System.String" Scope="Application">
       <Value Profile="(Default)">{0}HelperTools.Shell.exe</Value>
     </Setting>
-    <Setting Name="WebUpdateVersionFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://shd.boehm.xyz/HelperTools/version.txt</Value>
+    <Setting Name="WebUpdateVersionFile" Type="System.Uri" Scope="Application">
+      <Value Profile="(Default)">https://shd.boehm.xyz/HelperTools/version.json</Value>
+    </Setting>
+    <Setting Name="VersionJsonFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">version.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>

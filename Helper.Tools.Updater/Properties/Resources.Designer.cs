@@ -61,6 +61,24 @@ namespace HelperTools.Updater.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Web service is unavailable!{0}{0}Thus, not load the latest version!.
+        /// </summary>
+        public static string NoAccessToWebserviceDialogContent {
+            get {
+                return ResourceManager.GetString("NoAccessToWebserviceDialogContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention!.
+        /// </summary>
+        public static string NoAccessToWebserviceDialogTitle {
+            get {
+                return ResourceManager.GetString("NoAccessToWebserviceDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update is available.
         /// </summary>
         public static string UpdaterTitle {

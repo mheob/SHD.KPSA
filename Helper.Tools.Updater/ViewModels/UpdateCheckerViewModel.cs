@@ -1,26 +1,42 @@
 ﻿namespace HelperTools.Updater.ViewModels
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
-    using System.Linq;
     using System.Net;
     using System.Reflection;
+    using System.Windows;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Services;
+    using MahApps.Metro.Controls;
+    using MahApps.Metro.Controls.Dialogs;
+    using Microsoft.Practices.Unity;
+    using Models;
+    using Prism.Commands;
+    using Prism.Logging;
     using Properties;
+    using infraProps = Infrastructure.Properties;
 
     /// <summary>The UpdateCheckerViewModel.</summary>
     public class UpdateCheckerViewModel : ViewModelBase
     {
         #region Fields
+        private readonly JsonService jsonService = new JsonService();
+        private readonly MetroWindow mainWindow;
         #endregion Fields
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="UpdateCheckerViewModel" /> class.</summary>
         public UpdateCheckerViewModel()
         {
+            mainWindow = Container.Resolve<Window>(WindowNames.MAIN_WINDOW_NAME) as MetroWindow;
+
             GetDataFromWebConfig();
+
+            StartUpdateCommand = new DelegateCommand(StartUpdate, CanStartUpdate);
+
+            if (!CanStartUpdate()) NoAccessToWbservice();
         }
         #endregion Constructor
 
@@ -36,6 +52,14 @@
         /// <summary>Gets or sets the last change.</summary>
         /// <value>The last change.</value>
         public string LastChange { get; private set; }
+
+        /// <summary>Gets or sets the location.</summary>
+        /// <value>The location.</value>
+        public Uri Location { get; private set; }
+
+        /// <summary>Gets the command to start the working thread.</summary>
+        /// <value>The start generation command.</value>
+        public DelegateCommand StartUpdateCommand { get; }
         #endregion Properties
 
         #region Methods
@@ -44,27 +68,55 @@
             var tmpPath = PathNames.TempFolderPath;
             if (!Directory.Exists(tmpPath)) Directory.CreateDirectory(tmpPath);
 
-            var tmpFile = tmpPath + "version.txt";
+            var tmpFile = tmpPath + Settings.Default.VersionJsonFileName;
 
-            if (!File.Exists(tmpFile) || (File.GetCreationTimeUtc(tmpFile).Date - DateTime.Now).TotalHours < 2)
+            if (!File.Exists(tmpFile) || (File.GetCreationTimeUtc(tmpFile).Date - DateTime.Now).TotalHours <= 1)
             {
-                if (!WebService.ExistsOnServer(new Uri(Settings.Default.WebUpdateVersionFile))) return;
+                if (!WebService.ExistsOnServer(Settings.Default.WebUpdateVersionFile)) return;
 
-                new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile, tmpFile);
+                new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile.ToString(), tmpFile);
             }
 
-            NewVersion = File.ReadLines(tmpFile).First();
-            LastChange = string.Empty;
-
-            foreach (var line in FileService.Read(tmpFile))
-            {
-                if (!line.StartsWith("[")) continue;
-
-                LastChange += line.Replace("<br />", string.Empty) + "\n";
-            }
+            ReadJson();
 
             Directory.Delete(tmpPath, true);
         }
-        #endregion Methods
+
+        [SuppressMessage("ReSharper", "ConvertIfStatementToReturnStatement")]
+        private bool CanStartUpdate()
+        {
+            if (!WebService.ExistsOnServer(Settings.Default.WebUpdateVersionFile)) return false;
+            if (!WebService.ExistsOnServer(Location)) return false;
+
+            return true;
+        }
+
+        private void StartUpdate()
+        {
+            // TODO: start the update / download
+        }
+
+        private void ReadJson()
+        {
+            SettingsUpdate settings = jsonService.ReadJson<SettingsUpdate>(Settings.Default.VersionJsonFileName, JsonService.StoringArea.Tempfolder);
+            NewVersion = settings.Version.ToString();
+            LastChange = settings.LastChangesDe.Replace("<br />", "\n"); // TODO: switching between english and german
+            Location = settings.Location;
+        }
+
+        private async void NoAccessToWbservice()
+        {
+            var metroDialog = new MetroMessageDisplayService(Container);
+
+            mainWindow.MetroDialogOptions.AffirmativeButtonText = infraProps.Resources.DialogOk;
+
+            await
+                metroDialog.ShowMessageAsync(Resources.NoAccessToWebserviceDialogTitle,
+                    string.Format(Resources.NoAccessToWebserviceDialogContent, "\n"), MessageDialogStyle.Affirmative, mainWindow.MetroDialogOptions);
+
+            var logMessage = $"[{GetType().Name}] the UpdateCheckerViewModel can't access to the webservice";
+            Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
+        }
     }
+    #endregion Methods
 }
