@@ -17,8 +17,8 @@
                    ShowIconOnTitleBar="True"
                    mc:Ignorable="d"
                    Title="SHD KPSa HelperTools"
-                   Height="600"
-                   Width="800">
+                   Height="700"
+                   Width="1200">
 
     <!-- LeftWindow Commands -->
     <metro:MetroWindow.LeftWindowCommands>
