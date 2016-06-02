@@ -112,6 +112,8 @@
         {
             try
             {
+                if (!WebService.ExistsOnServer(new Uri(Settings.Default.WebUpdateVersionFile))) return false;
+
                 var tmpPath = PathNames.TempFolderPath;
                 if (!Directory.Exists(tmpPath)) Directory.CreateDirectory(tmpPath);
 
@@ -128,18 +130,18 @@
                     int.TryParse(versionParts[i], out newestVersion[i]);
                 }
 
-                Directory.Delete(tmpPath, true);
-
                 if (newestVersion[0] > currentVersion.Major) return true;
                 if (newestVersion[1] > currentVersion.Minor) return true;
                 if (newestVersion[2] > currentVersion.Build) return true;
+
+                Directory.Delete(tmpPath, true);
+
+                return false;
             }
             catch (Exception)
             {
                 return false;
             }
-
-            return false;
         }
     }
 }

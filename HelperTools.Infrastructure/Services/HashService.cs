@@ -1,4 +1,4 @@
-﻿namespace HelperTools.Updater
+﻿namespace HelperTools.Infrastructure.Services
 {
     using System;
     using System.Collections.Generic;
@@ -20,7 +20,7 @@
     }
 
     /// <summary>Class used to generate hash sums of files.</summary>
-    public static class Hasher
+    public static class HashService
     {
         /// <summary>Generate a hash sum of a file.</summary>
         /// <param name="filePath">The file to hash.</param>
