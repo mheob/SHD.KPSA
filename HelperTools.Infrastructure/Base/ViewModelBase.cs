@@ -1,6 +1,9 @@
 ﻿namespace HelperTools.Infrastructure.Base
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Windows;
+    using Constants;
+    using MahApps.Metro.Controls;
     using Microsoft.Practices.ServiceLocation;
     using Microsoft.Practices.Unity;
     using Prism.Events;
@@ -15,6 +18,7 @@
         private IUnityContainer unityContainer;
         private IRegionManager regionManager;
         private IEventAggregator eventAggregator;
+        private MetroWindow mainWindow;
         #endregion Fields
 
         #region Constructor
@@ -25,6 +29,7 @@
             Container = ServiceLocator.Current.GetInstance<IUnityContainer>();
             RegionManager = ServiceLocator.Current.GetInstance<IRegionManager>();
             EventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+            MainWindow = Container.Resolve<Window>(WindowNames.MAIN_WINDOW_NAME) as MetroWindow;
 
             var logMessage = $"[{GetType().Name}] is initialized";
             Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
@@ -56,6 +61,14 @@
         {
             get { return eventAggregator; }
             private set { SetProperty(ref eventAggregator, value); }
+        }
+
+        /// <summary>Gets the main window.</summary>
+        /// <value>The main window.</value>
+        public MetroWindow MainWindow
+        {
+            get { return mainWindow; }
+            private set { SetProperty(ref mainWindow, value); }
         }
         #endregion Properties
     }

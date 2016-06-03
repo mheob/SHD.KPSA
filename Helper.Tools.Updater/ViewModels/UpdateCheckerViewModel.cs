@@ -5,11 +5,9 @@
     using System.IO;
     using System.Net;
     using System.Reflection;
-    using System.Windows;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Services;
-    using MahApps.Metro.Controls;
     using MahApps.Metro.Controls.Dialogs;
     using Microsoft.Practices.Unity;
     using Models;
@@ -23,20 +21,17 @@
     {
         #region Fields
         private readonly JsonService jsonService = new JsonService();
-        private readonly MetroWindow mainWindow;
         #endregion Fields
 
         #region Constructor
         /// <summary>Initializes a new instance of the <see cref="UpdateCheckerViewModel" /> class.</summary>
         public UpdateCheckerViewModel()
         {
-            mainWindow = Container.Resolve<Window>(WindowNames.MAIN_WINDOW_NAME) as MetroWindow;
-
             GetDataFromWebConfig();
 
             StartUpdateCommand = new DelegateCommand(StartUpdate, CanStartUpdate);
 
-            if (!CanStartUpdate()) NoAccessToWbservice();
+            if (!CanStartUpdate()) NoAccessToWebservice();
         }
         #endregion Constructor
 
@@ -104,15 +99,15 @@
             Location = settings.Location;
         }
 
-        private async void NoAccessToWbservice()
+        private async void NoAccessToWebservice()
         {
             var metroDialog = new MetroMessageDisplayService(Container);
 
-            mainWindow.MetroDialogOptions.AffirmativeButtonText = infraProps.Resources.DialogOk;
+            MainWindow.MetroDialogOptions.AffirmativeButtonText = infraProps.Resources.DialogOk;
 
             await
                 metroDialog.ShowMessageAsync(Resources.NoAccessToWebserviceDialogTitle,
-                    string.Format(Resources.NoAccessToWebserviceDialogContent, "\n"), MessageDialogStyle.Affirmative, mainWindow.MetroDialogOptions);
+                    string.Format(Resources.NoAccessToWebserviceDialogContent, "\n"), MessageDialogStyle.Affirmative, MainWindow.MetroDialogOptions);
 
             var logMessage = $"[{GetType().Name}] the UpdateCheckerViewModel can't access to the webservice";
             Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
