@@ -95,7 +95,7 @@
         {
             SettingsUpdate settings = jsonService.ReadJson<SettingsUpdate>(Settings.Default.VersionJsonFileName, JsonService.StoringArea.Tempfolder);
             NewVersion = settings.Version.ToString();
-            LastChange = settings.LastChangesDe.Replace("<br />", "\n"); // TODO: switching between english and german
+            LastChange = settings.LastChangesDe.Replace("<br />", "\n"); // TODO: switching between english and german | locale == "de" ? de : en;
             Location = settings.Location;
         }
 
