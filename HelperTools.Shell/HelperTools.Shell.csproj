@@ -210,7 +210,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Helper.Tools.Updater\HelperTools.Updater.csproj">
+    <ProjectReference Include="..\HelperTools.Updater\HelperTools.Updater.csproj">
       <Project>{d92c6296-42f1-4a3d-bb2f-49d5ee006d50}</Project>
       <Name>HelperTools.Updater</Name>
     </ProjectReference>

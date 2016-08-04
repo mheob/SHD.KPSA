@@ -11,5 +11,8 @@
     <Setting Name="VersionJsonFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">version.json</Value>
     </Setting>
+    <Setting Name="UpdatedSetupFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">setup.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

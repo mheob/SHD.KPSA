@@ -81,7 +81,8 @@
         private bool CanStartUpdate()
         {
             if (!WebService.ExistsOnServer(Settings.Default.WebUpdateVersionFile)) return false;
-            if (!WebService.ExistsOnServer(Location)) return false;
+            // TODO: Comment in at the end, when the "https://...setup.exe" is stored on the server
+            // if (!WebService.ExistsOnServer(Location)) return false;
 
             return true;
         }
