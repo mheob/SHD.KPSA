@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using HelperTools.Infrastructure.Constants;
-using HelperTools.Infrastructure.Services;
-using HelperTools.Updater.Properties;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
-using Prism.Events;
-using Prism.Logging;
-
-namespace HelperTools.Updater.Models
+﻿namespace HelperTools.Updater.Models
 {
+    using System;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Net;
+    using System.Windows;
+    using Infrastructure.Constants;
+    using Infrastructure.Services;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
+    using Prism.Logging;
+    using Properties;
+
     /// <summary>The GenerateThumb.</summary>
     public class Updater
     {
@@ -29,7 +24,7 @@ namespace HelperTools.Updater.Models
         public Updater(Uri location)
         {
             unityContainer = ServiceLocator.Current.GetInstance<IUnityContainer>();
-            
+
             UpdateApplication(location);
 
             var logMessage = $"[{GetType().Name}] is initialized";
@@ -52,7 +47,7 @@ namespace HelperTools.Updater.Models
                 new WebClient().DownloadFile(location.ToString(), tmpFile);
             }
 
-            Process.Start(new ProcessStartInfo { FileName = tmpFile });
+            Process.Start(new ProcessStartInfo {FileName = tmpFile});
 
             Application.Current.Shutdown();
 
