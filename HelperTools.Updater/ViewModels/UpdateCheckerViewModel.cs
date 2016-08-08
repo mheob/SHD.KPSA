@@ -90,6 +90,7 @@
         private void StartUpdate()
         {
             // TODO: start the update / download
+            new Updater(Location);
         }
 
         private void ReadJson()
