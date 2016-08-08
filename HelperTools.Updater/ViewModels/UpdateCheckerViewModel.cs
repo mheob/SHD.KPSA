@@ -97,7 +97,7 @@
         {
             SettingsUpdate settings = jsonService.ReadJson<SettingsUpdate>(Settings.Default.VersionJsonFileName, JsonService.StoringArea.Tempfolder);
             NewVersion = settings.Version.ToString();
-            LastChange = settings.LastChangesDe.Replace("<br />", "\n"); // TODO: switching between english and german | locale == "de" ? de : en;
+            LastChange = settings.LastChangesDe.Replace("<br />", "\n"); // TODO: switching between English and German | locale == "de" ? de : en;
             Location = settings.Location;
         }
 
@@ -114,6 +114,6 @@
             var logMessage = $"[{GetType().Name}] the UpdateCheckerViewModel can't access to the webservice";
             Container.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
         }
+        #endregion Methods
     }
-    #endregion Methods
 }
