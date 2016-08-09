@@ -120,11 +120,7 @@
                 var tmpFile = tmpPath + "version.txt";
                 new WebClient().DownloadFile(Settings.Default.WebUpdateVersionFile, tmpFile);
 
-                if (Version.Parse(File.ReadLines(tmpFile).First()) > Assembly.GetExecutingAssembly().GetName().Version) return true;
-
-                Directory.Delete(tmpPath, true);
-
-                return false;
+                return Version.Parse(File.ReadLines(tmpFile).First()) > Assembly.GetExecutingAssembly().GetName().Version;
             }
             catch (Exception)
             {

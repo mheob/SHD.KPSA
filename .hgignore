@@ -18,6 +18,10 @@ build/
 [Bb]in/
 [Oo]bj/
 
+
+## for Server
+*HelperTools.Setup/Server*
+
 ## MSTest test Results
 
 [Tt]est[Rr]esult*/

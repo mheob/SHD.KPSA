@@ -78,6 +78,18 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.0-betaV15\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.2.0-pre1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism.Unity.Wpf, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Unity.6.2.0-pre3\lib\net45\Prism.Unity.Wpf.dll</HintPath>
       <Private>True</Private>
@@ -221,10 +233,6 @@
     <ProjectReference Include="..\HelperTools.Navigation\HelperTools.Navigation.csproj">
       <Project>{9b2c7898-2982-4e2c-8a61-931effe548e2}</Project>
       <Name>HelperTools.Navigation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HelperTools.SharedModules\HelperTools.SharedModules.csproj">
-      <Project>{A92EFC53-2B3D-4A44-B364-E4F9FE24E2CC}</Project>
-      <Name>HelperTools.SharedModules</Name>
     </ProjectReference>
     <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
       <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
