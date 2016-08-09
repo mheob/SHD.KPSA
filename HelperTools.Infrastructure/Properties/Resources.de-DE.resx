@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonSelectPath" xml:space="preserve">
+    <value>_Pfad wählen</value>
+  </data>
+  <data name="ButtonStart" xml:space="preserve">
+    <value>_Starten</value>
+  </data>
+  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
+    <value>alles _auswählen</value>
+  </data>
+  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
+    <value>alles abwähle_n</value>
+  </data>
+  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="DataGridFilesHeaderName" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="DataGridFilesHeaderSize" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
+    <value>{0} von {1} Dateien gewählt</value>
+  </data>
   <data name="DialogCancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
@@ -180,11 +204,23 @@
   <data name="ProgressFinishedDialogTitle" xml:space="preserve">
     <value>Vorgang abgeschlossen</value>
   </data>
+  <data name="StatusBarFileCollectionChanged" xml:space="preserve">
+    <value>Dateiliste aktualisiert</value>
+  </data>
   <data name="StatusBarFlayoutDisplayed" xml:space="preserve">
     <value>Flayout "{0}" angezeigt</value>
   </data>
   <data name="StatusBarReadSettings" xml:space="preserve">
     <value>Einstellungen geladen</value>
+  </data>
+  <data name="StatusBarSelectAll" xml:space="preserve">
+    <value>alle Dateien ausgewählt</value>
+  </data>
+  <data name="StatusBarSelectedPathChanged" xml:space="preserve">
+    <value>Arbeitsverzeichnis geändert</value>
+  </data>
+  <data name="StatusBarSelectNone" xml:space="preserve">
+    <value>alle Dateien abgewählt</value>
   </data>
   <data name="StatusBarViewChanged" xml:space="preserve">
     <value>Inhalt zu "{0}" geändert</value>

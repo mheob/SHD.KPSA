@@ -61,6 +61,78 @@ namespace HelperTools.Infrastructure.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select _Path.
+        /// </summary>
+        public static string ButtonSelectPath {
+            get {
+                return ResourceManager.GetString("ButtonSelectPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Start.
+        /// </summary>
+        public static string ButtonStart {
+            get {
+                return ResourceManager.GetString("ButtonStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select _all.
+        /// </summary>
+        public static string DataGridFilesButtonSelectAll {
+            get {
+                return ResourceManager.GetString("DataGridFilesButtonSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecet _none.
+        /// </summary>
+        public static string DataGridFilesButtonSelectNone {
+            get {
+                return ResourceManager.GetString("DataGridFilesButtonSelectNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        public static string DataGridFilesHeaderChanged {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string DataGridFilesHeaderName {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        public static string DataGridFilesHeaderSize {
+            get {
+                return ResourceManager.GetString("DataGridFilesHeaderSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} of {1} files selected.
+        /// </summary>
+        public static string DataGridFilesStatusBarText {
+            get {
+                return ResourceManager.GetString("DataGridFilesStatusBarText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string DialogCancel {
@@ -250,6 +322,15 @@ namespace HelperTools.Infrastructure.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to updated the file list.
+        /// </summary>
+        public static string StatusBarFileCollectionChanged {
+            get {
+                return ResourceManager.GetString("StatusBarFileCollectionChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to displayed &quot;{0}&quot; flayout.
         /// </summary>
         public static string StatusBarFlayoutDisplayed {
@@ -264,6 +345,33 @@ namespace HelperTools.Infrastructure.Properties {
         public static string StatusBarReadSettings {
             get {
                 return ResourceManager.GetString("StatusBarReadSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all files selected.
+        /// </summary>
+        public static string StatusBarSelectAll {
+            get {
+                return ResourceManager.GetString("StatusBarSelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to changed the working path.
+        /// </summary>
+        public static string StatusBarSelectedPathChanged {
+            get {
+                return ResourceManager.GetString("StatusBarSelectedPathChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to all files unselected.
+        /// </summary>
+        public static string StatusBarSelectNone {
+            get {
+                return ResourceManager.GetString("StatusBarSelectNone", resourceCulture);
             }
         }
         

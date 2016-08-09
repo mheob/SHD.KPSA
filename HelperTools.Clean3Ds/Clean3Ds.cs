@@ -4,7 +4,7 @@
     using Infrastructure.Constants;
     using Microsoft.Practices.Unity;
     using Prism.Regions;
-    using SharedModules.Views;
+    using Views;
 
     /// <summary>The Clean3Ds.</summary>
     /// <seealso cref="PrismBaseModule" />

@@ -61,7 +61,7 @@ namespace HelperTools.MatFileGen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.DefaultSettingValueAttribute("256")]
         public int MappingImageMaxWidth {
             get {
                 return ((int)(this["MappingImageMaxWidth"]));
@@ -73,7 +73,7 @@ namespace HelperTools.MatFileGen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        [global::System.Configuration.DefaultSettingValueAttribute("256")]
         public int MappingImageMaxHeight {
             get {
                 return ((int)(this["MappingImageMaxHeight"]));

@@ -28,7 +28,7 @@
         public PreviewImageViewModel()
         {
             EventAggregator.GetEvent<SelectedPathUpdateEvent>().Subscribe(OnSelectedPathUpdateEvent);
-            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SelectedMfgFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
             EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
         }
         #endregion Constructor

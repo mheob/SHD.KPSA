@@ -12,10 +12,10 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="MappingImageMaxWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">256</Value>
     </Setting>
     <Setting Name="MappingImageMaxHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">250</Value>
+      <Value Profile="(Default)">256</Value>
     </Setting>
     <Setting Name="MappingImageSuffixPathForOrig" Type="System.String" Scope="User">
       <Value Profile="(Default)">\_orig_images_\</Value>

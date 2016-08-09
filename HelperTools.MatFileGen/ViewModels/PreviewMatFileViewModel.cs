@@ -21,7 +21,7 @@
         /// <summary>Initializes a new instance of the <see cref="PreviewMatFileViewModel" /> class.</summary>
         public PreviewMatFileViewModel()
         {
-            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SelectedMfgFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
             EventAggregator.GetEvent<MatFilePreviewUpdateEvent>().Subscribe(OnMatFilePreviewUpdateEvent);
         }
         #endregion Constructor

@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="HelperTools.MatFileGen.Views.DataGridFiles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:mvvm="http://prismlibrary.com/"
+             xmlns:props="clr-namespace:HelperTools.Infrastructure.Properties;assembly=HelperTools.Infrastructure"
+             xmlns:behaviors="clr-namespace:HelperTools.Infrastructure.Behaviors;assembly=HelperTools.Infrastructure"
+             xmlns:converter="clr-namespace:HelperTools.Infrastructure.Converter;assembly=HelperTools.Infrastructure"
+             mvvm:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="180"
+             d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.datagrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HelperTools.Styling;component/LookAndFeel.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Style="{StaticResource DataGridButtonGroup}">
+            <Button x:Name="DataGridButtonSelectAll"
+                    Content="{x:Static props:Resources.DataGridFilesButtonSelectAll}"
+                    Style="{StaticResource DataGridButton}"
+                    Command="{Binding SelectAllCommand}"
+                    CommandParameter="{Binding FileCollection}" />
+
+            <Button x:Name="DataGridButtonSelectNone"
+                    Content="{x:Static props:Resources.DataGridFilesButtonSelectNone}"
+                    Style="{StaticResource DataGridButton}"
+                    Command="{Binding SelectNoneCommand}"
+                    CommandParameter="{Binding FileCollection}" />
+        </StackPanel>
+
+        <DataGrid x:Name="DataGridContent"
+                  Grid.Row="1"
+                  ItemsSource="{Binding FileCollection}"
+                  behaviors:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedFilesCollection}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserSortColumns="True">
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding UpdateSelectedFilesCommand}"
+                                           CommandParameter="{Binding StatusBarSummary}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}"
+                       BasedOn="{StaticResource MetroDataGridRow}">
+                    <Setter Property="IsSelected"
+                            Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        IsReadOnly="True"
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=TwoWay}" />
+
+                <DataGridTextColumn Header="{x:Static props:Resources.DataGridFilesHeaderName}"
+                                    Width="*"
+                                    IsReadOnly="True"
+                                    Binding="{Binding FileName}" />
+
+                <DataGridTextColumn Header="{x:Static props:Resources.DataGridFilesHeaderChanged}"
+                                    Width="*"
+                                    IsReadOnly="True"
+                                    Binding="{Binding CreatedTime, StringFormat='{}{0:dd.MM.yyyy HH:mm:ss}'}" />
+
+                <DataGridTextColumn Header="{x:Static props:Resources.DataGridFilesHeaderSize}"
+                                    IsReadOnly="True"
+                                    Binding="{Binding FileSize, StringFormat={}{0} KB}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Separator Grid.Row="2"
+                   Style="{StaticResource VerticalSeparator}"
+                   Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+
+        <Label Grid.Row="3"
+               x:Name="LabelStatusBar"
+               Content="{Binding StatusBarSummary}"
+               Style="{StaticResource DataGridFilesStatusBar}"
+               Visibility="{Binding IsStatusBarVisible, Converter={converter:BoolToVisibleConverter Collapse=True}}" />
+    </Grid>
+</UserControl>

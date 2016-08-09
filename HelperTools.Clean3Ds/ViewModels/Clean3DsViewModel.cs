@@ -1,5 +1,11 @@
 ﻿namespace HelperTools.Clean3Ds.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -11,12 +17,6 @@
     using Prism.Commands;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.IO;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Views;
     using infraProps = Infrastructure.Properties;
 
@@ -38,7 +38,7 @@
         public Clean3DsViewModel()
         {
             EventAggregator.GetEvent<SelectedPathUpdateEvent>().Subscribe(OnSelectedPathUpdateEvent);
-            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<Selected3DsFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
 
             SelectedPath = PathNames.DesktopPath;
 
@@ -105,9 +105,8 @@
         }
         #endregion Event-Handler
 
-        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
-
         #region Methods
+        [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void GetFiles()
         {
             var currentView = RegionManager.Regions[RegionNames.MAIN_REGION].ActiveViews.FirstOrDefault();
@@ -195,8 +194,6 @@
                     DialogService.Exception(ex, DialogService.ExceptionType.Universal);
                 }
             }
-
-            if (Directory.Exists(PathNames.TempFolderPath)) Directory.Delete(PathNames.TempFolderPath, true);
 
             await controller.CloseAsync();
 

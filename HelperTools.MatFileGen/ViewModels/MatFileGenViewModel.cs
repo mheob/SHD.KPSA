@@ -1,8 +1,5 @@
 ﻿namespace HelperTools.MatFileGen.ViewModels
 {
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Linq;
     using Infrastructure.Base;
     using Infrastructure.Constants;
     using Infrastructure.Events;
@@ -11,6 +8,9 @@
     using Models;
     using Prism.Commands;
     using Properties;
+    using System.Collections.ObjectModel;
+    using System.IO;
+    using System.Linq;
     using Views;
     using SettingsSolid = Models.SettingsSolid;
 
@@ -37,7 +37,7 @@
         public MatFileGenViewModel()
         {
             EventAggregator.GetEvent<SelectedPathUpdateEvent>().Subscribe(OnSelectedPathUpdateEvent);
-            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SelectedMfgFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
             EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Subscribe(OnSolidColorNameUpdateEvent);
             EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
 

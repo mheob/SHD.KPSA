@@ -4,8 +4,8 @@
     using Interfaces;
     using Prism.Events;
 
-    /// <summary>The SelectedFilesUpdateEvent.</summary>
-    public class SelectedFilesUpdateEvent : PubSubEvent<ObservableCollection<IFiles>>
+    /// <summary>The Selected3DsFilesUpdateEvent.</summary>
+    public class Selected3DsFilesUpdateEvent : PubSubEvent<ObservableCollection<IFiles>>
     {
     }
 }

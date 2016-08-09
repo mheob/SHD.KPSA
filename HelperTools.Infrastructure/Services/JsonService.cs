@@ -1,5 +1,8 @@
 ﻿namespace HelperTools.Infrastructure.Services
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
     using Constants;
     using Events;
     using Microsoft.Practices.ServiceLocation;
@@ -8,9 +11,6 @@
     using Prism.Events;
     using Prism.Logging;
     using Properties;
-    using System;
-    using System.IO;
-    using System.Reflection;
 
     /// <summary>The JsonService.</summary>
     public class JsonService
@@ -50,7 +50,7 @@
         /// <param name="filename">The filename of the JSON file.</param>
         /// <param name="storingArea">The storing area.</param>
         /// <returns>The deserialized object from the JSON string.</returns>
-        public T ReadJson<T>(string filename, StoringArea storingArea = StoringArea.ApplicationConfig)
+        public T ReadJson<T>(string filename, StoringArea storingArea = StoringArea.Tempfolder)
         {
             try
             {
@@ -72,7 +72,7 @@
                         throw new ArgumentOutOfRangeException(nameof(storingArea), storingArea, null);
                 }
 
-                if (!File.Exists(file)) return new JsonSerializer().Deserialize<T>(null);
+                if (!File.Exists(file)) return JsonConvert.DeserializeObject<T>(null);
 
                 var logMessage = $"[{GetType().Name}] JSON ({file}) was read";
                 unityContainer.Resolve<ILoggerFacade>().Log(logMessage, Category.Debug, Priority.None);
@@ -88,7 +88,7 @@
 
                 DialogService.Exception(ex, DialogService.ExceptionType.Universal);
 
-                return new JsonSerializer().Deserialize<T>(null);
+                return JsonConvert.DeserializeObject<T>(null);
             }
         }
 
@@ -96,7 +96,7 @@
         /// <param name="settings">The complete object of the settings.</param>
         /// <param name="filename">The filename of the JSON file.</param>
         /// <param name="storingArea">The storing area.</param>
-        public void WriteJson(object settings, string filename, StoringArea storingArea = StoringArea.ApplicationConfig)
+        public void WriteJson(object settings, string filename, StoringArea storingArea = StoringArea.Tempfolder)
         {
             try
             {

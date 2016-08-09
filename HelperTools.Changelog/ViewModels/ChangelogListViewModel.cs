@@ -43,8 +43,7 @@
         [ExcludeFromCodeCoverage] // TODO: could maybe remove after creating a test of this
         private void DesignChangelogContent()
         {
-            if (!File.Exists(ChangelogFile))
-                return;
+            if (!File.Exists(ChangelogFile)) return;
 
             foreach (var line in FileService.Read(ChangelogFile))
             {

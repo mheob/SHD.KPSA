@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\HelperTools.Shell\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0c15020868fd6249, processorArchitecture=MSIL">
       <HintPath>..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll</HintPath>
       <Private>True</Private>
@@ -54,8 +58,8 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.6.2.0-pre1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,10 +119,11 @@
     <Compile Include="Converter\SpaceToNbspConverter.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
     <Compile Include="Events\MatFilePreviewUpdateEvent.cs" />
+    <Compile Include="Events\Selected3DsFilesUpdateEvent.cs" />
     <Compile Include="Events\SelectedTabUpdateEvent.cs" />
     <Compile Include="Events\SolidRgbUpdateEvent.cs" />
     <Compile Include="Events\SolidColorNameUpdateEvent.cs" />
-    <Compile Include="Events\SelectedFilesUpdateEvent.cs" />
+    <Compile Include="Events\SelectedMfgFilesUpdateEvent.cs" />
     <Compile Include="Events\FilesUpdateEvent.cs" />
     <Compile Include="Events\SelectedPathUpdateEvent.cs" />
     <Compile Include="Events\StatusBarMessageUpdateEvent.cs" />

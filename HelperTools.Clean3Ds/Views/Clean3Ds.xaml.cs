@@ -6,7 +6,7 @@
     /// <summary>Interaction logic for Clean3Ds.xaml</summary>
     /// <seealso cref="System.Windows.Controls.UserControl" />
     /// <seealso cref="System.Windows.Markup.IComponentConnector" />
-    /// <seealso cref="HelperTools.Infrastructure.Interfaces.IContentView" />
+    /// <seealso cref="IContentView" />
     public partial class Clean3Ds : IContentView
     {
         /// <summary>Initializes a new instance of the <see cref="Clean3Ds" /> class.</summary>

@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ButtonSelectPath" xml:space="preserve">
+    <value>Select _Path</value>
+  </data>
+  <data name="ButtonStart" xml:space="preserve">
+    <value>_Start</value>
+  </data>
+  <data name="DataGridFilesButtonSelectAll" xml:space="preserve">
+    <value>Select _all</value>
+  </data>
+  <data name="DataGridFilesButtonSelectNone" xml:space="preserve">
+    <value>Selecet _none</value>
+  </data>
+  <data name="DataGridFilesHeaderChanged" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="DataGridFilesHeaderName" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="DataGridFilesHeaderSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="DataGridFilesStatusBarText" xml:space="preserve">
+    <value>{0} of {1} files selected</value>
+  </data>
   <data name="DialogCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -180,11 +204,23 @@
   <data name="ProgressFinishedDialogTitle" xml:space="preserve">
     <value>Process completed</value>
   </data>
+  <data name="StatusBarFileCollectionChanged" xml:space="preserve">
+    <value>updated the file list</value>
+  </data>
   <data name="StatusBarFlayoutDisplayed" xml:space="preserve">
     <value>displayed "{0}" flayout</value>
   </data>
   <data name="StatusBarReadSettings" xml:space="preserve">
     <value>load settings</value>
+  </data>
+  <data name="StatusBarSelectAll" xml:space="preserve">
+    <value>all files selected</value>
+  </data>
+  <data name="StatusBarSelectedPathChanged" xml:space="preserve">
+    <value>changed the working path</value>
+  </data>
+  <data name="StatusBarSelectNone" xml:space="preserve">
+    <value>all files unselected</value>
   </data>
   <data name="StatusBarViewChanged" xml:space="preserve">
     <value>changed content to "{0}"</value>

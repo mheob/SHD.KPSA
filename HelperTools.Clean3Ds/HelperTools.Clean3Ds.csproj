@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\HelperTools.Shell\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -54,8 +54,8 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.6.2.0-pre1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Prism.Wpf">
       <HintPath>..\packages\Prism.Wpf.6.1.1-pre2\lib\net45\Prism.Wpf.dll</HintPath>
@@ -86,8 +86,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Clean3DsViewModel.cs" />
+    <Compile Include="ViewModels\DataGridFilesViewModel.cs" />
+    <Compile Include="ViewModels\PathSelectionViewModel.cs" />
     <Compile Include="Views\Clean3Ds.xaml.cs">
       <DependentUpon>Clean3Ds.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataGridFiles.xaml.cs">
+      <DependentUpon>DataGridFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FooterStart.xaml.cs">
+      <DependentUpon>FooterStart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PathSelection.xaml.cs">
+      <DependentUpon>PathSelection.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -101,10 +112,6 @@
       <Project>{77a8bdc2-9f14-4d1b-a21f-6239435418ad}</Project>
       <Name>HelperTools.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HelperTools.SharedModules\HelperTools.SharedModules.csproj">
-      <Project>{a92efc53-2b3d-4a44-b364-e4f9fe24e2cc}</Project>
-      <Name>HelperTools.SharedModules</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
       <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
       <Name>HelperTools.Styling</Name>
@@ -117,6 +124,18 @@
     <Page Include="Views\Clean3Ds.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataGridFiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FooterStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PathSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

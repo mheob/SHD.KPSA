@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\HelperTools.Changelog\HelperTools.Changelog.csproj">
+			<Name>HelperTools.Changelog</Name>
+			<Project>{FB4ABEE0-57D7-4034-BD02-E49A1B552FA6}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Clean3Ds\HelperTools.Clean3Ds.csproj">
+			<Name>HelperTools.Clean3Ds</Name>
+			<Project>{D0279BB5-7FDB-4CC6-BE7D-D8F65B7240AF}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Infrastructure\HelperTools.Infrastructure.csproj">
+			<Name>HelperTools.Infrastructure</Name>
+			<Project>{77A8BDC2-9F14-4D1B-A21F-6239435418AD}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.MatFileGen\HelperTools.MatFileGen.csproj">
+			<Name>HelperTools.MatFileGen</Name>
+			<Project>{613325F3-35C7-4BF9-953E-0E8F5AC67CB3}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Navigation\HelperTools.Navigation.csproj">
+			<Name>HelperTools.Navigation</Name>
+			<Project>{9B2C7898-2982-4E2C-8A61-931EFFE548E2}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Shell\HelperTools.Shell.csproj">
+			<Name>HelperTools.Shell</Name>
+			<Project>{8EF0E385-90C9-4E22-A9E6-9B47E03EBC5B}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
+			<Name>HelperTools.Styling</Name>
+			<Project>{7A6BD2E1-BC7D-4FA4-9188-465EB0335077}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\HelperTools.Updater\HelperTools.Updater.csproj">
+			<Name>HelperTools.Updater</Name>
+			<Project>{D92C6296-42F1-4A3D-BB2F-49D5EE006D50}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

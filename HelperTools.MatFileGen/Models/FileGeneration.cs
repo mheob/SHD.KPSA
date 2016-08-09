@@ -132,7 +132,7 @@
                     new GenerateThumbs().DoGeneration(fileToGenerate, rgb, IsFromJpg, ThumbnailService.ShowPreview.No);
 
                     await Task.Delay(50);
-                    
+
                     var generateFile = new GenerateMatFile(fileToGenerate, rgb, IsFromJpg);
                     generateFile.CreateMatFile();
 

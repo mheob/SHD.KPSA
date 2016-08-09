@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\HelperTools.Shell\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,11 +51,15 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.6.2.0-pre1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -102,14 +106,25 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DataGridFilesViewModel.cs" />
     <Compile Include="ViewModels\MatFileGenViewModel.cs" />
+    <Compile Include="ViewModels\PathSelectionViewModel.cs" />
     <Compile Include="ViewModels\PreviewImageViewModel.cs" />
     <Compile Include="ViewModels\PreviewMatFileViewModel.cs" />
     <Compile Include="ViewModels\SettingsAttributesViewModel.cs" />
     <Compile Include="ViewModels\SettingsSolidViewModel.cs" />
     <Compile Include="ViewModels\SettingsThumbnailViewModel.cs" />
+    <Compile Include="Views\DataGridFiles.xaml.cs">
+      <DependentUpon>DataGridFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FooterStart.xaml.cs">
+      <DependentUpon>FooterStart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MatFileGen.xaml.cs">
       <DependentUpon>MatFileGen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PathSelection.xaml.cs">
+      <DependentUpon>PathSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PreviewMatFile.xaml.cs">
       <DependentUpon>PreviewMatFile.xaml</DependentUpon>
@@ -139,10 +154,6 @@
       <Project>{77a8bdc2-9f14-4d1b-a21f-6239435418ad}</Project>
       <Name>HelperTools.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HelperTools.SharedModules\HelperTools.SharedModules.csproj">
-      <Project>{a92efc53-2b3d-4a44-b364-e4f9fe24e2cc}</Project>
-      <Name>HelperTools.SharedModules</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HelperTools.Styling\HelperTools.Styling.csproj">
       <Project>{7a6bd2e1-bc7d-4fa4-9188-465eb0335077}</Project>
       <Name>HelperTools.Styling</Name>
@@ -158,9 +169,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\DataGridFiles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FooterStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MatFileGen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PathSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PreviewMatFile.xaml">
       <Generator>MSBuild:Compile</Generator>

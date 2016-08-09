@@ -88,7 +88,7 @@
 
             publisher = Publisher.None;
 
-            EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+            EventAggregator.GetEvent<SelectedMfgFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
             EventAggregator.GetEvent<SolidColorNameUpdateEvent>().Subscribe(OnSolidColorNameUpdateEvent);
             EventAggregator.GetEvent<SolidRgbUpdateEvent>().Subscribe(OnSolidRgbUpdateEvent);
             EventAggregator.GetEvent<SelectedTabUpdateEvent>().Subscribe(OnSelectedTabUpdateEvent);
@@ -474,7 +474,7 @@
             if (tab == 0)
             {
                 publisher = Publisher.File;
-                EventAggregator.GetEvent<SelectedFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
+                EventAggregator.GetEvent<SelectedMfgFilesUpdateEvent>().Subscribe(OnSelectedFilesUpdateEvent);
             }
             else
             {
