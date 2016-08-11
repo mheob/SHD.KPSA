@@ -199,4 +199,5 @@ FakesAssemblies/
 *.opt
 
 # Mercurial Ignores
-*.hg
+*.hg*
+.hgignore

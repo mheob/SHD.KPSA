@@ -161,3 +161,4 @@ Desktop.ini
 ## Git Ignores
 
 .git*
+.gitignore
