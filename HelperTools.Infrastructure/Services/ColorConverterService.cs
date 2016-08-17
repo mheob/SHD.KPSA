@@ -1,5 +1,6 @@
 ﻿namespace HelperTools.Infrastructure.Services
 {
+    using System;
     using System.Drawing;
     using System.Globalization;
     using System.Windows.Media;
@@ -32,11 +33,12 @@
         /// <returns>The values (R)ed, (G)reen und (B)lue.</returns>
         public static byte[] GetRgbFromImage(string file)
         {
-            byte[] rgb = new byte[3];
+            int[] rgb = new int[3];
+            byte[] output = new byte[3];
 
             Bitmap img = (Bitmap) Image.FromFile(file);
 
-//            int pixel = img.Width * img.Height;
+            int pixel = img.Width * img.Height;
 
             for (int x = 0, maxX = img.Width; x < maxX; x++)
             {
@@ -50,7 +52,12 @@
                 }
             }
 
-            return rgb;
+            for (int i = 0; i < rgb.Length; i++)
+            {
+                output[i] = Convert.ToByte(rgb[i] / pixel);
+            }
+
+            return output;
         }
 
         /// <summary>Get the RGB values back using a Color.</summary>

@@ -2733,7 +2733,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1031</td><td>SHD Kreative Planungssysteme GmbH &amp; Co. KG</td><td>0</td><td/><td>1277441713</td></row>
+		<row><td>COMPANY_NAME</td><td>1031</td><td>SHD Kreative Planungssysteme GmbH &amp; Co. KG</td><td>0</td><td/><td>-1943740372</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1031</td><td>Immer installieren</td><td>0</td><td/><td>1277470888</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1031</td><td>Die Farbeinstellungen Ihres Systems sind zum Ausführen von [ProductName] nicht geeignet.</td><td>0</td><td/><td>1277470888</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1031</td><td>Das Betriebssystem ist zum Ausführen von [ProductName] nicht geeignet.</td><td>0</td><td/><td>1277470888</td></row>
@@ -3834,9 +3834,9 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1031</td><td>Der Prozessor ist für zum Ausführen von [ProductName] nicht geeignet.</td><td>0</td><td/><td>1277470888</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1031</td><td>Der Arbeitsspeicher (RAM) ist zum Ausführen von [ProductName] nicht ausreichend.</td><td>0</td><td/><td>1277470888</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1031</td><td>Die Bildschirmauflösung ist zum Ausführen von [ProductName] nicht geeignet.</td><td>0</td><td/><td>1277470888</td></row>
-		<row><td>ID_STRING1</td><td>1031</td><td>http://www.shd-kps.de</td><td>0</td><td/><td>1277471250</td></row>
+		<row><td>ID_STRING1</td><td>1031</td><td>http://www.shd-kps.de</td><td>0</td><td/><td>-1943759764</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td>http://www.shd-kps.de</td><td>0</td><td/><td>1277471250</td></row>
-		<row><td>ID_STRING2</td><td>1031</td><td>SHD Kreative Planungssysteme GmbH &amp; Co. KG</td><td>0</td><td/><td>1277441713</td></row>
+		<row><td>ID_STRING2</td><td>1031</td><td>SHD Kreative Planungssysteme GmbH &amp; Co. KG</td><td>0</td><td/><td>-1943740372</td></row>
 		<row><td>ID_STRING3</td><td>1031</td><td>HelperTools</td><td>0</td><td/><td>1277470888</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1031</td><td>Dieses Feature wird nicht installiert.</td><td>0</td><td/><td>1277470888</td></row>
 	</table>
@@ -4467,9 +4467,9 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]HelperTools.Shell.Primary output</td><td/></row>
-		<row><td>ProductCode</td><td>{8423E781-4453-4B6F-9AE5-6A8505B06962}</td><td/></row>
+		<row><td>ProductCode</td><td>{920ECF09-FF36-44DC-B70D-9C48A40CE438}</td><td/></row>
 		<row><td>ProductName</td><td>HelperTools</td><td/></row>
-		<row><td>ProductVersion</td><td>0.3.0</td><td/></row>
+		<row><td>ProductVersion</td><td>0.3.1</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4483,7 +4483,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
 		<row><td>SHOWLAUNCHPROGRAM</td><td>0</td><td/></row>
 		<row><td>SHOWLAUNCHREADME</td><td>0</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;ISACTIONPROP1</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;ISACTIONPROP2</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{AEEBE531-B20E-4A4E-978A-25D00CC1EA71}</td><td/></row>
@@ -4758,7 +4758,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<col def="s72">ActionProperty</col>
 		<col def="S72">ISDisplayName</col>
 		<row><td>{00000000-0000-0000-0000-000000000000}</td><td>***ALL_VERSIONS***</td><td></td><td></td><td>2</td><td/><td>ISFOUNDNEWERPRODUCTVERSION</td><td>ISPreventDowngrade</td></row>
-		<row><td>{AEEBE531-B20E-4A4E-978A-25D00CC1EA71}</td><td>0.2.0</td><td>2016.0.0</td><td></td><td>768</td><td/><td>ISACTIONPROP1</td><td>NewUpgradeEntry1</td></row>
+		<row><td>{AEEBE531-B20E-4A4E-978A-25D00CC1EA71}</td><td>0.3.0</td><td>0.3.0</td><td>1031</td><td>772</td><td/><td>ISACTIONPROP2</td><td>NewUpgradeEntry2</td></row>
 	</table>
 
 	<table name="Verb">

@@ -1,5 +1,8 @@
 ﻿# CHANGELOG
 <br />
+## 0.3.1<br />
+[FIX]    Falsche Berechnung der Ausweichfarbe bei vorhandenen Bildern bei der Mat-File-Erstellung behoben<br />
+<br />
 ## 0.3.0<br />
 [ADD]    Nutzung vom Mah-Apps-Metro-Style-Framework<br />
 [CHANGE] Kompletter Um- bzw. Neubau auf Basis von PRISM-MVVM<br />
